@@ -268,15 +268,16 @@ button { font-family: var(--font); cursor: pointer; }
   align-items: center;
   gap: 2px;
   margin-left: 16px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow: visible;
 }
 .nav__links a {
   display: block;
-  padding: 8px 10px;
+  padding: 8px 8px;
   font-weight: 700;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   border: 2px solid transparent;
   transition: all 0.1s ease;
   white-space: nowrap;
@@ -891,34 +892,36 @@ img  { max-width: 100%; height: auto; }
   vertical-align: middle;
 }
 .nav__drop {
-  display: none;
+  display: none !important;
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + 2px);
   left: 0;
   background: var(--black);
   border: var(--b);
-  box-shadow: var(--sh-md);
-  min-width: 140px;
-  z-index: 300;
+  box-shadow: var(--sh-lg);
+  min-width: 160px;
+  z-index: 9999;
   list-style: none;
-  padding: 4px 0;
+  padding: 6px 0;
+  pointer-events: none;
 }
 .nav__drop a {
   display: block;
-  padding: 12px 18px;
+  padding: 14px 20px;
   font-weight: 700;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--white);
-  border: none !important;
-  box-shadow: none !important;
-  background: transparent;
   white-space: nowrap;
 }
 .nav__drop a:hover { background: var(--yellow); color: var(--black); }
+.nav__has-drop { position: relative; }
 .nav__has-drop:hover .nav__drop,
-.nav__has-drop:focus-within .nav__drop { display: block; }
+.nav__has-drop:focus-within .nav__drop {
+  display: block !important;
+  pointer-events: auto;
+}
 
 /* Hero image overlay utility */
 .hero-img-overlay {
