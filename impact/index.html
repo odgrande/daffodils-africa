@@ -3,38 +3,78 @@
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Our Impact — Daffodils Africa</title>
-  <meta name="description" content="Daffodils Africa impact portfolio — case studies, project highlights, success stories, and statistics of real community change across Africa."/>
+  <meta name="description" content="Daffodils Africa impact portfolio — Digital Literacy, Women Empowerment, Education Support, real stories and measurable outcomes across Africa."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/css/main.css"/>
   <style>
-    .case-study { display:grid; grid-template-columns:1fr 1fr; gap:0; border:var(--b); box-shadow:var(--sh-xl); margin-bottom:24px; }
-    .case-study__img { border-right:var(--b); overflow:hidden; }
-    .case-study__img img { width:100%; height:100%; object-fit:cover; }
-    .case-study__content { padding:52px 44px; background:var(--white); display:flex; flex-direction:column; justify-content:center; }
-    .case-study:nth-child(even) { direction:rtl; }
-    .case-study:nth-child(even) > * { direction:ltr; }
-    .case-study:nth-child(even) .case-study__img { border-right:none; border-left:var(--b); }
-    .case-study:nth-child(even) .case-study__content { background:var(--yellow); }
-    .case-study__label { font-weight:700; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; opacity:0.5; margin-bottom:12px; }
-    .case-study__title { font-weight:900; font-size:1.6rem; text-transform:uppercase; letter-spacing:-0.01em; line-height:1.15; margin-bottom:14px; }
-    .case-study__text  { font-size:0.95rem; font-weight:500; line-height:1.8; margin-bottom:20px; opacity:0.85; }
-    .case-study__stats { display:flex; gap:20px; margin-bottom:24px; }
-    .case-study__stat  { text-align:center; background:var(--black); color:var(--white); padding:14px 18px; flex:1; }
-    .case-study:nth-child(even) .case-study__stat { background:var(--black); }
-    .case-study__stat-num   { font-weight:900; font-size:1.5rem; color:var(--yellow); display:block; line-height:1; }
-    .case-study__stat-label { font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.5); margin-top:4px; }
+    /* CASE STUDY ALTERNATING */
+    .cs { display:grid; grid-template-columns:1fr 1fr; gap:0; border:var(--b); box-shadow:var(--sh-xl); margin-bottom:24px; }
+    .cs__img { border-right:var(--b); overflow:hidden; }
+    .cs__img img { width:100%; height:100%; object-fit:cover; display:block; }
+    .cs__content { padding:52px 44px; background:var(--white); display:flex; flex-direction:column; justify-content:center; }
+    .cs:nth-child(even) { direction:rtl; }
+    .cs:nth-child(even) > * { direction:ltr; }
+    .cs:nth-child(even) .cs__img { border-right:none; border-left:var(--b); }
+    .cs:nth-child(even) .cs__content { background:var(--yellow); }
+    .cs__label { font-weight:700; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; opacity:0.5; margin-bottom:12px; }
+    .cs__title { font-weight:900; font-size:1.6rem; text-transform:uppercase; letter-spacing:-0.01em; line-height:1.15; margin-bottom:14px; }
+    .cs__text  { font-size:0.95rem; font-weight:500; line-height:1.8; margin-bottom:20px; opacity:0.85; }
+    .cs__stats { display:flex; gap:16px; margin-bottom:24px; }
+    .cs__stat  { text-align:center; background:var(--black); color:var(--white); padding:14px 18px; flex:1; }
+    .cs__stat-num   { font-weight:900; font-size:1.5rem; color:var(--yellow); display:block; line-height:1; }
+    .cs__stat-label { font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.5); margin-top:4px; }
+
+    /* IMPACT SCROLL */
+    .scroll-card { background:var(--black); border:var(--b); box-shadow:var(--sh-xl); padding:52px; }
+    .scroll-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:var(--b); margin:32px 0; }
+    .scroll-stat { padding:28px 20px; border-right:var(--b); text-align:center; }
+    .scroll-stat:last-child { border-right:none; }
+    .scroll-stat__num   { font-weight:900; font-size:2.5rem; color:var(--yellow); display:block; line-height:1; }
+    .scroll-stat__label { font-weight:700; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.45); margin-top:8px; }
+    .states-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; }
+    .state-pill { background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.15); padding:16px 20px; }
+    .state-pill__name  { font-weight:900; font-size:1rem; text-transform:uppercase; color:var(--yellow); }
+    .state-pill__text  { font-size:0.82rem; font-weight:500; color:rgba(255,255,255,0.5); margin-top:6px; line-height:1.5; }
+
+    /* BENEFICIARY STORIES */
+    .bene-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .bene-card { background:var(--white); border:var(--b); box-shadow:var(--sh-md); overflow:hidden; display:flex; flex-direction:column; transition:transform 0.15s,box-shadow 0.15s; }
+    .bene-card:hover { transform:translateY(-4px); box-shadow:var(--sh-lg); }
+    .bene-card__img { width:100%; height:200px; object-fit:cover; display:block; }
+    .bene-card__body { padding:24px; flex:1; }
+    .bene-card__tag  { font-weight:700; font-size:0.65rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--green); margin-bottom:8px; }
+    .bene-card__name { font-weight:900; font-size:1rem; text-transform:uppercase; margin-bottom:10px; }
+    .bene-card__text { font-size:0.875rem; font-weight:500; line-height:1.7; opacity:0.8; }
+
+    /* TESTIMONIALS */
     .testimonials-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
     .testimonial-card { background:var(--white); border:var(--b); box-shadow:var(--sh-md); padding:36px 32px; }
     .testimonial-mark { font-weight:900; font-size:3rem; color:var(--yellow); line-height:0.8; display:block; margin-bottom:12px; }
     .testimonial-text { font-weight:700; font-size:1rem; line-height:1.6; margin-bottom:20px; }
     .testimonial-attr { font-weight:700; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(0,0,0,0.4); border-top:2px solid rgba(0,0,0,0.1); padding-top:14px; }
-    @media(max-width:1024px){ .case-study{grid-template-columns:1fr;} .case-study:nth-child(even){direction:ltr;} .case-study__img{border-right:none;border-bottom:var(--b);} .case-study:nth-child(even) .case-study__img{border-left:none;border-bottom:var(--b);} .case-study__img{height:280px;} }
-    @media(max-width:768px){ .testimonials-grid{grid-template-columns:1fr;} }
+
+    @media(max-width:1024px){
+      .cs{grid-template-columns:1fr;} .cs:nth-child(even){direction:ltr;}
+      .cs__img{border-right:none;border-bottom:var(--b);height:280px;}
+      .cs:nth-child(even) .cs__img{border-left:none;border-bottom:var(--b);}
+      .bene-grid{grid-template-columns:1fr 1fr;}
+      .states-grid{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:768px){
+      .testimonials-grid{grid-template-columns:1fr;}
+      .bene-grid{grid-template-columns:1fr;}
+      .scroll-stats{grid-template-columns:1fr;}
+      .scroll-stat{border-right:none;border-bottom:var(--b);}
+      .scroll-stat:last-child{border-bottom:none;}
+    }
   </style>
 </head>
 <body>
-<div class="announce" aria-hidden="true"><div class="announce__track"><span class="announce__item">Our Impact</span><span class="announce__item">Real Stories</span><span class="announce__item">Real Change</span><span class="announce__item">3,000+ Lives</span><span class="announce__item">Our Impact</span><span class="announce__item">Real Stories</span><span class="announce__item">Real Change</span><span class="announce__item">3,000+ Lives</span></div></div>
+<div class="announce" aria-hidden="true"><div class="announce__track">
+  <span class="announce__item">Our Impact</span><span class="announce__item">Real Stories</span><span class="announce__item">52+ Lives Transformed</span><span class="announce__item">3 States Reached</span>
+  <span class="announce__item">Our Impact</span><span class="announce__item">Real Stories</span><span class="announce__item">52+ Lives Transformed</span><span class="announce__item">3 States Reached</span>
+</div></div>
 
 <header><nav class="nav"><div class="nav__inner">
   <a href="/" class="nav__logo-box"><img src="/assets/images/logo.png" alt="Daffodils Africa" class="nav__logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/><span class="nav__logo-text" style="display:none">Daffodils<small>Africa</small></span></a>
@@ -46,11 +86,15 @@
 </nav></header>
 
 <main>
-  <section class="page-hero">
-    <div class="page-hero__inner">
-      <p class="page-hero__breadcrumb"><a href="/">Home</a> → Our Impact</p>
-      <h1 class="page-hero__h1">Real Numbers.<br><span>Real Change.</span><br>Real Africa.</h1>
-      <p class="page-hero__sub">Every project we run has a story, a number, and a life changed. Here's our impact — transparent, measurable, and growing.</p>
+
+  <!-- HERO -->
+  <section style="background:var(--black);border-bottom:var(--b);padding:80px 0;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:url('/assets/images/impact-cs1.jpg');background-size:cover;background-position:center;opacity:0.18;"></div>
+    <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1.5px,transparent 1.5px);background-size:22px 22px;"></div>
+    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
+      <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;"><a href="/" style="color:var(--yellow);">Home</a> → Our Impact</p>
+      <h1 style="font-weight:900;font-size:clamp(3rem,6vw,5.5rem);line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase;color:var(--white);margin-bottom:20px;">Real Numbers.<br><span style="color:var(--yellow);">Real Change.</span><br>Real Africa.</h1>
+      <p style="font-size:1.1rem;font-weight:500;color:rgba(255,255,255,0.65);max-width:580px;line-height:1.7;">Every project we run has a story, a number, and a life changed. Here's our impact — transparent, measurable, and growing.</p>
     </div>
   </section>
 
@@ -62,74 +106,149 @@
     <div class="stats__cell"><span class="stats__num">5+</span><span class="stats__label">Sectors Impacted</span></div>
   </div></div>
 
-  <!-- CASE STUDIES -->
+  <!-- IMPACT SCROLL '24 -->
   <section style="background:var(--bg);border-bottom:var(--b);padding:96px 0;">
     <div class="section-head-center">
-      <div class="chip chip--yellow">★ Case Studies</div>
-      <h2 class="section-h2">Stories of Change</h2>
-      <p class="section-sub section-sub--center">Projects we've delivered — real outcomes, real communities, real people.</p>
+      <div class="chip chip--yellow">★ Annual Impact Report</div>
+      <h2 class="section-h2">Impact Scroll '24</h2>
+      <p class="section-sub section-sub--center">A summary of Daffodils Africa's measurable outcomes across our social impact programs in 2024.</p>
     </div>
     <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
-
-      <!-- Case Study 1: IWD Women Empowerment -->
-      <div class="case-study">
-        <div class="case-study__img">
-          <!-- IWD 2024 Women Empowerment — use impact-iwd.jpg for richer image -->
-          <img src="/assets/images/impact-cs1.jpg" alt="Women Empowerment Project" onerror="this.outerHTML='<div class=\'img-ph\' style=\'height:420px;\'>Case Study Photo 1 — Women Empowerment<br><small>impact-cs1.jpg · 600×420px</small></div>'"/>
+      <div class="scroll-card">
+        <div class="chip chip--yellow">★ 2024 Breakdown</div>
+        <h3 style="font-weight:900;font-size:1.5rem;text-transform:uppercase;color:var(--white);margin-bottom:8px;">What We Achieved in 2024</h3>
+        <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);font-weight:500;line-height:1.7;">Across three states and multiple sectors, Daffodils Africa delivered education, business empowerment, and community development projects that transformed real lives.</p>
+        <div class="scroll-stats">
+          <div class="scroll-stat"><span class="scroll-stat__num">52</span><span class="scroll-stat__label">Lives Transformed</span></div>
+          <div class="scroll-stat"><span class="scroll-stat__num">3</span><span class="scroll-stat__label">States Reached</span></div>
+          <div class="scroll-stat"><span class="scroll-stat__num">100%</span><span class="scroll-stat__label">Community-Funded</span></div>
         </div>
-        <div class="case-study__content">
-          <p class="case-study__label">International Women's Day 2024 · Lagos, Nigeria</p>
-          <h2 class="case-study__title">Women Empowerment — Social Impact Ajo/Contribution</h2>
-          <p class="case-study__text">To celebrate International Women's Day 2024, Daffodils Africa empowered two women-owned small-scale businesses in a low-income community in Lagos, Nigeria. We curated a Social Impact Ajo/Contribution that helped create connections for meaningful change — helping two women who are striving to cater for their children through their businesses.</p>
-          <div class="case-study__stats">
-            <div class="case-study__stat"><span class="case-study__stat-num">2</span><span class="case-study__stat-label">Businesses Empowered</span></div>
-            <div class="case-study__stat"><span class="case-study__stat-num">10+</span><span class="case-study__stat-label">Families Impacted</span></div>
-            <div class="case-study__stat"><span class="case-study__stat-num">Lagos</span><span class="case-study__stat-label">Location</span></div>
+        <div class="states-grid">
+          <div class="state-pill">
+            <p class="state-pill__name">Lagos</p>
+            <p class="state-pill__text">Women empowerment &amp; business support for widows and small-scale entrepreneurs in low-income communities.</p>
           </div>
-          <a href="/contact" class="btn btn--green">Partner on a Similar Project →</a>
-        </div>
-      </div>
-
-      <!-- Case Study 2: Placeholder -->
-      <div class="case-study">
-        <div class="case-study__img">
-          <img src="/assets/images/impact-cs2.jpg" alt="Community Development Project" onerror="this.outerHTML='<div class=\'img-ph\' style=\'height:420px;\'>Case Study Photo 2<br><small>impact-cs2.jpg · 600×420px</small></div>'"/>
-        </div>
-        <div class="case-study__content">
-          <p class="case-study__label">Community Project · 2023–2024</p>
-          <h2 class="case-study__title">Community Development Initiative</h2>
-          <p class="case-study__text">A community development program designed to address health, education, and livelihood challenges in an underserved community. This project brought together donors, volunteers, and community leaders to create sustainable, people-centred solutions.</p>
-          <div class="case-study__stats">
-            <div class="case-study__stat"><span class="case-study__stat-num">500+</span><span class="case-study__stat-label">Beneficiaries</span></div>
-            <div class="case-study__stat"><span class="case-study__stat-num">3</span><span class="case-study__stat-label">SDGs Addressed</span></div>
+          <div class="state-pill">
+            <p class="state-pill__name">Taraba</p>
+            <p class="state-pill__text">Educational support for orphans — school supplies, shoes, books, and academic resources delivered.</p>
           </div>
-          <a href="/contact" class="btn btn--black">Start a Similar Project →</a>
-        </div>
-      </div>
-
-      <!-- Case Study 3: Placeholder -->
-      <div class="case-study">
-        <div class="case-study__img">
-          <img src="/assets/images/impact-cs3.jpg" alt="Impact Campaign" onerror="this.outerHTML='<div class=\'img-ph\' style=\'height:420px;\'>Case Study Photo 3<br><small>impact-cs3.jpg · 600×420px</small></div>'"/>
-        </div>
-        <div class="case-study__content">
-          <p class="case-study__label">Outreach Campaign · 2024</p>
-          <h2 class="case-study__title">High-Impact Outreach Campaign</h2>
-          <p class="case-study__text">A targeted outreach campaign that reached hundreds of individuals across multiple communities, delivering health services, educational resources, and economic empowerment information directly to those who need it most.</p>
-          <div class="case-study__stats">
-            <div class="case-study__stat"><span class="case-study__stat-num">1,000+</span><span class="case-study__stat-label">People Reached</span></div>
-            <div class="case-study__stat"><span class="case-study__stat-num">5+</span><span class="case-study__stat-label">Communities</span></div>
+          <div class="state-pill">
+            <p class="state-pill__name">Jos</p>
+            <p class="state-pill__text">Digital literacy training and community development programs for youth in underserved communities.</p>
           </div>
-          <a href="/contact" class="btn btn--black">Run a Campaign With Us →</a>
         </div>
       </div>
     </div>
   </section>
 
   <div class="ticker" aria-hidden="true"><div class="ticker__track">
-    <span class="ticker__item">Real Impact</span><span class="ticker__item">Transparent Outcomes</span><span class="ticker__item">Measurable Change</span><span class="ticker__item">Community First</span><span class="ticker__item">Africa Forward</span>
-    <span class="ticker__item">Real Impact</span><span class="ticker__item">Transparent Outcomes</span><span class="ticker__item">Measurable Change</span><span class="ticker__item">Community First</span><span class="ticker__item">Africa Forward</span>
+    <span class="ticker__item">Success Stories</span><span class="ticker__item">Real Impact</span><span class="ticker__item">52 Lives</span><span class="ticker__item">3 States</span><span class="ticker__item">Community First</span>
+    <span class="ticker__item">Success Stories</span><span class="ticker__item">Real Impact</span><span class="ticker__item">52 Lives</span><span class="ticker__item">3 States</span><span class="ticker__item">Community First</span>
   </div></div>
+
+  <!-- CASE STUDIES -->
+  <section style="background:var(--bg);border-bottom:var(--b);padding:96px 0;">
+    <div class="section-head-center">
+      <div class="chip chip--black">★ Success Stories</div>
+      <h2 class="section-h2">Stories of Change</h2>
+      <p class="section-sub section-sub--center">Projects we've delivered — real outcomes, real communities, real people.</p>
+    </div>
+    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
+
+      <!-- CS 1: Digital Literacy -->
+      <div class="cs">
+        <div class="cs__img">
+          <img src="/assets/images/gallery-8.jpg" alt="Digital Literacy Training for Kids" onerror="this.outerHTML='<div class=\'img-ph\' style=\'height:420px;\'>Digital Literacy Photo</div>'"/>
+        </div>
+        <div class="cs__content">
+          <p class="cs__label">Community Program · Lagos &amp; Plateau State</p>
+          <h2 class="cs__title">Digital Literacy Training for Kids</h2>
+          <p class="cs__text">Aiding at a unique startup programme, Imperative Associates, as a group-funded project, Digital Literacy Training for Kids in Agege — a low-income community in Lagos State. Functioning as the "Project in Focus", Daffodils Africa planned and successfully implemented the project in partnership with Imperative Governing and the community of impact-driven friends.</p>
+          <div class="cs__stats">
+            <div class="cs__stat"><span class="cs__stat-num">2</span><span class="cs__stat-label">States</span></div>
+            <div class="cs__stat"><span class="cs__stat-num">Kids</span><span class="cs__stat-label">Beneficiaries</span></div>
+            <div class="cs__stat"><span class="cs__stat-num">2024</span><span class="cs__stat-label">Year</span></div>
+          </div>
+          <a href="/contact" class="btn btn--green">Start a Similar Project →</a>
+        </div>
+      </div>
+
+      <!-- CS 2: Education & Business Empowerment -->
+      <div class="cs">
+        <div class="cs__img">
+          <img src="/assets/images/impact-cs3.jpg" alt="Education and Business Empowerment" onerror="this.outerHTML='<div class=\'img-ph\' style=\'height:420px;\'>Education Project Photo</div>'"/>
+        </div>
+        <div class="cs__content">
+          <p class="cs__label">Quarterly Social Impact Project · Lagos &amp; Taraba · June 2024</p>
+          <h2 class="cs__title">Education Support &amp; Business Empowerment Project</h2>
+          <p class="cs__text">A kind, progressive individual engaged Daffodils Africa to implement a quarterly social impact project for her — solo funded. As a result, in June 2024, we were able to provide educational support for orphans in Taraba State and business support for a widow in Lagos State. Real impact. Real lives changed.</p>
+          <div class="cs__stats">
+            <div class="cs__stat"><span class="cs__stat-num">2</span><span class="cs__stat-label">States</span></div>
+            <div class="cs__stat"><span class="cs__stat-num">Solo</span><span class="cs__stat-label">Funded</span></div>
+            <div class="cs__stat"><span class="cs__stat-num">Jun '24</span><span class="cs__stat-label">Delivered</span></div>
+          </div>
+          <a href="/contact" class="btn btn--black">Sponsor a Project →</a>
+        </div>
+      </div>
+
+      <!-- CS 3: IWD Women Empowerment -->
+      <div class="cs">
+        <div class="cs__img">
+          <img src="/assets/images/impact-iwd.jpg" alt="IWD 2024 Women Empowerment" onerror="this.outerHTML='<div class=\'img-ph\' style=\'height:420px;\'>IWD Project Photo</div>'"/>
+        </div>
+        <div class="cs__content">
+          <p class="cs__label">International Women's Day · Lagos, Nigeria · March 2024</p>
+          <h2 class="cs__title">IWD'24: Business Empowerment for Women</h2>
+          <p class="cs__text">To celebrate International Women's Day 2024, Daffodils Africa successfully organised a social impact Ajo/Contribution to support two women-owned small-scale businesses in a low-income community in Lagos, Nigeria. The project was funded by contributions from different people committed to the goal. We helped two women striving to cater for their children through their businesses.</p>
+          <div class="cs__stats">
+            <div class="cs__stat"><span class="cs__stat-num">2</span><span class="cs__stat-label">Businesses Empowered</span></div>
+            <div class="cs__stat"><span class="cs__stat-num">10+</span><span class="cs__stat-label">Families Impacted</span></div>
+            <div class="cs__stat"><span class="cs__stat-num">Mar '24</span><span class="cs__stat-label">Delivered</span></div>
+          </div>
+          <a href="/contact" class="btn btn--green">Partner on a Similar Project →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EMPOWERING DREAMS + OUR IMPACT IN ACTION -->
+  <section style="background:var(--black);border-bottom:var(--b);padding:96px 0;" class="pat-halftone-light">
+    <div class="section-head-center" style="position:relative;z-index:1;">
+      <div class="chip chip--yellow">★ Our Impact in Action</div>
+      <h2 class="section-h2" style="color:var(--white);">Empowering Dreams</h2>
+      <p class="section-sub section-sub--center" style="color:rgba(255,255,255,0.6);">At Daffodils Africa, through collaborative efforts and unwavering commitment, we achieve remarkable outcomes, transformations, and uplifting achievements in low-income African communities.</p>
+    </div>
+    <div class="bene-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
+      <!-- Beneficiary One -->
+      <div class="bene-card">
+        <img src="/assets/images/impact-cs2.jpg" alt="Beneficiary One" class="bene-card__img" onerror="this.outerHTML='<div class=\'img-ph bene-card__img\' style=\'height:200px;\'>Beneficiary Photo</div>'"/>
+        <div class="bene-card__body">
+          <p class="bene-card__tag">Beneficiary Story · Lagos</p>
+          <h3 class="bene-card__name">Mrs Ade — Business Owner</h3>
+          <p class="bene-card__text">Mrs Ade, a widow struggling to raise her children in difficult circumstances, received business empowerment support from Daffodils Africa. Thanks to the business support funds, she established her livelihood and gained the capacity to better provide for her children. Her contributions to her community continue to make a real difference.</p>
+        </div>
+      </div>
+      <!-- Beneficiary Two -->
+      <div class="bene-card">
+        <img src="/assets/images/hero-community.jpg" alt="Beneficiary Two" class="bene-card__img" onerror="this.outerHTML='<div class=\'img-ph bene-card__img\' style=\'height:200px;\'>Beneficiary Photo</div>'"/>
+        <div class="bene-card__body">
+          <p class="bene-card__tag">Beneficiary Story · Lagos</p>
+          <h3 class="bene-card__name">Mrs Ogunsesin — Small Business Owner</h3>
+          <p class="bene-card__text">Mrs Ogunsesin, a widow struggling to raise her children through a small business, received empowerment support through Daffodils Africa's IWD initiative. The support established her livelihood, empowering her to better care for her children's needs. Her story of resilience inspires communities around her.</p>
+        </div>
+      </div>
+      <!-- Beneficiary Three -->
+      <div class="bene-card">
+        <img src="/assets/images/gallery-3.jpg" alt="Ezekiel and Samuel" class="bene-card__img" onerror="this.outerHTML='<div class=\'img-ph bene-card__img\' style=\'height:200px;\'>Beneficiary Photo</div>'"/>
+        <div class="bene-card__body">
+          <p class="bene-card__tag">Beneficiary Story · Children</p>
+          <h3 class="bene-card__name">Ezekiel and Samuel</h3>
+          <p class="bene-card__text">Mrs Ogunsesin's children, Ezekiel and Samuel — they were in Primary 6. Whilst Samuel dreams of becoming a footballer when he grows up, Ezekiel wants to be intelligent and well-behaved. Daffodils Africa looks forward to giving them the tools to help them dream bigger and grow taller. Impact starts here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- TESTIMONIALS -->
   <section style="background:var(--yellow);border-bottom:var(--b);padding:96px 0;">
@@ -155,8 +274,28 @@
       </div>
       <div class="testimonial-card">
         <span class="testimonial-mark" aria-hidden="true">"</span>
-        <p class="testimonial-text">I had no idea how to turn my desire to give back into something real. Daffodils Africa made it easy, meaningful, and I could see exactly who my donation helped. Will definitely do it again.</p>
+        <p class="testimonial-text">I had no idea how to turn my desire to give back into something real. Daffodils Africa made it easy, meaningful, and I could see exactly who my donation helped.</p>
         <p class="testimonial-attr">— Individual Donor</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO PLACEHOLDER -->
+  <section style="background:var(--bg);border-bottom:var(--b);padding:96px 0;">
+    <div class="section-head-center">
+      <div class="chip chip--yellow">★ Video</div>
+      <h2 class="section-h2">Impact in Action</h2>
+    </div>
+    <div style="max-width:900px;margin-inline:auto;padding-inline:var(--pad);display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div style="background:var(--black);border:var(--b);box-shadow:var(--sh-xl);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.04) 1.5px,transparent 1.5px);background-size:22px 22px;"></div>
+        <div style="width:64px;height:64px;background:var(--yellow);border:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;position:relative;">▶</div>
+        <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-align:center;position:relative;">IWD 2024 — Women Empowerment</p>
+      </div>
+      <div style="background:var(--black);border:var(--b);box-shadow:var(--sh-xl);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.04) 1.5px,transparent 1.5px);background-size:22px 22px;"></div>
+        <div style="width:64px;height:64px;background:var(--yellow);border:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;position:relative;">▶</div>
+        <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-align:center;position:relative;">Education &amp; Business Empowerment</p>
       </div>
     </div>
   </section>
@@ -166,26 +305,30 @@
     <div style="max-width:680px;margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
       <div class="chip chip--yellow">★ Add Your Story</div>
       <h2 style="font-weight:900;font-size:clamp(2.2rem,4vw,3.5rem);color:var(--white);text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:20px;">Your Project Could<br>Be the Next Story.</h2>
-      <p style="font-size:1.05rem;color:rgba(255,255,255,0.6);margin-bottom:40px;line-height:1.7;">Start a project with us today and add your community to our growing portfolio of impact stories.</p>
+      <p style="font-size:1.05rem;color:rgba(255,255,255,0.6);margin-bottom:40px;line-height:1.7;">Start a project with us and we'll document your impact — photos, data, and stories — for the world to see.</p>
       <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
         <a href="/contact" class="btn btn--yellow btn--lg">Start a Project</a>
         <a href="/gallery" class="btn btn--outline-dark btn--lg">View Gallery</a>
       </div>
     </div>
   </section>
+
 </main>
 
 <footer class="footer"><div class="footer__inner">
   <div class="footer__grid">
-    <div><div class="footer__logo-box"><img src="/assets/images/logo.png" alt="" style="height:44px;width:auto;" onerror="this.style.display='none'"/><span class="footer__logo-text">Daffodils Africa</span></div><p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa.</p>
-        <div class="footer__socials" style="margin-top:16px;">
-          <a href="https://www.instagram.com/daffodils_africa/?hl=en" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">ig</a>
-          <a href="https://www.facebook.com/daffodilsafrica1/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">fb</a>
-          <a href="https://www.linkedin.com/company/daffodils-africa" target="_blank" rel="noopener" class="footer__social-link" aria-label="LinkedIn">in</a>
-        </div></div>
+    <div>
+      <div class="footer__logo-box"><img src="/assets/images/logo.png" alt="" style="height:44px;width:auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/><span class="footer__logo-text" style="display:none">Daffodils Africa</span></div>
+      <p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa. Impact is not accidental — it is built.</p>
+      <div class="footer__socials" style="margin-top:16px;">
+        <a href="https://www.instagram.com/daffodils_africa/?hl=en" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">ig</a>
+        <a href="https://www.facebook.com/daffodilsafrica1/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">fb</a>
+        <a href="https://www.linkedin.com/company/daffodils-africa" target="_blank" rel="noopener" class="footer__social-link" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
     <div><p class="footer__col-head">Navigate</p><ul class="footer__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/impact">Our Impact</a></li><li><a href="/academy">Academy</a></li><li><a href="/partnerships">Partnerships</a></li></ul></div>
     <div><p class="footer__col-head">Get Involved</p><ul class="footer__links"><li><a href="/contact">Donate</a></li><li><a href="/contact">Volunteer</a></li><li><a href="/contact">Start a Project</a></li></ul></div>
-    <div><p class="footer__col-head">Contact</p><ul class="footer__links"><li><a href="mailto:hello@daffodilsafrica.com">hello@daffodilsafrica.com</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+    <div><p class="footer__col-head">Contact</p><ul class="footer__links"><li><a href="tel:+2348167873722">+234 816 787 3722</a></li><li><a href="mailto:daffodilsafrica@gmail.com">daffodilsafrica@gmail.com</a></li><li><a href="/contact">Contact Us</a></li><li style="color:rgba(255,255,255,0.5);font-size:0.875rem;font-weight:500;padding-left:6px;">Lagos, Nigeria</li></ul></div>
   </div>
   <div class="footer__bottom"><p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p><p class="footer__motto">Impact is not accidental. It is built.</p></div>
 </div></footer>
