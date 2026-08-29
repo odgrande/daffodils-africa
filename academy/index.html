@@ -3,74 +3,176 @@
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Daffodils Africa Academy — Learn. Lead. Impact.</title>
-  <meta name="description" content="Daffodils Africa Academy — courses, training, and programs that equip individuals and organisations to create real social impact."/>
+  <meta name="description" content="Daffodils Africa Academy — Register your interest for courses that equip you to create real social impact."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/css/main.css"/>
   <style>
-    .academy-banner { background:var(--black); border:var(--b); box-shadow:var(--sh-xl); padding:52px 44px; display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center; margin-bottom:0; }
-    .academy-banner__text h2 { font-weight:900; font-size:clamp(2rem,4vw,3.2rem); text-transform:uppercase; letter-spacing:-0.02em; color:var(--white); line-height:1.05; margin-bottom:14px; }
-    .academy-banner__text h2 span { color:var(--yellow); }
-    .academy-banner__text p { font-size:1rem; color:rgba(255,255,255,0.6); font-weight:500; line-height:1.7; max-width:500px; }
-    .academy-banner__badge { background:var(--yellow); border:var(--b); box-shadow:var(--sh-md); padding:24px; text-align:center; transform:rotate(2deg); flex-shrink:0; min-width:160px; }
-    .academy-banner__badge-num { font-weight:900; font-size:2.5rem; line-height:1; display:block; }
-    .academy-banner__badge-label { font-weight:700; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; margin-top:4px; }
-    .courses-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-    .course-card { background:var(--white); border:var(--b); box-shadow:var(--sh-md); overflow:hidden; transition:transform 0.15s,box-shadow 0.15s; display:flex; flex-direction:column; }
-    .course-card:hover { transform:translateY(-4px); box-shadow:var(--sh-lg); }
-    .course-card__img { width:100%; }
-    .course-card__header { background:var(--black); color:var(--white); padding:12px 20px; display:flex; justify-content:space-between; align-items:center; }
-    .course-card__tag { font-weight:700; font-size:0.65rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--yellow); }
-    .course-card__status { font-weight:700; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; background:var(--yellow); color:var(--black); padding:3px 8px; }
-    .course-card__body { padding:24px; flex:1; display:flex; flex-direction:column; }
-    .course-card__title { font-weight:900; font-size:0.95rem; text-transform:uppercase; letter-spacing:0.02em; margin-bottom:10px; }
-    .course-card__text { font-size:0.875rem; font-weight:500; line-height:1.7; flex:1; margin-bottom:20px; opacity:0.8; }
-    .course-card__meta { display:flex; gap:12px; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:rgba(0,0,0,0.45); margin-bottom:16px; }
-    .how-learn { display:grid; grid-template-columns:repeat(4,1fr); border:var(--b); box-shadow:var(--sh-lg); }
-    .how-learn-step { background:var(--white); border-right:var(--b); padding:36px 24px; text-align:center; transition:background 0.15s; }
-    .how-learn-step:last-child { border-right:none; }
-    .how-learn-step:hover { background:var(--yellow); }
-    .how-learn-step__num { width:56px; height:56px; background:var(--black); color:var(--yellow); font-weight:900; font-size:1.3rem; display:flex; align-items:center; justify-content:center; margin-inline:auto; margin-bottom:16px; border:var(--b); }
-    .how-learn-step__title { font-weight:900; font-size:0.85rem; text-transform:uppercase; margin-bottom:8px; }
-    .how-learn-step__text  { font-size:0.82rem; font-weight:500; line-height:1.7; }
-    @media(max-width:1024px){ .academy-banner{grid-template-columns:1fr;} .academy-banner__badge{transform:none;max-width:200px;} .courses-grid{grid-template-columns:1fr 1fr;} .how-learn{grid-template-columns:1fr 1fr;} .how-learn-step:nth-child(2n){border-right:none;} .how-learn-step:nth-child(3),.how-learn-step:nth-child(4){border-top:var(--b);} }
-    @media(max-width:768px){ .courses-grid{grid-template-columns:1fr;} .how-learn{grid-template-columns:1fr;} .how-learn-step{border-right:none;border-bottom:var(--b);} .how-learn-step:last-child{border-bottom:none;} }
+    /* ACADEMY BANNER */
+    .academy-banner{background:var(--black);border:var(--b);box-shadow:var(--sh-xl);padding:52px 44px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;}
+    .academy-banner h2{font-weight:900;font-size:clamp(2rem,4vw,3.2rem);text-transform:uppercase;letter-spacing:-0.02em;color:var(--white);line-height:1.05;margin-bottom:14px;}
+    .academy-banner h2 span{color:var(--yellow);}
+    .academy-banner p{font-size:1rem;color:rgba(255,255,255,0.6);font-weight:500;line-height:1.7;max-width:500px;}
+    .academy-badge{background:var(--yellow);border:var(--b);box-shadow:var(--sh-md);padding:24px;text-align:center;transform:rotate(2deg);flex-shrink:0;min-width:160px;}
+    .academy-badge-num{font-weight:900;font-size:2.5rem;line-height:1;display:block;}
+    .academy-badge-label{font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;margin-top:4px;}
+    /* COURSES */
+    .courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .course-card{background:var(--white);border:var(--b);box-shadow:var(--sh-md);overflow:hidden;transition:transform 0.15s,box-shadow 0.15s;display:flex;flex-direction:column;}
+    .course-card:hover{transform:translateY(-4px);box-shadow:var(--sh-lg);}
+    .course-card__img{width:100%;height:160px;object-fit:cover;display:block;}
+    .course-card__header{background:var(--black);color:var(--white);padding:10px 18px;display:flex;justify-content:space-between;align-items:center;}
+    .course-card__tag{font-weight:700;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--yellow);}
+    .course-card__status{font-weight:700;font-size:0.62rem;text-transform:uppercase;background:var(--yellow);color:var(--black);padding:3px 8px;}
+    .course-card__body{padding:20px;flex:1;display:flex;flex-direction:column;}
+    .course-card__title{font-weight:900;font-size:0.9rem;text-transform:uppercase;margin-bottom:8px;}
+    .course-card__text{font-size:0.82rem;font-weight:500;line-height:1.65;flex:1;margin-bottom:14px;opacity:0.8;}
+    .course-card__meta{display:flex;gap:8px;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(0,0,0,0.4);margin-bottom:12px;}
+
+    /* HOW IT WORKS */
+    .how-learn{display:grid;grid-template-columns:repeat(4,1fr);border:var(--b);box-shadow:var(--sh-lg);}
+    .how-learn-step{background:var(--white);border-right:var(--b);padding:32px 22px;text-align:center;transition:background 0.15s;}
+    .how-learn-step:last-child{border-right:none;}
+    .how-learn-step:hover{background:var(--yellow);}
+    .how-learn-step__num{width:52px;height:52px;background:var(--black);color:var(--yellow);font-weight:900;font-size:1.3rem;display:flex;align-items:center;justify-content:center;margin-inline:auto;margin-bottom:14px;border:var(--b);}
+
+    /* MULTI-STEP FORM */
+    .reg-wrap{max-width:720px;margin-inline:auto;padding-inline:var(--pad);}
+    .reg-progress-outer{background:rgba(255,255,255,0.12);height:6px;border-radius:0;margin-bottom:10px;overflow:hidden;}
+    .reg-progress-bar{background:var(--yellow);height:100%;transition:width 0.4s ease;}
+    .reg-step-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px;}
+    .reg-step-count{font-weight:700;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+    .reg-step-count strong{color:var(--yellow);}
+
+    /* Individual steps */
+    .reg-step{display:none;}
+    .reg-step.active{display:block;}
+    .reg-step__q{font-weight:900;font-size:clamp(1.6rem,3vw,2.4rem);text-transform:uppercase;letter-spacing:-0.02em;color:var(--white);line-height:1.1;margin-bottom:10px;}
+    .reg-step__hint{font-size:0.95rem;font-weight:500;color:rgba(255,255,255,0.55);margin-bottom:36px;line-height:1.6;}
+    .reg-field{margin-bottom:20px;}
+    .reg-label{display:block;font-weight:700;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:8px;}
+    .reg-input,.reg-select,.reg-textarea{
+      width:100%;padding:16px 18px;border:var(--b);
+      background:rgba(255,255,255,0.07);
+      font-family:var(--font);font-weight:700;font-size:1rem;
+      color:var(--white);outline:none;
+      transition:background 0.1s,border-color 0.1s;
+      -webkit-appearance:none;appearance:none;
+    }
+    .reg-input::placeholder,.reg-textarea::placeholder{color:rgba(255,255,255,0.25);font-weight:500;}
+    .reg-input:focus,.reg-select:focus,.reg-textarea:focus{background:rgba(255,255,255,0.12);border-color:var(--yellow);}
+    .reg-select option{background:var(--black);color:var(--white);}
+    .reg-textarea{resize:vertical;min-height:110px;}
+    .reg-2col{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+
+    /* Choice buttons */
+    .reg-choices{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:6px;}
+    .reg-choice{
+      padding:12px 20px;border:var(--b);background:rgba(255,255,255,0.07);
+      font-family:var(--font);font-weight:700;font-size:0.82rem;
+      text-transform:uppercase;letter-spacing:0.06em;color:var(--white);
+      cursor:pointer;transition:all 0.1s;
+    }
+    .reg-choice:hover,.reg-choice.selected{background:var(--yellow);border-color:var(--yellow);color:var(--black);}
+
+    /* Hours choice */
+    .reg-hours{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+    .reg-hour-opt{
+      border:var(--b);padding:20px 12px;text-align:center;
+      background:rgba(255,255,255,0.07);cursor:pointer;transition:all 0.1s;
+    }
+    .reg-hour-opt:hover,.reg-hour-opt.selected{background:var(--yellow);border-color:var(--yellow);color:var(--black);}
+    .reg-hour-opt strong{display:block;font-weight:900;font-size:1.2rem;margin-bottom:4px;}
+    .reg-hour-opt span{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;opacity:0.7;}
+
+    /* Checkbox */
+    .reg-check{display:flex;align-items:flex-start;gap:14px;cursor:pointer;}
+    .reg-check input{width:24px;height:24px;flex-shrink:0;accent-color:var(--yellow);cursor:pointer;margin-top:2px;}
+    .reg-check-label{font-size:0.9rem;font-weight:500;color:rgba(255,255,255,0.7);line-height:1.6;}
+
+    /* Review panel */
+    .reg-review{background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.15);padding:32px;}
+    .reg-review-item{border-bottom:1px solid rgba(255,255,255,0.1);padding:14px 0;display:flex;gap:20px;flex-wrap:wrap;}
+    .reg-review-item:last-child{border-bottom:none;}
+    .reg-review-key{font-weight:700;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.4);min-width:140px;padding-top:2px;}
+    .reg-review-val{font-weight:700;font-size:0.9rem;color:var(--white);flex:1;}
+
+    /* Navigation */
+    .reg-nav{display:flex;justify-content:space-between;align-items:center;margin-top:40px;gap:12px;}
+    .reg-nav-prev,.reg-nav-next,.reg-nav-submit{
+      font-family:var(--font);font-weight:900;font-size:0.85rem;
+      text-transform:uppercase;letter-spacing:0.06em;
+      border:var(--b);padding:0 28px;height:56px;
+      cursor:pointer;transition:transform 0.1s,box-shadow 0.1s;
+      display:inline-flex;align-items:center;gap:8px;
+    }
+    .reg-nav-prev{background:rgba(255,255,255,0.08);color:var(--white);box-shadow:none;}
+    .reg-nav-prev:hover{background:rgba(255,255,255,0.15);}
+    .reg-nav-next{background:var(--yellow);color:var(--black);box-shadow:var(--sh-md);}
+    .reg-nav-next:hover{transform:translate(-2px,-2px);box-shadow:var(--sh-lg);}
+    .reg-nav-next:active,.reg-nav-prev:active{transform:translate(2px,2px);box-shadow:none;}
+    .reg-nav-submit{background:var(--green);color:var(--white);box-shadow:var(--sh-md);}
+    .reg-nav-submit:hover{transform:translate(-2px,-2px);box-shadow:var(--sh-lg);}
+    .reg-spacer{flex:1;}
+
+    /* Success state */
+    .reg-success{display:none;text-align:center;padding:60px 20px;}
+    .reg-success__icon{font-size:4rem;margin-bottom:24px;display:block;}
+    .reg-success__h{font-weight:900;font-size:2rem;text-transform:uppercase;color:var(--yellow);margin-bottom:16px;}
+    .reg-success__p{font-size:1rem;color:rgba(255,255,255,0.65);font-weight:500;line-height:1.7;}
+    .error-msg{color:var(--red);font-size:0.78rem;font-weight:700;margin-top:6px;display:none;}
+    .error-msg.show{display:block;}
+
+    @media(max-width:1024px){
+      .academy-banner{grid-template-columns:1fr;}.academy-badge{transform:none;max-width:200px;}
+      .courses-grid{grid-template-columns:1fr 1fr;}.how-learn{grid-template-columns:1fr 1fr;}
+      .how-learn-step:nth-child(2n){border-right:none;}.how-learn-step:nth-child(3),.how-learn-step:nth-child(4){border-top:var(--b);}
+    }
+    @media(max-width:768px){
+      .courses-grid{grid-template-columns:1fr;}.how-learn{grid-template-columns:1fr;}
+      .how-learn-step{border-right:none;border-bottom:var(--b);}.how-learn-step:last-child{border-bottom:none;}
+      .reg-2col{grid-template-columns:1fr;}.reg-hours{grid-template-columns:1fr;}.reg-hours{grid-template-columns:repeat(3,1fr);}
+    }
   </style>
 </head>
 <body>
-<div class="announce" aria-hidden="true"><div class="announce__track"><span class="announce__item">Daffodils Africa Academy</span><span class="announce__item">Learn · Lead · Impact</span><span class="announce__item">Courses &amp; Training</span><span class="announce__item">Enroll Now</span><span class="announce__item">Daffodils Africa Academy</span><span class="announce__item">Learn · Lead · Impact</span><span class="announce__item">Courses &amp; Training</span><span class="announce__item">Enroll Now</span></div></div>
+<div class="announce" aria-hidden="true"><div class="announce__track">
+  <span class="announce__item">Daffodils Africa Academy</span><span class="announce__item">Learn · Lead · Impact</span><span class="announce__item">Register Now</span><span class="announce__item">Q4 2026 Launch</span>
+  <span class="announce__item">Daffodils Africa Academy</span><span class="announce__item">Learn · Lead · Impact</span><span class="announce__item">Register Now</span><span class="announce__item">Q4 2026 Launch</span>
+</div></div>
 
 <header><nav class="nav"><div class="nav__inner">
   <a href="/" class="nav__logo-box"><img src="/assets/images/logo.png" alt="Daffodils Africa" class="nav__logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/><span class="nav__logo-text" style="display:none">Daffodils<small>Africa</small></span></a>
   <ul class="nav__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/academy" class="active">Academy</a></li><li><a href="/impact">Impact</a></li><li><a href="/partnerships">Partner</a></li><li><a href="/blog">Blog</a></li><li><a href="/contact">Contact</a></li></ul>
-  <div class="nav__actions"><a href="/contact" class="btn btn--outline">Get Involved</a><a href="/contact" class="btn btn--green">Start a Project</a></div>
+  <div class="nav__actions"><a href="#register" class="btn btn--outline">Register Interest</a><a href="/contact" class="btn btn--green">Start a Project</a></div>
   <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
 </div>
-<div id="mobile-nav" class="nav__mobile"><a href="/about">About Us</a><a href="/programs">What We Do</a><a href="/academy">Academy</a><a href="/impact">Impact</a><a href="/partnerships">Partner</a><a href="/blog">Blog</a><a href="/contact">Contact</a><div class="nav__mobile-btns"><a href="/contact" class="btn btn--green btn--full">Start a Project</a><a href="/contact" class="btn btn--outline btn--full">Get Involved</a></div></div>
+<div id="mobile-nav" class="nav__mobile"><a href="/about">About Us</a><a href="/programs">What We Do</a><a href="/academy">Academy</a><a href="/impact">Impact</a><a href="/partnerships">Partner</a><a href="/blog">Blog</a><a href="/contact">Contact</a><div class="nav__mobile-btns"><a href="#register" class="btn btn--green btn--full">Register Now</a><a href="/contact" class="btn btn--outline btn--full">Get Involved</a></div></div>
 </nav></header>
 
 <main>
+  <!-- PAGE HERO -->
   <section class="page-hero">
     <div class="page-hero__inner">
       <p class="page-hero__breadcrumb"><a href="/">Home</a> → Academy</p>
       <h1 class="page-hero__h1">Daffodils<br>Africa<br><span>Academy</span></h1>
       <p class="page-hero__sub">Learn. Lead. Impact. Equipping individuals and organisations with the knowledge, tools, and frameworks to create real, lasting social change.</p>
-      <div class="page-hero__actions"><a href="#courses" class="btn btn--yellow btn--lg">View Courses</a><a href="/contact" class="btn btn--outline-dark btn--lg">Register Interest</a></div>
+      <div class="page-hero__actions"><a href="#courses" class="btn btn--yellow btn--lg">View Courses</a><a href="#register" class="btn btn--outline-dark btn--lg">Register Now</a></div>
     </div>
   </section>
 
-  <!-- ACADEMY HERO BANNER -->
+  <!-- ACADEMY INTRO BANNER -->
   <section style="background:var(--bg);border-bottom:var(--b);padding:80px 0;">
     <div class="wrap">
       <div class="academy-banner">
-        <div class="academy-banner__text">
+        <div>
           <h2>Education That<br>Creates <span>Real Change</span></h2>
-          <p>The Daffodils Africa Academy is our dedicated learning arm — providing courses, workshops, masterclasses, and training programs for changemakers, nonprofits, corporates, and community leaders across Africa.</p>
-          <a href="/contact" class="btn btn--yellow" style="margin-top:24px;">Register Interest →</a>
+          <p>The Daffodils Africa Academy is our dedicated learning arm — providing courses, workshops, and training for changemakers, nonprofits, corporates, and community leaders across Africa.</p>
+          <a href="#register" class="btn btn--yellow" style="margin-top:24px;">Register Your Interest →</a>
         </div>
-        <div class="academy-banner__badge">
-          <span class="academy-banner__badge-num">2026</span>
-          <span class="academy-banner__badge-label">Launching<br>Q4 2026</span>
+        <div class="academy-badge">
+          <span class="academy-badge-num">2026</span>
+          <span class="academy-badge-label">Launching<br>Q4 2026</span>
         </div>
       </div>
     </div>
@@ -84,67 +186,12 @@
       <p class="section-sub section-sub--center">Practical, Africa-focused training for the next generation of impact leaders.</p>
     </div>
     <div class="courses-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
-      <!-- REPLACE: course-1.jpg, course-2.jpg, course-3.jpg, course-4.jpg, course-5.jpg, course-6.jpg -->
-      <div class="course-card">
-        <img src="/assets/images/course-1.jpg" alt="Social Impact Project Management" class="course-card__img" onerror="this.outerHTML='<div class=\'img-ph course-card__img\' style=\'height:180px;\'>Course Image 1<br><small>course-1.jpg · 400×180px</small></div>'"/>
-        <div class="course-card__header"><span class="course-card__tag">Flagship Course</span><span class="course-card__status">Enrolling Soon</span></div>
-        <div class="course-card__body">
-          <h3 class="course-card__title">Social Impact Project Management</h3>
-          <p class="course-card__text">Learn to design, manage, and evaluate social impact projects from start to finish. Covers project planning, community engagement, budgeting, and reporting.</p>
-          <div class="course-card__meta"><span>📅 8 Weeks</span><span>💻 Online</span><span>🏆 Certificate</span></div>
-          <a href="/contact" class="btn btn--green btn--full">Register Interest</a>
-        </div>
-      </div>
-      <div class="course-card">
-        <img src="/assets/images/course-2.jpg" alt="CSR Strategy for Organisations" class="course-card__img" onerror="this.outerHTML='<div class=\'img-ph course-card__img\' style=\'height:180px;\'>Course Image 2<br><small>course-2.jpg · 400×180px</small></div>'"/>
-        <div class="course-card__header"><span class="course-card__tag">Corporate</span><span class="course-card__status">Coming Soon</span></div>
-        <div class="course-card__body">
-          <h3 class="course-card__title">CSR Strategy for Organisations</h3>
-          <p class="course-card__text">Build a robust, measurable Corporate Social Responsibility strategy. Learn how to align business goals with community needs and report impact to stakeholders.</p>
-          <div class="course-card__meta"><span>📅 4 Weeks</span><span>🏢 Hybrid</span><span>🏆 Certificate</span></div>
-          <a href="/contact" class="btn btn--green btn--full">Register Interest</a>
-        </div>
-      </div>
-      <div class="course-card">
-        <img src="/assets/images/course-3.jpg" alt="Community Development Fundamentals" class="course-card__img" onerror="this.outerHTML='<div class=\'img-ph course-card__img\' style=\'height:180px;\'>Course Image 3<br><small>course-3.jpg · 400×180px</small></div>'"/>
-        <div class="course-card__header"><span class="course-card__tag">Foundations</span><span class="course-card__status">Coming Soon</span></div>
-        <div class="course-card__body">
-          <h3 class="course-card__title">Community Development Fundamentals</h3>
-          <p class="course-card__text">A practical introduction to community development — how to identify needs, engage stakeholders, design interventions, and measure lasting impact.</p>
-          <div class="course-card__meta"><span>📅 6 Weeks</span><span>💻 Online</span><span>🏆 Certificate</span></div>
-          <a href="/contact" class="btn btn--green btn--full">Register Interest</a>
-        </div>
-      </div>
-      <div class="course-card">
-        <img src="/assets/images/course-4.jpg" alt="Fundraising and Donor Management" class="course-card__img" onerror="this.outerHTML='<div class=\'img-ph course-card__img\' style=\'height:180px;\'>Course Image 4<br><small>course-4.jpg · 400×180px</small></div>'"/>
-        <div class="course-card__header"><span class="course-card__tag">Fundraising</span><span class="course-card__status">Coming Soon</span></div>
-        <div class="course-card__body">
-          <h3 class="course-card__title">Fundraising &amp; Donor Management</h3>
-          <p class="course-card__text">Learn proven strategies for raising funds, building donor relationships, crafting compelling proposals, and managing a sustainable funding pipeline for your organisation.</p>
-          <div class="course-card__meta"><span>📅 5 Weeks</span><span>💻 Online</span><span>🏆 Certificate</span></div>
-          <a href="/contact" class="btn btn--green btn--full">Register Interest</a>
-        </div>
-      </div>
-      <div class="course-card">
-        <img src="/assets/images/course-5.jpg" alt="Monitoring, Evaluation and Learning" class="course-card__img" onerror="this.outerHTML='<div class=\'img-ph course-card__img\' style=\'height:180px;\'>Course Image 5<br><small>course-5.jpg · 400×180px</small></div>'"/>
-        <div class="course-card__header"><span class="course-card__tag">M&amp;E</span><span class="course-card__status">Coming Soon</span></div>
-        <div class="course-card__body">
-          <h3 class="course-card__title">Monitoring, Evaluation &amp; Learning</h3>
-          <p class="course-card__text">Master the frameworks for measuring social impact. Learn how to design M&amp;E systems, collect and analyse data, and use findings to improve your programs.</p>
-          <div class="course-card__meta"><span>📅 4 Weeks</span><span>💻 Online</span><span>🏆 Certificate</span></div>
-          <a href="/contact" class="btn btn--green btn--full">Register Interest</a>
-        </div>
-      </div>
-      <div class="course-card">
-        <img src="/assets/images/course-6.jpg" alt="Youth Leadership and Empowerment" class="course-card__img" onerror="this.outerHTML='<div class=\'img-ph course-card__img\' style=\'height:180px;\'>Course Image 6<br><small>course-6.jpg · 400×180px</small></div>'"/>
-        <div class="course-card__header"><span class="course-card__tag">Youth</span><span class="course-card__status">Coming Soon</span></div>
-        <div class="course-card__body">
-          <h3 class="course-card__title">Youth Leadership &amp; Empowerment</h3>
-          <p class="course-card__text">Designed for young Africans ready to lead. Build leadership skills, civic engagement mindset, and the practical tools to drive change in your community.</p>
-          <div class="course-card__meta"><span>📅 6 Weeks</span><span>💻 Online</span><span>🏆 Certificate</span></div>
-          <a href="/contact" class="btn btn--green btn--full">Register Interest</a>
-        </div>
-      </div>
+      <div class="course-card"><img src="/assets/images/course-1.jpg" alt="" class="course-card__img" onerror="this.outerHTML='<div class=\'img-ph course-card__img\' style=\'height:160px;\'>course-1.jpg</div>'"/><div class="course-card__header"><span class="course-card__tag">Flagship</span><span class="course-card__status">Enrolling Soon</span></div><div class="course-card__body"><h3 class="course-card__title">Social Impact Project Management</h3><p class="course-card__text">Design, manage, and evaluate social impact projects from start to finish. Covers planning, community engagement, budgeting, and reporting.</p><div class="course-card__meta"><span>📅 8 Weeks</span><span>💻 Online</span><span>🏆 Certificate</span></div><a href="#register" class="btn btn--green btn--full">Register Interest</a></div></div>
+      <div class="course-card"><img src="/assets/images/course-2.jpg" alt="" class="course-card__img" onerror="this.outerHTML='<div class=\'img-ph course-card__img\' style=\'height:160px;\'>course-2.jpg</div>'"/><div class="course-card__header"><span class="course-card__tag">Corporate</span><span class="course-card__status">Coming Soon</span></div><div class="course-card__body"><h3 class="course-card__title">CSR Strategy for Organisations</h3><p class="course-card__text">Build a robust, measurable Corporate Social Responsibility strategy aligned with community needs and stakeholder goals.</p><div class="course-card__meta"><span>📅 4 Weeks</span><span>🏢 Hybrid</span><span>🏆 Certificate</span></div><a href="#register" class="btn btn--green btn--full">Register Interest</a></div></div>
+      <div class="course-card"><img src="/assets/images/course-3.jpg" alt="" class="course-card__img" onerror="this.outerHTML='<div class=\'img-ph course-card__img\' style=\'height:160px;\'>course-3.jpg</div>'"/><div class="course-card__header"><span class="course-card__tag">Foundations</span><span class="course-card__status">Coming Soon</span></div><div class="course-card__body"><h3 class="course-card__title">Community Development Fundamentals</h3><p class="course-card__text">Practical introduction to community development — identifying needs, engaging stakeholders, designing interventions, and measuring impact.</p><div class="course-card__meta"><span>📅 6 Weeks</span><span>💻 Online</span><span>🏆 Certificate</span></div><a href="#register" class="btn btn--green btn--full">Register Interest</a></div></div>
+      <div class="course-card"><img src="/assets/images/course-4.jpg" alt="" class="course-card__img" onerror="this.outerHTML='<div class=\'img-ph course-card__img\' style=\'height:160px;\'>course-4.jpg</div>'"/><div class="course-card__header"><span class="course-card__tag">Fundraising</span><span class="course-card__status">Coming Soon</span></div><div class="course-card__body"><h3 class="course-card__title">Fundraising &amp; Donor Management</h3><p class="course-card__text">Proven strategies for raising funds, building donor relationships, crafting proposals, and managing a sustainable funding pipeline.</p><div class="course-card__meta"><span>📅 5 Weeks</span><span>💻 Online</span><span>🏆 Certificate</span></div><a href="#register" class="btn btn--green btn--full">Register Interest</a></div></div>
+      <div class="course-card"><img src="/assets/images/course-5.jpg" alt="" class="course-card__img" onerror="this.outerHTML='<div class=\'img-ph course-card__img\' style=\'height:160px;\'>course-5.jpg</div>'"/><div class="course-card__header"><span class="course-card__tag">M&amp;E</span><span class="course-card__status">Coming Soon</span></div><div class="course-card__body"><h3 class="course-card__title">Monitoring, Evaluation &amp; Learning</h3><p class="course-card__text">Master frameworks for measuring social impact. Design M&amp;E systems, collect data, and use findings to improve your programs.</p><div class="course-card__meta"><span>📅 4 Weeks</span><span>💻 Online</span><span>🏆 Certificate</span></div><a href="#register" class="btn btn--green btn--full">Register Interest</a></div></div>
+      <div class="course-card"><img src="/assets/images/course-6.jpg" alt="" class="course-card__img" onerror="this.outerHTML='<div class=\'img-ph course-card__img\' style=\'height:160px;\'>course-6.jpg</div>'"/><div class="course-card__header"><span class="course-card__tag">Youth</span><span class="course-card__status">Coming Soon</span></div><div class="course-card__body"><h3 class="course-card__title">Youth Leadership &amp; Empowerment</h3><p class="course-card__text">Designed for young Africans ready to lead. Build leadership skills, civic engagement, and the practical tools to drive change.</p><div class="course-card__meta"><span>📅 6 Weeks</span><span>💻 Online</span><span>🏆 Certificate</span></div><a href="#register" class="btn btn--green btn--full">Register Interest</a></div></div>
     </div>
   </section>
 
@@ -156,41 +203,417 @@
     </div>
     <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
       <div class="how-learn">
-        <div class="how-learn-step"><div class="how-learn-step__num">01</div><h3 class="how-learn-step__title">Register Interest</h3><p class="how-learn-step__text">Fill out the registration form for your chosen course. We'll send you full details, dates, and pricing.</p></div>
-        <div class="how-learn-step"><div class="how-learn-step__num">02</div><h3 class="how-learn-step__title">Enroll &amp; Pay</h3><p class="how-learn-step__text">Secure your spot with payment. Scholarships and organisational packages are available.</p></div>
-        <div class="how-learn-step"><div class="how-learn-step__num">03</div><h3 class="how-learn-step__title">Learn &amp; Apply</h3><p class="how-learn-step__text">Attend live sessions, access resources, and complete practical assignments with real-world application.</p></div>
-        <div class="how-learn-step"><div class="how-learn-step__num">04</div><h3 class="how-learn-step__title">Graduate &amp; Lead</h3><p class="how-learn-step__text">Complete the program and receive your Daffodils Africa Academy certificate. Join our alumni network.</p></div>
+        <div class="how-learn-step"><div class="how-learn-step__num">01</div><h3 style="font-weight:900;font-size:0.85rem;text-transform:uppercase;margin-bottom:8px;">Register Interest</h3><p style="font-size:0.82rem;font-weight:500;line-height:1.7;">Fill out the form below. We'll confirm your spot and send full details, dates, and pricing.</p></div>
+        <div class="how-learn-step"><div class="how-learn-step__num">02</div><h3 style="font-weight:900;font-size:0.85rem;text-transform:uppercase;margin-bottom:8px;">Enroll &amp; Pay</h3><p style="font-size:0.82rem;font-weight:500;line-height:1.7;">Secure your spot with payment. Scholarships and group packages are available.</p></div>
+        <div class="how-learn-step"><div class="how-learn-step__num">03</div><h3 style="font-weight:900;font-size:0.85rem;text-transform:uppercase;margin-bottom:8px;">Learn &amp; Apply</h3><p style="font-size:0.82rem;font-weight:500;line-height:1.7;">Attend live sessions, access resources, and complete practical real-world assignments.</p></div>
+        <div class="how-learn-step"><div class="how-learn-step__num">04</div><h3 style="font-weight:900;font-size:0.85rem;text-transform:uppercase;margin-bottom:8px;">Graduate &amp; Lead</h3><p style="font-size:0.82rem;font-weight:500;line-height:1.7;">Receive your certificate and join our alumni network of impact leaders across Africa.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section style="background:var(--black);padding:96px 0;text-align:center;" class="pat-halftone-light">
-    <div style="max-width:680px;margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
-      <div class="chip chip--yellow">★ Enroll Now</div>
-      <h2 style="font-weight:900;font-size:clamp(2.2rem,4vw,3.5rem);color:var(--white);text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:20px;">Be First to Know<br>When We Launch</h2>
-      <p style="font-size:1.05rem;color:rgba(255,255,255,0.6);margin-bottom:40px;line-height:1.7;">Register your interest now and we'll notify you the moment enrollment opens. Early registrants get priority spots and special rates.</p>
-      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-        <a href="/contact" class="btn btn--yellow btn--lg">Register Interest</a>
-        <a href="/partnerships" class="btn btn--outline-dark btn--lg">Partner With Academy</a>
+  <!-- ============================================
+       MULTI-STEP REGISTRATION FORM
+  ============================================ -->
+  <section style="background:var(--black);border-bottom:var(--b);padding:96px 0;" id="register" class="pat-halftone-light">
+    <div class="reg-wrap">
+      <div style="text-align:center;margin-bottom:52px;position:relative;z-index:1;">
+        <div class="chip chip--yellow">★ Registration</div>
+        <h2 style="font-weight:900;font-size:clamp(2rem,4vw,3rem);text-transform:uppercase;color:var(--white);letter-spacing:-0.02em;margin-bottom:10px;">Secure Your Spot</h2>
+        <p style="font-size:1rem;color:rgba(255,255,255,0.55);font-weight:500;">Takes about 3 minutes. We'll be in touch to confirm your enrollment.</p>
       </div>
+
+      <!-- Progress -->
+      <div style="position:relative;z-index:1;">
+        <div class="reg-progress-outer"><div class="reg-progress-bar" id="prog-bar" style="width:14.28%"></div></div>
+        <div class="reg-step-meta">
+          <span class="reg-step-count">Step <strong id="step-num">1</strong> of 7</span>
+          <span class="reg-step-count" id="step-name-label">Personal Info</span>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div id="reg-success" class="reg-success">
+        <span class="reg-success__icon">🎉</span>
+        <h3 class="reg-success__h">You're Registered!</h3>
+        <p class="reg-success__p">Thank you for registering your interest in the Daffodils Africa Academy.<br>We'll be in touch within 48 hours with your enrollment details and next steps.<br><br>Get ready to <strong style="color:var(--yellow);">Learn. Lead. Impact.</strong></p>
+        <a href="/academy" class="btn btn--yellow" style="margin-top:36px;">Back to Academy →</a>
+      </div>
+
+      <form id="reg-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" novalidate style="position:relative;z-index:1;">
+
+        <!-- STEP 1: Personal Info -->
+        <div class="reg-step active" id="s1">
+          <h3 class="reg-step__q">Let's start with you 👋</h3>
+          <p class="reg-step__hint">Tell us your name so we know who we're welcoming to the Academy.</p>
+          <div class="reg-2col">
+            <div class="reg-field">
+              <label class="reg-label" for="f-first">First Name *</label>
+              <input class="reg-input" type="text" id="f-first" name="first_name" placeholder="e.g. Ifeoluwa" autocomplete="given-name"/>
+              <p class="error-msg" id="err-first">Please enter your first name.</p>
+            </div>
+            <div class="reg-field">
+              <label class="reg-label" for="f-last">Last Name *</label>
+              <input class="reg-input" type="text" id="f-last" name="last_name" placeholder="e.g. Oyebisi" autocomplete="family-name"/>
+              <p class="error-msg" id="err-last">Please enter your last name.</p>
+            </div>
+          </div>
+          <div class="reg-field">
+            <label class="reg-label" for="f-email">Email Address *</label>
+            <input class="reg-input" type="email" id="f-email" name="email" placeholder="yourname@email.com" autocomplete="email"/>
+            <p class="error-msg" id="err-email">Please enter a valid email address.</p>
+          </div>
+          <div class="reg-field">
+            <label class="reg-label" for="f-phone">Phone Number *</label>
+            <input class="reg-input" type="tel" id="f-phone" name="phone" placeholder="+234 800 000 0000" autocomplete="tel"/>
+            <p class="error-msg" id="err-phone">Please enter your phone number.</p>
+          </div>
+        </div>
+
+        <!-- STEP 2: Location -->
+        <div class="reg-step" id="s2">
+          <h3 class="reg-step__q">Where are you joining us from? 🌍</h3>
+          <p class="reg-step__hint">Help us understand your community so we can tailor the experience to you.</p>
+          <div class="reg-2col">
+            <div class="reg-field">
+              <label class="reg-label" for="f-country">Country *</label>
+              <select class="reg-select" id="f-country" name="country">
+                <option value="" disabled selected>Select country</option>
+                <option>Nigeria</option><option>Ghana</option><option>Kenya</option><option>South Africa</option><option>Uganda</option><option>Tanzania</option><option>Côte d'Ivoire</option><option>Cameroon</option><option>Senegal</option><option>Rwanda</option><option>Ethiopia</option><option>United Kingdom</option><option>United States</option><option>Canada</option><option>Other</option>
+              </select>
+              <p class="error-msg" id="err-country">Please select your country.</p>
+            </div>
+            <div class="reg-field">
+              <label class="reg-label" for="f-city">State / City *</label>
+              <input class="reg-input" type="text" id="f-city" name="city" placeholder="e.g. Lagos, Abuja, Accra"/>
+              <p class="error-msg" id="err-city">Please enter your city or state.</p>
+            </div>
+          </div>
+          <div class="reg-field">
+            <label class="reg-label">How did you hear about us? *</label>
+            <div class="reg-choices" id="how-choices">
+              <button type="button" class="reg-choice" data-field="how_heard" data-val="Instagram">Instagram</button>
+              <button type="button" class="reg-choice" data-field="how_heard" data-val="Facebook">Facebook</button>
+              <button type="button" class="reg-choice" data-field="how_heard" data-val="LinkedIn">LinkedIn</button>
+              <button type="button" class="reg-choice" data-field="how_heard" data-val="Friend / Referral">Friend / Referral</button>
+              <button type="button" class="reg-choice" data-field="how_heard" data-val="Google Search">Google Search</button>
+              <button type="button" class="reg-choice" data-field="how_heard" data-val="Event / Conference">Event / Conference</button>
+              <button type="button" class="reg-choice" data-field="how_heard" data-val="Email Newsletter">Email Newsletter</button>
+              <button type="button" class="reg-choice" data-field="how_heard" data-val="Other">Other</button>
+            </div>
+            <input type="hidden" name="how_heard" id="f-how"/>
+            <p class="error-msg" id="err-how">Please select how you heard about us.</p>
+          </div>
+        </div>
+
+        <!-- STEP 3: Background -->
+        <div class="reg-step" id="s3">
+          <h3 class="reg-step__q">Tell us a bit about yourself</h3>
+          <p class="reg-step__hint">No wrong answers here — we want to understand who you are so we can support your learning journey.</p>
+          <div class="reg-field">
+            <label class="reg-label">Which best describes you? *</label>
+            <div class="reg-choices" id="role-choices">
+              <button type="button" class="reg-choice" data-field="role" data-val="Working Professional">Working Professional</button>
+              <button type="button" class="reg-choice" data-field="role" data-val="Student">Student</button>
+              <button type="button" class="reg-choice" data-field="role" data-val="Entrepreneur">Entrepreneur</button>
+              <button type="button" class="reg-choice" data-field="role" data-val="Nonprofit Worker">Nonprofit / NGO Worker</button>
+              <button type="button" class="reg-choice" data-field="role" data-val="Career Changer">Career Changer</button>
+              <button type="button" class="reg-choice" data-field="role" data-val="Other">Other</button>
+            </div>
+            <input type="hidden" name="role" id="f-role"/>
+            <p class="error-msg" id="err-role">Please select an option that describes you.</p>
+          </div>
+          <div class="reg-field">
+            <label class="reg-label" for="f-occupation">Current Job Title or Occupation *</label>
+            <input class="reg-input" type="text" id="f-occupation" name="occupation" placeholder="e.g. Project Manager, Teacher, CEO, Student"/>
+            <p class="error-msg" id="err-occupation">Please enter your current occupation.</p>
+          </div>
+          <div class="reg-field">
+            <label class="reg-label" for="f-edu">Highest Level of Education</label>
+            <select class="reg-select" id="f-edu" name="education">
+              <option value="" disabled selected>Select level</option>
+              <option>Secondary / WAEC / O'Level</option>
+              <option>Undergraduate / HND / BSc</option>
+              <option>Postgraduate / MSc / MBA</option>
+              <option>PhD / Doctorate</option>
+              <option>Professional Certification</option>
+              <option>Prefer not to say</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- STEP 4: Course Choice -->
+        <div class="reg-step" id="s4">
+          <h3 class="reg-step__q">Which course calls to you? 📚</h3>
+          <p class="reg-step__hint">You can always enroll in more than one — but let's start with your top pick.</p>
+          <div class="reg-field">
+            <label class="reg-label" for="f-course">Course of Interest *</label>
+            <select class="reg-select" id="f-course" name="course">
+              <option value="" disabled selected>Select a course</option>
+              <option>Social Impact Project Management</option>
+              <option>CSR Strategy for Organisations</option>
+              <option>Community Development Fundamentals</option>
+              <option>Fundraising &amp; Donor Management</option>
+              <option>Monitoring, Evaluation &amp; Learning</option>
+              <option>Youth Leadership &amp; Empowerment</option>
+              <option>Not sure yet — help me decide</option>
+            </select>
+            <p class="error-msg" id="err-course">Please select a course.</p>
+          </div>
+          <div class="reg-field">
+            <label class="reg-label" for="f-why-course">What excites you most about this course?</label>
+            <textarea class="reg-textarea" id="f-why-course" name="course_excitement" placeholder="Tell us what drew you to this specific course..."></textarea>
+          </div>
+        </div>
+
+        <!-- STEP 5: Goals -->
+        <div class="reg-step" id="s5">
+          <h3 class="reg-step__q">What's driving you? 🎯</h3>
+          <p class="reg-step__hint">Understanding your goals helps us make the experience as valuable as possible for you.</p>
+          <div class="reg-field">
+            <label class="reg-label" for="f-motivation">Why do you want to join the Daffodils Africa Academy? *</label>
+            <textarea class="reg-textarea" id="f-motivation" name="motivation" placeholder="Share what's motivating you to take this step right now..."></textarea>
+            <p class="error-msg" id="err-motivation">Please share a little about your motivation.</p>
+          </div>
+          <div class="reg-field">
+            <label class="reg-label" for="f-outcome">What do you hope to achieve within 3 months of completing the course?</label>
+            <textarea class="reg-textarea" id="f-outcome" name="outcome_goal" placeholder="e.g. Launch a community project, get a new role, start an NGO..."></textarea>
+          </div>
+        </div>
+
+        <!-- STEP 6: Commitment -->
+        <div class="reg-step" id="s6">
+          <h3 class="reg-step__q">Last few things ✅</h3>
+          <p class="reg-step__hint">Help us understand your availability so we can set you up for success.</p>
+          <div class="reg-field">
+            <label class="reg-label">How many hours per week can you commit to learning? *</label>
+            <div class="reg-hours" id="hours-choices">
+              <div class="reg-hour-opt" data-val="Less than 5 hours">
+                <strong>Under 5 hrs</strong><span>Light commitment</span>
+              </div>
+              <div class="reg-hour-opt" data-val="5–10 hours">
+                <strong>5–10 hrs</strong><span>Moderate commitment</span>
+              </div>
+              <div class="reg-hour-opt" data-val="10+ hours">
+                <strong>10+ hrs</strong><span>Full dedication</span>
+              </div>
+            </div>
+            <input type="hidden" name="weekly_hours" id="f-hours"/>
+            <p class="error-msg" id="err-hours">Please select your weekly availability.</p>
+          </div>
+          <div class="reg-field">
+            <label class="reg-label">How would you like us to contact you?</label>
+            <div class="reg-choices" id="contact-choices">
+              <button type="button" class="reg-choice" data-field="contact_pref" data-val="Email">Email</button>
+              <button type="button" class="reg-choice" data-field="contact_pref" data-val="WhatsApp">WhatsApp</button>
+              <button type="button" class="reg-choice" data-field="contact_pref" data-val="Phone Call">Phone Call</button>
+            </div>
+            <input type="hidden" name="contact_preference" id="f-contact-pref"/>
+          </div>
+          <div class="reg-field">
+            <label class="reg-label" for="f-notes">Any questions or things we should know? (Optional)</label>
+            <textarea class="reg-textarea" id="f-notes" name="notes" placeholder="Special needs, questions, or anything else you'd like to share..." style="min-height:80px;"></textarea>
+          </div>
+          <div class="reg-field">
+            <label class="reg-check">
+              <input type="checkbox" id="f-agree" name="agree_comms" value="Yes"/>
+              <span class="reg-check-label">I agree to receive course updates, enrollment information, and relevant content from Daffodils Africa Academy. I can unsubscribe at any time.</span>
+            </label>
+            <p class="error-msg" id="err-agree">Please accept to continue.</p>
+          </div>
+          <input type="hidden" name="_subject" value="Academy Registration — Daffodils Africa"/>
+        </div>
+
+        <!-- STEP 7: Review -->
+        <div class="reg-step" id="s7">
+          <h3 class="reg-step__q">Review your details 👀</h3>
+          <p class="reg-step__hint">Everything look good? Hit submit and we'll be in touch within 48 hours.</p>
+          <div class="reg-review" id="review-panel">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+
+        <!-- NAVIGATION -->
+        <div class="reg-nav" id="reg-nav">
+          <button type="button" class="reg-nav-prev" id="btn-prev" onclick="goStep(-1)" style="display:none;">← Previous</button>
+          <span class="reg-spacer"></span>
+          <button type="button" class="reg-nav-next" id="btn-next" onclick="goStep(1)">Next →</button>
+          <button type="submit" class="reg-nav-submit" id="btn-submit" style="display:none;">✓ Submit Registration</button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:var(--black);padding:80px 0;text-align:center;border-top:var(--b);" class="pat-halftone-light">
+    <div style="max-width:600px;margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
+      <div class="chip chip--yellow">★ Partner</div>
+      <h2 style="font-weight:900;font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--white);text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:16px;">Want to Partner<br>With the Academy?</h2>
+      <p style="font-size:1rem;color:rgba(255,255,255,0.6);margin-bottom:32px;line-height:1.7;">Organisations can sponsor scholarships, co-create courses, or partner to train their teams. Let's talk.</p>
+      <a href="/partnerships" class="btn btn--yellow btn--lg">Explore Partnership →</a>
     </div>
   </section>
 </main>
 
 <footer class="footer"><div class="footer__inner">
   <div class="footer__grid">
-    <div><div class="footer__logo-box"><img src="/assets/images/logo.png" alt="" style="height:44px;width:auto;" onerror="this.style.display='none'"/><span class="footer__logo-text" style="display:none">Daffodils Africa</span></div><p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa.</p>
-        <div class="footer__socials" style="margin-top:16px;">
-          <a href="https://www.instagram.com/daffodils_africa/?hl=en" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">ig</a>
-          <a href="https://www.facebook.com/daffodilsafrica1/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">fb</a>
-          <a href="https://www.linkedin.com/company/daffodils-africa" target="_blank" rel="noopener" class="footer__social-link" aria-label="LinkedIn">in</a>
-        </div></div>
+    <div><div class="footer__logo-box"><img src="/assets/images/logo.png" alt="" style="height:44px;width:auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/><span class="footer__logo-text" style="display:none">Daffodils Africa</span></div><p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa.</p><div class="footer__socials" style="margin-top:16px;"><a href="https://www.instagram.com/daffodils_africa/?hl=en" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">ig</a><a href="https://www.facebook.com/daffodilsafrica1/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">fb</a><a href="https://www.linkedin.com/company/daffodils-africa" target="_blank" rel="noopener" class="footer__social-link" aria-label="LinkedIn">in</a></div></div>
     <div><p class="footer__col-head">Navigate</p><ul class="footer__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/impact">Our Impact</a></li><li><a href="/academy">Academy</a></li><li><a href="/partnerships">Partnerships</a></li></ul></div>
     <div><p class="footer__col-head">Get Involved</p><ul class="footer__links"><li><a href="/contact">Donate</a></li><li><a href="/contact">Volunteer</a></li><li><a href="/contact">Start a Project</a></li></ul></div>
-    <div><p class="footer__col-head">Contact</p><ul class="footer__links"><li><a href="mailto:hello@daffodilsafrica.com">hello@daffodilsafrica.com</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+    <div><p class="footer__col-head">Contact</p><ul class="footer__links"><li><a href="tel:+2348167873722">+234 816 787 3722</a></li><li><a href="mailto:daffodilsafrica@gmail.com">daffodilsafrica@gmail.com</a></li><li><a href="/contact">Contact Us</a></li><li style="color:rgba(255,255,255,0.5);font-size:0.875rem;font-weight:500;padding-left:6px;">Lagos, Nigeria</li></ul></div>
   </div>
   <div class="footer__bottom"><p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p><p class="footer__motto">Impact is not accidental. It is built.</p></div>
 </div></footer>
-<script>const b=document.getElementById("burger"),n=document.getElementById("mobile-nav");b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});document.addEventListener("click",e=>{if(!b.contains(e.target)&&!n.contains(e.target)){n.classList.remove("open");b.setAttribute("aria-expanded","false");}});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b.setAttribute("aria-expanded","false");}));</script>
-</body></html>
+
+<script>
+// MOBILE NAV
+const burger=document.getElementById('burger'),mNav=document.getElementById('mobile-nav');
+burger.addEventListener('click',()=>{const o=mNav.classList.toggle('open');burger.setAttribute('aria-expanded',o);});
+document.addEventListener('click',e=>{if(!burger.contains(e.target)&&!mNav.contains(e.target)){mNav.classList.remove('open');burger.setAttribute('aria-expanded','false');}});
+mNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mNav.classList.remove('open');burger.setAttribute('aria-expanded','false');}));
+
+// MULTI-STEP FORM
+const TOTAL = 7;
+let current = 1;
+
+const stepNames = ['Personal Info','Location','Background','Course','Your Goals','Commitment','Review'];
+const stepEls   = ()=>document.querySelectorAll('.reg-step');
+const progBar   = document.getElementById('prog-bar');
+const stepNum   = document.getElementById('step-num');
+const stepLabel = document.getElementById('step-name-label');
+const btnPrev   = document.getElementById('btn-prev');
+const btnNext   = document.getElementById('btn-next');
+const btnSubmit = document.getElementById('btn-submit');
+
+// Choice buttons (radio-like)
+document.querySelectorAll('.reg-choice').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const field=btn.dataset.field;
+    document.querySelectorAll(`.reg-choice[data-field="${field}"]`).forEach(b=>b.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById('f-'+field.replace('_','_').replace('how_heard','how').replace('contact_pref','contact-pref'))||
+    (document.querySelector(`input[name="${field}"]`) && (document.querySelector(`input[name="${field}"]`).value=btn.dataset.val));
+    // Map field name to hidden input id
+    const idMap={'how_heard':'f-how','role':'f-role','contact_pref':'f-contact-pref'};
+    const el=document.getElementById(idMap[field]||'f-'+field);
+    if(el) el.value=btn.dataset.val;
+  });
+});
+
+// Hours choice
+document.querySelectorAll('.reg-hour-opt').forEach(opt=>{
+  opt.addEventListener('click',()=>{
+    document.querySelectorAll('.reg-hour-opt').forEach(o=>o.classList.remove('selected'));
+    opt.classList.add('selected');
+    document.getElementById('f-hours').value=opt.dataset.val;
+  });
+});
+
+function updateUI(){
+  stepEls().forEach((s,i)=>s.classList.toggle('active', i===current-1));
+  progBar.style.width=((current/TOTAL)*100)+'%';
+  stepNum.textContent=current;
+  stepLabel.textContent=stepNames[current-1];
+  btnPrev.style.display = current===1?'none':'inline-flex';
+  btnNext.style.display = current===TOTAL?'none':'inline-flex';
+  btnSubmit.style.display = current===TOTAL?'inline-flex':'none';
+  if(current===TOTAL) buildReview();
+  window.scrollTo({top:document.getElementById('register').offsetTop-80,behavior:'smooth'});
+}
+
+function validate(){
+  let ok=true;
+  const show=(id,v)=>{const e=document.getElementById(id);if(e){e.classList.toggle('show',v);}};
+  if(current===1){
+    const fn=document.getElementById('f-first').value.trim();
+    const ln=document.getElementById('f-last').value.trim();
+    const em=document.getElementById('f-email').value.trim();
+    const ph=document.getElementById('f-phone').value.trim();
+    show('err-first',!fn); if(!fn)ok=false;
+    show('err-last',!ln);  if(!ln)ok=false;
+    show('err-email',!em||!/\S+@\S+\.\S+/.test(em)); if(!em||!/\S+@\S+\.\S+/.test(em))ok=false;
+    show('err-phone',!ph); if(!ph)ok=false;
+  }
+  if(current===2){
+    const co=document.getElementById('f-country').value;
+    const ci=document.getElementById('f-city').value.trim();
+    const hw=document.getElementById('f-how').value;
+    show('err-country',!co); if(!co)ok=false;
+    show('err-city',!ci);    if(!ci)ok=false;
+    show('err-how',!hw);     if(!hw)ok=false;
+  }
+  if(current===3){
+    const ro=document.getElementById('f-role').value;
+    const oc=document.getElementById('f-occupation').value.trim();
+    show('err-role',!ro);       if(!ro)ok=false;
+    show('err-occupation',!oc); if(!oc)ok=false;
+  }
+  if(current===4){
+    const cs=document.getElementById('f-course').value;
+    show('err-course',!cs); if(!cs)ok=false;
+  }
+  if(current===5){
+    const mo=document.getElementById('f-motivation').value.trim();
+    show('err-motivation',!mo); if(!mo)ok=false;
+  }
+  if(current===6){
+    const hr=document.getElementById('f-hours').value;
+    const ag=document.getElementById('f-agree').checked;
+    show('err-hours',!hr);  if(!hr)ok=false;
+    show('err-agree',!ag);  if(!ag)ok=false;
+  }
+  return ok;
+}
+
+function goStep(dir){
+  if(dir===1 && !validate()) return;
+  current=Math.max(1,Math.min(TOTAL,current+dir));
+  updateUI();
+}
+
+function buildReview(){
+  const vals=[
+    ['Name', (document.getElementById('f-first').value+' '+document.getElementById('f-last').value).trim()],
+    ['Email', document.getElementById('f-email').value],
+    ['Phone', document.getElementById('f-phone').value],
+    ['Location', document.getElementById('f-city').value+', '+document.getElementById('f-country').value],
+    ['Heard About Us', document.getElementById('f-how').value],
+    ['Role', document.getElementById('f-role').value],
+    ['Occupation', document.getElementById('f-occupation').value],
+    ['Course', document.getElementById('f-course').value],
+    ['Weekly Hours', document.getElementById('f-hours').value],
+    ['Contact Preference', document.getElementById('f-contact-pref').value||'Not specified'],
+    ['Notes', document.getElementById('f-notes').value||'None'],
+  ];
+  document.getElementById('review-panel').innerHTML=vals.map(([k,v])=>
+    `<div class="reg-review-item"><span class="reg-review-key">${k}</span><span class="reg-review-val">${v||'—'}</span></div>`
+  ).join('');
+}
+
+// Submit
+document.getElementById('reg-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  if(!validate()) return;
+  const btn=document.getElementById('btn-submit');
+  btn.textContent='Submitting...'; btn.disabled=true;
+  try{
+    const data=new FormData(this);
+    const resp=await fetch(this.action,{method:'POST',body:data,headers:{Accept:'application/json'}});
+    if(resp.ok){
+      document.getElementById('reg-form').style.display='none';
+      document.getElementById('reg-nav').style.display='none';
+      document.querySelector('.reg-progress-outer').style.display='none';
+      document.querySelector('.reg-step-meta').style.display='none';
+      document.getElementById('reg-success').style.display='block';
+    } else {
+      btn.textContent='✓ Submit Registration'; btn.disabled=false;
+      alert('Something went wrong. Please try again or email us directly at daffodilsafrica@gmail.com');
+    }
+  } catch(err){
+    btn.textContent='✓ Submit Registration'; btn.disabled=false;
+    alert('Connection error. Please try again.');
+  }
+});
+</script>
+</body>
+</html>
