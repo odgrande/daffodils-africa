@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What We Do — Daffodils Africa</title>
+  <meta name="description" content="Daffodils Africa programs and services — project design, community development, impact campaigns, monitoring and evaluation."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet"/>
+  <link rel="stylesheet" href="/assets/css/main.css"/>
+  <style>
+    .service-block { display:grid; grid-template-columns:1fr 1fr; gap:0; border:var(--b); box-shadow:var(--sh-lg); margin-bottom:24px; }
+    .service-block.reverse { direction:rtl; }
+    .service-block.reverse > * { direction:ltr; }
+    .service-img { border-right:var(--b); }
+    .service-block.reverse .service-img { border-right:none; border-left:var(--b); }
+    .service-content { padding:52px 44px; background:var(--white); display:flex; flex-direction:column; justify-content:center; }
+    .service-block:nth-child(even) .service-content { background:var(--black); color:var(--white); }
+    .service-num { font-weight:900; font-size:4rem; -webkit-text-stroke:2px currentColor; color:transparent; line-height:1; display:block; margin-bottom:16px; }
+    .service-title { font-weight:900; font-size:1.5rem; text-transform:uppercase; letter-spacing:-0.01em; margin-bottom:14px; line-height:1.2; }
+    .service-text { font-size:0.95rem; font-weight:500; line-height:1.8; opacity:0.8; margin-bottom:24px; }
+    .service-tag { font-weight:700; font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--green); background:rgba(27,94,32,0.1); padding:4px 10px; border:2px solid var(--green); display:inline-block; margin-bottom:16px; }
+    .service-block:nth-child(even) .service-tag { color:var(--yellow); background:rgba(255,217,61,0.1); border-color:var(--yellow); }
+    .special-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .special-card { background:var(--white); border:var(--b); box-shadow:var(--sh-md); overflow:hidden; transition:transform 0.15s,box-shadow 0.15s; }
+    .special-card:hover { transform:translateY(-4px); box-shadow:var(--sh-lg); }
+    .special-card__img { width:100%; }
+    .special-card__body { padding:28px; }
+    .special-card__tag  { font-weight:700; font-size:0.65rem; letter-spacing:0.16em; text-transform:uppercase; opacity:0.5; margin-bottom:8px; }
+    .special-card__title{ font-weight:900; font-size:1rem; text-transform:uppercase; margin-bottom:10px; }
+    .special-card__text { font-size:0.875rem; font-weight:500; line-height:1.7; opacity:0.8; }
+    @media(max-width:1024px){ .service-block{grid-template-columns:1fr;} .service-block.reverse{direction:ltr;} .service-img{border-right:none;border-bottom:var(--b);} .service-block.reverse .service-img{border-left:none;border-bottom:var(--b);} .special-grid{grid-template-columns:1fr 1fr;} }
+    @media(max-width:768px){ .special-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<div class="announce" aria-hidden="true"><div class="announce__track"><span class="announce__item">What We Do</span><span class="announce__item">Project Design &amp; Implementation</span><span class="announce__item">Community Development</span><span class="announce__item">Impact Campaigns</span><span class="announce__item">Monitoring &amp; Evaluation</span><span class="announce__item">What We Do</span><span class="announce__item">Project Design &amp; Implementation</span><span class="announce__item">Community Development</span><span class="announce__item">Impact Campaigns</span><span class="announce__item">Monitoring &amp; Evaluation</span></div></div>
+
+<header><nav class="nav"><div class="nav__inner">
+  <a href="/" class="nav__logo-box"><img src="/assets/images/logo.png" alt="Daffodils Africa" class="nav__logo-img" onerror="this.style.display='none'"/><span class="nav__logo-text">Daffodils<small>Africa</small></span></a>
+  <ul class="nav__links"><li><a href="/about">About Us</a></li><li><a href="/programs" class="active">What We Do</a></li><li><a href="/academy">Academy</a></li><li><a href="/impact">Impact</a></li><li><a href="/partnerships">Partner</a></li><li><a href="/blog">Blog</a></li><li><a href="/contact">Contact</a></li></ul>
+  <div class="nav__actions"><a href="/contact" class="btn btn--outline">Get Involved</a><a href="/contact" class="btn btn--green">Start a Project</a></div>
+  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+</div>
+<div id="mobile-nav" class="nav__mobile"><a href="/about">About Us</a><a href="/programs">What We Do</a><a href="/academy">Academy</a><a href="/impact">Impact</a><a href="/partnerships">Partner</a><a href="/blog">Blog</a><a href="/contact">Contact</a><div class="nav__mobile-btns"><a href="/contact" class="btn btn--green btn--full">Start a Project</a><a href="/contact" class="btn btn--outline btn--full">Get Involved</a></div></div>
+</nav></header>
+
+<main>
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <p class="page-hero__breadcrumb"><a href="/">Home</a> → What We Do</p>
+      <h1 class="page-hero__h1">We Translate<br><span>Vision</span><br>Into Impact</h1>
+      <p class="page-hero__sub">Helping individuals and organisations turn ambition into actionable, measurable community change across Africa.</p>
+      <div class="page-hero__actions"><a href="/contact" class="btn btn--yellow btn--lg">Start a Project</a><a href="/impact" class="btn btn--outline-dark btn--lg">See Our Impact</a></div>
+    </div>
+  </section>
+
+  <div class="stats"><div class="stats__grid">
+    <div class="stats__cell"><span class="stats__num">3,000+</span><span class="stats__label">Lives Reached</span></div>
+    <div class="stats__cell"><span class="stats__num">12+</span><span class="stats__label">Programs Executed</span></div>
+    <div class="stats__cell"><span class="stats__num">10+</span><span class="stats__label">Partnerships</span></div>
+    <div class="stats__cell"><span class="stats__num">5+</span><span class="stats__label">Sectors</span></div>
+  </div></div>
+
+  <!-- CORE SERVICES -->
+  <section style="background:var(--bg);border-bottom:var(--b);padding:96px 0;">
+    <div class="section-head-center">
+      <div class="chip chip--yellow">★ Core Services</div>
+      <h2 class="section-h2">Our Programs &amp; Services</h2>
+    </div>
+    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
+
+      <div class="service-block">
+        <div class="service-img">
+          <img src="/assets/images/program-design.jpg" alt="Project Design and Implementation" style="width:100%;height:100%;object-fit:cover;" onerror="this.outerHTML='<div class=\'img-ph service-img\' style=\'height:360px;\'>Program Photo — Design &amp; Implementation<br><small>program-design.jpg · 600×360px</small></div>'"/>
+        </div>
+        <div class="service-content">
+          <span class="service-num" aria-hidden="true">01</span>
+          <p class="service-tag">Core Service</p>
+          <h2 class="service-title">Project Design &amp; Implementation</h2>
+          <p class="service-text">From idea to execution roadmap — we plan, design, and deliver nonprofit and social impact projects end-to-end. Whether you have a fully formed vision or just a spark of an idea, we help you build it into a real, structured project with measurable outcomes.</p>
+          <a href="/contact" class="btn btn--green">Start a Project →</a>
+        </div>
+      </div>
+
+      <div class="service-block reverse">
+        <div class="service-img">
+          <img src="/assets/images/program-community.jpg" alt="Community Development Programs" style="width:100%;height:100%;object-fit:cover;" onerror="this.outerHTML='<div class=\'img-ph service-img\' style=\'height:360px;\'>Program Photo — Community Development<br><small>program-community.jpg · 600×360px</small></div>'"/>
+        </div>
+        <div class="service-content">
+          <span class="service-num" aria-hidden="true">02</span>
+          <p class="service-tag">Community Programs</p>
+          <h2 class="service-title">Community Development Programs</h2>
+          <p class="service-text">Health, education, and livelihoods programs built with and for communities across Africa. We prioritise projects aligned with the UN's 17 SDGs — from menstrual hygiene workshops and medical outreaches to education support and women's empowerment initiatives.</p>
+          <a href="/contact" class="btn btn--green">Explore Programs →</a>
+        </div>
+      </div>
+
+      <div class="service-block">
+        <div class="service-img">
+          <img src="/assets/images/program-campaigns.jpg" alt="Impact Campaigns and Outreach" style="width:100%;height:100%;object-fit:cover;" onerror="this.outerHTML='<div class=\'img-ph service-img\' style=\'height:360px;\'>Program Photo — Impact Campaigns<br><small>program-campaigns.jpg · 600×360px</small></div>'"/>
+        </div>
+        <div class="service-content">
+          <span class="service-num" aria-hidden="true">03</span>
+          <p class="service-tag">Outreach &amp; Advocacy</p>
+          <h2 class="service-title">Impact Campaigns &amp; Outreach</h2>
+          <p class="service-text">Scalable, high-visibility initiatives that create real awareness and drive meaningful, measurable engagement. From social media campaigns to on-ground activations, we design outreach that cuts through the noise and actually moves communities.</p>
+          <a href="/contact" class="btn btn--green">Launch a Campaign →</a>
+        </div>
+      </div>
+
+      <div class="service-block reverse">
+        <div class="service-img">
+          <img src="/assets/images/program-me.jpg" alt="Monitoring and Evaluation" style="width:100%;height:100%;object-fit:cover;" onerror="this.outerHTML='<div class=\'img-ph service-img\' style=\'height:360px;\'>Program Photo — Monitoring &amp; Evaluation<br><small>program-me.jpg · 600×360px</small></div>'"/>
+        </div>
+        <div class="service-content">
+          <span class="service-num" aria-hidden="true">04</span>
+          <p class="service-tag">Data &amp; Results</p>
+          <h2 class="service-title">Monitoring &amp; Evaluation</h2>
+          <p class="service-text">Data-driven results you can trust. We measure what matters and report transparently on every outcome — so you always know exactly what your investment achieved and how many lives were touched. No fluff, no guessing.</p>
+          <a href="/contact" class="btn btn--green">Get Impact Reports →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker__track">
+    <span class="ticker__item">Project Design</span><span class="ticker__item">Community Development</span><span class="ticker__item">Impact Campaigns</span><span class="ticker__item">M&amp;E</span><span class="ticker__item">CSR</span><span class="ticker__item">Social Impact</span>
+    <span class="ticker__item">Project Design</span><span class="ticker__item">Community Development</span><span class="ticker__item">Impact Campaigns</span><span class="ticker__item">M&amp;E</span><span class="ticker__item">CSR</span><span class="ticker__item">Social Impact</span>
+  </div></div>
+
+  <!-- SPECIAL SERVICES -->
+  <section style="background:var(--yellow);border-bottom:var(--b);padding:96px 0;">
+    <div class="section-head-center">
+      <div class="chip chip--black">★ Special Offerings</div>
+      <h2 class="section-h2">More Ways We Create Impact</h2>
+    </div>
+    <div class="special-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
+      <div class="special-card">
+        <img src="/assets/images/special-celebrate.jpg" alt="Celebrate With Impact" class="special-card__img" onerror="this.outerHTML='<div class=\'img-ph special-card__img\' style=\'height:200px;\'>Celebrate With Impact Photo<br><small>special-celebrate.jpg · 400×200px</small></div>'"/>
+        <div class="special-card__body">
+          <p class="special-card__tag">Special Service</p>
+          <h3 class="special-card__title">Celebrate With Impact</h3>
+          <p class="special-card__text">Mark your birthday, anniversary, or milestone with a social impact project. We'll go all out to implement an initiative in your name — your best celebration ever.</p>
+          <a href="/contact" class="btn btn--black" style="margin-top:16px;width:100%;">Celebrate Differently</a>
+        </div>
+      </div>
+      <div class="special-card">
+        <img src="/assets/images/special-tourist.jpg" alt="Tourist With a Difference" class="special-card__img" onerror="this.outerHTML='<div class=\'img-ph special-card__img\' style=\'height:200px;\'>Tourist With a Difference Photo<br><small>special-tourist.jpg · 400×200px</small></div>'"/>
+        <div class="special-card__body">
+          <p class="special-card__tag">Impact Tourism</p>
+          <h3 class="special-card__title">Tourist With a Difference</h3>
+          <p class="special-card__text">Be an impact-driven tourist. Visit an African community and create real change alongside your travel experience. Double satisfaction — explorer and changemaker.</p>
+          <a href="/contact" class="btn btn--black" style="margin-top:16px;width:100%;">Plan Impact Tourism</a>
+        </div>
+      </div>
+      <div class="special-card">
+        <img src="/assets/images/special-csr.jpg" alt="CSR Implementation" class="special-card__img" onerror="this.outerHTML='<div class=\'img-ph special-card__img\' style=\'height:200px;\'>CSR / Corporate Photo<br><small>special-csr.jpg · 400×200px</small></div>'"/>
+        <div class="special-card__body">
+          <p class="special-card__tag">Corporate</p>
+          <h3 class="special-card__title">CSR Made Easy</h3>
+          <p class="special-card__text">We make Corporate Social Responsibility stress-free and effective. From strategy to execution and reporting — we are the hands and legs that reach the unreached on your behalf.</p>
+          <a href="/contact" class="btn btn--black" style="margin-top:16px;width:100%;">Start Your CSR</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:var(--black);padding:96px 0;text-align:center;" class="pat-halftone-light">
+    <div style="max-width:680px;margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
+      <div class="chip chip--yellow">★ Ready?</div>
+      <h2 style="font-weight:900;font-size:clamp(2.2rem,4vw,3.5rem);color:var(--white);text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:20px;">Have a Vision?<br>Let's Make It Real.</h2>
+      <p style="font-size:1.05rem;color:rgba(255,255,255,0.6);margin-bottom:40px;line-height:1.7;">Whatever your social impact goal, we have the expertise, the network, and the passion to bring it to life.</p>
+      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+        <a href="/contact" class="btn btn--yellow btn--lg">Start a Project</a>
+        <a href="/contact" class="btn btn--outline-dark btn--lg">Book a Consultation</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="footer__inner">
+  <div class="footer__grid">
+    <div><div class="footer__logo-box"><img src="/assets/images/logo.png" alt="" style="height:32px;width:auto;" onerror="this.style.display='none'"/><span class="footer__logo-text">Daffodils Africa</span></div><p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa.</p></div>
+    <div><p class="footer__col-head">Navigate</p><ul class="footer__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/impact">Our Impact</a></li><li><a href="/academy">Academy</a></li><li><a href="/partnerships">Partnerships</a></li></ul></div>
+    <div><p class="footer__col-head">Get Involved</p><ul class="footer__links"><li><a href="/contact">Donate</a></li><li><a href="/contact">Volunteer</a></li><li><a href="/contact">Start a Project</a></li></ul></div>
+    <div><p class="footer__col-head">Contact</p><ul class="footer__links"><li><a href="mailto:hello@daffodilsafrica.com">hello@daffodilsafrica.com</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+  </div>
+  <div class="footer__bottom"><p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p><p class="footer__motto">Impact is not accidental. It is built.</p></div>
+</div></footer>
+<script>const b=document.getElementById("burger"),n=document.getElementById("mobile-nav");b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});document.addEventListener("click",e=>{if(!b.contains(e.target)&&!n.contains(e.target)){n.classList.remove("open");b.setAttribute("aria-expanded","false");}});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b.setAttribute("aria-expanded","false");}));</script>
+</body></html>

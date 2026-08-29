@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact &amp; Join Us — Daffodils Africa</title>
+  <meta name="description" content="Contact Daffodils Africa — send an enquiry, volunteer, donate, or start a project. We're ready to work with you."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet"/>
+  <link rel="stylesheet" href="/assets/css/main.css"/>
+  <style>
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; border:var(--b); box-shadow:var(--sh-xl); }
+    .contact-info { background:var(--black); padding:60px 48px; border-right:var(--b); }
+    .contact-info h2 { font-weight:900; font-size:clamp(1.8rem,3vw,2.5rem); text-transform:uppercase; color:var(--white); margin-bottom:20px; line-height:1.1; }
+    .contact-info p  { font-size:0.95rem; color:rgba(255,255,255,0.6); font-weight:500; line-height:1.75; margin-bottom:32px; }
+    .contact-detail  { margin-bottom:24px; }
+    .contact-detail__label { font-weight:700; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--yellow); margin-bottom:6px; }
+    .contact-detail__val   { font-weight:700; font-size:0.95rem; color:var(--white); }
+    .contact-socials { display:flex; gap:10px; margin-top:32px; }
+    .contact-social  { width:48px; height:48px; background:rgba(255,255,255,0.07); border:2px solid rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; font-size:1.1rem; font-weight:900; color:var(--white); transition:background 0.1s,border-color 0.1s; }
+    .contact-social:hover { background:var(--yellow); border-color:var(--yellow); color:var(--black); }
+    .contact-form-col { background:var(--white); padding:60px 48px; }
+    .contact-form-col h3 { font-weight:900; font-size:1.2rem; text-transform:uppercase; margin-bottom:28px; }
+    .form-group   { margin-bottom:18px; }
+    .form-label   { display:block; font-weight:700; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:8px; }
+    .form-input, .form-select, .form-textarea {
+      width:100%; padding:14px 16px;
+      border:var(--b); background:var(--bg);
+      font-family:var(--font); font-weight:700; font-size:0.9rem; color:var(--black);
+      outline:none; appearance:none; box-shadow:var(--sh-sm);
+      transition:box-shadow 0.1s;
+    }
+    .form-input:focus,.form-select:focus,.form-textarea:focus { box-shadow:var(--sh-md); }
+    .form-input::placeholder,.form-textarea::placeholder { color:rgba(0,0,0,0.35); font-weight:500; }
+    .form-textarea { resize:vertical; min-height:120px; }
+    .volunteer-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .volunteer-card { background:var(--white); border:var(--b); box-shadow:var(--sh-md); overflow:hidden; transition:transform 0.15s,box-shadow 0.15s; }
+    .volunteer-card:hover { transform:translateY(-4px); box-shadow:var(--sh-lg); }
+    .volunteer-card__header { padding:24px 24px 16px; }
+    .volunteer-card:nth-child(1) .volunteer-card__header { background:var(--black); color:var(--white); }
+    .volunteer-card:nth-child(2) .volunteer-card__header { background:var(--green); color:var(--white); }
+    .volunteer-card:nth-child(3) .volunteer-card__header { background:var(--yellow); color:var(--black); }
+    .volunteer-card:nth-child(4) .volunteer-card__header { background:var(--violet); color:var(--black); }
+    .volunteer-card__icon  { font-size:1.8rem; margin-bottom:10px; display:block; }
+    .volunteer-card__title { font-weight:900; font-size:1rem; text-transform:uppercase; }
+    .volunteer-card__body  { padding:20px 24px; }
+    .volunteer-card__text  { font-size:0.875rem; font-weight:500; line-height:1.7; margin-bottom:16px; }
+    .team-enquiry { background:var(--black); border:var(--b); box-shadow:var(--sh-xl); padding:52px; display:grid; grid-template-columns:1fr 1fr; gap:52px; align-items:start; }
+    .team-enquiry h2 { font-weight:900; font-size:clamp(1.6rem,3vw,2.2rem); text-transform:uppercase; color:var(--white); line-height:1.1; margin-bottom:12px; }
+    .team-enquiry p  { font-size:0.95rem; color:rgba(255,255,255,0.6); font-weight:500; line-height:1.7; }
+    @media(max-width:1024px){ .contact-grid{grid-template-columns:1fr;} .contact-info{border-right:none;border-bottom:var(--b);} .team-enquiry{grid-template-columns:1fr;gap:32px;} }
+    @media(max-width:768px){ .volunteer-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<div class="announce" aria-hidden="true"><div class="announce__track"><span class="announce__item">Contact Us</span><span class="announce__item">Get Involved</span><span class="announce__item">Volunteer</span><span class="announce__item">Start a Project</span><span class="announce__item">Donate</span><span class="announce__item">Contact Us</span><span class="announce__item">Get Involved</span><span class="announce__item">Volunteer</span><span class="announce__item">Start a Project</span><span class="announce__item">Donate</span></div></div>
+
+<header><nav class="nav"><div class="nav__inner">
+  <a href="/" class="nav__logo-box"><img src="/assets/images/logo.png" alt="Daffodils Africa" class="nav__logo-img" onerror="this.style.display='none'"/><span class="nav__logo-text">Daffodils<small>Africa</small></span></a>
+  <ul class="nav__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/academy">Academy</a></li><li><a href="/impact">Impact</a></li><li><a href="/partnerships">Partner</a></li><li><a href="/blog">Blog</a></li><li><a href="/contact" class="active">Contact</a></li></ul>
+  <div class="nav__actions"><a href="/contact" class="btn btn--outline">Get Involved</a><a href="/contact" class="btn btn--green">Start a Project</a></div>
+  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+</div>
+<div id="mobile-nav" class="nav__mobile"><a href="/about">About Us</a><a href="/programs">What We Do</a><a href="/academy">Academy</a><a href="/impact">Impact</a><a href="/partnerships">Partner</a><a href="/blog">Blog</a><a href="/contact">Contact</a><div class="nav__mobile-btns"><a href="/contact" class="btn btn--green btn--full">Start a Project</a><a href="/contact" class="btn btn--outline btn--full">Get Involved</a></div></div>
+</nav></header>
+
+<main>
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <p class="page-hero__breadcrumb"><a href="/">Home</a> → Contact</p>
+      <h1 class="page-hero__h1">Get In<br><span>Touch</span></h1>
+      <p class="page-hero__sub">Whether you want to start a project, partner with us, volunteer, or just ask a question — we're here. Reach out and let's talk impact.</p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTACT -->
+  <section style="background:var(--bg);border-bottom:var(--b);padding:80px 0;">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="chip chip--yellow">★ Reach Us</div>
+          <h2>We're Ready<br>to Work<br>With You.</h2>
+          <p>Tell us about your idea, project, or question. We respond to all enquiries within 48 hours.</p>
+          <div class="contact-detail">
+            <p class="contact-detail__label">Email</p>
+            <p class="contact-detail__val"><a href="mailto:hello@daffodilsafrica.com" style="color:var(--yellow);">hello@daffodilsafrica.com</a></p>
+          </div>
+          <div class="contact-detail">
+            <p class="contact-detail__label">Location</p>
+            <p class="contact-detail__val">Lagos, Nigeria — Africa</p>
+          </div>
+          <div class="contact-detail">
+            <p class="contact-detail__label">Response Time</p>
+            <p class="contact-detail__val">Within 48 hours</p>
+          </div>
+          <div class="contact-socials">
+            <a href="#" class="contact-social" aria-label="LinkedIn">in</a>
+            <a href="#" class="contact-social" aria-label="Instagram">ig</a>
+            <a href="#" class="contact-social" aria-label="Twitter / X">𝕏</a>
+            <a href="#" class="contact-social" aria-label="Facebook">fb</a>
+          </div>
+        </div>
+        <div class="contact-form-col">
+          <h3>Send Us a Message</h3>
+          <!-- IMPORTANT: Replace YOUR_FORMSPREE_ID with your actual Formspree form ID -->
+          <!-- Get one free at formspree.io — click "New Form", copy the ID from the endpoint URL -->
+          <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+            <div class="form-group">
+              <label class="form-label" for="name">Full Name *</label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="Your full name" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address *</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="org">Organisation (optional)</label>
+              <input type="text" id="org" name="organisation" class="form-input" placeholder="Your organisation or company"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="type">Type of Enquiry *</label>
+              <select id="type" name="enquiry_type" class="form-select" required>
+                <option value="" disabled selected>Select enquiry type</option>
+                <option value="start-project">Start a Project</option>
+                <option value="partnership">Partnership / Corporate</option>
+                <option value="donate">Donation / Support</option>
+                <option value="volunteer">Volunteer</option>
+                <option value="academy">Academy / Courses</option>
+                <option value="general">General Enquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Your Message *</label>
+              <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your idea, project, or question..." required></textarea>
+            </div>
+            <input type="hidden" name="_subject" value="New Enquiry — Daffodils Africa Website"/>
+            <button type="submit" class="btn btn--green btn--full btn--lg">Send Message →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOLUNTEER -->
+  <section style="background:var(--yellow);border-bottom:var(--b);padding:96px 0;">
+    <div class="section-head-center">
+      <div class="chip chip--black">★ Volunteer</div>
+      <h2 class="section-h2">Be Part of<br>Something Bigger</h2>
+      <p class="section-sub section-sub--center">Join our community of changemakers and use your skills to create real impact across Africa.</p>
+    </div>
+    <div class="volunteer-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);margin-bottom:36px;">
+      <div class="volunteer-card">
+        <div class="volunteer-card__header"><span class="volunteer-card__icon" aria-hidden="true">📋</span><h3 class="volunteer-card__title">Project Coordinator</h3></div>
+        <div class="volunteer-card__body"><p class="volunteer-card__text">Help coordinate on-ground project activities, community outreach, and logistics for our social impact programs.</p><a href="#volunteer-form" class="btn btn--black btn--full">Apply Now</a></div>
+      </div>
+      <div class="volunteer-card">
+        <div class="volunteer-card__header"><span class="volunteer-card__icon" aria-hidden="true">📊</span><h3 class="volunteer-card__title">M&amp;E Volunteer</h3></div>
+        <div class="volunteer-card__body"><p class="volunteer-card__text">Support data collection, reporting, and monitoring &amp; evaluation for our impact programs. Perfect for researchers and analysts.</p><a href="#volunteer-form" class="btn btn--black btn--full">Apply Now</a></div>
+      </div>
+      <div class="volunteer-card">
+        <div class="volunteer-card__header"><span class="volunteer-card__icon" aria-hidden="true">💻</span><h3 class="volunteer-card__title">Digital &amp; Comms</h3></div>
+        <div class="volunteer-card__body"><p class="volunteer-card__text">Help us communicate impact through social media, content creation, photography, and digital storytelling.</p><a href="#volunteer-form" class="btn btn--black btn--full">Apply Now</a></div>
+      </div>
+      <div class="volunteer-card">
+        <div class="volunteer-card__header"><span class="volunteer-card__icon" aria-hidden="true">🎓</span><h3 class="volunteer-card__title">Training Facilitator</h3></div>
+        <div class="volunteer-card__body"><p class="volunteer-card__text">Use your expertise to facilitate workshops, trainings, and capacity building sessions for community members.</p><a href="#volunteer-form" class="btn btn--black btn--full">Apply Now</a></div>
+      </div>
+    </div>
+    <!-- VOLUNTEER FORM -->
+    <div style="max-width:680px;margin-inline:auto;padding-inline:var(--pad);" id="volunteer-form">
+      <div style="background:var(--white);border:var(--b);box-shadow:var(--sh-xl);padding:44px;">
+        <h3 style="font-weight:900;font-size:1.2rem;text-transform:uppercase;margin-bottom:24px;">Volunteer Application</h3>
+        <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+          <div class="form-group"><label class="form-label" for="v-name">Full Name *</label><input type="text" id="v-name" name="name" class="form-input" placeholder="Your full name" required/></div>
+          <div class="form-group"><label class="form-label" for="v-email">Email *</label><input type="email" id="v-email" name="email" class="form-input" placeholder="your@email.com" required/></div>
+          <div class="form-group"><label class="form-label" for="v-role">Volunteer Role</label>
+            <select id="v-role" name="volunteer_role" class="form-select">
+              <option value="" disabled selected>Select a role</option>
+              <option>Project Coordinator</option><option>M&amp;E Volunteer</option>
+              <option>Digital &amp; Comms</option><option>Training Facilitator</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label" for="v-skills">Skills &amp; Experience</label><textarea id="v-skills" name="skills" class="form-textarea" placeholder="Tell us about your skills, background, and why you want to volunteer..."></textarea></div>
+          <input type="hidden" name="_subject" value="Volunteer Application — Daffodils Africa"/>
+          <button type="submit" class="btn btn--green btn--full">Submit Volunteer Application →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM ENQUIRY -->
+  <section style="background:var(--bg);border-bottom:var(--b);padding:96px 0;">
+    <div class="wrap">
+      <div class="chip chip--yellow">★ Team Enquiry</div>
+      <div class="team-enquiry">
+        <div>
+          <h2>Want to Join<br>the Daffodils<br>Africa Team?</h2>
+          <p>We're always looking for passionate, skilled individuals who want to build a career in social impact. Send us your details and we'll keep you in mind for future openings.</p>
+        </div>
+        <div>
+          <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+            <div class="form-group"><label class="form-label" style="color:rgba(255,255,255,0.5);" for="t-name">Full Name *</label><input type="text" id="t-name" name="name" class="form-input" placeholder="Your full name" required/></div>
+            <div class="form-group"><label class="form-label" style="color:rgba(255,255,255,0.5);" for="t-email">Email *</label><input type="email" id="t-email" name="email" class="form-input" placeholder="your@email.com" required/></div>
+            <div class="form-group"><label class="form-label" style="color:rgba(255,255,255,0.5);" for="t-role">Area of Interest</label>
+              <select id="t-role" name="area_of_interest" class="form-select">
+                <option value="" disabled selected>Select area</option>
+                <option>Program Management</option><option>Communications</option>
+                <option>Monitoring &amp; Evaluation</option><option>Business Development</option><option>Operations</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label" style="color:rgba(255,255,255,0.5);" for="t-msg">Why Daffodils Africa?</label><textarea id="t-msg" name="message" class="form-textarea" placeholder="Tell us why you want to join and what you bring..."></textarea></div>
+            <input type="hidden" name="_subject" value="Team Enquiry — Daffodils Africa"/>
+            <button type="submit" class="btn btn--yellow btn--full">Send Team Enquiry →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="footer__inner">
+  <div class="footer__grid">
+    <div><div class="footer__logo-box"><img src="/assets/images/logo.png" alt="" style="height:32px;width:auto;" onerror="this.style.display='none'"/><span class="footer__logo-text">Daffodils Africa</span></div><p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa.</p></div>
+    <div><p class="footer__col-head">Navigate</p><ul class="footer__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/impact">Our Impact</a></li><li><a href="/academy">Academy</a></li><li><a href="/partnerships">Partnerships</a></li></ul></div>
+    <div><p class="footer__col-head">Get Involved</p><ul class="footer__links"><li><a href="/contact">Donate</a></li><li><a href="/contact">Volunteer</a></li><li><a href="/contact">Start a Project</a></li></ul></div>
+    <div><p class="footer__col-head">Contact</p><ul class="footer__links"><li><a href="mailto:hello@daffodilsafrica.com">hello@daffodilsafrica.com</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+  </div>
+  <div class="footer__bottom"><p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p><p class="footer__motto">Impact is not accidental. It is built.</p></div>
+</div></footer>
+<script>const b=document.getElementById("burger"),n=document.getElementById("mobile-nav");b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});document.addEventListener("click",e=>{if(!b.contains(e.target)&&!n.contains(e.target)){n.classList.remove("open");b.setAttribute("aria-expanded","false");}});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b.setAttribute("aria-expanded","false");}));</script>
+</body></html>

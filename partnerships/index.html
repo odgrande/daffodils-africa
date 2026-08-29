@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Partnerships — Daffodils Africa</title>
+  <meta name="description" content="Partner with Daffodils Africa — corporate, NGO, government, and individual partnership opportunities to create real social impact across Africa."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet"/>
+  <link rel="stylesheet" href="/assets/css/main.css"/>
+  <style>
+    .partner-type-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+    .partner-card { background:var(--white); border:var(--b); box-shadow:var(--sh-md); overflow:hidden; display:flex; flex-direction:column; transition:transform 0.15s,box-shadow 0.15s; }
+    .partner-card:hover { transform:translateY(-4px); box-shadow:var(--sh-lg); }
+    .partner-card:nth-child(1) .partner-card__header { background:var(--black); color:var(--white); }
+    .partner-card:nth-child(2) .partner-card__header { background:var(--green); color:var(--white); }
+    .partner-card:nth-child(3) .partner-card__header { background:var(--yellow); color:var(--black); }
+    .partner-card:nth-child(4) .partner-card__header { background:var(--violet); color:var(--black); }
+    .partner-card__header { padding:32px; }
+    .partner-card__icon  { font-size:2rem; margin-bottom:14px; display:block; }
+    .partner-card__tag   { font-weight:700; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; opacity:0.6; margin-bottom:10px; }
+    .partner-card__title { font-weight:900; font-size:1.4rem; text-transform:uppercase; line-height:1.15; margin-bottom:8px; }
+    .partner-card__subtitle { font-size:0.875rem; font-weight:500; opacity:0.78; line-height:1.5; }
+    .partner-card__body  { padding:28px; flex:1; display:flex; flex-direction:column; }
+    .partner-card__text  { font-size:0.9rem; font-weight:500; line-height:1.75; flex:1; margin-bottom:20px; }
+    .partner-card__list  { margin-bottom:20px; }
+    .partner-card__list li { font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:8px 0; border-bottom:1px solid rgba(0,0,0,0.08); display:flex; align-items:center; gap:10px; }
+    .partner-card__list li::before { content:'✓'; color:var(--green); font-weight:900; }
+    .partners-logo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .partner-logo-slot  { background:var(--white); border:var(--b); box-shadow:var(--sh-sm); height:100px; display:flex; align-items:center; justify-content:center; transition:box-shadow 0.15s,transform 0.15s; }
+    .partner-logo-slot:hover { box-shadow:var(--sh-md); transform:translateY(-2px); }
+    .partner-logo-slot img { max-height:60px; max-width:140px; object-fit:contain; }
+    @media(max-width:1024px){ .partner-type-grid{grid-template-columns:1fr;} .partners-logo-grid{grid-template-columns:repeat(3,1fr);} }
+    @media(max-width:768px){ .partners-logo-grid{grid-template-columns:repeat(2,1fr);} }
+  </style>
+</head>
+<body>
+<div class="announce" aria-hidden="true"><div class="announce__track"><span class="announce__item">Partner With Us</span><span class="announce__item">Corporate Partnerships</span><span class="announce__item">NGO Collaboration</span><span class="announce__item">Government Partnerships</span><span class="announce__item">Partner With Us</span><span class="announce__item">Corporate Partnerships</span><span class="announce__item">NGO Collaboration</span><span class="announce__item">Government Partnerships</span></div></div>
+
+<header><nav class="nav"><div class="nav__inner">
+  <a href="/" class="nav__logo-box"><img src="/assets/images/logo.png" alt="Daffodils Africa" class="nav__logo-img" onerror="this.style.display='none'"/><span class="nav__logo-text">Daffodils<small>Africa</small></span></a>
+  <ul class="nav__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/academy">Academy</a></li><li><a href="/impact">Impact</a></li><li><a href="/partnerships" class="active">Partner</a></li><li><a href="/blog">Blog</a></li><li><a href="/contact">Contact</a></li></ul>
+  <div class="nav__actions"><a href="/contact" class="btn btn--outline">Get Involved</a><a href="/contact" class="btn btn--green">Start a Project</a></div>
+  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+</div>
+<div id="mobile-nav" class="nav__mobile"><a href="/about">About Us</a><a href="/programs">What We Do</a><a href="/academy">Academy</a><a href="/impact">Impact</a><a href="/partnerships">Partner</a><a href="/blog">Blog</a><a href="/contact">Contact</a><div class="nav__mobile-btns"><a href="/contact" class="btn btn--green btn--full">Start a Project</a><a href="/contact" class="btn btn--outline btn--full">Get Involved</a></div></div>
+</nav></header>
+
+<main>
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <p class="page-hero__breadcrumb"><a href="/">Home</a> → Partnerships</p>
+      <h1 class="page-hero__h1">Let's Build<br><span>Impact</span><br>Together</h1>
+      <p class="page-hero__sub">We believe that the most powerful change happens through collaboration. Partner with Daffodils Africa and let's align your goals with real societal needs.</p>
+      <div class="page-hero__actions"><a href="/contact" class="btn btn--yellow btn--lg">Become a Partner</a><a href="#types" class="btn btn--outline-dark btn--lg">See Partnership Types</a></div>
+    </div>
+  </section>
+
+  <div class="stats"><div class="stats__grid">
+    <div class="stats__cell"><span class="stats__num">10+</span><span class="stats__label">Active Partners</span></div>
+    <div class="stats__cell"><span class="stats__num">5+</span><span class="stats__label">Sectors</span></div>
+    <div class="stats__cell"><span class="stats__num">3,000+</span><span class="stats__label">Lives Together</span></div>
+    <div class="stats__cell"><span class="stats__num">100%</span><span class="stats__label">Transparent Reporting</span></div>
+  </div></div>
+
+  <!-- PARTNERSHIP TYPES -->
+  <section style="background:var(--bg);border-bottom:var(--b);padding:96px 0;" id="types">
+    <div class="section-head-center">
+      <div class="chip chip--yellow">★ Partnership Types</div>
+      <h2 class="section-h2">How We Partner</h2>
+      <p class="section-sub section-sub--center">Every partner is different. We tailor our collaborations to fit your goals, capacity, and mission.</p>
+    </div>
+    <div class="partner-type-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
+      <div class="partner-card">
+        <div class="partner-card__header">
+          <span class="partner-card__icon" aria-hidden="true">🏢</span>
+          <p class="partner-card__tag">Corporate</p>
+          <h3 class="partner-card__title">Corporate &amp; CSR Partners</h3>
+          <p class="partner-card__subtitle">Align your business with community impact that matters.</p>
+        </div>
+        <div class="partner-card__body">
+          <p class="partner-card__text">We help corporates design, execute, and report on CSR initiatives that align with business goals and community needs — from one-off campaigns to multi-year programs.</p>
+          <ul class="partner-card__list">
+            <li>Tailored CSR project design</li>
+            <li>Full execution and management</li>
+            <li>Impact reports for stakeholders</li>
+            <li>Brand visibility on all projects</li>
+          </ul>
+          <a href="/contact" class="btn btn--black btn--full">Become a Corporate Partner</a>
+        </div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-card__header">
+          <span class="partner-card__icon" aria-hidden="true">🤝</span>
+          <p class="partner-card__tag">NGO / Foundation</p>
+          <h3 class="partner-card__title">NGO &amp; Foundation Partners</h3>
+          <p class="partner-card__subtitle">Collaborate to multiply your reach and impact.</p>
+        </div>
+        <div class="partner-card__body">
+          <p class="partner-card__text">We partner with NGOs and foundations to co-design programs, share resources, and amplify impact. Whether joint implementation or referrals, we grow together.</p>
+          <ul class="partner-card__list">
+            <li>Joint project implementation</li>
+            <li>Shared beneficiary networks</li>
+            <li>Co-branded initiatives</li>
+            <li>Resource sharing</li>
+          </ul>
+          <a href="/contact" class="btn btn--green btn--full">Explore NGO Partnership</a>
+        </div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-card__header">
+          <span class="partner-card__icon" aria-hidden="true">🏛️</span>
+          <p class="partner-card__tag">Government</p>
+          <h3 class="partner-card__title">Government &amp; Institutional Partners</h3>
+          <p class="partner-card__subtitle">Implement community programs at scale with our support.</p>
+        </div>
+        <div class="partner-card__body">
+          <p class="partner-card__text">We work with government agencies and public institutions to implement community-focused programs aligned with national development priorities and the SDGs.</p>
+          <ul class="partner-card__list">
+            <li>SDG-aligned program delivery</li>
+            <li>Community outreach support</li>
+            <li>Policy implementation programs</li>
+            <li>M&amp;E and reporting</li>
+          </ul>
+          <a href="/contact" class="btn btn--black btn--full">Partner With Government</a>
+        </div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-card__header">
+          <span class="partner-card__icon" aria-hidden="true">🌟</span>
+          <p class="partner-card__tag">Development Partners</p>
+          <h3 class="partner-card__title">Development Agency Partners</h3>
+          <p class="partner-card__subtitle">Strategic alignment with international development goals.</p>
+        </div>
+        <div class="partner-card__body">
+          <p class="partner-card__text">International development agencies and donor organisations work with us to implement funded programs on the ground — with the community expertise and execution capacity to deliver results.</p>
+          <ul class="partner-card__list">
+            <li>Grant-funded project execution</li>
+            <li>Local implementation expertise</li>
+            <li>Compliant reporting &amp; documentation</li>
+            <li>Beneficiary verification</li>
+          </ul>
+          <a href="/contact" class="btn btn--black btn--full">Discuss a Partnership</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker__track">
+    <span class="ticker__item">Corporate Partners</span><span class="ticker__item">NGO Collaboration</span><span class="ticker__item">Government Programs</span><span class="ticker__item">Development Agencies</span><span class="ticker__item">Impact Together</span>
+    <span class="ticker__item">Corporate Partners</span><span class="ticker__item">NGO Collaboration</span><span class="ticker__item">Government Programs</span><span class="ticker__item">Development Agencies</span><span class="ticker__item">Impact Together</span>
+  </div></div>
+
+  <!-- CURRENT PARTNERS -->
+  <section style="background:var(--yellow);border-bottom:var(--b);padding:96px 0;">
+    <div class="section-head-center">
+      <div class="chip chip--black">★ Our Partners</div>
+      <h2 class="section-h2">Who We Work With</h2>
+      <p class="section-sub section-sub--center">Organisations and individuals who are helping us build a more impactful Africa.</p>
+    </div>
+    <div class="partners-logo-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
+      <!-- REPLACE: partner-1.png through partner-8.png — your partner logos -->
+      <div class="partner-logo-slot"><img src="/assets/images/partner-1.png" alt="Partner 1" onerror="this.outerHTML='<div style=\'font-weight:700;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.4;\'>Partner Logo<br><small>partner-1.png</small></div>'"/></div>
+      <div class="partner-logo-slot"><img src="/assets/images/partner-2.png" alt="Partner 2" onerror="this.outerHTML='<div style=\'font-weight:700;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.4;\'>Partner Logo<br><small>partner-2.png</small></div>'"/></div>
+      <div class="partner-logo-slot"><img src="/assets/images/partner-3.png" alt="Partner 3" onerror="this.outerHTML='<div style=\'font-weight:700;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.4;\'>Partner Logo<br><small>partner-3.png</small></div>'"/></div>
+      <div class="partner-logo-slot"><img src="/assets/images/partner-4.png" alt="Partner 4" onerror="this.outerHTML='<div style=\'font-weight:700;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.4;\'>Partner Logo<br><small>partner-4.png</small></div>'"/></div>
+      <div class="partner-logo-slot"><img src="/assets/images/partner-5.png" alt="Partner 5" onerror="this.outerHTML='<div style=\'font-weight:700;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.4;\'>Partner Logo<br><small>partner-5.png</small></div>'"/></div>
+      <div class="partner-logo-slot"><img src="/assets/images/partner-6.png" alt="Partner 6" onerror="this.outerHTML='<div style=\'font-weight:700;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.4;\'>Partner Logo<br><small>partner-6.png</small></div>'"/></div>
+      <div class="partner-logo-slot"><img src="/assets/images/partner-7.png" alt="Partner 7" onerror="this.outerHTML='<div style=\'font-weight:700;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.4;\'>Partner Logo<br><small>partner-7.png</small></div>'"/></div>
+      <div class="partner-logo-slot"><img src="/assets/images/partner-8.png" alt="Partner 8" onerror="this.outerHTML='<div style=\'font-weight:700;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;opacity:0.4;\'>Partner Logo<br><small>partner-8.png</small></div>'"/></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:var(--black);padding:96px 0;text-align:center;" class="pat-halftone-light">
+    <div style="max-width:680px;margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
+      <div class="chip chip--yellow">★ Join Us</div>
+      <h2 style="font-weight:900;font-size:clamp(2.2rem,4vw,3.5rem);color:var(--white);text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:20px;">Ready to Build<br>Impact Together?</h2>
+      <p style="font-size:1.05rem;color:rgba(255,255,255,0.6);margin-bottom:40px;line-height:1.7;">Reach out today and let's explore how we can align your mission with real community impact across Africa.</p>
+      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+        <a href="/contact" class="btn btn--yellow btn--lg">Become a Partner</a>
+        <a href="/contact" class="btn btn--outline-dark btn--lg">Send an Enquiry</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="footer__inner">
+  <div class="footer__grid">
+    <div><div class="footer__logo-box"><img src="/assets/images/logo.png" alt="" style="height:32px;width:auto;" onerror="this.style.display='none'"/><span class="footer__logo-text">Daffodils Africa</span></div><p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa.</p></div>
+    <div><p class="footer__col-head">Navigate</p><ul class="footer__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/impact">Our Impact</a></li><li><a href="/academy">Academy</a></li><li><a href="/partnerships">Partnerships</a></li></ul></div>
+    <div><p class="footer__col-head">Get Involved</p><ul class="footer__links"><li><a href="/contact">Donate</a></li><li><a href="/contact">Volunteer</a></li><li><a href="/contact">Start a Project</a></li></ul></div>
+    <div><p class="footer__col-head">Contact</p><ul class="footer__links"><li><a href="mailto:hello@daffodilsafrica.com">hello@daffodilsafrica.com</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+  </div>
+  <div class="footer__bottom"><p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p><p class="footer__motto">Impact is not accidental. It is built.</p></div>
+</div></footer>
+<script>const b=document.getElementById("burger"),n=document.getElementById("mobile-nav");b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});document.addEventListener("click",e=>{if(!b.contains(e.target)&&!n.contains(e.target)){n.classList.remove("open");b.setAttribute("aria-expanded","false");}});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b.setAttribute("aria-expanded","false");}));</script>
+</body></html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery — Daffodils Africa</title>
+  <meta name="description" content="Daffodils Africa gallery — photos and videos from our projects, events, and community programs across Africa."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet"/>
+  <link rel="stylesheet" href="/assets/css/main.css"/>
+  <style>
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: var(--b);
+      box-shadow: var(--sh-xl);
+    }
+    .gallery-item {
+      border-right: var(--b);
+      border-bottom: var(--b);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-item:nth-child(4n) { border-right: none; }
+    .gallery-item:nth-last-child(-n+4) { border-bottom: none; }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.3s ease;
+      display: block;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item__overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0);
+      transition: background 0.2s;
+      display: flex; align-items: flex-end; padding: 16px;
+    }
+    .gallery-item:hover .gallery-item__overlay { background: rgba(0,0,0,0.35); }
+    .gallery-item__label {
+      font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--white); opacity: 0;
+      transition: opacity 0.2s; background: var(--black); padding: 4px 10px;
+    }
+    .gallery-item:hover .gallery-item__label { opacity: 1; }
+
+    /* FEATURED large item */
+    .gallery-item--featured {
+      grid-column: span 2;
+      grid-row: span 2;
+      border-right: var(--b);
+      border-bottom: var(--b);
+    }
+
+    /* VIDEO SECTION */
+    .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .video-slot {
+      background: var(--black); border: var(--b); box-shadow: var(--sh-md);
+      aspect-ratio: 16/9; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    .video-slot:hover { transform: translateY(-4px); box-shadow: var(--sh-lg); }
+    .video-slot__play {
+      width: 64px; height: 64px;
+      background: var(--yellow); border: var(--b);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+    .video-slot__label {
+      font-weight: 700; font-size: 0.72rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5); text-align: center;
+    }
+    @media(max-width:1024px){ .gallery-grid{grid-template-columns:repeat(3,1fr);} .gallery-item:nth-child(4n){border-right:var(--b);} .gallery-item:nth-child(3n){border-right:none;} .gallery-item--featured{grid-column:span 1;grid-row:span 1;} .video-grid{grid-template-columns:1fr 1fr;} }
+    @media(max-width:768px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} .gallery-item:nth-child(3n){border-right:var(--b);} .gallery-item:nth-child(2n){border-right:none;} .video-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<div class="announce" aria-hidden="true"><div class="announce__track"><span class="announce__item">Gallery</span><span class="announce__item">Project Photos</span><span class="announce__item">Events</span><span class="announce__item">Community Programs</span><span class="announce__item">Gallery</span><span class="announce__item">Project Photos</span><span class="announce__item">Events</span><span class="announce__item">Community Programs</span></div></div>
+
+<header><nav class="nav"><div class="nav__inner">
+  <a href="/" class="nav__logo-box"><img src="/assets/images/logo.png" alt="Daffodils Africa" class="nav__logo-img" onerror="this.style.display='none'"/><span class="nav__logo-text">Daffodils<small>Africa</small></span></a>
+  <ul class="nav__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/academy">Academy</a></li><li><a href="/impact">Impact</a></li><li><a href="/partnerships">Partner</a></li><li><a href="/blog">Blog</a></li><li><a href="/contact">Contact</a></li></ul>
+  <div class="nav__actions"><a href="/contact" class="btn btn--outline">Get Involved</a><a href="/contact" class="btn btn--green">Start a Project</a></div>
+  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+</div>
+<div id="mobile-nav" class="nav__mobile"><a href="/about">About Us</a><a href="/programs">What We Do</a><a href="/academy">Academy</a><a href="/impact">Impact</a><a href="/partnerships">Partner</a><a href="/blog">Blog</a><a href="/contact">Contact</a><div class="nav__mobile-btns"><a href="/contact" class="btn btn--green btn--full">Start a Project</a><a href="/contact" class="btn btn--outline btn--full">Get Involved</a></div></div>
+</nav></header>
+
+<main>
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <p class="page-hero__breadcrumb"><a href="/">Home</a> → Gallery</p>
+      <h1 class="page-hero__h1">Impact In<br><span>Pictures</span></h1>
+      <p class="page-hero__sub">A visual record of our work — community programs, events, campaigns, and the people behind every project.</p>
+    </div>
+  </section>
+
+  <!-- PHOTO GALLERY -->
+  <section style="background:var(--bg);border-bottom:var(--b);padding:80px 0;">
+    <div class="section-head-center">
+      <div class="chip chip--yellow">★ Photo Gallery</div>
+      <h2 class="section-h2">Our Work In Photos</h2>
+      <p class="section-sub section-sub--center">Moments from our projects, events, and community programs across Africa.</p>
+    </div>
+    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
+      <!-- REPLACE: gallery-1.jpg through gallery-12.jpg — your event/project photos -->
+      <!-- Recommended size: 400×300px for each. Files go in assets/images/ -->
+      <div class="gallery-grid">
+        <div class="gallery-item gallery-item--featured">
+          <img src="/assets/images/gallery-1.jpg" alt="Daffodils Africa project" onerror="this.style.display='none'; this.parentNode.querySelector('.gallery-item__overlay').style.display='none'; this.parentNode.style.background='#f0ede6'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-1.jpg<br>800×600px<br>Featured Photo</div>';"/>
+          <div class="gallery-item__overlay"><span class="gallery-item__label">Community Impact</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery-2.jpg" alt="Daffodils Africa event" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-2.jpg<br>400×300px</div>';"/>
+          <div class="gallery-item__overlay"><span class="gallery-item__label">Program Event</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery-3.jpg" alt="Daffodils Africa community" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-3.jpg<br>400×300px</div>';"/>
+          <div class="gallery-item__overlay"><span class="gallery-item__label">Community</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery-4.jpg" alt="Daffodils Africa outreach" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-4.jpg<br>400×300px</div>';"/>
+          <div class="gallery-item__overlay"><span class="gallery-item__label">Outreach</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery-5.jpg" alt="Daffodils Africa project" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-5.jpg<br>400×300px</div>';"/>
+          <div class="gallery-item__overlay"><span class="gallery-item__label">Project</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery-6.jpg" alt="Daffodils Africa volunteers" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-6.jpg<br>400×300px</div>';"/>
+          <div class="gallery-item__overlay"><span class="gallery-item__label">Volunteers</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery-7.jpg" alt="Daffodils Africa impact" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-7.jpg<br>400×300px</div>';"/>
+          <div class="gallery-item__overlay"><span class="gallery-item__label">Impact</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery-8.jpg" alt="Daffodils Africa team" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-8.jpg<br>400×300px</div>';"/>
+          <div class="gallery-item__overlay"><span class="gallery-item__label">Team</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery-9.jpg" alt="Daffodils Africa program" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-9.jpg<br>400×300px</div>';"/>
+          <div class="gallery-item__overlay"><span class="gallery-item__label">Program</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery-10.jpg" alt="Daffodils Africa beneficiaries" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-10.jpg<br>400×300px</div>';"/>
+          <div class="gallery-item__overlay"><span class="gallery-item__label">Beneficiaries</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery-11.jpg" alt="Daffodils Africa campaign" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-11.jpg<br>400×300px</div>';"/>
+          <div class="gallery-item__overlay"><span class="gallery-item__label">Campaign</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="/assets/images/gallery-12.jpg" alt="Daffodils Africa community event" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-12.jpg<br>400×300px</div>';"/>
+          <div class="gallery-item__overlay"><span class="gallery-item__label">Community Event</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker__track">
+    <span class="ticker__item">Photos</span><span class="ticker__item">Events</span><span class="ticker__item">Projects</span><span class="ticker__item">Community</span><span class="ticker__item">Impact</span><span class="ticker__item">Africa</span>
+    <span class="ticker__item">Photos</span><span class="ticker__item">Events</span><span class="ticker__item">Projects</span><span class="ticker__item">Community</span><span class="ticker__item">Impact</span><span class="ticker__item">Africa</span>
+  </div></div>
+
+  <!-- VIDEO SECTION -->
+  <section style="background:var(--black);border-bottom:var(--b);padding:96px 0;" class="pat-halftone-light">
+    <div class="section-head-center" style="position:relative;z-index:1;">
+      <div class="chip chip--yellow">★ Videos</div>
+      <h2 class="section-h2" style="color:var(--white);">See Our Work<br>In Action</h2>
+      <p class="section-sub section-sub--center" style="color:rgba(255,255,255,0.6);">Watch stories from our projects, community events, and impact campaigns.</p>
+    </div>
+    <div class="video-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
+      <!-- Replace src="" with actual YouTube embed URLs when available -->
+      <div class="video-slot">
+        <div class="video-slot__play" aria-hidden="true">▶</div>
+        <p class="video-slot__label">IWD 2024<br>Women Empowerment</p>
+      </div>
+      <div class="video-slot">
+        <div class="video-slot__play" aria-hidden="true">▶</div>
+        <p class="video-slot__label">Community<br>Development Program</p>
+      </div>
+      <div class="video-slot">
+        <div class="video-slot__play" aria-hidden="true">▶</div>
+        <p class="video-slot__label">Impact Campaign<br>Highlights</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:var(--yellow);padding:96px 0;text-align:center;">
+    <div style="max-width:680px;margin-inline:auto;padding-inline:var(--pad);">
+      <div class="chip chip--black">★ Be Part of the Story</div>
+      <h2 style="font-weight:900;font-size:clamp(2.2rem,4vw,3.5rem);text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:20px;">Your Project Belongs<br>In This Gallery.</h2>
+      <p style="font-size:1.05rem;font-weight:500;margin-bottom:40px;line-height:1.7;">Start a project with us and we'll document your impact — photos, data, and stories — for the world to see.</p>
+      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+        <a href="/contact" class="btn btn--black btn--lg">Start a Project</a>
+        <a href="/impact" class="btn btn--outline btn--lg">See Our Impact</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="footer__inner">
+  <div class="footer__grid">
+    <div><div class="footer__logo-box"><img src="/assets/images/logo.png" alt="" style="height:32px;width:auto;" onerror="this.style.display='none'"/><span class="footer__logo-text">Daffodils Africa</span></div><p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa.</p></div>
+    <div><p class="footer__col-head">Navigate</p><ul class="footer__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/impact">Our Impact</a></li><li><a href="/academy">Academy</a></li><li><a href="/partnerships">Partnerships</a></li></ul></div>
+    <div><p class="footer__col-head">Get Involved</p><ul class="footer__links"><li><a href="/contact">Donate</a></li><li><a href="/contact">Volunteer</a></li><li><a href="/contact">Start a Project</a></li></ul></div>
+    <div><p class="footer__col-head">Contact</p><ul class="footer__links"><li><a href="mailto:hello@daffodilsafrica.com">hello@daffodilsafrica.com</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+  </div>
+  <div class="footer__bottom"><p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p><p class="footer__motto">Impact is not accidental. It is built.</p></div>
+</div></footer>
+<script>const b=document.getElementById("burger"),n=document.getElementById("mobile-nav");b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});document.addEventListener("click",e=>{if(!b.contains(e.target)&&!n.contains(e.target)){n.classList.remove("open");b.setAttribute("aria-expanded","false");}});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b.setAttribute("aria-expanded","false");}));</script>
+</body></html>

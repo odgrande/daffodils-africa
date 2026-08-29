@@ -1,346 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Daffodils Africa — Turning Compassion into Measurable Impact</title>
-  <meta name="description" content="Daffodils Africa is a social enterprise implementing high-impact social projects across Africa." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet" />
-
+  <meta name="description" content="Daffodils Africa is a social enterprise implementing high-impact social projects across Africa."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet"/>
+  <link rel="stylesheet" href="/assets/css/main.css"/>
   <style>
-    /* =============================================
-       DESIGN SYSTEM TOKENS — NEO-BRUTALISM
-       Adapted for Daffodils Africa brand
-    ============================================= */
-    :root {
-      /* Core palette */
-      --bg:      #FFFDF5;   /* cream canvas */
-      --black:   #000000;   /* pure structural black */
-      --yellow:  #FFD93D;   /* daffodil yellow (secondary highlight) */
-      --green:   #1B5E20;   /* deep green — primary action */
-      --violet:  #C4B5FD;   /* soft violet — muted sections */
-      --red:     #FF6B6B;   /* hot red — urgent donate CTAs */
-      --white:   #FFFFFF;
+    /* ── HOMEPAGE-ONLY STYLES ── */
 
-      /* Hard offset shadows — zero blur, solid black */
-      --sh-xs:  2px 2px 0 0 #000;
-      --sh-sm:  4px 4px 0 0 #000;
-      --sh-md:  8px 8px 0 0 #000;
-      --sh-lg:  12px 12px 0 0 #000;
-      --sh-xl:  16px 16px 0 0 #000;
-
-      /* Borders — thick, sharp, always black */
-      --b:   4px solid #000;
-      --b2:  2px solid #000;
-      --b8:  8px solid #000;
-
-      /* Layout */
-      --max:  1200px;
-      --pad:  clamp(16px, 4vw, 32px);
-      --font: 'Space Grotesk', sans-serif;
-    }
-
-    /* =============================================
-       RESET
-    ============================================= */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--black);
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
-    a   { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    ul  { list-style: none; }
-
-    /* =============================================
-       LAYOUT UTILITIES
-    ============================================= */
-    .wrap {
-      max-width: var(--max);
-      margin-inline: auto;
-      padding-inline: var(--pad);
-    }
-
-    /* Section chip / label */
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: var(--b);
-      box-shadow: var(--sh-sm);
-      padding: 6px 14px;
-      font-weight: 700;
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-    .chip--yellow { background: var(--yellow); color: var(--black); }
-    .chip--black  { background: var(--black);  color: var(--yellow); }
-    .chip--green  { background: var(--green);  color: var(--white); }
-    .chip--red    { background: var(--red);    color: var(--white); }
-
-    /* =============================================
-       BACKGROUND PATTERNS
-    ============================================= */
-    .pat-halftone::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(rgba(0,0,0,0.1) 1.5px, transparent 1.5px);
-      background-size: 22px 22px;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .pat-grid::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(to right,  rgba(0,0,0,0.06) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
-      z-index: 0;
-    }
-    /* Halftone on dark bg */
-    .pat-halftone-light::before {
-      background-image: radial-gradient(rgba(255,255,255,0.07) 1.5px, transparent 1.5px);
-      background-size: 22px 22px;
-    }
-
-    /* =============================================
-       BUTTONS — mechanical push-down on :active
-    ============================================= */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      height: 52px;
-      padding: 0 26px;
-      font-family: var(--font);
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      border: var(--b);
-      cursor: pointer;
-      white-space: nowrap;
-      position: relative;
-      transition: transform 0.1s ease, box-shadow 0.1s ease;
-      -webkit-user-select: none;
-      user-select: none;
-    }
-    /* Lift on hover */
-    .btn:hover  { transform: translate(-2px, -2px); }
-    /* Push down on click — covers the shadow = mechanical feel */
-    .btn:active { transform: translate(2px, 2px); box-shadow: none !important; }
-
-    .btn--green   { background: var(--green);  color: var(--white); box-shadow: var(--sh-md); }
-    .btn--green:hover  { box-shadow: var(--sh-lg); }
-
-    .btn--yellow  { background: var(--yellow); color: var(--black); box-shadow: var(--sh-md); }
-    .btn--yellow:hover { box-shadow: var(--sh-lg); }
-
-    .btn--red     { background: var(--red);    color: var(--white); box-shadow: var(--sh-md); }
-    .btn--red:hover    { box-shadow: var(--sh-lg); }
-
-    .btn--black   { background: var(--black);  color: var(--yellow); box-shadow: 8px 8px 0 0 var(--yellow); }
-    .btn--black:hover  { box-shadow: 12px 12px 0 0 var(--yellow); }
-
-    .btn--outline { background: var(--white);  color: var(--black); box-shadow: var(--sh-md); }
-    .btn--outline:hover { background: var(--yellow); box-shadow: var(--sh-lg); }
-
-    .btn--outline-dark {
-      background: transparent;
-      color: var(--white);
-      border-color: rgba(255,255,255,0.5);
-      box-shadow: 4px 4px 0 0 rgba(255,255,255,0.3);
-    }
-    .btn--outline-dark:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: var(--white);
-      box-shadow: 6px 6px 0 0 rgba(255,255,255,0.4);
-    }
-
-    .btn--lg   { height: 60px; padding: 0 36px; font-size: 0.95rem; }
-    .btn--full { width: 100%; }
-
-    /* =============================================
-       ANIMATIONS
-    ============================================= */
-    @keyframes da-spin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-    @keyframes da-ticker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    @keyframes da-bounce-badge {
-      0%, 100% { transform: rotate(4deg) translateY(0); }
-      50%       { transform: rotate(4deg) translateY(-8px); }
-    }
-    @keyframes da-pulse-dot {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0.3; }
-    }
-
-    .spin-slow     { display: inline-block; animation: da-spin 12s linear infinite; }
-    .bounce-badge  { animation: da-bounce-badge 2.8s ease-in-out infinite; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .spin-slow, .bounce-badge { animation: none !important; }
-    }
-
-    /* =============================================
-       ANNOUNCEMENT BAR (top ticker)
-    ============================================= */
-    .announce {
-      background: var(--black);
-      border-bottom: var(--b);
-      overflow: hidden;
-      white-space: nowrap;
-      padding: 10px 0;
-    }
-    .announce__track {
-      display: inline-flex;
-      animation: da-ticker 22s linear infinite;
-    }
-    .announce__item {
-      font-weight: 700;
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--yellow);
-      padding: 0 28px;
-    }
-    .announce__item::after { content: ' ★'; }
-
-    /* =============================================
-       NAVIGATION
-    ============================================= */
-    .nav {
-      background: var(--bg);
-      border-bottom: var(--b);
-      position: sticky;
-      top: 0;
-      z-index: 200;
-    }
-    .nav__inner {
-      max-width: var(--max);
-      margin-inline: auto;
-      padding-inline: var(--pad);
-      height: 72px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    /* Yellow logo box — signature nav element */
-    .nav__logo-box {
-      display: inline-block;
-      background: var(--yellow);
-      border: var(--b);
-      box-shadow: var(--sh-sm);
-      padding: 8px 16px;
-      font-weight: 900;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      color: var(--black);
-      line-height: 1;
-      flex-shrink: 0;
-      text-decoration: none;
-    }
-    .nav__logo-box small {
-      display: block;
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      font-weight: 700;
-      opacity: 0.65;
-      margin-top: 3px;
-    }
-    .nav__links {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      margin-left: 20px;
-    }
-    .nav__links a {
-      display: block;
-      padding: 8px 12px;
-      font-weight: 700;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      border: 2px solid transparent;
-      transition: all 0.1s ease;
-    }
-    .nav__links a:hover {
-      background: var(--yellow);
-      border-color: var(--black);
-      box-shadow: var(--sh-sm);
-    }
-    .nav__actions {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-    /* Burger button for mobile */
-    .nav__burger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: var(--white);
-      border: var(--b);
-      box-shadow: var(--sh-sm);
-      padding: 0;
-      width: 48px;
-      height: 48px;
-      align-items: center;
-      justify-content: center;
-      transition: box-shadow 0.1s;
-    }
-    .nav__burger:hover { box-shadow: var(--sh-md); }
-    .nav__burger span { width: 20px; height: 2px; background: var(--black); display: block; }
-
-    /* Mobile dropdown nav */
-    .nav__mobile {
-      display: none;
-      flex-direction: column;
-      background: var(--bg);
-      border-top: var(--b);
-    }
-    .nav__mobile.open { display: flex; }
-    .nav__mobile a {
-      display: block;
-      padding: 16px var(--pad);
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      border-bottom: var(--b2);
-    }
-    .nav__mobile a:hover { background: var(--yellow); }
-    .nav__mobile-btns {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      padding: var(--pad);
-    }
-
-    /* =============================================
-       HERO
-    ============================================= */
+    /* HERO */
     .hero {
       background: var(--bg);
       border-bottom: var(--b);
@@ -360,8 +31,6 @@
       z-index: 1;
     }
     .hero__content { padding-bottom: 72px; }
-
-    /* Eyebrow */
     .hero__eyebrow {
       display: flex;
       align-items: center;
@@ -374,8 +43,6 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
     }
-
-    /* Massive headline */
     .hero__h1 {
       font-weight: 900;
       font-size: clamp(3.2rem, 6.5vw, 5.8rem);
@@ -384,7 +51,6 @@
       text-transform: uppercase;
       margin-bottom: 28px;
     }
-    /* Yellow block on "COMPASSION" */
     .hero__word-box {
       background: var(--yellow);
       border: var(--b);
@@ -393,13 +59,10 @@
       display: inline-block;
       transform: rotate(-1.5deg);
     }
-    /* Outlined stroke text on "MEASURABLE" */
     .hero__word-stroke {
       -webkit-text-stroke: 3px var(--black);
       color: transparent;
-      display: inline;
     }
-
     .hero__sub {
       font-size: 1.05rem;
       font-weight: 500;
@@ -407,11 +70,7 @@
       max-width: 500px;
       margin-bottom: 40px;
     }
-    .hero__actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    .hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
     /* Hero right panel */
     .hero__panel {
@@ -419,47 +78,15 @@
       padding-bottom: 72px;
       align-self: end;
     }
-    .hero__card {
-      background: var(--black);
+    /* Community photo slot */
+    .hero__photo {
       border: var(--b);
       box-shadow: var(--sh-xl);
-      padding: 44px 36px;
+      overflow: hidden;
+      margin-bottom: 0;
       position: relative;
       z-index: 1;
     }
-    .hero__card-eyebrow {
-      font-weight: 700;
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 20px;
-    }
-    .hero__card-quote {
-      font-weight: 900;
-      font-size: 1.65rem;
-      color: var(--white);
-      text-transform: uppercase;
-      line-height: 1.15;
-      margin-bottom: 20px;
-    }
-    .hero__card-quote em {
-      font-style: normal;
-      color: var(--yellow);
-    }
-    .hero__card-rule {
-      height: 4px;
-      background: var(--yellow);
-      margin-bottom: 20px;
-    }
-    .hero__card-attr {
-      font-weight: 700;
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.4);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    /* Floating badge — bouncing, rotated */
     .hero__badge {
       position: absolute;
       top: -28px;
@@ -477,7 +104,6 @@
       text-align: center;
       z-index: 2;
     }
-    /* Big ghost number behind card */
     .hero__ghost-num {
       position: absolute;
       bottom: 12px;
@@ -492,69 +118,7 @@
       z-index: 0;
     }
 
-    /* =============================================
-       STATS STRIP
-    ============================================= */
-    .stats {
-      background: var(--yellow);
-      border-bottom: var(--b);
-    }
-    .stats__grid {
-      max-width: var(--max);
-      margin-inline: auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-    .stats__cell {
-      padding: 30px 24px;
-      border-right: var(--b);
-      text-align: center;
-    }
-    .stats__cell:last-child { border-right: none; }
-    .stats__num {
-      font-weight: 900;
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
-      line-height: 1;
-      text-transform: uppercase;
-      display: block;
-    }
-    .stats__label {
-      font-weight: 700;
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,0.55);
-      margin-top: 6px;
-    }
-
-    /* =============================================
-       BLACK TICKER (mid-page)
-    ============================================= */
-    .ticker {
-      background: var(--black);
-      border-top: var(--b);
-      border-bottom: var(--b);
-      overflow: hidden;
-      white-space: nowrap;
-      padding: 14px 0;
-    }
-    .ticker__track {
-      display: inline-flex;
-      animation: da-ticker 32s linear infinite;
-    }
-    .ticker__item {
-      font-weight: 900;
-      font-size: 0.82rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--yellow);
-      padding: 0 32px;
-    }
-    .ticker__item::after { content: ' ✦'; }
-
-    /* =============================================
-       WHO WE ARE
-    ============================================= */
+    /* WHO WE ARE */
     .who {
       background: var(--bg);
       border-bottom: var(--b);
@@ -577,17 +141,13 @@
       text-transform: uppercase;
       margin-bottom: 24px;
     }
-    .who__headline u {
-      text-decoration-thickness: 4px;
-      text-underline-offset: 4px;
-    }
+    .who__headline u { text-decoration-thickness: 4px; text-underline-offset: 4px; }
     .who__body {
       font-size: 1.05rem;
       font-weight: 500;
       line-height: 1.75;
       margin-bottom: 14px;
     }
-    /* Yellow callout block */
     .who__callout {
       background: var(--yellow);
       border: var(--b);
@@ -596,18 +156,15 @@
       font-weight: 900;
       font-size: 1rem;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
       margin-top: 32px;
       transform: rotate(-0.8deg);
       display: block;
     }
-    /* Pull-quote card */
     .who__quote {
       background: var(--black);
       border: var(--b);
       box-shadow: var(--sh-xl);
       padding: 52px 40px;
-      position: relative;
     }
     .who__quote-mark {
       font-weight: 900;
@@ -635,9 +192,7 @@
       border-top: 2px solid rgba(255,255,255,0.12);
     }
 
-    /* =============================================
-       WHAT WE DO (4-column bordered card grid)
-    ============================================= */
+    /* WHAT WE DO */
     .what {
       background: var(--bg);
       border-bottom: var(--b);
@@ -652,19 +207,6 @@
       margin-bottom: 52px;
       position: relative;
       z-index: 1;
-    }
-    .what__headline {
-      font-weight: 900;
-      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-    }
-    .what__sub {
-      font-weight: 500;
-      font-size: 1rem;
-      margin-top: 12px;
-      max-width: 480px;
     }
     .what__grid {
       max-width: var(--max);
@@ -681,17 +223,12 @@
       background: var(--white);
       border-right: var(--b);
       padding: 40px 26px;
-      transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+      transition: background 0.15s, transform 0.15s;
     }
     .what-card:last-child { border-right: none; }
     .what-card:hover { background: var(--yellow); transform: translateY(-4px); }
-    /* Alternate dark cards */
-    .what-card:nth-child(even) {
-      background: var(--black);
-      color: var(--white);
-    }
+    .what-card:nth-child(even) { background: var(--black); color: var(--white); }
     .what-card:nth-child(even):hover { background: var(--green); }
-    /* Big outlined card number */
     .what-card__num {
       font-weight: 900;
       font-size: 3.8rem;
@@ -709,39 +246,17 @@
       margin-bottom: 12px;
       line-height: 1.3;
     }
-    .what-card__body {
-      font-size: 0.875rem;
-      font-weight: 500;
-      line-height: 1.7;
-      opacity: 0.7;
-    }
+    .what-card__body { font-size: 0.875rem; font-weight: 500; line-height: 1.7; opacity: 0.7; }
 
-    /* =============================================
-       WHY DAFFODILS AFRICA (yellow bg)
-    ============================================= */
+    /* WHY */
     .why {
       background: var(--yellow);
       border-bottom: var(--b);
       padding: 96px 0;
     }
-    .why__inner {
-      max-width: var(--max);
-      margin-inline: auto;
-      padding-inline: var(--pad);
-    }
+    .why__inner { max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); }
     .why__head { margin-bottom: 52px; }
-    .why__headline {
-      font-weight: 900;
-      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-    }
-    .why__grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
+    .why__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
     .why-item {
       background: var(--white);
       border: var(--b);
@@ -750,7 +265,7 @@
       display: flex;
       gap: 20px;
       align-items: flex-start;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition: transform 0.15s, box-shadow 0.15s;
     }
     .why-item:hover { transform: translateY(-4px); box-shadow: var(--sh-lg); }
     .why-item__icon {
@@ -764,18 +279,10 @@
       font-size: 1.4rem;
       flex-shrink: 0;
     }
-    .why-item__title {
-      font-weight: 900;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 8px;
-    }
-    .why-item__body { font-size: 0.875rem; font-weight: 500; line-height: 1.7; }
+    .why-item__title { font-weight: 900; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+    .why-item__body  { font-size: 0.875rem; font-weight: 500; line-height: 1.7; }
 
-    /* =============================================
-       IMPACT SNAPSHOT (black bg)
-    ============================================= */
+    /* IMPACT */
     .impact {
       background: var(--black);
       border-bottom: var(--b);
@@ -801,15 +308,8 @@
       margin-bottom: 60px;
     }
     .impact__headline span { color: var(--yellow); }
-    .impact__grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border: var(--b);
-    }
-    .impact__cell {
-      padding: 52px 20px;
-      border-right: var(--b);
-    }
+    .impact__grid { display: grid; grid-template-columns: repeat(4, 1fr); border: var(--b); }
+    .impact__cell { padding: 52px 20px; border-right: var(--b); }
     .impact__cell:last-child { border-right: none; }
     .impact__num {
       font-weight: 900;
@@ -828,1093 +328,538 @@
       margin-top: 10px;
     }
 
-    /* =============================================
-       AUDIENCE CARDS (like pricing — 3-col bordered)
-    ============================================= */
-    .audience {
-      background: var(--bg);
-      border-bottom: var(--b);
-      padding: 96px 0;
-    }
-    .audience__inner {
-      max-width: var(--max);
-      margin-inline: auto;
-      padding-inline: var(--pad);
-    }
-    .audience__head {
-      text-align: center;
-      margin-bottom: 52px;
-    }
-    .audience__headline {
-      font-weight: 900;
-      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-    }
-    .audience__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border: var(--b);
-      box-shadow: var(--sh-xl);
-    }
-    .aud-col {
-      border-right: var(--b);
-      display: flex;
-      flex-direction: column;
-    }
+    /* AUDIENCE */
+    .audience { background: var(--bg); border-bottom: var(--b); padding: 96px 0; }
+    .audience__inner { max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); }
+    .audience__head { text-align: center; margin-bottom: 52px; }
+    .audience__grid { display: grid; grid-template-columns: repeat(3, 1fr); border: var(--b); box-shadow: var(--sh-xl); }
+    .aud-col { border-right: var(--b); display: flex; flex-direction: column; }
     .aud-col:last-child { border-right: none; }
-    .aud-col__header {
-      padding: 36px 30px;
-      border-bottom: var(--b);
-    }
+    .aud-col__header { padding: 36px 30px; border-bottom: var(--b); }
     .aud-col:nth-child(1) .aud-col__header { background: var(--black); color: var(--white); }
     .aud-col:nth-child(2) .aud-col__header { background: var(--green); color: var(--white); }
     .aud-col:nth-child(3) .aud-col__header { background: var(--yellow); color: var(--black); }
-    .aud-col__tag {
-      font-weight: 700;
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      opacity: 0.6;
-      margin-bottom: 12px;
-    }
-    .aud-col__title {
-      font-weight: 900;
-      font-size: 1.5rem;
-      text-transform: uppercase;
-      letter-spacing: -0.01em;
-      line-height: 1.1;
-      margin-bottom: 8px;
-    }
-    .aud-col__subtitle {
-      font-size: 0.875rem;
-      font-weight: 500;
-      opacity: 0.78;
-      line-height: 1.5;
-    }
-    .aud-col__body {
-      padding: 30px;
-      background: var(--white);
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .aud-col__text {
-      font-size: 0.9rem;
-      font-weight: 500;
-      line-height: 1.75;
-      flex: 1;
-      margin-bottom: 16px;
-    }
-    .aud-col__note {
-      font-weight: 700;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      border-left: 4px solid var(--green);
-      padding-left: 12px;
-      color: var(--green);
-      margin-bottom: 24px;
-    }
-    .aud-col__actions {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .aud-col__tag { font-weight: 700; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.6; margin-bottom: 12px; }
+    .aud-col__title { font-weight: 900; font-size: 1.5rem; text-transform: uppercase; line-height: 1.1; margin-bottom: 8px; }
+    .aud-col__subtitle { font-size: 0.875rem; font-weight: 500; opacity: 0.78; line-height: 1.5; }
+    .aud-col__body { padding: 30px; background: var(--white); flex: 1; display: flex; flex-direction: column; }
+    .aud-col__text { font-size: 0.9rem; font-weight: 500; line-height: 1.75; flex: 1; margin-bottom: 16px; }
+    .aud-col__note { font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; border-left: 4px solid var(--green); padding-left: 12px; color: var(--green); margin-bottom: 24px; }
+    .aud-col__actions { display: flex; flex-direction: column; gap: 10px; }
 
-    /* =============================================
-       HOW WE WORK (violet bg, step grid)
-    ============================================= */
-    .how {
-      background: var(--violet);
-      border-bottom: var(--b);
-      padding: 96px 0;
-    }
-    .how__inner {
-      max-width: var(--max);
-      margin-inline: auto;
-      padding-inline: var(--pad);
-    }
-    .how__head {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-    .how__headline {
-      font-weight: 900;
-      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-    }
-    .how__grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border: var(--b);
-      box-shadow: var(--sh-lg);
-    }
-    .how-step {
-      background: var(--white);
-      border-right: var(--b);
-      padding: 40px 26px;
-      text-align: center;
-      transition: background 0.15s ease;
-    }
+    /* HOW WE WORK */
+    .how { background: var(--violet); border-bottom: var(--b); padding: 96px 0; }
+    .how__inner { max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); }
+    .how__head { text-align: center; margin-bottom: 56px; }
+    .how__grid { display: grid; grid-template-columns: repeat(4, 1fr); border: var(--b); box-shadow: var(--sh-lg); }
+    .how-step { background: var(--white); border-right: var(--b); padding: 40px 26px; text-align: center; transition: background 0.15s; }
     .how-step:last-child { border-right: none; }
     .how-step:hover { background: var(--yellow); }
     .how-step__num {
-      width: 60px;
-      height: 60px;
-      background: var(--black);
-      color: var(--yellow);
-      font-weight: 900;
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-inline: auto;
-      margin-bottom: 20px;
-      border: var(--b);
+      width: 60px; height: 60px;
+      background: var(--black); color: var(--yellow);
+      font-weight: 900; font-size: 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+      margin-inline: auto; margin-bottom: 20px; border: var(--b);
     }
-    .how-step__title {
-      font-weight: 900;
-      font-size: 0.88rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 10px;
-    }
-    .how-step__body {
-      font-size: 0.85rem;
-      font-weight: 500;
-      line-height: 1.7;
-    }
+    .how-step__title { font-weight: 900; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 10px; }
+    .how-step__body  { font-size: 0.85rem; font-weight: 500; line-height: 1.7; }
 
-    /* =============================================
-       IMPACT MADE EASY (dark section)
-    ============================================= */
-    .easy {
-      background: var(--black);
-      border-bottom: var(--b);
-      padding: 96px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .easy__inner {
-      max-width: var(--max);
-      margin-inline: auto;
-      padding-inline: var(--pad);
-      position: relative;
-      z-index: 1;
-    }
-    .easy__head { margin-bottom: 52px; }
-    .easy__headline {
-      font-weight: 900;
-      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      color: var(--white);
-    }
+    /* EASY (dark) */
+    .easy { background: var(--black); border-bottom: var(--b); padding: 96px 0; position: relative; overflow: hidden; }
+    .easy__inner { max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); position: relative; z-index: 1; }
+    .easy__head  { margin-bottom: 52px; }
+    .easy__headline { font-weight: 900; font-size: clamp(2.2rem, 4.5vw, 3.8rem); line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; color: var(--white); }
     .easy__headline .hl { color: var(--yellow); }
-    .easy__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
+    .easy__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .easy-card {
       border: 3px solid rgba(255,255,255,0.2);
       padding: 40px 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+      display: flex; flex-direction: column; gap: 14px;
       transition: border-color 0.15s, background 0.15s, transform 0.15s;
     }
-    .easy-card:hover {
-      border-color: var(--yellow);
-      background: rgba(255,255,255,0.04);
-      transform: translateY(-4px);
-    }
+    .easy-card:hover { border-color: var(--yellow); background: rgba(255,255,255,0.04); transform: translateY(-4px); }
     .easy-card__icon { font-size: 2.5rem; }
-    .easy-card__title {
-      font-weight: 900;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--white);
-    }
-    .easy-card__body {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.58);
-      line-height: 1.75;
-      flex: 1;
-    }
+    .easy-card__title { font-weight: 900; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--white); }
+    .easy-card__body  { font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.58); line-height: 1.75; flex: 1; }
     .easy-card__link {
-      font-weight: 900;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--yellow);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border-bottom: 3px solid var(--yellow);
-      padding-bottom: 2px;
-      width: fit-content;
+      font-weight: 900; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--yellow); display: inline-flex; align-items: center; gap: 6px;
+      border-bottom: 3px solid var(--yellow); padding-bottom: 2px; width: fit-content;
       transition: color 0.1s, border-color 0.1s;
     }
     .easy-card__link:hover { color: var(--white); border-color: var(--white); }
 
-    /* =============================================
-       READY CTA (grid pattern bg)
-    ============================================= */
-    .ready {
-      background: var(--bg);
-      border-bottom: var(--b);
-      padding: 96px 0;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .ready__inner {
-      max-width: 720px;
-      margin-inline: auto;
-      padding-inline: var(--pad);
-      position: relative;
-      z-index: 1;
-    }
-    .ready__headline {
-      font-weight: 900;
-      font-size: clamp(2.5rem, 5.5vw, 5rem);
-      line-height: 0.92;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .ready__sub {
-      font-size: 1.05rem;
-      font-weight: 500;
-      line-height: 1.7;
-      margin-bottom: 44px;
-      max-width: 520px;
-      margin-inline: auto;
-    }
-    .ready__sub { margin-bottom: 44px; }
-    .ready__actions {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    /* READY CTA */
+    .ready { background: var(--bg); border-bottom: var(--b); padding: 96px 0; text-align: center; position: relative; overflow: hidden; }
+    .ready__inner { max-width: 720px; margin-inline: auto; padding-inline: var(--pad); position: relative; z-index: 1; }
+    .ready__headline { font-weight: 900; font-size: clamp(2.5rem, 5.5vw, 5rem); line-height: 0.92; letter-spacing: -0.03em; text-transform: uppercase; margin-bottom: 20px; }
+    .ready__sub { font-size: 1.05rem; font-weight: 500; line-height: 1.7; margin-bottom: 44px; max-width: 520px; margin-inline: auto; }
+    .ready__actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
 
-    /* =============================================
-       FINAL CONVERSION (yellow, 2-col)
-    ============================================= */
-    .convert {
-      background: var(--yellow);
-      border-bottom: var(--b);
-      padding: 96px 0;
-    }
+    /* CONVERT */
+    .convert { background: var(--yellow); border-bottom: var(--b); padding: 96px 0; }
     .convert__inner {
-      max-width: var(--max);
-      margin-inline: auto;
-      padding-inline: var(--pad);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
+      max-width: var(--max); margin-inline: auto; padding-inline: var(--pad);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
     }
-    .convert__headline {
-      font-weight: 900;
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      line-height: 1;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-    .convert__sub {
-      font-size: 1rem;
-      font-weight: 500;
-      line-height: 1.75;
-      margin-bottom: 28px;
-    }
+    .convert__headline { font-weight: 900; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin-bottom: 18px; }
+    .convert__sub { font-size: 1rem; font-weight: 500; line-height: 1.75; margin-bottom: 28px; }
     .convert__list { margin-bottom: 40px; }
     .convert__list li {
-      font-weight: 700;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      padding: 12px 0;
-      border-bottom: 3px solid rgba(0,0,0,0.15);
-      display: flex;
-      align-items: center;
-      gap: 14px;
+      font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.04em;
+      padding: 12px 0; border-bottom: 3px solid rgba(0,0,0,0.15);
+      display: flex; align-items: center; gap: 14px;
     }
     .convert__list li::before {
-      content: '✔';
-      background: var(--black);
-      color: var(--yellow);
-      width: 28px;
-      height: 28px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      flex-shrink: 0;
-      font-weight: 700;
+      content: '✔'; background: var(--black); color: var(--yellow);
+      width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; flex-shrink: 0;
     }
-    .convert__closing {
-      font-weight: 900;
-      font-size: 1.05rem;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-    }
+    .convert__closing { font-weight: 900; font-size: 1.05rem; text-transform: uppercase; }
     .convert__actions { display: flex; flex-direction: column; gap: 14px; }
-    /* Big primary CTA button */
     .convert__big {
-      display: block;
-      background: var(--black);
-      color: var(--yellow);
-      border: var(--b);
-      box-shadow: var(--sh-lg);
-      padding: 22px 32px;
-      font-family: var(--font);
-      font-weight: 900;
-      font-size: 1.05rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      text-align: center;
-      cursor: pointer;
+      display: block; background: var(--black); color: var(--yellow);
+      border: var(--b); box-shadow: var(--sh-lg);
+      padding: 22px 32px; font-family: var(--font); font-weight: 900; font-size: 1.05rem;
+      text-transform: uppercase; letter-spacing: 0.04em; text-align: center; cursor: pointer;
       transition: transform 0.1s, box-shadow 0.1s;
     }
-    .convert__big:hover { transform: translate(-3px, -3px); box-shadow: 15px 15px 0 0 var(--black); }
-    .convert__big:active { transform: translate(3px, 3px); box-shadow: none; }
+    .convert__big:hover { transform: translate(-3px,-3px); box-shadow: 15px 15px 0 0 var(--black); }
+    .convert__big:active { transform: translate(3px,3px); box-shadow: none; }
 
-    /* =============================================
-       FOOTER
-    ============================================= */
-    .footer {
-      background: var(--black);
-      padding: 64px 0 32px;
-      border-top: 6px solid var(--yellow);
-    }
-    .footer__inner {
-      max-width: var(--max);
-      margin-inline: auto;
-      padding-inline: var(--pad);
-    }
-    .footer__grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 48px;
-      margin-bottom: 52px;
-    }
-    /* Yellow bordered logo box in footer */
-    .footer__logo {
-      display: inline-block;
-      background: var(--yellow);
-      border: var(--b);
-      box-shadow: var(--sh-sm);
-      padding: 8px 16px;
-      font-weight: 900;
-      font-size: 1rem;
-      text-transform: uppercase;
-      color: var(--black);
-      margin-bottom: 18px;
-    }
-    .footer__about {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.45);
-      line-height: 1.75;
-      max-width: 260px;
-    }
-    .footer__col-head {
-      font-weight: 900;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid rgba(255,255,255,0.1);
-    }
-    .footer__links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .footer__links a {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.5);
-      transition: color 0.1s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .footer__links a::before { content: '→'; opacity: 0.35; font-size: 0.75rem; }
-    .footer__links a:hover { color: var(--yellow); }
-    .footer__bottom {
-      border-top: 2px solid rgba(255,255,255,0.08);
-      padding-top: 28px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .footer__copy {
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.3);
-    }
-    .footer__motto {
-      font-weight: 900;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: rgba(255,255,255,0.2);
-    }
-
-    /* =============================================
-       RESPONSIVE
-    ============================================= */
+    /* RESPONSIVE */
     @media (max-width: 1024px) {
-      .hero__inner         { grid-template-columns: 1fr; }
-      .hero__panel         { display: none; }
-      .hero__content       { padding-bottom: 48px; }
-      .who__inner          { grid-template-columns: 1fr; gap: 48px; }
-      .what__grid          { grid-template-columns: repeat(2, 1fr); }
-      .what-card:nth-child(2) { border-right: none; }
-      .what-card:nth-child(3) { border-right: var(--b); border-top: var(--b); }
-      .what-card:nth-child(4) { border-right: none; border-top: var(--b); }
-      .audience__grid      { grid-template-columns: 1fr; }
-      .aud-col             { border-right: none; border-bottom: var(--b); }
-      .aud-col:last-child  { border-bottom: none; }
-      .how__grid           { grid-template-columns: repeat(2, 1fr); }
-      .how-step:nth-child(2n){ border-right: none; }
-      .how-step:nth-child(3),
-      .how-step:nth-child(4) { border-top: var(--b); }
-      .easy__grid          { grid-template-columns: repeat(2, 1fr); }
-      .convert__inner      { grid-template-columns: 1fr; gap: 48px; }
-      .footer__grid        { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .hero__inner    { grid-template-columns: 1fr; }
+      .hero__panel    { display: none; }
+      .hero__content  { padding-bottom: 48px; }
+      .who__inner     { grid-template-columns: 1fr; gap: 48px; }
+      .what__grid     { grid-template-columns: repeat(2, 1fr); }
+      .what-card:nth-child(2){ border-right: none; }
+      .what-card:nth-child(3){ border-right: var(--b); border-top: var(--b); }
+      .what-card:nth-child(4){ border-right: none; border-top: var(--b); }
+      .audience__grid { grid-template-columns: 1fr; }
+      .aud-col        { border-right: none; border-bottom: var(--b); }
+      .aud-col:last-child { border-bottom: none; }
+      .how__grid      { grid-template-columns: repeat(2, 1fr); }
+      .how-step:nth-child(2n) { border-right: none; }
+      .how-step:nth-child(3), .how-step:nth-child(4) { border-top: var(--b); }
+      .easy__grid     { grid-template-columns: repeat(2, 1fr); }
+      .convert__inner { grid-template-columns: 1fr; gap: 48px; }
     }
-
     @media (max-width: 768px) {
-      /* Nav */
-      .nav__links, .nav__actions { display: none; }
-      .nav__burger                { display: flex; }
-      /* Stats */
-      .stats__grid { grid-template-columns: repeat(2, 1fr); }
-      .stats__cell:nth-child(2n){ border-right: none; }
-      .stats__cell               { border-bottom: var(--b); }
-      .stats__cell:nth-child(3),
-      .stats__cell:nth-child(4) { border-bottom: none; }
-      /* What */
-      .what__grid { grid-template-columns: 1fr; }
-      .what-card  { border-right: none; border-bottom: var(--b); }
+      .what__grid  { grid-template-columns: 1fr; }
+      .what-card   { border-right: none; border-bottom: var(--b); }
       .what-card:last-child { border-bottom: none; }
-      /* Why */
-      .why__grid { grid-template-columns: 1fr; }
-      /* Impact */
-      .impact__grid { grid-template-columns: repeat(2, 1fr); }
-      .impact__cell:nth-child(2n){ border-right: none; }
-      .impact__cell               { border-bottom: var(--b); }
+      .why__grid   { grid-template-columns: 1fr; }
+      .impact__grid{ grid-template-columns: repeat(2, 1fr); }
+      .impact__cell:nth-child(2n) { border-right: none; }
+      .impact__cell { border-bottom: var(--b); }
       .impact__cell:nth-child(3),
       .impact__cell:nth-child(4) { border-bottom: none; }
-      /* How */
-      .how__grid { grid-template-columns: 1fr; }
-      .how-step  { border-right: none; border-bottom: var(--b); }
+      .how__grid   { grid-template-columns: 1fr; }
+      .how-step    { border-right: none; border-bottom: var(--b); }
       .how-step:last-child { border-bottom: none; }
-      /* Easy */
-      .easy__grid { grid-template-columns: 1fr; }
-      /* Footer */
-      .footer__grid  { grid-template-columns: 1fr; }
-      .footer__about { max-width: 100%; }
-      .footer__bottom{ flex-direction: column; text-align: center; }
+      .easy__grid  { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ============================================
-       ANNOUNCEMENT BAR
-  ============================================= -->
-  <div class="announce" aria-label="Site announcements" role="marquee">
-    <div class="announce__track" aria-hidden="true">
-      <span class="announce__item">New Programs Launching Q4 2026</span>
-      <span class="announce__item">Social Impact Delivery</span>
-      <span class="announce__item">CSR Made Easy</span>
-      <span class="announce__item">Community-First Projects</span>
-      <span class="announce__item">3,000+ Lives Reached</span>
-      <span class="announce__item">Daffodils Africa</span>
-      <!-- Duplicate for seamless loop -->
-      <span class="announce__item">New Programs Launching Q4 2026</span>
-      <span class="announce__item">Social Impact Delivery</span>
-      <span class="announce__item">CSR Made Easy</span>
-      <span class="announce__item">Community-First Projects</span>
-      <span class="announce__item">3,000+ Lives Reached</span>
-      <span class="announce__item">Daffodils Africa</span>
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce" aria-hidden="true">
+  <div class="announce__track">
+    <span class="announce__item">New Programs Launching Q4 2026</span>
+    <span class="announce__item">Social Impact Delivery</span>
+    <span class="announce__item">CSR Made Easy</span>
+    <span class="announce__item">Community-First Projects</span>
+    <span class="announce__item">3,000+ Lives Reached</span>
+    <span class="announce__item">Daffodils Africa</span>
+    <span class="announce__item">New Programs Launching Q4 2026</span>
+    <span class="announce__item">Social Impact Delivery</span>
+    <span class="announce__item">CSR Made Easy</span>
+    <span class="announce__item">Community-First Projects</span>
+    <span class="announce__item">3,000+ Lives Reached</span>
+    <span class="announce__item">Daffodils Africa</span>
+  </div>
+</div>
+
+<header>
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo-box" aria-label="Daffodils Africa home">
+        <img src="/assets/images/logo.png" alt="Daffodils Africa" class="nav__logo-img"
+             onerror="this.style.display='none'"/>
+        <span class="nav__logo-text">Daffodils<small>Africa</small></span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/programs">What We Do</a></li>
+        <li><a href="/academy">Academy</a></li>
+        <li><a href="/impact">Impact</a></li>
+        <li><a href="/partnerships">Partner</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <div class="nav__actions">
+        <a href="/contact" class="btn btn--outline">Get Involved</a>
+        <a href="/contact" class="btn btn--green">Start a Project</a>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div id="mobile-nav" class="nav__mobile">
+      <a href="/about">About Us</a>
+      <a href="/programs">What We Do</a>
+      <a href="/academy">Academy</a>
+      <a href="/impact">Impact</a>
+      <a href="/partnerships">Partner</a>
+      <a href="/blog">Blog</a>
+      <a href="/contact">Contact</a>
+      <div class="nav__mobile-btns">
+        <a href="/contact" class="btn btn--green btn--full">Start a Project</a>
+        <a href="/contact" class="btn btn--outline btn--full">Get Involved</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero pat-halftone" id="home">
+    <div class="hero__inner">
+      <div class="hero__content">
+        <div class="hero__eyebrow">
+          <span class="spin-slow" aria-hidden="true" style="font-size:1.1rem;">★</span>
+          <span class="hero__eyebrow-text">Social Enterprise · Impact Delivery · Africa</span>
+        </div>
+        <h1 class="hero__h1">
+          Turning<br>
+          <span class="hero__word-box">Compassion</span><br>
+          Into<br>
+          <span class="hero__word-stroke">Measurable</span><br>
+          Impact
+        </h1>
+        <p class="hero__sub">We design and implement high-impact social initiatives that transform communities, empower people, and deliver real, trackable change across Africa.</p>
+        <div class="hero__actions">
+          <a href="/contact" class="btn btn--green btn--lg">Start a Project</a>
+          <a href="/programs"  class="btn btn--outline btn--lg">See What We Do</a>
+        </div>
+      </div>
+
+      <div class="hero__panel" aria-hidden="true">
+        <div class="hero__badge bounce-badge">⚡ Real Impact<br>Guaranteed</div>
+        <div class="hero__photo">
+          <!-- REPLACE: rename your hero community photo to hero-community.jpg -->
+          <img src="/assets/images/hero-community.jpg" alt="Daffodils Africa community impact"
+               onerror="this.outerHTML='<div class=\'img-ph\' style=\'height:420px;\'>Hero Community Photo<br><small>hero-community.jpg · 800×420px</small></div>'"/>
+        </div>
+        <div class="hero__ghost-num" aria-hidden="true">3K+</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stats__grid">
+      <div class="stats__cell"><span class="stats__num">3,000+</span><span class="stats__label">Lives Reached</span></div>
+      <div class="stats__cell"><span class="stats__num">12+</span><span class="stats__label">Programs Executed</span></div>
+      <div class="stats__cell"><span class="stats__num">10+</span><span class="stats__label">Strategic Partnerships</span></div>
+      <div class="stats__cell"><span class="stats__num">5+</span><span class="stats__label">Sectors Impacted</span></div>
     </div>
   </div>
 
-  <!-- ============================================
-       NAVIGATION
-  ============================================= -->
-  <header>
-    <nav class="nav" aria-label="Main navigation">
-      <div class="nav__inner">
-        <!-- Yellow logo box — neo-brutalism signature -->
-        <a href="/" class="nav__logo-box" aria-label="Daffodils Africa home">
-          Daffodils
-          <small>Africa</small>
-        </a>
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span class="ticker__item">Social Impact</span><span class="ticker__item">Community Development</span>
+      <span class="ticker__item">Project Execution</span><span class="ticker__item">CSR Solutions</span>
+      <span class="ticker__item">Monitoring &amp; Evaluation</span><span class="ticker__item">Empowerment</span>
+      <span class="ticker__item">Sustainable Change</span><span class="ticker__item">Africa-First</span>
+      <span class="ticker__item">Social Impact</span><span class="ticker__item">Community Development</span>
+      <span class="ticker__item">Project Execution</span><span class="ticker__item">CSR Solutions</span>
+      <span class="ticker__item">Monitoring &amp; Evaluation</span><span class="ticker__item">Empowerment</span>
+      <span class="ticker__item">Sustainable Change</span><span class="ticker__item">Africa-First</span>
+    </div>
+  </div>
 
-        <ul class="nav__links" role="list">
-          <li><a href="#what">What We Do</a></li>
-          <li><a href="#impact">Impact</a></li>
-          <li><a href="#how">How We Work</a></li>
-          <li><a href="#partner">Partner</a></li>
-          <li><a href="#contact">Contact</a></li>
+  <!-- WHO WE ARE -->
+  <section class="who" id="who">
+    <div class="who__inner">
+      <div>
+        <div class="chip chip--yellow">★ Who We Are</div>
+        <h2 class="who__headline">A Social Enterprise Built for <u>Impact</u>. Not Just Intention.</h2>
+        <p class="who__body">Daffodils Africa is a social enterprise committed to implementing social impact projects for individuals, organizations, and government. We partner with individuals, corporates, and institutions to design and execute projects that create sustainable change.</p>
+        <p class="who__body">We solve real community challenges through innovative, people-centered solutions — every project comes with a clear plan, transparent execution, and measurable outcomes.</p>
+        <span class="who__callout">We don't just run projects — we build systems that last.</span>
+      </div>
+      <div class="who__quote">
+        <span class="who__quote-mark" aria-hidden="true">"</span>
+        <p class="who__quote-text">Impact is not accidental. It is built — with strategy, with partners, and with purpose.</p>
+        <p class="who__quote-attr">— Daffodils Africa</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="what pat-grid" id="what">
+    <div class="what__head">
+      <div class="chip chip--black">★ What We Do</div>
+      <h2 class="section-h2">We Translate Vision Into Impact</h2>
+      <p class="section-sub">Helping individuals and organisations turn ambition into actionable, measurable community change.</p>
+    </div>
+    <div class="what__grid">
+      <div class="what-card">
+        <span class="what-card__num" aria-hidden="true">01</span>
+        <h3 class="what-card__title">Project Design &amp; Implementation</h3>
+        <p class="what-card__body">From idea to execution roadmap — we plan, design, and deliver nonprofit and social impact projects end-to-end.</p>
+      </div>
+      <div class="what-card">
+        <span class="what-card__num" aria-hidden="true">02</span>
+        <h3 class="what-card__title">Community Development Programs</h3>
+        <p class="what-card__body">Health, education, and livelihoods programs built with and for communities across Africa.</p>
+      </div>
+      <div class="what-card">
+        <span class="what-card__num" aria-hidden="true">03</span>
+        <h3 class="what-card__title">Impact Campaigns &amp; Outreach</h3>
+        <p class="what-card__body">Scalable, high-visibility initiatives that create real awareness and drive meaningful, measurable engagement.</p>
+      </div>
+      <div class="what-card">
+        <span class="what-card__num" aria-hidden="true">04</span>
+        <h3 class="what-card__title">Monitoring &amp; Evaluation</h3>
+        <p class="what-card__body">Data-driven results you can trust. We measure what matters and report transparently on every outcome.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why">
+    <div class="why__inner">
+      <div class="why__head">
+        <div class="chip chip--black">★ Why Choose Us</div>
+        <h2 class="section-h2">Why Daffodils Africa?</h2>
+      </div>
+      <div class="why__grid">
+        <div class="why-item"><div class="why-item__icon" aria-hidden="true">📊</div><div><h3 class="why-item__title">Proven Impact</h3><p class="why-item__body">We focus on measurable outcomes, not just activities. Every project comes with clear metrics, real data, and transparent reporting.</p></div></div>
+        <div class="why-item"><div class="why-item__icon" aria-hidden="true">🤝</div><div><h3 class="why-item__title">Community-First Approach</h3><p class="why-item__body">Solutions built with communities, not just for them. We listen, engage, and co-create every step of the way.</p></div></div>
+        <div class="why-item"><div class="why-item__icon" aria-hidden="true">🌍</div><div><h3 class="why-item__title">Strategic Partnerships</h3><p class="why-item__body">We align your goals with real societal needs, connecting your mission to the people and places where impact happens.</p></div></div>
+        <div class="why-item"><div class="why-item__icon" aria-hidden="true">⚙️</div><div><h3 class="why-item__title">End-to-End Execution</h3><p class="why-item__body">From concept to final report — we handle the full cycle. You bring the vision, we bring the execution.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT SNAPSHOT -->
+  <section class="impact pat-halftone-light" id="impact">
+    <div class="impact__inner">
+      <div class="chip chip--yellow">★ Impact Snapshot</div>
+      <h2 class="impact__headline">Real Numbers.<br><span>Real Change.</span></h2>
+      <div class="impact__grid">
+        <div class="impact__cell"><span class="impact__num">3,000+</span><p class="impact__label">Lives Reached</p></div>
+        <div class="impact__cell"><span class="impact__num">12+</span><p class="impact__label">Programs Executed</p></div>
+        <div class="impact__cell"><span class="impact__num">10+</span><p class="impact__label">Strategic Partnerships</p></div>
+        <div class="impact__cell"><span class="impact__num">5+</span><p class="impact__label">Sectors Impacted</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE -->
+  <section class="audience" id="partner">
+    <div class="audience__inner">
+      <div class="audience__head">
+        <div class="chip chip--yellow">★ Who We Work With</div>
+        <h2 class="section-h2">Impact Is For Everyone</h2>
+      </div>
+      <div class="audience__grid">
+        <div class="aud-col">
+          <div class="aud-col__header">
+            <p class="aud-col__tag">For Individuals</p>
+            <h3 class="aud-col__title">Fund Change. See Results.</h3>
+            <p class="aud-col__subtitle">Your support transforms lives, not just funds projects.</p>
+          </div>
+          <div class="aud-col__body">
+            <p class="aud-col__text">Every donation goes directly into impactful, transparent, and measurable initiatives across underserved communities in Africa.</p>
+            <p class="aud-col__note">Clear impact reports — see exactly what your contribution achieves.</p>
+            <div class="aud-col__actions">
+              <a href="/contact" class="btn btn--red btn--full">Donate Now</a>
+              <a href="/contact" class="btn btn--outline btn--full">Sponsor a Project</a>
+              <a href="/contact" class="btn btn--outline btn--full" style="font-size:0.78rem;">Become a Monthly Supporter</a>
+            </div>
+          </div>
+        </div>
+        <div class="aud-col">
+          <div class="aud-col__header">
+            <p class="aud-col__tag">For Organisations &amp; Partners</p>
+            <h3 class="aud-col__title">Let's Build Impact Together</h3>
+            <p class="aud-col__subtitle">CSR initiatives. Community programs. Executed right.</p>
+          </div>
+          <div class="aud-col__body">
+            <p class="aud-col__text">Looking to implement a social impact project, CSR initiative, or community program? We help you design, execute, and measure projects that align with your mission.</p>
+            <div class="aud-col__actions">
+              <a href="/contact" class="btn btn--green btn--full">Start a Project With Us</a>
+              <a href="/contact" class="btn btn--outline btn--full">Book a Consultation</a>
+            </div>
+          </div>
+        </div>
+        <div class="aud-col">
+          <div class="aud-col__header">
+            <p class="aud-col__tag">For Volunteers</p>
+            <h3 class="aud-col__title">Be Part of Something Bigger</h3>
+            <p class="aud-col__subtitle">Join a community of changemakers.</p>
+          </div>
+          <div class="aud-col__body">
+            <p class="aud-col__text">Work alongside passionate people creating lasting impact across Africa. Your time, skills, and expertise drive real change in real communities.</p>
+            <div class="aud-col__actions">
+              <a href="/contact" class="btn btn--black btn--full">Volunteer With Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section class="how" id="how">
+    <div class="how__inner">
+      <div class="how__head">
+        <div class="chip chip--black">★ The Process</div>
+        <h2 class="section-h2">How We Work</h2>
+      </div>
+      <div class="how__grid">
+        <div class="how-step"><div class="how-step__num">01</div><h3 class="how-step__title">You Bring the Vision</h3><p class="how-step__body">Share your idea or social challenge. We listen, ask the right questions, and understand what matters most.</p></div>
+        <div class="how-step"><div class="how-step__num">02</div><h3 class="how-step__title">We Design the Project</h3><p class="how-step__body">Tailored project plan: objectives, timeline, community engagement strategy, budget, and success metrics.</p></div>
+        <div class="how-step"><div class="how-step__num">03</div><h3 class="how-step__title">We Execute It</h3><p class="how-step__body">Full on-the-ground implementation. We coordinate all logistics, partnerships, and community engagement on your behalf.</p></div>
+        <div class="how-step"><div class="how-step__num">04</div><h3 class="how-step__title">You See the Impact</h3><p class="how-step__body">Transparent reporting, real data, and impact stories. See exactly what changed and how many lives were touched.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT MADE EASY -->
+  <section class="easy pat-halftone-light" id="programs">
+    <div class="easy__inner">
+      <div class="easy__head">
+        <div class="chip chip--green">★ Story-Driven Impact</div>
+        <h2 class="easy__headline">Impact Made <span class="hl">Easy</span> For You</h2>
+      </div>
+      <div class="easy__grid">
+        <div class="easy-card"><span class="easy-card__icon">🎯</span><h3 class="easy-card__title">Have a Vision to Reach Others?</h3><p class="easy-card__body">You have the intention. We have the strategy, network, and execution framework. Together, we make impact happen — on time, on target.</p><a href="/contact" class="easy-card__link">Let's Make It Happen →</a></div>
+        <div class="easy-card"><span class="easy-card__icon">📣</span><h3 class="easy-card__title">Want to Run a High-Impact Campaign?</h3><p class="easy-card__body">We design, run, and measure outreach campaigns that create real visibility and real change. High reach. Measurable outcomes.</p><a href="/contact" class="easy-card__link">Work With Us →</a></div>
+        <div class="easy-card"><span class="easy-card__icon">🌱</span><h3 class="easy-card__title">Looking to Empower Youth?</h3><p class="easy-card__body">Education, skills, and opportunity — the building blocks of lasting change. Start a youth empowerment project today.</p><a href="/contact" class="easy-card__link">Start a Project →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- READY CTA -->
+  <section class="ready pat-grid">
+    <div class="ready__inner">
+      <div class="chip chip--yellow">★ Get Started</div>
+      <h2 class="ready__headline">Ready to Create Impact That Matters?</h2>
+      <p class="ready__sub">Whether you're an individual, organisation, donor, or changemaker — we'll help you bring your vision to life.</p>
+      <div class="ready__actions">
+        <a href="/contact" class="btn btn--black btn--lg">Work With Us</a>
+        <a href="/contact" class="btn btn--yellow btn--lg">Book a Consultation</a>
+        <a href="/contact" class="btn btn--outline btn--lg">Support Our Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CONVERSION -->
+  <section class="convert" id="contact-strip">
+    <div class="convert__inner">
+      <div>
+        <div class="chip chip--black">★ Don't Wait</div>
+        <h2 class="convert__headline">Don't Be Stuck With Ideas. Deliver It — Let's Help You!</h2>
+        <p class="convert__sub">At Daffodils Africa, we turn ideas into scalable, meaningful, and measurable change. Whether you're:</p>
+        <ul class="convert__list">
+          <li>An individual donor</li>
+          <li>A corporate organisation</li>
+          <li>A government or institution</li>
+          <li>An individual changemaker</li>
         </ul>
-
-        <div class="nav__actions">
-          <a href="#start" class="btn btn--outline">Learn More</a>
-          <a href="#start" class="btn btn--green">Start a Project</a>
-        </div>
-
-        <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
-          <span></span><span></span><span></span>
-        </button>
+        <p class="convert__closing">We're ready to work with you.</p>
       </div>
-
-      <!-- Mobile menu -->
-      <div id="mobile-nav" class="nav__mobile" role="navigation" aria-label="Mobile navigation">
-        <a href="#what">What We Do</a>
-        <a href="#impact">Impact</a>
-        <a href="#how">How We Work</a>
-        <a href="#partner">Partner</a>
-        <a href="#contact">Contact</a>
-        <div class="nav__mobile-btns">
-          <a href="#start" class="btn btn--green btn--full">Start a Project</a>
-          <a href="#start" class="btn btn--outline btn--full">Learn More</a>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-
-    <!-- ============================================
-         HERO
-    ============================================= -->
-    <section class="hero pat-halftone" id="home" aria-labelledby="hero-h1">
-      <div class="hero__inner">
-
-        <!-- LEFT: Main content -->
-        <div class="hero__content">
-          <div class="hero__eyebrow">
-            <span class="spin-slow" aria-hidden="true" style="font-size:1.1rem;">★</span>
-            <span class="hero__eyebrow-text">Social Enterprise · Impact Delivery · Africa</span>
-          </div>
-
-          <h1 class="hero__h1" id="hero-h1">
-            Turning<br>
-            <span class="hero__word-box">Compassion</span><br>
-            Into<br>
-            <span class="hero__word-stroke">Measurable</span><br>
-            Impact
-          </h1>
-
-          <p class="hero__sub">
-            We design and implement high-impact social initiatives that transform communities, empower people, and deliver real, trackable change across Africa.
-          </p>
-
-          <div class="hero__actions">
-            <a href="#start" class="btn btn--green btn--lg">Start a Project</a>
-            <a href="#what"  class="btn btn--outline btn--lg">See What We Do</a>
-          </div>
-        </div>
-
-        <!-- RIGHT: Quote card panel -->
-        <div class="hero__panel" aria-hidden="true">
-          <!-- Bouncing badge -->
-          <div class="hero__badge bounce-badge">
-            ⚡ Real Impact<br>Guaranteed
-          </div>
-
-          <div class="hero__card">
-            <p class="hero__card-eyebrow">Daffodils Africa · Core Belief</p>
-            <p class="hero__card-quote">
-              Impact is not<br>accidental.<br>It is <em>BUILT.</em>
-            </p>
-            <div class="hero__card-rule"></div>
-            <p class="hero__card-attr">— Daffodils Africa Leadership</p>
-          </div>
-
-          <!-- Ghost number background texture -->
-          <div class="hero__ghost-num" aria-hidden="true">3K+</div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============================================
-         STATS STRIP
-    ============================================= -->
-    <div class="stats" role="region" aria-label="Impact statistics">
-      <div class="stats__grid">
-        <div class="stats__cell">
-          <span class="stats__num">3,000+</span>
-          <span class="stats__label">Lives Reached</span>
-        </div>
-        <div class="stats__cell">
-          <span class="stats__num">12+</span>
-          <span class="stats__label">Programs Executed</span>
-        </div>
-        <div class="stats__cell">
-          <span class="stats__num">10+</span>
-          <span class="stats__label">Strategic Partnerships</span>
-        </div>
-        <div class="stats__cell">
-          <span class="stats__num">5+</span>
-          <span class="stats__label">Sectors Impacted</span>
-        </div>
+      <div class="convert__actions">
+        <a href="/contact" class="convert__big">Start Your Impact Project Today! →</a>
+        <a href="/contact" class="btn btn--outline btn--full">Contact Us for a Consultation</a>
+        <a href="/partnerships" class="btn btn--outline btn--full">Partner With Us</a>
+        <a href="/contact"   class="btn btn--red btn--full">Donate Now</a>
       </div>
     </div>
+  </section>
 
-    <!-- ============================================
-         BLACK TICKER
-    ============================================= -->
-    <div class="ticker" aria-hidden="true" role="marquee">
-      <div class="ticker__track">
-        <span class="ticker__item">Social Impact</span>
-        <span class="ticker__item">Community Development</span>
-        <span class="ticker__item">Project Execution</span>
-        <span class="ticker__item">CSR Solutions</span>
-        <span class="ticker__item">Monitoring &amp; Evaluation</span>
-        <span class="ticker__item">Empowerment</span>
-        <span class="ticker__item">Sustainable Change</span>
-        <span class="ticker__item">Africa-First</span>
-        <!-- Duplicated for seamless loop -->
-        <span class="ticker__item">Social Impact</span>
-        <span class="ticker__item">Community Development</span>
-        <span class="ticker__item">Project Execution</span>
-        <span class="ticker__item">CSR Solutions</span>
-        <span class="ticker__item">Monitoring &amp; Evaluation</span>
-        <span class="ticker__item">Empowerment</span>
-        <span class="ticker__item">Sustainable Change</span>
-        <span class="ticker__item">Africa-First</span>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo-box">
+          <img src="/assets/images/logo.png" alt="Daffodils Africa" style="height:32px;width:auto;" onerror="this.style.display='none'"/>
+          <span class="footer__logo-text">Daffodils Africa</span>
+        </div>
+        <p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa. Impact is not accidental — it is built.</p>
+        <div class="footer__socials" style="margin-top:20px;">
+          <a href="#" class="footer__social-link" aria-label="LinkedIn">in</a>
+          <a href="#" class="footer__social-link" aria-label="Instagram">ig</a>
+          <a href="#" class="footer__social-link" aria-label="Twitter">𝕏</a>
+          <a href="#" class="footer__social-link" aria-label="Facebook">fb</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer__col-head">Navigate</p>
+        <ul class="footer__links">
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/programs">What We Do</a></li>
+          <li><a href="/impact">Our Impact</a></li>
+          <li><a href="/academy">Academy</a></li>
+          <li><a href="/partnerships">Partnerships</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__col-head">Get Involved</p>
+        <ul class="footer__links">
+          <li><a href="/contact">Donate</a></li>
+          <li><a href="/contact">Volunteer</a></li>
+          <li><a href="/contact">Sponsor a Project</a></li>
+          <li><a href="/contact">Start a Project</a></li>
+          <li><a href="/contact">Monthly Giving</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__col-head">Contact</p>
+        <ul class="footer__links">
+          <li><a href="mailto:hello@daffodilsafrica.com">hello@daffodilsafrica.com</a></li>
+          <li><a href="/blog">Blog &amp; Insights</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
       </div>
     </div>
-
-    <!-- ============================================
-         WHO WE ARE
-    ============================================= -->
-    <section class="who" id="who" aria-labelledby="who-h2">
-      <div class="who__inner">
-
-        <div>
-          <div class="chip chip--yellow">★ Who We Are</div>
-          <h2 class="who__headline" id="who-h2">
-            A Social Enterprise<br>Built for <u>Impact</u>.<br>Not Just Intention.
-          </h2>
-          <p class="who__body">
-            Daffodils Africa is a social enterprise committed to implementing social impact projects for individuals, organizations, and government. We partner with individuals, corporates, and institutions to design and execute projects that create sustainable change.
-          </p>
-          <p class="who__body">
-            We solve real community challenges through innovative, people-centered solutions — every project comes with a clear plan, transparent execution, and measurable outcomes.
-          </p>
-          <span class="who__callout">
-            We don't just run projects — we build systems that last.
-          </span>
-        </div>
-
-        <div class="who__quote">
-          <span class="who__quote-mark" aria-hidden="true">"</span>
-          <p class="who__quote-text">
-            Impact is not accidental. It is built — with strategy, with partners, and with purpose.
-          </p>
-          <p class="who__quote-attr">— Daffodils Africa</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============================================
-         WHAT WE DO
-    ============================================= -->
-    <section class="what pat-grid" id="what" aria-labelledby="what-h2">
-      <div class="what__head">
-        <div class="chip chip--black">★ What We Do</div>
-        <h2 class="what__headline" id="what-h2">We Translate Vision<br>Into Impact</h2>
-        <p class="what__sub">Helping individuals and organisations turn ambition into actionable, measurable community change.</p>
-      </div>
-
-      <div class="what__grid">
-        <div class="what-card">
-          <span class="what-card__num" aria-hidden="true">01</span>
-          <h3 class="what-card__title">Project Design &amp; Implementation</h3>
-          <p class="what-card__body">From idea to execution roadmap — we plan, design, and deliver nonprofit and social impact projects end-to-end.</p>
-        </div>
-        <div class="what-card">
-          <span class="what-card__num" aria-hidden="true">02</span>
-          <h3 class="what-card__title">Community Development Programs</h3>
-          <p class="what-card__body">Health, education, and livelihoods programs built with and for communities across Africa.</p>
-        </div>
-        <div class="what-card">
-          <span class="what-card__num" aria-hidden="true">03</span>
-          <h3 class="what-card__title">Impact Campaigns &amp; Outreach</h3>
-          <p class="what-card__body">Scalable, high-visibility initiatives that create real awareness and drive meaningful, measurable engagement.</p>
-        </div>
-        <div class="what-card">
-          <span class="what-card__num" aria-hidden="true">04</span>
-          <h3 class="what-card__title">Monitoring &amp; Evaluation</h3>
-          <p class="what-card__body">Data-driven results you can trust. We measure what matters and report transparently on every outcome.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================
-         WHY DAFFODILS AFRICA (yellow bg)
-    ============================================= -->
-    <section class="why" aria-labelledby="why-h2">
-      <div class="why__inner">
-        <div class="why__head">
-          <div class="chip chip--black">★ Why Choose Us</div>
-          <h2 class="why__headline" id="why-h2">Why Daffodils Africa?</h2>
-        </div>
-
-        <div class="why__grid">
-          <div class="why-item">
-            <div class="why-item__icon" aria-hidden="true">📊</div>
-            <div>
-              <h3 class="why-item__title">Proven Impact</h3>
-              <p class="why-item__body">We focus on measurable outcomes, not just activities. Every project comes with clear metrics, real data, and transparent reporting you can point to.</p>
-            </div>
-          </div>
-          <div class="why-item">
-            <div class="why-item__icon" aria-hidden="true">🤝</div>
-            <div>
-              <h3 class="why-item__title">Community-First Approach</h3>
-              <p class="why-item__body">Solutions built with communities, not just for them. We listen, engage, and co-create every step of the way — no top-down assumptions.</p>
-            </div>
-          </div>
-          <div class="why-item">
-            <div class="why-item__icon" aria-hidden="true">🌍</div>
-            <div>
-              <h3 class="why-item__title">Strategic Partnerships</h3>
-              <p class="why-item__body">We align your goals with real societal needs, connecting your mission to the people, communities, and places where impact actually happens.</p>
-            </div>
-          </div>
-          <div class="why-item">
-            <div class="why-item__icon" aria-hidden="true">⚙️</div>
-            <div>
-              <h3 class="why-item__title">End-to-End Execution</h3>
-              <p class="why-item__body">From concept to final impact report — we handle the full cycle. You bring the vision, we bring the execution, the logistics, and the people.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================
-         IMPACT SNAPSHOT (black bg)
-    ============================================= -->
-    <section class="impact pat-halftone-light" id="impact" aria-labelledby="impact-h2">
-      <div class="impact__inner">
-        <div class="chip chip--yellow" style="margin-bottom: 28px;">★ Impact Snapshot</div>
-        <h2 class="impact__headline" id="impact-h2">
-          Real Numbers.<br><span>Real Change.</span>
-        </h2>
-
-        <div class="impact__grid">
-          <div class="impact__cell">
-            <span class="impact__num">3,000+</span>
-            <p class="impact__label">Lives Reached</p>
-          </div>
-          <div class="impact__cell">
-            <span class="impact__num">12+</span>
-            <p class="impact__label">Community Programs Executed</p>
-          </div>
-          <div class="impact__cell">
-            <span class="impact__num">10+</span>
-            <p class="impact__label">Strategic Partnerships</p>
-          </div>
-          <div class="impact__cell">
-            <span class="impact__num">5+</span>
-            <p class="impact__label">Sectors Impacted</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================
-         AUDIENCE CARDS — like pricing (3-col)
-    ============================================= -->
-    <section class="audience" id="partner" aria-labelledby="audience-h2">
-      <div class="audience__inner">
-        <div class="audience__head">
-          <div class="chip chip--yellow">★ Who We Work With</div>
-          <h2 class="audience__headline" id="audience-h2">Impact Is<br>For Everyone</h2>
-        </div>
-
-        <div class="audience__grid">
-
-          <!-- For Individuals -->
-          <div class="aud-col">
-            <div class="aud-col__header">
-              <p class="aud-col__tag">For Individuals</p>
-              <h3 class="aud-col__title">Fund Change. See Results.</h3>
-              <p class="aud-col__subtitle">Your support transforms lives, not just funds projects.</p>
-            </div>
-            <div class="aud-col__body">
-              <p class="aud-col__text">Every donation goes directly into impactful, transparent, and measurable initiatives across underserved communities across Africa.</p>
-              <p class="aud-col__note">Clear impact reports — see exactly what your contribution achieves.</p>
-              <div class="aud-col__actions">
-                <a href="#donate"  class="btn btn--red btn--full">Donate Now</a>
-                <a href="#sponsor" class="btn btn--outline btn--full">Sponsor a Project</a>
-                <a href="#monthly" class="btn btn--outline btn--full" style="font-size:0.78rem;">Become a Monthly Supporter</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- For Organisations -->
-          <div class="aud-col">
-            <div class="aud-col__header">
-              <p class="aud-col__tag">For Organisations &amp; Partners</p>
-              <h3 class="aud-col__title">Let's Build Impact Together</h3>
-              <p class="aud-col__subtitle">CSR initiatives. Community programs. Executed right.</p>
-            </div>
-            <div class="aud-col__body">
-              <p class="aud-col__text">Looking to implement a social impact project, CSR initiative, or community program? We help you design, execute, and measure projects that align with your mission.</p>
-              <div class="aud-col__actions">
-                <a href="#start" class="btn btn--green btn--full">Start a Project With Us</a>
-                <a href="#start" class="btn btn--outline btn--full">Book a Consultation</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- For Volunteers -->
-          <div class="aud-col">
-            <div class="aud-col__header">
-              <p class="aud-col__tag">For Volunteers</p>
-              <h3 class="aud-col__title">Be Part of Something Bigger</h3>
-              <p class="aud-col__subtitle">Join a community of changemakers working for lasting impact.</p>
-            </div>
-            <div class="aud-col__body">
-              <p class="aud-col__text">Work alongside passionate people creating lasting impact across Africa. Your time, skills, and expertise drive real change in real communities.</p>
-              <div class="aud-col__actions">
-                <a href="#volunteer" class="btn btn--black btn--full">Volunteer With Us</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================
-         HOW WE WORK (violet bg, 4-step grid)
-    ============================================= -->
-    <section class="how" id="how" aria-labelledby="how-h2">
-      <div class="how__inner">
-        <div class="how__head">
-          <div class="chip chip--black">★ The Process</div>
-          <h2 class="how__headline" id="how-h2">How We Work</h2>
-        </div>
-
-        <div class="how__grid">
-          <div class="how-step">
-            <div class="how-step__num" aria-hidden="true">01</div>
-            <h3 class="how-step__title">You Bring the Vision</h3>
-            <p class="how-step__body">Share your idea, goal, or social challenge. We listen, ask the right questions, and understand what matters most to you and your community.</p>
-          </div>
-          <div class="how-step">
-            <div class="how-step__num" aria-hidden="true">02</div>
-            <h3 class="how-step__title">We Design the Project</h3>
-            <p class="how-step__body">Our team creates a tailored project plan: objectives, timeline, community engagement strategy, budget, and success metrics.</p>
-          </div>
-          <div class="how-step">
-            <div class="how-step__num" aria-hidden="true">03</div>
-            <h3 class="how-step__title">We Execute It</h3>
-            <p class="how-step__body">Full on-the-ground implementation. We coordinate all logistics, partnerships, and community engagement — on your behalf, stress-free.</p>
-          </div>
-          <div class="how-step">
-            <div class="how-step__num" aria-hidden="true">04</div>
-            <h3 class="how-step__title">You See the Impact</h3>
-            <p class="how-step__body">Transparent reporting, real data, and impact stories. See exactly what changed, how many lives were touched, and what your investment achieved.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================
-         IMPACT MADE EASY (dark section)
-    ============================================= -->
-    <section class="easy pat-halftone-light" id="programs" aria-labelledby="easy-h2">
-      <div class="easy__inner">
-        <div class="easy__head">
-          <div class="chip chip--green">★ Story-Driven Impact</div>
-          <h2 class="easy__headline" id="easy-h2">
-            Impact Made <span class="hl">Easy</span><br>For You
-          </h2>
-        </div>
-
-        <div class="easy__grid">
-          <div class="easy-card">
-            <span class="easy-card__icon" aria-hidden="true">🎯</span>
-            <h3 class="easy-card__title">Have a Vision to Reach Others?</h3>
-            <p class="easy-card__body">You have the intention. We have the strategy, the network, and the execution framework. Together, we make impact happen — on time, on target.</p>
-            <a href="#start" class="easy-card__link">Let's Make It Happen →</a>
-          </div>
-          <div class="easy-card">
-            <span class="easy-card__icon" aria-hidden="true">📣</span>
-            <h3 class="easy-card__title">Want to Run a High-Impact Campaign?</h3>
-            <p class="easy-card__body">We design, run, and measure outreach campaigns that create real visibility and real change — not just noise. High reach. Measurable outcomes.</p>
-            <a href="#start" class="easy-card__link">Work With Us →</a>
-          </div>
-          <div class="easy-card">
-            <span class="easy-card__icon" aria-hidden="true">🌱</span>
-            <h3 class="easy-card__title">Looking to Empower Youth?</h3>
-            <p class="easy-card__body">Education, skills, and opportunity — the building blocks of lasting change. Start a youth empowerment project and create tomorrow's leaders today.</p>
-            <a href="#start" class="easy-card__link">Start a Project →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================
-         READY CTA (grid pattern)
-    ============================================= -->
-    <section class="ready pat-grid" id="start" aria-labelledby="ready-h2">
-      <div class="ready__inner">
-        <div class="chip chip--yellow">★ Get Started</div>
-        <h2 class="ready__headline" id="ready-h2">
-          Ready to Create<br>Impact That<br>Matters?
-        </h2>
-        <p class="ready__sub">
-          Whether you're an individual, organisation, donor, or changemaker — we'll help you bring your vision to life.
-        </p>
-        <div class="ready__actions">
-          <a href="#contact" class="btn btn--black btn--lg">Work With Us</a>
-          <a href="#contact" class="btn btn--yellow btn--lg">Book a Consultation</a>
-          <a href="#donate"  class="btn btn--outline btn--lg">Support Our Work</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================
-         FINAL CONVERSION (yellow, 2-col)
-    ============================================= -->
-    <section class="convert" id="contact" aria-labelledby="convert-h2">
-      <div class="convert__inner">
-
-        <div>
-          <div class="chip chip--black">★ Don't Wait</div>
-          <h2 class="convert__headline" id="convert-h2">
-            Don't Be Stuck<br>With Ideas.<br>Deliver It —<br>Let's Help You!
-          </h2>
-          <p class="convert__sub">
-            At Daffodils Africa, we turn ideas into scalable, meaningful, and measurable change. Whether you're:
-          </p>
-          <ul class="convert__list" aria-label="Who we serve">
-            <li>An individual donor</li>
-            <li>A corporate organisation</li>
-            <li>A government or institution</li>
-            <li>An individual changemaker</li>
-          </ul>
-          <p class="convert__closing">We're ready to work with you.</p>
-        </div>
-
-        <div class="convert__actions">
-          <a href="#" class="convert__big">Start Your Impact Project Today! →</a>
-          <a href="#" class="btn btn--outline btn--full">Contact Us for a Consultation</a>
-          <a href="#" class="btn btn--outline btn--full">Partner With Us</a>
-          <a href="#donate" class="btn btn--red btn--full">Donate Now</a>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ============================================
-       FOOTER
-  ============================================= -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__grid">
-        <div>
-          <div class="footer__logo">Daffodils Africa</div>
-          <p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa. Impact is not accidental — it is built.</p>
-        </div>
-        <div>
-          <p class="footer__col-head">Navigate</p>
-          <ul class="footer__links" role="list">
-            <li><a href="#who">Who We Are</a></li>
-            <li><a href="#what">What We Do</a></li>
-            <li><a href="#impact">Our Impact</a></li>
-            <li><a href="#how">How We Work</a></li>
-            <li><a href="#partner">Partner With Us</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="footer__col-head">Get Involved</p>
-          <ul class="footer__links" role="list">
-            <li><a href="#donate">Donate</a></li>
-            <li><a href="#volunteer">Volunteer</a></li>
-            <li><a href="#sponsor">Sponsor a Project</a></li>
-            <li><a href="#start">Start a Project</a></li>
-            <li><a href="#monthly">Monthly Giving</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="footer__col-head">Contact</p>
-          <ul class="footer__links" role="list">
-            <li><a href="mailto:hello@daffodilsafrica.com">hello@daffodilsafrica.com</a></li>
-            <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
-            <li><a href="#" target="_blank" rel="noopener">Twitter / X</a></li>
-            <li><a href="#" target="_blank" rel="noopener">Facebook</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer__bottom">
-        <p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p>
-        <p class="footer__motto">Impact is not accidental. It is built.</p>
-      </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p>
+      <p class="footer__motto">Impact is not accidental. It is built.</p>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <!-- ============================================
-       JS — mobile nav
-  ============================================= -->
-  <script>
-    const burger    = document.getElementById('burger');
-    const mobileNav = document.getElementById('mobile-nav');
-
-    burger.addEventListener('click', () => {
-      const open = mobileNav.classList.toggle('open');
-      burger.setAttribute('aria-expanded', open);
-    });
-
-    // Close on outside click
-    document.addEventListener('click', (e) => {
-      if (!burger.contains(e.target) && !mobileNav.contains(e.target)) {
-        mobileNav.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    // Close on any link click
-    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      mobileNav.classList.remove('open');
-      burger.setAttribute('aria-expanded', 'false');
-    }));
-  </script>
-
+<script>
+  const burger = document.getElementById('burger');
+  const nav    = document.getElementById('mobile-nav');
+  burger.addEventListener('click', () => {
+    const o = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', o);
+  });
+  document.addEventListener('click', e => {
+    if (!burger.contains(e.target) && !nav.contains(e.target)) {
+      nav.classList.remove('open');
+      burger.setAttribute('aria-expanded','false');
+    }
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+  }));
+</script>
 </body>
 </html>

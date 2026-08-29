@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog &amp; Insights — Daffodils Africa</title>
+  <meta name="description" content="Daffodils Africa blog — insights, thought leadership, stories, and news on social impact, community development, and change-making across Africa."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet"/>
+  <link rel="stylesheet" href="/assets/css/main.css"/>
+  <style>
+    .blog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+    .blog-card { background:var(--white); border:var(--b); box-shadow:var(--sh-md); overflow:hidden; display:flex; flex-direction:column; transition:transform 0.15s,box-shadow 0.15s; }
+    .blog-card:hover { transform:translateY(-4px); box-shadow:var(--sh-lg); }
+    .blog-card__img { width:100%; }
+    .blog-card__body { padding:24px; flex:1; display:flex; flex-direction:column; }
+    .blog-card__cat  { font-weight:700; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--green); border:2px solid var(--green); padding:3px 8px; display:inline-block; margin-bottom:12px; }
+    .blog-card__title{ font-weight:900; font-size:1rem; text-transform:uppercase; letter-spacing:0.02em; margin-bottom:10px; line-height:1.3; }
+    .blog-card__excerpt { font-size:0.875rem; font-weight:500; line-height:1.7; flex:1; margin-bottom:16px; opacity:0.8; }
+    .blog-card__meta { font-weight:700; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.45; margin-bottom:16px; }
+    .blog-card__link { font-weight:900; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--green); border-bottom:3px solid var(--green); padding-bottom:2px; display:inline-flex; align-items:center; gap:6px; transition:color 0.1s,border-color 0.1s; }
+    .blog-card__link:hover { color:var(--black); border-color:var(--black); }
+    .blog-card--featured { grid-column:span 3; display:grid; grid-template-columns:1fr 1fr; }
+    .blog-card--featured .blog-card__img { border-right:var(--b); height:100%; object-fit:cover; }
+    .blog-card--featured .blog-card__body { padding:48px; justify-content:center; }
+    .blog-card--featured .blog-card__title { font-size:1.6rem; }
+    .newsletter { background:var(--black); border:var(--b); box-shadow:var(--sh-xl); padding:52px; display:grid; grid-template-columns:1fr 1fr; gap:52px; align-items:center; }
+    .newsletter h2 { font-weight:900; font-size:clamp(1.8rem,3vw,2.5rem); text-transform:uppercase; color:var(--white); line-height:1.1; margin-bottom:12px; }
+    .newsletter p  { font-size:0.95rem; color:rgba(255,255,255,0.6); font-weight:500; line-height:1.7; }
+    .newsletter__form { display:flex; flex-direction:column; gap:12px; }
+    .newsletter__input {
+      width:100%; height:52px; padding:0 18px;
+      border:var(--b); background:var(--bg); font-family:var(--font); font-weight:700; font-size:0.9rem;
+      color:var(--black); outline:none; box-shadow:var(--sh-sm);
+    }
+    .newsletter__input:focus { box-shadow:var(--sh-md); }
+    .newsletter__input::placeholder { color:rgba(0,0,0,0.35); font-weight:500; }
+    @media(max-width:1024px){ .blog-grid{grid-template-columns:1fr 1fr;} .blog-card--featured{grid-column:span 2;} .newsletter{grid-template-columns:1fr;gap:32px;} }
+    @media(max-width:768px){ .blog-grid{grid-template-columns:1fr;} .blog-card--featured{grid-column:span 1;grid-template-columns:1fr;} .blog-card--featured .blog-card__img{border-right:none;border-bottom:var(--b);height:220px;} }
+  </style>
+</head>
+<body>
+<div class="announce" aria-hidden="true"><div class="announce__track"><span class="announce__item">Blog &amp; Insights</span><span class="announce__item">Social Impact Stories</span><span class="announce__item">Thought Leadership</span><span class="announce__item">Africa Development</span><span class="announce__item">Blog &amp; Insights</span><span class="announce__item">Social Impact Stories</span><span class="announce__item">Thought Leadership</span><span class="announce__item">Africa Development</span></div></div>
+
+<header><nav class="nav"><div class="nav__inner">
+  <a href="/" class="nav__logo-box"><img src="/assets/images/logo.png" alt="Daffodils Africa" class="nav__logo-img" onerror="this.style.display='none'"/><span class="nav__logo-text">Daffodils<small>Africa</small></span></a>
+  <ul class="nav__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/academy">Academy</a></li><li><a href="/impact">Impact</a></li><li><a href="/partnerships">Partner</a></li><li><a href="/blog" class="active">Blog</a></li><li><a href="/contact">Contact</a></li></ul>
+  <div class="nav__actions"><a href="/contact" class="btn btn--outline">Get Involved</a><a href="/contact" class="btn btn--green">Start a Project</a></div>
+  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+</div>
+<div id="mobile-nav" class="nav__mobile"><a href="/about">About Us</a><a href="/programs">What We Do</a><a href="/academy">Academy</a><a href="/impact">Impact</a><a href="/partnerships">Partner</a><a href="/blog">Blog</a><a href="/contact">Contact</a><div class="nav__mobile-btns"><a href="/contact" class="btn btn--green btn--full">Start a Project</a><a href="/contact" class="btn btn--outline btn--full">Get Involved</a></div></div>
+</nav></header>
+
+<main>
+  <section class="page-hero">
+    <div class="page-hero__inner">
+      <p class="page-hero__breadcrumb"><a href="/">Home</a> → Blog &amp; Insights</p>
+      <h1 class="page-hero__h1">Insights &amp;<br><span>Stories</span><br>of Change</h1>
+      <p class="page-hero__sub">Thought leadership, impact stories, development insights, and news from the frontlines of social change across Africa.</p>
+    </div>
+  </section>
+
+  <!-- FEATURED POST -->
+  <section style="background:var(--bg);border-bottom:var(--b);padding:80px 0;">
+    <div class="wrap">
+      <div class="chip chip--yellow">★ Featured</div>
+      <div class="blog-card blog-card--featured">
+        <img src="/assets/images/blog-featured.jpg" alt="Featured blog post" class="blog-card__img"
+             onerror="this.outerHTML='<div class=\'img-ph blog-card__img\' style=\'min-height:320px;\'>Featured Blog Image<br><small>blog-featured.jpg · 600×400px</small></div>'"/>
+        <div class="blog-card__body">
+          <span class="blog-card__cat">Impact Stories</span>
+          <h2 class="blog-card__title">How We Empowered Women-Owned Businesses on International Women's Day 2024</h2>
+          <p class="blog-card__excerpt">To celebrate International Women's Day 2024, Daffodils Africa launched a Social Impact Ajo/Contribution in Lagos — directly empowering two women-owned businesses in a low-income community. Here's the story of what we did, why we did it, and what changed.</p>
+          <p class="blog-card__meta">March 2024 · 5 min read</p>
+          <a href="#" class="blog-card__link">Read Full Story →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG GRID -->
+  <section style="background:var(--yellow);border-bottom:var(--b);padding:96px 0;">
+    <div class="section-head-center">
+      <div class="chip chip--black">★ Latest Articles</div>
+      <h2 class="section-h2">From the Blog</h2>
+    </div>
+    <div class="blog-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
+      <!-- REPLACE: blog-1.jpg through blog-6.jpg — your blog post cover images -->
+      <div class="blog-card">
+        <img src="/assets/images/blog-1.jpg" alt="Blog post" class="blog-card__img"
+             onerror="this.outerHTML='<div class=\'img-ph blog-card__img\' style=\'height:200px;\'>Blog Cover 1<br><small>blog-1.jpg · 400×200px</small></div>'"/>
+        <div class="blog-card__body">
+          <span class="blog-card__cat">Community Development</span>
+          <h3 class="blog-card__title">5 Things We Learned Running Community Programs in Lagos</h3>
+          <p class="blog-card__excerpt">Behind every impactful project are lessons — hard-won, often unexpected. Here's what we learned on the ground.</p>
+          <p class="blog-card__meta">2024 · 4 min read</p>
+          <a href="#" class="blog-card__link">Read More →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img src="/assets/images/blog-2.jpg" alt="Blog post" class="blog-card__img"
+             onerror="this.outerHTML='<div class=\'img-ph blog-card__img\' style=\'height:200px;\'>Blog Cover 2<br><small>blog-2.jpg · 400×200px</small></div>'"/>
+        <div class="blog-card__body">
+          <span class="blog-card__cat">CSR</span>
+          <h3 class="blog-card__title">Why Most Corporate CSR Fails — And How to Do It Right</h3>
+          <p class="blog-card__excerpt">The gap between good intentions and real impact is where most CSR initiatives fall apart. Here's how to bridge it.</p>
+          <p class="blog-card__meta">2024 · 6 min read</p>
+          <a href="#" class="blog-card__link">Read More →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img src="/assets/images/blog-3.jpg" alt="Blog post" class="blog-card__img"
+             onerror="this.outerHTML='<div class=\'img-ph blog-card__img\' style=\'height:200px;\'>Blog Cover 3<br><small>blog-3.jpg · 400×200px</small></div>'"/>
+        <div class="blog-card__body">
+          <span class="blog-card__cat">Impact Measurement</span>
+          <h3 class="blog-card__title">How to Measure Social Impact Without a PhD</h3>
+          <p class="blog-card__excerpt">You don't need complex tools to measure impact — you need the right questions. A practical guide for project leads and donors.</p>
+          <p class="blog-card__meta">2024 · 5 min read</p>
+          <a href="#" class="blog-card__link">Read More →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img src="/assets/images/blog-4.jpg" alt="Blog post" class="blog-card__img"
+             onerror="this.outerHTML='<div class=\'img-ph blog-card__img\' style=\'height:200px;\'>Blog Cover 4<br><small>blog-4.jpg · 400×200px</small></div>'"/>
+        <div class="blog-card__body">
+          <span class="blog-card__cat">Partnerships</span>
+          <h3 class="blog-card__title">The Power of Strategic Partnerships in Social Impact Work</h3>
+          <p class="blog-card__excerpt">No organisation changes communities alone. Here's why strategic partnerships are at the heart of everything we do.</p>
+          <p class="blog-card__meta">2024 · 4 min read</p>
+          <a href="#" class="blog-card__link">Read More →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img src="/assets/images/blog-5.jpg" alt="Blog post" class="blog-card__img"
+             onerror="this.outerHTML='<div class=\'img-ph blog-card__img\' style=\'height:200px;\'>Blog Cover 5<br><small>blog-5.jpg · 400×200px</small></div>'"/>
+        <div class="blog-card__body">
+          <span class="blog-card__cat">Women Empowerment</span>
+          <h3 class="blog-card__title">Building Economic Independence for Women in Low-Income Communities</h3>
+          <p class="blog-card__excerpt">Financial empowerment isn't just about money — it's about dignity, choice, and the ability to build something lasting.</p>
+          <p class="blog-card__meta">2024 · 6 min read</p>
+          <a href="#" class="blog-card__link">Read More →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img src="/assets/images/blog-6.jpg" alt="Blog post" class="blog-card__img"
+             onerror="this.outerHTML='<div class=\'img-ph blog-card__img\' style=\'height:200px;\'>Blog Cover 6<br><small>blog-6.jpg · 400×200px</small></div>'"/>
+        <div class="blog-card__body">
+          <span class="blog-card__cat">Youth</span>
+          <h3 class="blog-card__title">Why Investing in African Youth is Investing in the Future of the Continent</h3>
+          <p class="blog-card__excerpt">Africa's greatest resource isn't its land or oil — it's its young people. Here's what real investment in youth looks like.</p>
+          <p class="blog-card__meta">2024 · 5 min read</p>
+          <a href="#" class="blog-card__link">Read More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker__track">
+    <span class="ticker__item">Insights</span><span class="ticker__item">Stories</span><span class="ticker__item">Impact</span><span class="ticker__item">Community</span><span class="ticker__item">Africa</span><span class="ticker__item">Change</span>
+    <span class="ticker__item">Insights</span><span class="ticker__item">Stories</span><span class="ticker__item">Impact</span><span class="ticker__item">Community</span><span class="ticker__item">Africa</span><span class="ticker__item">Change</span>
+  </div></div>
+
+  <!-- NEWSLETTER -->
+  <section style="background:var(--bg);border-bottom:var(--b);padding:96px 0;">
+    <div class="wrap">
+      <div class="newsletter">
+        <div>
+          <div class="chip chip--yellow">★ Newsletter</div>
+          <h2>Get Impact Stories<br>in Your Inbox</h2>
+          <p>Join changemakers across Africa who receive our monthly insights on social impact, community development, and stories from our projects.</p>
+        </div>
+        <div>
+          <form class="newsletter__form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+            <input type="text" name="name" class="newsletter__input" placeholder="Your Name" required/>
+            <input type="email" name="email" class="newsletter__input" placeholder="Your Email Address" required/>
+            <input type="hidden" name="_subject" value="Newsletter Signup — Daffodils Africa"/>
+            <button type="submit" class="btn btn--yellow btn--full">Subscribe to Newsletter →</button>
+          </form>
+          <p style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:12px;font-weight:500;">No spam. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="footer__inner">
+  <div class="footer__grid">
+    <div><div class="footer__logo-box"><img src="/assets/images/logo.png" alt="" style="height:32px;width:auto;" onerror="this.style.display='none'"/><span class="footer__logo-text">Daffodils Africa</span></div><p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa.</p></div>
+    <div><p class="footer__col-head">Navigate</p><ul class="footer__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/impact">Our Impact</a></li><li><a href="/academy">Academy</a></li><li><a href="/partnerships">Partnerships</a></li></ul></div>
+    <div><p class="footer__col-head">Get Involved</p><ul class="footer__links"><li><a href="/contact">Donate</a></li><li><a href="/contact">Volunteer</a></li><li><a href="/contact">Start a Project</a></li></ul></div>
+    <div><p class="footer__col-head">Contact</p><ul class="footer__links"><li><a href="mailto:hello@daffodilsafrica.com">hello@daffodilsafrica.com</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+  </div>
+  <div class="footer__bottom"><p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p><p class="footer__motto">Impact is not accidental. It is built.</p></div>
+</div></footer>
+<script>const b=document.getElementById("burger"),n=document.getElementById("mobile-nav");b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});document.addEventListener("click",e=>{if(!b.contains(e.target)&&!n.contains(e.target)){n.classList.remove("open");b.setAttribute("aria-expanded","false");}});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b.setAttribute("aria-expanded","false");}));</script>
+</body></html>
