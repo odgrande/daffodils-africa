@@ -3,45 +3,63 @@
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About Us — Daffodils Africa</title>
-  <meta name="description" content="Learn about Daffodils Africa — our story, mission, vision, values, and the team building impact across communities in Africa."/>
+  <meta name="description" content="Learn about Daffodils Africa — our story, mission, vision, founder Ifeoluwa Oyebisi, and the team building impact across Africa."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/css/main.css"/>
   <style>
-    .mission-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; border:var(--b); box-shadow:var(--sh-lg); margin-top:0; }
-    .mission-col { padding:48px 36px; border-right:var(--b); }
-    .mission-col:last-child { border-right:none; }
-    .mission-col:nth-child(1){ background:var(--black); color:var(--white); }
-    .mission-col:nth-child(2){ background:var(--green); color:var(--white); }
-    .mission-col:nth-child(3){ background:var(--yellow); color:var(--black); }
-    .mission-col__label { font-weight:700; font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; opacity:0.6; margin-bottom:16px; }
-    .mission-col__text { font-weight:900; font-size:1.3rem; text-transform:uppercase; line-height:1.25; }
-    .story-grid { display:grid; grid-template-columns:1fr 480px; gap:72px; align-items:center; max-width:var(--max); margin-inline:auto; padding-inline:var(--pad); }
-    .story-text h2 { font-weight:900; font-size:clamp(2rem,3.5vw,3rem); text-transform:uppercase; line-height:1; letter-spacing:-0.02em; margin-bottom:24px; }
-    .story-text p { font-size:1rem; font-weight:500; line-height:1.8; margin-bottom:16px; }
-    .values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:var(--max); margin-inline:auto; padding-inline:var(--pad); }
-    .value-card { background:var(--white); border:var(--b); box-shadow:var(--sh-md); padding:36px 28px; transition:transform 0.15s,box-shadow 0.15s; }
-    .value-card:hover { transform:translateY(-4px); box-shadow:var(--sh-lg); }
-    .value-card:nth-child(even){ background:var(--black); color:var(--white); }
-    .value-icon { font-size:2rem; margin-bottom:16px; display:block; }
-    .value-title { font-weight:900; font-size:0.95rem; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:10px; }
-    .value-text  { font-size:0.875rem; font-weight:500; line-height:1.7; opacity:0.75; }
-    .team-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; max-width:var(--max); margin-inline:auto; padding-inline:var(--pad); }
-    .team-card { border:var(--b); box-shadow:var(--sh-md); overflow:hidden; transition:transform 0.15s,box-shadow 0.15s; }
-    .team-card:hover { transform:translateY(-4px); box-shadow:var(--sh-lg); }
-    .team-card__photo { width:100%; }
-    .team-card__body { padding:20px; background:var(--white); }
-    .team-card__name { font-weight:900; font-size:0.95rem; text-transform:uppercase; }
-    .team-card__role { font-size:0.78rem; font-weight:500; opacity:0.6; margin-top:4px; text-transform:uppercase; letter-spacing:0.08em; }
-    @media(max-width:1024px){ .mission-grid{grid-template-columns:1fr;} .mission-col{border-right:none;border-bottom:var(--b);} .mission-col:last-child{border-bottom:none;} .story-grid{grid-template-columns:1fr; gap:40px;} .team-grid{grid-template-columns:repeat(2,1fr);} }
-    @media(max-width:768px){ .values-grid{grid-template-columns:1fr;} .team-grid{grid-template-columns:1fr;} }
+    .mission-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:var(--b);box-shadow:var(--sh-lg);}
+    .mission-col{padding:48px 36px;border-right:var(--b);}
+    .mission-col:last-child{border-right:none;}
+    .mission-col:nth-child(1){background:var(--black);color:var(--white);}
+    .mission-col:nth-child(2){background:var(--green);color:var(--white);}
+    .mission-col:nth-child(3){background:var(--yellow);color:var(--black);}
+    .mission-col__label{font-weight:700;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;opacity:0.6;margin-bottom:16px;}
+    .mission-col__text{font-weight:900;font-size:1.3rem;text-transform:uppercase;line-height:1.25;}
+    .founder-grid{display:grid;grid-template-columns:380px 1fr;gap:0;border:var(--b);box-shadow:var(--sh-xl);}
+    .founder-img{overflow:hidden;border-right:var(--b);}
+    .founder-img img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;}
+    .founder-content{padding:52px;background:var(--black);color:var(--white);}
+    .values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+    .value-card{background:var(--white);border:var(--b);box-shadow:var(--sh-md);padding:32px 28px;display:flex;gap:20px;align-items:flex-start;transition:transform 0.15s,box-shadow 0.15s;}
+    .value-card:hover{transform:translateY(-4px);box-shadow:var(--sh-lg);}
+    .value-icon{width:52px;height:52px;background:var(--black);border:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .team-card{border:var(--b);box-shadow:var(--sh-md);overflow:hidden;transition:transform 0.15s,box-shadow 0.15s;background:var(--white);}
+    .team-card:hover{transform:translateY(-4px);box-shadow:var(--sh-lg);}
+    .team-card__photo{width:100%;height:300px;object-fit:cover;object-position:top;display:block;}
+    .team-card__body{padding:22px;}
+    .team-card__name{font-weight:900;font-size:1rem;text-transform:uppercase;}
+    .team-card__role{font-size:0.75rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.1em;margin-top:4px;}
+    .team-card__bio{font-size:0.82rem;font-weight:500;line-height:1.65;margin-top:10px;opacity:0.75;}
+    .board-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .board-card{background:var(--black);border:var(--b);box-shadow:var(--sh-md);padding:32px 28px;text-align:center;transition:transform 0.15s,box-shadow 0.15s;}
+    .board-card:hover{transform:translateY(-4px);box-shadow:var(--sh-lg);}
+    .board-avatar{width:72px;height:72px;background:var(--yellow);border:var(--b);margin-inline:auto;margin-bottom:16px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.6rem;color:var(--black);}
+    .story-grid{display:grid;grid-template-columns:1fr 440px;gap:72px;align-items:center;max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);}
+    .video-ph{background:var(--black);border:var(--b);box-shadow:var(--sh-xl);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;position:relative;overflow:hidden;}
+    .video-ph::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.04) 1.5px,transparent 1.5px);background-size:22px 22px;}
+    .video-play{width:80px;height:80px;background:var(--yellow);border:var(--b);box-shadow:var(--sh-md);display:flex;align-items:center;justify-content:center;font-size:2rem;position:relative;cursor:pointer;transition:transform 0.1s,box-shadow 0.1s;}
+    .video-play:hover{transform:translate(-2px,-2px);box-shadow:var(--sh-lg);}
+    @media(max-width:1024px){
+      .mission-grid{grid-template-columns:1fr;}.mission-col{border-right:none;border-bottom:var(--b);}.mission-col:last-child{border-bottom:none;}
+      .founder-grid{grid-template-columns:1fr;}.founder-img{border-right:none;border-bottom:var(--b);}.founder-img img{height:380px;}
+      .story-grid{grid-template-columns:1fr;gap:40px;}
+      .team-grid{grid-template-columns:1fr 1fr;}.board-grid{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:768px){
+      .values-grid{grid-template-columns:1fr;}.team-grid{grid-template-columns:1fr;}.board-grid{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
-<div class="announce" aria-hidden="true"><div class="announce__track"><span class="announce__item">About Daffodils Africa</span><span class="announce__item">Our Story</span><span class="announce__item">Mission &amp; Vision</span><span class="announce__item">Building Impact in Africa</span><span class="announce__item">About Daffodils Africa</span><span class="announce__item">Our Story</span><span class="announce__item">Mission &amp; Vision</span><span class="announce__item">Building Impact in Africa</span></div></div>
+<div class="announce" aria-hidden="true"><div class="announce__track">
+  <span class="announce__item">About Daffodils Africa</span><span class="announce__item">Our Story</span><span class="announce__item">Meet the Founder</span><span class="announce__item">Meet the Team</span>
+  <span class="announce__item">About Daffodils Africa</span><span class="announce__item">Our Story</span><span class="announce__item">Meet the Founder</span><span class="announce__item">Meet the Team</span>
+</div></div>
 
-<header><nav class="nav" aria-label="Main navigation"><div class="nav__inner">
-  <a href="/" class="nav__logo-box"><img src="/assets/images/logo.png" alt="Daffodils Africa" class="nav__logo-img" onerror="this.style.display='none'"/><span class="nav__logo-text">Daffodils<small>Africa</small></span></a>
+<header><nav class="nav"><div class="nav__inner">
+  <a href="/" class="nav__logo-box"><img src="/assets/images/logo.png" alt="Daffodils Africa" class="nav__logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/><span class="nav__logo-text" style="display:none">Daffodils<small>Africa</small></span></a>
   <ul class="nav__links"><li><a href="/about" class="active">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/academy">Academy</a></li><li><a href="/impact">Impact</a></li><li><a href="/partnerships">Partner</a></li><li><a href="/blog">Blog</a></li><li><a href="/contact">Contact</a></li></ul>
   <div class="nav__actions"><a href="/contact" class="btn btn--outline">Get Involved</a><a href="/contact" class="btn btn--green">Start a Project</a></div>
   <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
@@ -50,26 +68,36 @@
 </nav></header>
 
 <main>
-  <!-- PAGE HERO -->
-  <section class="page-hero">
-    <div class="page-hero__inner">
-      <p class="page-hero__breadcrumb"><a href="/">Home</a> → About Us</p>
-      <h1 class="page-hero__h1">Building <span>Bridges</span><br>of Impact<br>in Africa</h1>
-      <p class="page-hero__sub">We are a social enterprise committed to implementing social impact projects that transform communities, empower people, and create lasting change across Africa.</p>
+
+  <!-- HERO with image overlay -->
+  <section style="background:var(--black);border-bottom:var(--b);padding:80px 0;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:url('/assets/images/about-flyer.jpg');background-size:cover;background-position:center;opacity:0.12;"></div>
+    <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.05) 1.5px,transparent 1.5px);background-size:22px 22px;"></div>
+    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
+      <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;"><a href="/" style="color:var(--yellow);">Home</a> → About Us</p>
+      <h1 style="font-weight:900;font-size:clamp(3rem,6vw,5.5rem);line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase;color:var(--white);margin-bottom:20px;">Building <span style="color:var(--yellow);">Bridges</span><br>of Impact<br>in Africa</h1>
+      <p style="font-size:1.1rem;font-weight:500;color:rgba(255,255,255,0.65);max-width:580px;line-height:1.7;">A social enterprise committed to implementing social impact projects that transform communities, empower people, and create lasting change across Africa.</p>
     </div>
   </section>
 
-  <!-- MISSION / VISION / VALUES STRIP -->
+  <!-- TAGLINE -->
+  <section style="background:var(--yellow);border-bottom:var(--b);padding:52px 0;">
+    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);text-align:center;">
+      <h2 style="font-weight:900;font-size:clamp(1.6rem,3vw,2.6rem);text-transform:uppercase;letter-spacing:-0.02em;line-height:1.15;">With Daffodils Africa, you can create meaningful change<br>in your world, <u>stress-free</u>.</h2>
+    </div>
+  </section>
+
+  <!-- MISSION / VISION / PROMISE -->
   <section style="background:var(--bg);border-bottom:var(--b);padding:80px 0;">
-    <div class="wrap">
+    <div class="wrap" style="margin-bottom:40px;">
       <div class="chip chip--yellow">★ Our Foundation</div>
-      <h2 class="section-h2" style="margin-bottom:40px;">Mission, Vision &amp; Values</h2>
+      <h2 class="section-h2">Mission, Vision &amp; Promise</h2>
     </div>
     <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
       <div class="mission-grid">
         <div class="mission-col"><p class="mission-col__label">Our Mission</p><p class="mission-col__text">To implement measurable social impact projects that transform communities and empower people across Africa.</p></div>
-        <div class="mission-col"><p class="mission-col__label">Our Vision</p><p class="mission-col__text">A world where every individual has equal access to opportunity, dignity, and sustainable development.</p></div>
-        <div class="mission-col"><p class="mission-col__label">Our Promise</p><p class="mission-col__text">We don't just run projects — we build systems that last, creating legacies that transform society for generations.</p></div>
+        <div class="mission-col"><p class="mission-col__label">Our Vision</p><p class="mission-col__text">Accessibility of equal opportunities for development to all, regardless of their background or location.</p></div>
+        <div class="mission-col"><p class="mission-col__label">Our Promise</p><p class="mission-col__text">We build systems that last — creating legacies that transform society for generations to come.</p></div>
       </div>
     </div>
   </section>
@@ -85,67 +113,142 @@
   <!-- OUR STORY -->
   <section style="background:var(--bg);border-bottom:var(--b);padding:96px 0;">
     <div class="story-grid">
-      <div class="story-text">
+      <div>
         <div class="chip chip--black">★ Our Story</div>
-        <h2>From Compassion<br>to Coordinated<br>Impact</h2>
-        <p>Daffodils Africa was founded on a simple but powerful belief: that compassionate people and organisations have the power to change communities — they just need the right partner to help them do it right.</p>
-        <p>We recognised that progressive individuals and organisations desire to give back to society but may not understand the dynamics of systemic impact. That's why Daffodils Africa exists — to bridge the gap between good intentions and real, lasting change.</p>
-        <p>We are dedicated to advancing diversity, equality, and inclusion in Africa through the implementation of social impact projects aligned with the UN's 17 Sustainable Development Goals.</p>
-        <a href="/programs" class="btn btn--green" style="margin-top:16px;">See What We Do →</a>
+        <h2 style="font-weight:900;font-size:clamp(2rem,3.5vw,3rem);text-transform:uppercase;line-height:1;letter-spacing:-0.02em;margin-bottom:24px;">From Compassion<br>to Coordinated Impact</h2>
+        <p style="font-size:1rem;font-weight:500;line-height:1.8;margin-bottom:16px;">We are a social enterprise with an unwavering commitment to implementing social impact projects for individuals, organisations, and government. At Daffodils Africa, we are not just about fancy reports and jargon. We are about real, compassionate people like you looking to do amazing yet simple steps to help real people thrive.</p>
+        <p style="font-size:1rem;font-weight:500;line-height:1.8;margin-bottom:16px;">We recognise that progressive individuals and organisations desire to give back to society but may not understand the dynamics of systemic impact. Daffodils Africa is committed to helping you build lasting legacies — by weaving networks of support and helping you be part of a tribe. Because when people come together, amazing things happen.</p>
+        <a href="/programs" class="btn btn--green" style="margin-top:8px;">See What We Do →</a>
       </div>
       <div>
-        <!-- REPLACE: rename your about/team photo to about-story.jpg -->
-        <img src="/assets/images/about-story.jpg" alt="Daffodils Africa team and community" style="border:var(--b);box-shadow:var(--sh-xl);width:100%;" onerror="this.outerHTML='<div class=\'img-ph\' style=\'height:480px;\'>About / Founding Story Photo<br><small>about-story.jpg · 480×480px</small></div>'"/>
+        <img src="/assets/images/about-flyer.jpg" alt="Daffodils Africa — Building Bridges of Impact" style="border:var(--b);box-shadow:var(--sh-xl);width:100%;display:block;" onerror="this.outerHTML='<div class=\'img-ph\' style=\'height:440px;\'>About Flyer<br><small>about-flyer.jpg</small></div>'"/>
       </div>
     </div>
   </section>
 
-  <!-- TICKER -->
   <div class="ticker" aria-hidden="true"><div class="ticker__track">
     <span class="ticker__item">Compassion</span><span class="ticker__item">Community</span><span class="ticker__item">Change</span><span class="ticker__item">Impact</span><span class="ticker__item">Africa</span><span class="ticker__item">Purpose</span>
     <span class="ticker__item">Compassion</span><span class="ticker__item">Community</span><span class="ticker__item">Change</span><span class="ticker__item">Impact</span><span class="ticker__item">Africa</span><span class="ticker__item">Purpose</span>
   </div></div>
 
-  <!-- VALUES -->
+  <!-- CORE VALUES -->
   <section style="background:var(--yellow);border-bottom:var(--b);padding:96px 0;">
     <div class="section-head-center">
       <div class="chip chip--black">★ What We Stand For</div>
       <h2 class="section-h2">Our Core Values</h2>
     </div>
-    <div class="values-grid">
-      <div class="value-card"><span class="value-icon">🎯</span><h3 class="value-title">Impact-Driven</h3><p class="value-text">Everything we do is measured against real outcomes — not just activity counts. We chase change, not checkboxes.</p></div>
-      <div class="value-card"><span class="value-icon">🤝</span><h3 class="value-title">Community-Centered</h3><p class="value-text">We design with communities, not for them. Every solution is co-created with the people it serves.</p></div>
-      <div class="value-card"><span class="value-icon">🔍</span><h3 class="value-title">Transparency</h3><p class="value-text">Every naira, every outcome, every story — accounted for. We believe partners and donors deserve to see exactly what their support achieves.</p></div>
-      <div class="value-card"><span class="value-icon">🌱</span><h3 class="value-title">Sustainability</h3><p class="value-text">We build systems that outlast the project. Our goal is always lasting change, not temporary relief.</p></div>
-      <div class="value-card"><span class="value-icon">🌍</span><h3 class="value-title">Africa-First</h3><p class="value-text">Our solutions are designed for African contexts, African communities, and African futures — not imported blueprints.</p></div>
-      <div class="value-card"><span class="value-icon">💡</span><h3 class="value-title">Innovation</h3><p class="value-text">We solve old problems with fresh thinking — combining data, creativity, and deep community knowledge.</p></div>
+    <div class="values-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
+      <div class="value-card"><div class="value-icon">♻️</div><div><h3 style="font-weight:900;font-size:0.9rem;text-transform:uppercase;margin-bottom:8px;">Sustainability</h3><p style="font-size:0.875rem;font-weight:500;line-height:1.7;opacity:0.75;">We are committed to creating long-term, sustainable solutions that make a positive impact on the environment and society.</p></div></div>
+      <div class="value-card"><div class="value-icon">🤝</div><div><h3 style="font-weight:900;font-size:0.9rem;text-transform:uppercase;margin-bottom:8px;">Inclusivity</h3><p style="font-size:0.875rem;font-weight:500;line-height:1.7;opacity:0.75;">We believe that everyone deserves an equal chance to thrive, regardless of their background, gender, or location.</p></div></div>
+      <div class="value-card"><div class="value-icon">🔍</div><div><h3 style="font-weight:900;font-size:0.9rem;text-transform:uppercase;margin-bottom:8px;">Integrity</h3><p style="font-size:0.875rem;font-weight:500;line-height:1.7;opacity:0.75;">We do our work with transparency, accountability, and fairness. Every naira and every outcome is accounted for — always.</p></div></div>
+      <div class="value-card"><div class="value-icon">🎯</div><div><h3 style="font-weight:900;font-size:0.9rem;text-transform:uppercase;margin-bottom:8px;">Impact</h3><p style="font-size:0.875rem;font-weight:500;line-height:1.7;opacity:0.75;">Daffodils Africa is committed to serving an impact in as many communities in Africa and across the world as possible.</p></div></div>
     </div>
   </section>
 
-  <!-- LEADERSHIP TEAM -->
+  <!-- FOUNDER -->
+  <section style="background:var(--bg);border-bottom:var(--b);padding:96px 0;">
+    <div class="wrap" style="margin-bottom:48px;">
+      <div class="chip chip--yellow">★ The Founder</div>
+      <h2 class="section-h2">Meet the Founder</h2>
+    </div>
+    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
+      <div class="founder-grid">
+        <div class="founder-img">
+          <img src="/assets/images/founder-formal.jpg" alt="Ifeoluwa Oyebisi — Founder, Daffodils Africa" onerror="this.outerHTML='<div class=\'img-ph founder-img\' style=\'min-height:480px;\'>Founder Photo<br><small>founder-formal.jpg</small></div>'"/>
+        </div>
+        <div class="founder-content">
+          <div class="chip chip--yellow">★ Founder &amp; CEO</div>
+          <h2 style="font-weight:900;font-size:clamp(1.8rem,3vw,2.8rem);text-transform:uppercase;letter-spacing:-0.02em;line-height:1;margin-bottom:6px;">Ifeoluwa Oyebisi</h2>
+          <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--yellow);margin-bottom:28px;">Founder · Social Development Practitioner</p>
+          <p style="font-size:0.95rem;font-weight:500;line-height:1.8;color:rgba(255,255,255,0.72);margin-bottom:14px;">An astute Social Development Practitioner with vast experience in the development sector. Driven by a burning passion for equal opportunities, she founded Daffodils Africa to empower every individual to deliver sustainable social impact.</p>
+          <p style="font-size:0.95rem;font-weight:500;line-height:1.8;color:rgba(255,255,255,0.72);margin-bottom:20px;">She leaves no stone unturned in her quest for social justice. Seeing a glimmer of hope ignite in someone's eyes after connecting their resources to change another's world — that is what drives her. Not just the thrill of a successful project, but levelling the ground so that everyone gets a chance at opportunity.</p>
+          <div style="background:rgba(255,255,255,0.07);border-left:4px solid var(--yellow);padding:16px 20px;font-weight:700;font-size:0.95rem;color:var(--yellow);line-height:1.6;font-style:italic;">"I'd like to level the ground so that everyone deserves a chance to simply have access to opportunities. Let's build a world where opportunity blooms for all."</div>
+          <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;">
+            <a href="https://www.linkedin.com/company/daffodils-africa" target="_blank" rel="noopener" class="btn btn--yellow">LinkedIn →</a>
+            <a href="/contact" class="btn btn--outline-dark">Work With Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE TEAM -->
+  <section style="background:var(--black);border-bottom:var(--b);padding:96px 0;" class="pat-halftone-light">
+    <div class="section-head-center" style="position:relative;z-index:1;">
+      <div class="chip chip--yellow">★ The Team</div>
+      <h2 class="section-h2" style="color:var(--white);">Meet the Team</h2>
+      <p class="section-sub section-sub--center" style="color:rgba(255,255,255,0.6);">Passionate, skilled, and mission-driven — the people making impact happen every day.</p>
+    </div>
+    <div class="team-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
+      <div class="team-card">
+        <img src="/assets/images/team-darasimi.webp" alt="Darasimi — Lead Creative Designer" class="team-card__photo" onerror="this.outerHTML='<div class=\'img-ph team-card__photo\' style=\'height:300px;\'>Darasimi</div>'"/>
+        <div class="team-card__body">
+          <p class="team-card__name">Darasimi</p>
+          <p class="team-card__role">Lead Creative Designer</p>
+          <p class="team-card__bio">Bringing the Daffodils Africa brand to life through bold, purposeful design. Darasimi leads all visual communication, ensuring every piece of content reflects the mission with clarity and creativity.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="/assets/images/team-odunayo.webp" alt="Odunayo Bolarinwa — Lead Web Designer" class="team-card__photo" onerror="this.outerHTML='<div class=\'img-ph team-card__photo\' style=\'height:300px;\'>Odunayo</div>'"/>
+        <div class="team-card__body">
+          <p class="team-card__name">Odunayo Bolarinwa</p>
+          <p class="team-card__role">Lead Web Designer</p>
+          <p class="team-card__bio">Building and maintaining Daffodils Africa's digital presence. Odunayo ensures the website communicates impact clearly, loads fast, and creates a seamless experience for every visitor.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="/assets/images/team-hephzibah.webp" alt="Hephzibah — Programs Manager" class="team-card__photo" onerror="this.outerHTML='<div class=\'img-ph team-card__photo\' style=\'height:300px;\'>Hephzibah</div>'"/>
+        <div class="team-card__body">
+          <p class="team-card__name">Hephzibah</p>
+          <p class="team-card__role">Programs Manager</p>
+          <p class="team-card__bio">Coordinating Daffodils Africa's portfolio of social impact programs. Hephzibah ensures every project runs smoothly, on time, and delivers measurable outcomes for communities across Africa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOARD OF ADVISORY -->
+  <section style="background:var(--yellow);border-bottom:var(--b);padding:96px 0;">
+    <div class="section-head-center">
+      <div class="chip chip--black">★ Board of Advisory</div>
+      <h2 class="section-h2">Board of Advisory</h2>
+    </div>
+    <div class="board-grid" style="max-width:900px;margin-inline:auto;padding-inline:var(--pad);">
+      <div class="board-card"><div class="board-avatar">A</div><p style="font-weight:900;font-size:0.95rem;text-transform:uppercase;color:var(--white);">Adekemola Adenisin</p><p style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.4);margin-top:6px;">Advisory Board Member</p></div>
+      <div class="board-card"><div class="board-avatar">O</div><p style="font-weight:900;font-size:0.95rem;text-transform:uppercase;color:var(--white);">Olayinka J Adetola</p><p style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.4);margin-top:6px;">Advisory Board Member</p></div>
+      <div class="board-card"><div class="board-avatar">I</div><p style="font-weight:900;font-size:0.95rem;text-transform:uppercase;color:var(--white);">Ibrahim Modupe</p><p style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.4);margin-top:6px;">Advisory Board Member</p></div>
+    </div>
+  </section>
+
+  <!-- VIDEO PLACEHOLDER -->
   <section style="background:var(--bg);border-bottom:var(--b);padding:96px 0;">
     <div class="section-head-center">
-      <div class="chip chip--yellow">★ The Team</div>
-      <h2 class="section-h2">Leadership Profiles</h2>
-      <p class="section-sub section-sub--center">The people behind the impact — passionate, experienced, and community-driven.</p>
+      <div class="chip chip--yellow">★ Our Story in Video</div>
+      <h2 class="section-h2">Watch Our Journey</h2>
     </div>
-    <div class="team-grid">
-      <!-- REPLACE: rename headshots to team-1.jpg, team-2.jpg, team-3.jpg, team-4.jpg -->
-      <div class="team-card">
-        <img src="/assets/images/team-1.jpg" alt="Leadership team member" class="team-card__photo" onerror="this.outerHTML='<div class=\'img-ph team-card__photo\' style=\'height:280px;\'>Team Photo 1<br><small>team-1.jpg · 320×280px</small></div>'"/>
-        <div class="team-card__body"><p class="team-card__name">Team Member Name</p><p class="team-card__role">Role / Title</p></div>
+    <div style="max-width:800px;margin-inline:auto;padding-inline:var(--pad);">
+      <div class="video-ph">
+        <div class="video-play">▶</div>
+        <p style="font-weight:700;font-size:0.8rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);position:relative;">Daffodils Africa — Our Story &amp; Mission</p>
       </div>
-      <div class="team-card">
-        <img src="/assets/images/team-2.jpg" alt="Leadership team member" class="team-card__photo" onerror="this.outerHTML='<div class=\'img-ph team-card__photo\' style=\'height:280px;\'>Team Photo 2<br><small>team-2.jpg · 320×280px</small></div>'"/>
-        <div class="team-card__body"><p class="team-card__name">Team Member Name</p><p class="team-card__role">Role / Title</p></div>
-      </div>
-      <div class="team-card">
-        <img src="/assets/images/team-3.jpg" alt="Leadership team member" class="team-card__photo" onerror="this.outerHTML='<div class=\'img-ph team-card__photo\' style=\'height:280px;\'>Team Photo 3<br><small>team-3.jpg · 320×280px</small></div>'"/>
-        <div class="team-card__body"><p class="team-card__name">Team Member Name</p><p class="team-card__role">Role / Title</p></div>
-      </div>
-      <div class="team-card">
-        <img src="/assets/images/team-4.jpg" alt="Leadership team member" class="team-card__photo" onerror="this.outerHTML='<div class=\'img-ph team-card__photo\' style=\'height:280px;\'>Team Photo 4<br><small>team-4.jpg · 320×280px</small></div>'"/>
-        <div class="team-card__body"><p class="team-card__name">Team Member Name</p><p class="team-card__role">Role / Title</p></div>
+    </div>
+  </section>
+
+  <!-- RECOGNITION -->
+  <section style="background:var(--yellow);border-bottom:var(--b);padding:80px 0;">
+    <div class="section-head-center">
+      <div class="chip chip--black">★ Recognition</div>
+      <h2 class="section-h2">Awards &amp; Recognition</h2>
+    </div>
+    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
+      <div style="background:var(--black);border:var(--b);box-shadow:var(--sh-xl);padding:48px;display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;">
+        <div style="background:var(--yellow);border:var(--b);box-shadow:var(--sh-md);width:72px;height:72px;display:flex;align-items:center;justify-content:center;font-size:2rem;flex-shrink:0;">🏆</div>
+        <div>
+          <p style="font-weight:700;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;">TotalEnergies · Startupper Challenge</p>
+          <h3 style="font-weight:900;font-size:1.2rem;text-transform:uppercase;color:var(--white);line-height:1.2;margin-bottom:10px;">Startupper of the Year Challenge — Participant</h3>
+          <p style="font-size:0.875rem;font-weight:500;color:rgba(255,255,255,0.6);line-height:1.7;">Selected among Africa's most innovative and impactful social enterprises driving sustainable development and social change across the continent.</p>
+        </div>
+        <a href="https://startupper.totalenergies.com/en/juries/jPLv_c9cYDD4m1XX-SIicg/participations/13938/vote?order=random" target="_blank" rel="noopener" class="btn btn--yellow btn--lg" style="flex-shrink:0;">Vote For Us →</a>
       </div>
     </div>
   </section>
@@ -162,16 +265,25 @@
       </div>
     </div>
   </section>
+
 </main>
 
 <footer class="footer"><div class="footer__inner">
   <div class="footer__grid">
-    <div><div class="footer__logo-box"><img src="/assets/images/logo.png" alt="" style="height:32px;width:auto;" onerror="this.style.display='none'"/><span class="footer__logo-text">Daffodils Africa</span></div><p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa.</p></div>
+    <div>
+      <div class="footer__logo-box"><img src="/assets/images/logo.png" alt="" style="height:32px;width:auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/><span class="footer__logo-text" style="display:none">Daffodils Africa</span></div>
+      <p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa.</p>
+      <div class="footer__socials" style="margin-top:16px;">
+        <a href="https://www.instagram.com/daffodils_africa/?hl=en" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">ig</a>
+        <a href="https://www.facebook.com/daffodilsafrica1/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">fb</a>
+        <a href="https://www.linkedin.com/company/daffodils-africa" target="_blank" rel="noopener" class="footer__social-link" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
     <div><p class="footer__col-head">Navigate</p><ul class="footer__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/impact">Our Impact</a></li><li><a href="/academy">Academy</a></li><li><a href="/partnerships">Partnerships</a></li></ul></div>
     <div><p class="footer__col-head">Get Involved</p><ul class="footer__links"><li><a href="/contact">Donate</a></li><li><a href="/contact">Volunteer</a></li><li><a href="/contact">Start a Project</a></li></ul></div>
-    <div><p class="footer__col-head">Contact</p><ul class="footer__links"><li><a href="mailto:hello@daffodilsafrica.com">hello@daffodilsafrica.com</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+    <div><p class="footer__col-head">Contact</p><ul class="footer__links"><li><a href="tel:+2348167873722">+234 816 787 3722</a></li><li><a href="mailto:daffodilsafrica@gmail.com">daffodilsafrica@gmail.com</a></li><li><a href="/contact">Contact Us</a></li><li style="color:rgba(255,255,255,0.5);font-size:0.875rem;font-weight:500;padding-left:6px;">Lagos, Nigeria</li></ul></div>
   </div>
   <div class="footer__bottom"><p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p><p class="footer__motto">Impact is not accidental. It is built.</p></div>
 </div></footer>
-<script>const b=document.getElementById('burger'),n=document.getElementById('mobile-nav');b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);});document.addEventListener('click',e=>{if(!b.contains(e.target)&&!n.contains(e.target)){n.classList.remove('open');b.setAttribute('aria-expanded','false');}});n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');b.setAttribute('aria-expanded','false');}));</script>
+<script>const b=document.getElementById("burger"),n=document.getElementById("mobile-nav");b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});document.addEventListener("click",e=>{if(!b.contains(e.target)&&!n.contains(e.target)){n.classList.remove("open");b.setAttribute("aria-expanded","false");}});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b.setAttribute("aria-expanded","false");}));</script>
 </body></html>

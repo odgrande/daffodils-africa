@@ -8,8 +8,8 @@
 :root {
   --bg:     #FFFDF5;
   --black:  #000000;
-  --yellow: #FFD93D;
-  --green:  #1B5E20;
+  --yellow: #faba16;
+  --green:  #7fb432;
   --violet: #C4B5FD;
   --red:    #FF6B6B;
   --white:  #FFFFFF;
@@ -228,7 +228,7 @@ button { font-family: var(--font); cursor: pointer; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--yellow);
+  background: var(--white);
   border: var(--b);
   box-shadow: var(--sh-sm);
   padding: 6px 14px;
@@ -488,8 +488,8 @@ button { font-family: var(--font); cursor: pointer; }
 .footer__social-link {
   width: 40px;
   height: 40px;
-  background: rgba(255,255,255,0.07);
-  border: 2px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.18);
+  border: 2px solid rgba(255,255,255,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
