@@ -35,17 +35,47 @@
 <body>
 <div class="announce" aria-hidden="true"><div class="announce__track"><span class="announce__item">What We Do</span><span class="announce__item">Project Design &amp; Implementation</span><span class="announce__item">Community Development</span><span class="announce__item">Impact Campaigns</span><span class="announce__item">Monitoring &amp; Evaluation</span><span class="announce__item">What We Do</span><span class="announce__item">Project Design &amp; Implementation</span><span class="announce__item">Community Development</span><span class="announce__item">Impact Campaigns</span><span class="announce__item">Monitoring &amp; Evaluation</span></div></div>
 
-<header><nav class="nav"><div class="nav__inner">
+<header><nav class="nav" aria-label="Main navigation"><div class="nav__inner">
   <a href="/" class="nav__logo-box"><img src="/assets/images/logo.png" alt="Daffodils Africa" class="nav__logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/><span class="nav__logo-text" style="display:none">Daffodils<small>Africa</small></span></a>
-  <ul class="nav__links"><li><a href="/about">About Us</a></li><li><a href="/programs" class="active">What We Do</a></li><li><a href="/academy">Academy</a></li><li><a href="/impact">Impact</a></li><li><a href="/partnerships">Partner</a></li><li><a href="/blog">Blog</a></li><li><a href="/contact">Contact</a></li></ul>
-  <div class="nav__actions"><a href="/contact" class="btn btn--outline">Get Involved</a><a href="/contact" class="btn btn--green">Start a Project</a></div>
+  <ul class="nav__links">
+    <li><a href="/about">About Us</a></li>
+    <li><a href="/programs" class="active">What We Do</a></li>
+    <li><a href="/academy">Academy</a></li>
+    <li class="nav__has-drop">
+      <a href="/impact">Impact</a>
+      <ul class="nav__drop">
+        <li><a href="/gallery">Gallery</a></li>
+      </ul>
+    </li>
+    <li><a href="/partnerships">Partner</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+  <div class="nav__actions">
+    <a href="/contact#volunteer" class="btn btn--outline">Get Involved</a>
+    <a href="/contact" class="btn btn--green">Start a Project</a>
+  </div>
   <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
 </div>
-<div id="mobile-nav" class="nav__mobile"><a href="/about">About Us</a><a href="/programs">What We Do</a><a href="/academy">Academy</a><a href="/impact">Impact</a><a href="/partnerships">Partner</a><a href="/blog">Blog</a><a href="/contact">Contact</a><div class="nav__mobile-btns"><a href="/contact" class="btn btn--green btn--full">Start a Project</a><a href="/contact" class="btn btn--outline btn--full">Get Involved</a></div></div>
+<div id="mobile-nav" class="nav__mobile">
+  <a href="/about">About Us</a>
+  <a href="/programs">What We Do</a>
+  <a href="/academy">Academy</a>
+  <a href="/impact">Impact</a>
+  <a href="/gallery">Gallery</a>
+  <a href="/partnerships">Partner</a>
+  <a href="/blog">Blog</a>
+  <a href="/contact">Contact</a>
+  <div class="nav__mobile-btns">
+    <a href="/contact" class="btn btn--green btn--full">Start a Project</a>
+    <a href="/contact#volunteer" class="btn btn--outline btn--full">Get Involved</a>
+  </div>
+</div>
 </nav></header>
 
 <main>
-  <section class="page-hero">
+  <section class="page-hero" style="position:relative;">
+    <div class="hero-img-overlay" style="background-image:url('/assets/images/gallery-8.jpg');"></div>
     <div class="page-hero__inner">
       <p class="page-hero__breadcrumb"><a href="/">Home</a> → What We Do</p>
       <h1 class="page-hero__h1">We Translate<br><span>Vision</span><br>Into Impact</h1>
@@ -218,20 +248,59 @@
   </section>
 </main>
 
-<footer class="footer"><div class="footer__inner">
-  <div class="footer__grid">
-    <div><div class="footer__logo-box"><img src="/assets/images/logo.png" alt="" style="height:44px;width:auto;" onerror="this.style.display='none'"/><span class="footer__logo-text" style="display:none">Daffodils Africa</span></div><p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa.</p>
-        <div class="footer__socials" style="margin-top:16px;">
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo-box">
+          <img src="/assets/images/logo.png" alt="Daffodils Africa" style="height:44px;width:auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+          <span class="footer__logo-text" style="display:none">Daffodils Africa</span>
+        </div>
+        <p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa. Impact is not accidental — it is built.</p>
+        <div class="footer__socials" style="margin-top:20px;">
           <a href="https://www.instagram.com/daffodils_africa/?hl=en" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">ig</a>
           <a href="https://www.facebook.com/daffodilsafrica1/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">fb</a>
           <a href="https://www.linkedin.com/company/daffodils-africa" target="_blank" rel="noopener" class="footer__social-link" aria-label="LinkedIn">in</a>
-        </div></div>
-    <div><p class="footer__col-head">Navigate</p><ul class="footer__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/impact">Our Impact</a></li><li><a href="/academy">Academy</a></li><li><a href="/partnerships">Partnerships</a></li></ul></div>
-    <div><p class="footer__col-head">Get Involved</p><ul class="footer__links"><li><a href="/contact">Donate</a></li><li><a href="/contact">Volunteer</a></li><li><a href="/contact">Start a Project</a></li></ul></div>
-    <div><p class="footer__col-head">Contact</p><ul class="footer__links"><li><a href="mailto:hello@daffodilsafrica.com">hello@daffodilsafrica.com</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+        </div>
+      </div>
+      <div>
+        <p class="footer__col-head">Navigate</p>
+        <ul class="footer__links">
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/programs">What We Do</a></li>
+          <li><a href="/impact">Our Impact</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/academy">Academy</a></li>
+          <li><a href="/partnerships">Partnerships</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__col-head">Get Involved</p>
+        <ul class="footer__links">
+          <li><a href="/contact">Donate</a></li>
+          <li><a href="/contact#volunteer">Volunteer</a></li>
+          <li><a href="/contact">Sponsor a Project</a></li>
+          <li><a href="/contact">Start a Project</a></li>
+          <li><a href="/contact">Monthly Giving</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__col-head">Contact</p>
+        <ul class="footer__links">
+          <li><a href="tel:+2348167873722">+234 816 787 3722</a></li>
+          <li><a href="mailto:daffodilsafrica@gmail.com">daffodilsafrica@gmail.com</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+          <li style="color:rgba(255,255,255,0.5);font-size:0.875rem;font-weight:500;padding-left:6px;">Lagos, Nigeria</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p>
+      <p class="footer__motto">Impact is not accidental. It is built.</p>
+    </div>
   </div>
-  <div class="footer__bottom"><p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p><p class="footer__motto">Impact is not accidental. It is built.</p></div>
-</div></footer>
+</footer>
 <script>const b=document.getElementById("burger"),n=document.getElementById("mobile-nav");b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});document.addEventListener("click",e=>{if(!b.contains(e.target)&&!n.contains(e.target)){n.classList.remove("open");b.setAttribute("aria-expanded","false");}});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b.setAttribute("aria-expanded","false");}));</script>
 
 <script>

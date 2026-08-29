@@ -879,3 +879,54 @@ img  { max-width: 100%; height: auto; }
   .gallery-grid { grid-template-columns: 1fr !important; }
   .gallery-item--featured { grid-column: span 1 !important; }
 }
+
+/* =============================================
+   NAV DROPDOWN (Gallery under Impact)
+============================================= */
+.nav__has-drop { position: relative; }
+.nav__has-drop > a::after {
+  content: ' ▾';
+  font-size: 0.65em;
+  opacity: 0.6;
+  vertical-align: middle;
+}
+.nav__drop {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  background: var(--black);
+  border: var(--b);
+  box-shadow: var(--sh-md);
+  min-width: 140px;
+  z-index: 300;
+  list-style: none;
+  padding: 4px 0;
+}
+.nav__drop a {
+  display: block;
+  padding: 12px 18px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent;
+  white-space: nowrap;
+}
+.nav__drop a:hover { background: var(--yellow); color: var(--black); }
+.nav__has-drop:hover .nav__drop,
+.nav__has-drop:focus-within .nav__drop { display: block; }
+
+/* Hero image overlay utility */
+.hero-img-overlay {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 0;
+}
