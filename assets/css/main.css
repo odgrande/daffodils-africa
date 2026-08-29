@@ -928,8 +928,30 @@ img  { max-width: 100%; height: auto; }
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center top;
-  opacity: 0.22;
+  background-position: center center;
+  opacity: 0.14;
   pointer-events: none;
   z-index: 0;
+}
+
+/* ── SDG grid mobile fix ── */
+@media (max-width: 768px) {
+  .sdg-scroll-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .sdg-scroll-wrap::-webkit-scrollbar { display: none; }
+  .sdg-grid-inner {
+    display: flex !important;
+    grid-template-columns: unset !important;
+    min-width: max-content;
+  }
+  .sdg-grid-inner > div {
+    flex: 0 0 160px;
+    scroll-snap-align: start;
+    min-width: 0;
+  }
 }
