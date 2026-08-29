@@ -812,7 +812,7 @@
       <div class="chip chip--black">★ Client Reviews</div>
       <h2 class="section-h2">What Our Clients Say</h2>
     </div>
-    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
+    <div class="reviews-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
       <div style="background:var(--white);border:var(--b);box-shadow:var(--sh-md);padding:36px 32px;">
         <span style="font-weight:900;font-size:3rem;color:var(--black);line-height:0.8;display:block;margin-bottom:12px;">"</span>
         <p style="font-weight:700;font-size:1rem;line-height:1.6;margin-bottom:20px;">Daffodils Africa exceeded our expectations in guiding us to create a lasting impact. Their expertise made societal transformation seamless. Crafting legacies with them is genuinely stress-free and rewarding.</p>
@@ -843,18 +843,25 @@
       <h2 class="section-h2" style="color:var(--white);">Watch Our Impact</h2>
       <p class="section-sub section-sub--center" style="color:rgba(255,255,255,0.6);">Stories from our projects and communities across Africa.</p>
     </div>
-    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:1;">
-      <div style="background:rgba(255,255,255,0.05);border:3px solid rgba(255,255,255,0.15);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:border-color 0.15s,background 0.15s;" onmouseover="this.style.borderColor='var(--yellow)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'">
+    <div data-carousel class="mob-car-wrap" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
+      <div class="mob-car-track" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div class="mob-car-slide" style="background:rgba(255,255,255,0.05);border:3px solid rgba(255,255,255,0.15);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:border-color 0.15s,background 0.15s;" onmouseover="this.style.borderColor='var(--yellow)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'">
         <div style="width:64px;height:64px;background:var(--yellow);border:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;">▶</div>
         <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-align:center;">IWD 2024<br>Women Empowerment</p>
       </div>
-      <div style="background:rgba(255,255,255,0.05);border:3px solid rgba(255,255,255,0.15);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:border-color 0.15s;" onmouseover="this.style.borderColor='var(--yellow)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'">
+      <div class="mob-car-slide" style="background:rgba(255,255,255,0.05);border:3px solid rgba(255,255,255,0.15);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:border-color 0.15s;" onmouseover="this.style.borderColor='var(--yellow)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'">
         <div style="width:64px;height:64px;background:var(--yellow);border:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;">▶</div>
         <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-align:center;">Community<br>Development Project</p>
       </div>
-      <div style="background:rgba(255,255,255,0.05);border:3px solid rgba(255,255,255,0.15);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:border-color 0.15s;" onmouseover="this.style.borderColor='var(--yellow)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'">
+      <div class="mob-car-slide" style="background:rgba(255,255,255,0.05);border:3px solid rgba(255,255,255,0.15);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:border-color 0.15s;" onmouseover="this.style.borderColor='var(--yellow)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'">
         <div style="width:64px;height:64px;background:var(--yellow);border:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;">▶</div>
         <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-align:center;">1 Year<br>Anniversary Highlights</p>
+      </div>
+      </div>
+      <div class="mob-car-nav">
+        <button class="mob-car-btn mob-car-prev" aria-label="Previous">←</button>
+        <span class="mob-car-frac">1 / 3</span>
+        <button class="mob-car-btn mob-car-next" aria-label="Next">→</button>
       </div>
     </div>
   </section>
@@ -968,6 +975,49 @@
     nav.classList.remove('open');
     burger.setAttribute('aria-expanded','false');
   }));
+</script>
+
+<script>
+// MOBILE CAROUSEL INIT — runs after DOM ready
+function initCarousels() {
+  if (window.innerWidth > 768) return; // Desktop: no carousel
+  document.querySelectorAll('[data-carousel]').forEach(wrap => {
+    const track   = wrap.querySelector('.mob-car-track');
+    const slides  = Array.from(track.querySelectorAll('.mob-car-slide'));
+    const btnPrev = wrap.querySelector('.mob-car-prev');
+    const btnNext = wrap.querySelector('.mob-car-next');
+    const frac    = wrap.querySelector('.mob-car-frac');
+    if (!track || slides.length < 2) return;
+    let cur = 0;
+    function render() {
+      const w = slides[0].offsetWidth;
+      track.style.transform = `translateX(-${cur * w}px)`;
+      track.style.transition = 'transform 0.35s ease';
+      if (frac) frac.textContent = (cur + 1) + ' / ' + slides.length;
+      if (btnPrev) btnPrev.disabled = cur === 0;
+      if (btnNext) btnNext.disabled = cur === slides.length - 1;
+    }
+    if (btnPrev) btnPrev.addEventListener('click', () => { if (cur > 0) { cur--; render(); }});
+    if (btnNext) btnNext.addEventListener('click', () => { if (cur < slides.length-1) { cur++; render(); }});
+    // Touch/swipe support
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
+    track.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0 && cur < slides.length-1) cur++;
+        else if (diff < 0 && cur > 0) cur--;
+        render();
+      }
+    }, {passive:true});
+    render();
+  });
+}
+document.addEventListener('DOMContentLoaded', initCarousels);
+window.addEventListener('resize', () => {
+  document.querySelectorAll('[data-carousel] .mob-car-track').forEach(t => { t.style.transform=''; });
+  initCarousels();
+});
 </script>
 </body>
 </html>

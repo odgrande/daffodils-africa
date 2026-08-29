@@ -662,3 +662,220 @@ button { font-family: var(--font); cursor: pointer; }
   .footer__bottom{ flex-direction: column; text-align: center; }
   .section-sub   { max-width: 100%; }
 }
+
+/* =============================================
+   GLOBAL OVERFLOW PREVENTION
+============================================= */
+html { overflow-x: hidden; }
+body { overflow-x: hidden; }
+img  { max-width: 100%; height: auto; }
+* { box-sizing: border-box; min-width: 0; }
+
+/* Prevent inline grid styles overflowing on mobile */
+@media (max-width: 768px) {
+  [style*="grid-template-columns"] {
+    /* Overridden per-component below */
+  }
+}
+
+/* =============================================
+   MOBILE CAROUSEL COMPONENT
+============================================= */
+.mob-car-wrap { position: relative; }
+
+/* On mobile the track becomes a horizontal scroll container */
+@media (max-width: 768px) {
+  .mob-car-track {
+    display: flex !important;
+    overflow: hidden;
+    gap: 0 !important;
+    grid-template-columns: unset !important;
+  }
+  .mob-car-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    transition: transform 0.35s ease;
+  }
+}
+
+/* Always visible but positioned */
+.mob-car-nav {
+  display: none;
+}
+@media (max-width: 768px) {
+  .mob-car-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+  }
+}
+.mob-car-btn {
+  width: 48px; height: 48px;
+  background: var(--black); color: var(--yellow);
+  border: var(--b); box-shadow: var(--sh-sm);
+  font-size: 1.1rem; font-weight: 900; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: box-shadow 0.1s, opacity 0.15s;
+  font-family: var(--font);
+}
+.mob-car-btn:hover  { box-shadow: var(--sh-md); }
+.mob-car-btn:disabled { opacity: 0.28; cursor: not-allowed; }
+.mob-car-frac {
+  font-weight: 900; font-size: 0.82rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(0,0,0,0.5); min-width: 44px; text-align: center;
+}
+.mob-car-frac--light { color: rgba(255,255,255,0.5); }
+
+/* =============================================
+   ABOUT PAGE — MOBILE FIXES
+============================================= */
+@media (max-width: 768px) {
+  /* Recognition / Awards section — 3-col → stacked */
+  .recognition-inner {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    text-align: center;
+  }
+  .recognition-inner > :first-child { margin-inline: auto; }
+}
+
+/* =============================================
+   IMPACT PAGE — MOBILE FIXES
+============================================= */
+@media (max-width: 768px) {
+  .scroll-card { padding: 24px 18px !important; }
+  .scroll-stats { grid-template-columns: 1fr !important; }
+  .scroll-stat { border-right: none !important; border-bottom: var(--b) !important; }
+  .scroll-stat:last-child { border-bottom: none !important; }
+  .states-grid { grid-template-columns: 1fr !important; }
+  .bene-grid   { grid-template-columns: 1fr !important; }
+}
+
+/* =============================================
+   CLIENT REVIEWS — MOBILE FIXES
+============================================= */
+@media (max-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .testimonials-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* =============================================
+   GENERAL CARD GRIDS ON MOBILE
+============================================= */
+@media (max-width: 768px) {
+  /* Force any 2-col inline grid to single col */
+  .card-grid-2 { grid-template-columns: 1fr !important; }
+  
+  /* Video grids — handled by carousel JS */
+  .video-grid-mobile {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Prevent hero panel overflow */
+  .hero__panel { display: none !important; }
+
+  /* Stats responsive */
+  .stats__grid { grid-template-columns: repeat(2,1fr) !important; }
+
+  /* Audience grid */
+  .audience__grid {
+    grid-template-columns: 1fr !important;
+    border: var(--b);
+  }
+
+  /* Partner logo grid */
+  .partners-logo-grid { grid-template-columns: repeat(2,1fr) !important; }
+
+  /* Convert section */
+  .convert__inner { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* Team grid mobile */
+  .team-grid { grid-template-columns: 1fr !important; }
+
+  /* Board grid mobile */
+  .board-grid { grid-template-columns: 1fr !important; }
+
+  /* Courses grid mobile */
+  .courses-grid { grid-template-columns: 1fr !important; }
+
+  /* How-learn steps */
+  .how-learn { grid-template-columns: 1fr !important; }
+  .how-learn-step { border-right: none !important; border-bottom: var(--b) !important; }
+  .how-learn-step:last-child { border-bottom: none !important; }
+
+  /* Registration form */
+  .reg-2col { grid-template-columns: 1fr !important; }
+  .reg-hours { grid-template-columns: 1fr !important; }
+
+  /* Page hero font */
+  .page-hero { padding: 48px 0 !important; }
+  .page-hero__h1 { font-size: clamp(2.4rem,10vw,4rem) !important; }
+
+  /* Founder grid */
+  .founder-grid { grid-template-columns: 1fr !important; }
+  .founder-img img { height: 280px !important; }
+
+  /* Service blocks */
+  .service-block { grid-template-columns: 1fr !important; direction: ltr !important; }
+  .service-img { border-right: none !important; border-left: none !important; border-bottom: var(--b) !important; height: 220px !important; overflow: hidden; }
+
+  /* Mission cols */
+  .mission-grid { grid-template-columns: 1fr !important; }
+  .mission-col  { border-right: none !important; border-bottom: var(--b) !important; }
+  .mission-col:last-child { border-bottom: none !important; }
+
+  /* Values grid */
+  .values-grid { grid-template-columns: 1fr !important; }
+
+  /* Blog grid */
+  .blog-grid { grid-template-columns: 1fr !important; }
+  .blog-card--featured { grid-column: span 1 !important; grid-template-columns: 1fr !important; }
+  .blog-card--featured .blog-card__img { border-right: none !important; border-bottom: var(--b) !important; height: 200px !important; }
+
+  /* Partner type grid */
+  .partner-type-grid { grid-template-columns: 1fr !important; }
+
+  /* Volunteer grid */
+  .volunteer-grid { grid-template-columns: 1fr !important; }
+
+  /* Gallery grid */
+  .gallery-grid { grid-template-columns: repeat(2,1fr) !important; }
+  .gallery-item--featured { grid-column: span 2 !important; }
+
+  /* Newsletter */
+  .newsletter { grid-template-columns: 1fr !important; gap: 28px !important; padding: 28px 20px !important; }
+
+  /* Team enquiry */
+  .team-enquiry { grid-template-columns: 1fr !important; gap: 28px !important; padding: 28px 20px !important; }
+
+  /* Contact grid */
+  .contact-grid { grid-template-columns: 1fr !important; }
+  .contact-info { border-right: none !important; border-bottom: var(--b) !important; }
+
+  /* Footer */
+  .footer__grid { grid-template-columns: 1fr !important; }
+
+  /* Inline recognition card overflow */
+  div[style*="grid-template-columns:auto 1fr auto"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    text-align: center;
+    align-items: center;
+  }
+  div[style*="grid-template-columns:auto 1fr auto"] a.btn {
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid { grid-template-columns: 1fr !important; }
+  .gallery-item--featured { grid-column: span 1 !important; }
+}

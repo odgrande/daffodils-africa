@@ -219,9 +219,10 @@
       <h2 class="section-h2" style="color:var(--white);">Empowering Dreams</h2>
       <p class="section-sub section-sub--center" style="color:rgba(255,255,255,0.6);">At Daffodils Africa, through collaborative efforts and unwavering commitment, we achieve remarkable outcomes, transformations, and uplifting achievements in low-income African communities.</p>
     </div>
-    <div class="bene-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
+    <div data-carousel class="mob-car-wrap" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
+      <div class="bene-grid mob-car-track">
       <!-- Beneficiary One -->
-      <div class="bene-card">
+      <div class="bene-card mob-car-slide">
         <img src="/assets/images/impact-cs2.jpg" alt="Beneficiary One" class="bene-card__img" onerror="this.outerHTML='<div class=\'img-ph bene-card__img\' style=\'height:200px;\'>Beneficiary Photo</div>'"/>
         <div class="bene-card__body">
           <p class="bene-card__tag">Beneficiary Story · Lagos</p>
@@ -230,7 +231,7 @@
         </div>
       </div>
       <!-- Beneficiary Two -->
-      <div class="bene-card">
+      <div class="bene-card mob-car-slide">
         <img src="/assets/images/hero-community.jpg" alt="Beneficiary Two" class="bene-card__img" onerror="this.outerHTML='<div class=\'img-ph bene-card__img\' style=\'height:200px;\'>Beneficiary Photo</div>'"/>
         <div class="bene-card__body">
           <p class="bene-card__tag">Beneficiary Story · Lagos</p>
@@ -239,13 +240,19 @@
         </div>
       </div>
       <!-- Beneficiary Three -->
-      <div class="bene-card">
+      <div class="bene-card mob-car-slide">
         <img src="/assets/images/gallery-3.jpg" alt="Ezekiel and Samuel" class="bene-card__img" onerror="this.outerHTML='<div class=\'img-ph bene-card__img\' style=\'height:200px;\'>Beneficiary Photo</div>'"/>
         <div class="bene-card__body">
           <p class="bene-card__tag">Beneficiary Story · Children</p>
           <h3 class="bene-card__name">Ezekiel and Samuel</h3>
           <p class="bene-card__text">Mrs Ogunsesin's children, Ezekiel and Samuel — they were in Primary 6. Whilst Samuel dreams of becoming a footballer when he grows up, Ezekiel wants to be intelligent and well-behaved. Daffodils Africa looks forward to giving them the tools to help them dream bigger and grow taller. Impact starts here.</p>
         </div>
+      </div>
+    </div>
+      <div class="mob-car-nav">
+        <button class="mob-car-btn mob-car-prev" aria-label="Previous">←</button>
+        <span class="mob-car-frac">1 / 3</span>
+        <button class="mob-car-btn mob-car-next" aria-label="Next">→</button>
       </div>
     </div>
   </section>
@@ -286,16 +293,23 @@
       <div class="chip chip--yellow">★ Video</div>
       <h2 class="section-h2">Impact in Action</h2>
     </div>
-    <div style="max-width:900px;margin-inline:auto;padding-inline:var(--pad);display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-      <div style="background:var(--black);border:var(--b);box-shadow:var(--sh-xl);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.04) 1.5px,transparent 1.5px);background-size:22px 22px;"></div>
-        <div style="width:64px;height:64px;background:var(--yellow);border:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;position:relative;">▶</div>
-        <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-align:center;position:relative;">IWD 2024 — Women Empowerment</p>
+    <div data-carousel style="max-width:900px;margin-inline:auto;padding-inline:var(--pad);" class="mob-car-wrap">
+      <div class="mob-car-track" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <div class="mob-car-slide" style="background:var(--black);border:var(--b);box-shadow:var(--sh-xl);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative;overflow:hidden;">
+          <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.04) 1.5px,transparent 1.5px);background-size:22px 22px;"></div>
+          <div style="width:64px;height:64px;background:var(--yellow);border:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;position:relative;">▶</div>
+          <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-align:center;position:relative;">IWD 2024 — Women Empowerment</p>
+        </div>
+        <div class="mob-car-slide" style="background:var(--black);border:var(--b);box-shadow:var(--sh-xl);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative;overflow:hidden;">
+          <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.04) 1.5px,transparent 1.5px);background-size:22px 22px;"></div>
+          <div style="width:64px;height:64px;background:var(--yellow);border:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;position:relative;">▶</div>
+          <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-align:center;position:relative;">Education &amp; Business Empowerment</p>
+        </div>
       </div>
-      <div style="background:var(--black);border:var(--b);box-shadow:var(--sh-xl);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.04) 1.5px,transparent 1.5px);background-size:22px 22px;"></div>
-        <div style="width:64px;height:64px;background:var(--yellow);border:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;position:relative;">▶</div>
-        <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-align:center;position:relative;">Education &amp; Business Empowerment</p>
+      <div class="mob-car-nav">
+        <button class="mob-car-btn mob-car-prev" aria-label="Previous">←</button>
+        <span class="mob-car-frac mob-car-frac--light">1 / 2</span>
+        <button class="mob-car-btn mob-car-next" aria-label="Next">→</button>
       </div>
     </div>
   </section>
@@ -333,4 +347,47 @@
   <div class="footer__bottom"><p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p><p class="footer__motto">Impact is not accidental. It is built.</p></div>
 </div></footer>
 <script>const b=document.getElementById("burger"),n=document.getElementById("mobile-nav");b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});document.addEventListener("click",e=>{if(!b.contains(e.target)&&!n.contains(e.target)){n.classList.remove("open");b.setAttribute("aria-expanded","false");}});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b.setAttribute("aria-expanded","false");}));</script>
+
+<script>
+// MOBILE CAROUSEL INIT — runs after DOM ready
+function initCarousels() {
+  if (window.innerWidth > 768) return; // Desktop: no carousel
+  document.querySelectorAll('[data-carousel]').forEach(wrap => {
+    const track   = wrap.querySelector('.mob-car-track');
+    const slides  = Array.from(track.querySelectorAll('.mob-car-slide'));
+    const btnPrev = wrap.querySelector('.mob-car-prev');
+    const btnNext = wrap.querySelector('.mob-car-next');
+    const frac    = wrap.querySelector('.mob-car-frac');
+    if (!track || slides.length < 2) return;
+    let cur = 0;
+    function render() {
+      const w = slides[0].offsetWidth;
+      track.style.transform = `translateX(-${cur * w}px)`;
+      track.style.transition = 'transform 0.35s ease';
+      if (frac) frac.textContent = (cur + 1) + ' / ' + slides.length;
+      if (btnPrev) btnPrev.disabled = cur === 0;
+      if (btnNext) btnNext.disabled = cur === slides.length - 1;
+    }
+    if (btnPrev) btnPrev.addEventListener('click', () => { if (cur > 0) { cur--; render(); }});
+    if (btnNext) btnNext.addEventListener('click', () => { if (cur < slides.length-1) { cur++; render(); }});
+    // Touch/swipe support
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
+    track.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0 && cur < slides.length-1) cur++;
+        else if (diff < 0 && cur > 0) cur--;
+        render();
+      }
+    }, {passive:true});
+    render();
+  });
+}
+document.addEventListener('DOMContentLoaded', initCarousels);
+window.addEventListener('resize', () => {
+  document.querySelectorAll('[data-carousel] .mob-car-track').forEach(t => { t.style.transform=''; });
+  initCarousels();
+});
+</script>
 </body></html>

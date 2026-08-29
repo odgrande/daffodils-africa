@@ -199,4 +199,38 @@
   <div class="footer__bottom"><p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p><p class="footer__motto">Impact is not accidental. It is built.</p></div>
 </div></footer>
 <script>const b=document.getElementById("burger"),n=document.getElementById("mobile-nav");b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});document.addEventListener("click",e=>{if(!b.contains(e.target)&&!n.contains(e.target)){n.classList.remove("open");b.setAttribute("aria-expanded","false");}});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b.setAttribute("aria-expanded","false");}));</script>
+
+<script>
+function initCarousels() {
+  if (window.innerWidth > 768) return;
+  document.querySelectorAll('[data-carousel]').forEach(wrap => {
+    const track   = wrap.querySelector('.mob-car-track');
+    const slides  = Array.from(track ? track.querySelectorAll('.mob-car-slide') : []);
+    const btnPrev = wrap.querySelector('.mob-car-prev');
+    const btnNext = wrap.querySelector('.mob-car-next');
+    const frac    = wrap.querySelector('.mob-car-frac');
+    if (!track || slides.length < 2) return;
+    let cur = 0;
+    function render() {
+      const w = slides[0].offsetWidth;
+      track.style.transform = 'translateX(-' + (cur * w) + 'px)';
+      track.style.transition = 'transform 0.35s ease';
+      if (frac) frac.textContent = (cur + 1) + ' / ' + slides.length;
+      if (btnPrev) btnPrev.disabled = cur === 0;
+      if (btnNext) btnNext.disabled = cur === slides.length - 1;
+    }
+    if (btnPrev) btnPrev.addEventListener('click', () => { if (cur > 0) { cur--; render(); }});
+    if (btnNext) btnNext.addEventListener('click', () => { if (cur < slides.length-1) { cur++; render(); }});
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
+    track.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) { if (diff > 0 && cur < slides.length-1) cur++; else if (diff < 0 && cur > 0) cur--; render(); }
+    }, {passive:true});
+    render();
+  });
+}
+document.addEventListener('DOMContentLoaded', initCarousels);
+window.addEventListener('resize', () => { document.querySelectorAll('[data-carousel] .mob-car-track').forEach(t => { t.style.transform=''; }); initCarousels(); });
+</script>
 </body></html>
