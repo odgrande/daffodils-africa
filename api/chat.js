@@ -30,7 +30,7 @@ module.exports = async function handler(req, res) {
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: SYSTEM }] },
           contents: contents,
-          generationConfig: { maxOutputTokens: 300, temperature: 0.7 }
+          generationConfig: { maxOutputTokens: 2048, temperature: 0.7 }
         })
       }
     );
@@ -40,10 +40,10 @@ module.exports = async function handler(req, res) {
       console.error('Gemini API error', r.status, JSON.stringify(d));
       return res.json({ reply: "Please email daffodilsafrica@gmail.com or call +234 816 787 3722 💛" });
     }
-    // Filter out thought parts, keep only the final answer text
+    // Filter out thought parts (thought:true), keep only the real answer
     const parts = d.candidates && d.candidates[0] && d.candidates[0].content && d.candidates[0].content.parts;
-    const replyPart = parts && parts.find(function(p) { return !p.thought && p.text; });
-    const reply = replyPart ? replyPart.text : (parts && parts[0] && parts[0].text);
+    const replyPart = parts && parts.find(function(p) { return p.thought !== true && p.text; });
+    const reply = replyPart && replyPart.text;
     res.json({ reply: reply ? reply.trim() : "Please email daffodilsafrica@gmail.com or call +234 816 787 3722 💛" });
 
   } catch(e) {

@@ -54,7 +54,7 @@ function initChatbot(){
     addMsg('user',text);
     var prevHist=history.slice(-6);
     history.push({role:'user',content:text});
-    var typing=addMsg('typing','Daffy is thinking…');
+    var typing=addMsg('typing','Daffy is typing…');
 
     fetch('/api/chat',{
       method:'POST',
