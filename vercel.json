@@ -16,9 +16,7 @@
     }
   ],
   "functions": {
-    "api/chat.js": {
-      "memory": 256,
-      "maxDuration": 10
-    }
+    "api/chat.js": { "memory": 256, "maxDuration": 15 },
+    "api/blog.js": { "memory": 256, "maxDuration": 20 }
   }
 }

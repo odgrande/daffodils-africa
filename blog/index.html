@@ -107,6 +107,109 @@
     </div>
   </section>
 
+
+  <!-- AI BLOG GENERATOR -->
+  <section style="background:var(--black);border-bottom:var(--b);padding:72px 0;" class="pat-halftone-light">
+    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
+        <div>
+          <div class="chip chip--yellow">★ Powered by Groq</div>
+          <h2 style="font-weight:900;font-size:clamp(1.8rem,3vw,2.6rem);text-transform:uppercase;color:var(--white);letter-spacing:-0.02em;line-height:1.1;margin-bottom:14px;">Generate a Blog<br>Post with Daffy</h2>
+          <p style="font-size:0.95rem;color:rgba(255,255,255,0.55);font-weight:500;line-height:1.7;">Enter any social impact topic and get a full blog post draft — instantly. Tailored to Daffodils Africa's voice and African context.</p>
+          <div style="margin-top:28px;display:flex;flex-direction:column;gap:12px;">
+            <div>
+              <label style="display:block;font-weight:700;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;">Blog Topic *</label>
+              <input id="blog-topic" type="text" placeholder="e.g. How CSR can transform communities in Lagos" style="width:100%;padding:16px 18px;background:rgba(255,255,255,0.07);border:3px solid rgba(255,255,255,0.2);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.95rem;outline:none;" oninput="this.style.borderColor='#faba16'"/>
+            </div>
+            <div>
+              <label style="display:block;font-weight:700;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;">Post Type</label>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;" id="blog-type-opts">
+                <button class="blog-type-btn selected" data-val="article" onclick="setBlogType(this)">Article</button>
+                <button class="blog-type-btn" data-val="opinion" onclick="setBlogType(this)">Opinion</button>
+                <button class="blog-type-btn" data-val="case study" onclick="setBlogType(this)">Case Study</button>
+                <button class="blog-type-btn" data-val="how-to guide" onclick="setBlogType(this)">How-To Guide</button>
+              </div>
+            </div>
+            <button id="blog-gen-btn" onclick="generateBlog()" style="margin-top:8px;padding:0 28px;height:56px;background:var(--yellow);color:#000;border:4px solid #000;box-shadow:6px 6px 0 0 #faba16;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;display:flex;align-items:center;gap:10px;transition:transform .1s,box-shadow .1s;" onmouseover="this.style.transform='translate(-2px,-2px)';this.style.boxShadow='8px 8px 0 0 #faba16'" onmouseout="this.style.transform='';this.style.boxShadow='6px 6px 0 0 #faba16'">
+              <span id="blog-gen-txt">✦ Generate Post</span>
+            </button>
+          </div>
+        </div>
+        <!-- OUTPUT PANEL -->
+        <div id="blog-output" style="display:none;">
+          <div id="blog-result" style="background:#fff;border:4px solid #000;box-shadow:8px 8px 0 0 #000;"></div>
+          <button onclick="copyBlog()" style="margin-top:12px;width:100%;padding:14px;background:transparent;border:3px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.7);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;" onmouseover="this.style.borderColor='#faba16';this.style.color='#faba16'" onmouseout="this.style.borderColor='rgba(255,255,255,0.3)';this.style.color='rgba(255,255,255,0.7)'">📋 Copy Full Post</button>
+        </div>
+        <div id="blog-placeholder" style="background:rgba(255,255,255,0.04);border:3px dashed rgba(255,255,255,0.12);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:360px;text-align:center;padding:40px;">
+          <div style="font-size:2.5rem;margin-bottom:16px;">✦</div>
+          <p style="font-weight:700;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.2);">Your generated post<br>will appear here</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .blog-type-btn{padding:10px 16px;background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;transition:all .1s;}
+    .blog-type-btn:hover,.blog-type-btn.selected{background:#faba16;border-color:#faba16;color:#000;}
+    @media(max-width:768px){
+      div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}
+    }
+  </style>
+  <script>
+    var blogType='article';
+    function setBlogType(btn){
+      document.querySelectorAll('.blog-type-btn').forEach(b=>b.classList.remove('selected'));
+      btn.classList.add('selected');
+      blogType=btn.dataset.val;
+    }
+    var lastPost='';
+    async function generateBlog(){
+      var topic=document.getElementById('blog-topic').value.trim();
+      if(!topic){document.getElementById('blog-topic').focus();document.getElementById('blog-topic').style.borderColor='red';return;}
+      var btn=document.getElementById('blog-gen-btn');
+      var txt=document.getElementById('blog-gen-txt');
+      btn.disabled=true; txt.textContent='Generating…';
+      document.getElementById('blog-placeholder').style.display='none';
+      document.getElementById('blog-output').style.display='none';
+      try{
+        var r=await fetch('/api/blog',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({topic:topic,type:blogType})});
+        var data=await r.json();
+        if(data.error){throw new Error(data.error);}
+        var p=data.post;
+        lastPost=formatPost(p);
+        document.getElementById('blog-result').innerHTML=renderPost(p);
+        document.getElementById('blog-output').style.display='block';
+      }catch(e){
+        alert('Generation failed: '+(e.message||'Please try again.'));
+        document.getElementById('blog-placeholder').style.display='flex';
+      }
+      btn.disabled=false; txt.textContent='✦ Generate Post';
+    }
+    function renderPost(p){
+      var sections=(p.sections||[]).map(s=>'<h3 style="font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:0.04em;margin:20px 0 8px;border-left:4px solid #faba16;padding-left:12px;">'+s.heading+'</h3><p style="font-size:0.875rem;font-weight:500;line-height:1.75;color:rgba(0,0,0,0.8);">'+s.body+'</p>').join('');
+      return '<div style="padding:28px;">'+
+        '<div style="background:#faba16;display:inline-block;padding:4px 10px;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:14px;">'+(p.category||'Blog')+'</div>'+
+        '<h2 style="font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:-0.01em;line-height:1.2;margin-bottom:6px;">'+(p.title||'')+'</h2>'+
+        '<p style="font-size:0.8rem;font-weight:600;color:rgba(0,0,0,0.45);margin-bottom:16px;">'+(p.subtitle||'')+' · '+(p.readTime||'')+'</p>'+
+        '<hr style="border:none;border-top:2px solid #eee;margin-bottom:16px;"/>'+
+        '<p style="font-size:0.875rem;font-weight:500;line-height:1.75;color:rgba(0,0,0,0.8);margin-bottom:12px;">'+(p.intro||'')+'</p>'+
+        sections+
+        '<div style="background:#f7f5ee;border-left:4px solid #7fb432;padding:14px 16px;margin-top:16px;font-size:0.875rem;font-weight:500;line-height:1.7;">'+(p.cta||'')+'</div>'+
+        '<div style="margin-top:14px;display:flex;gap:6px;flex-wrap:wrap;">'+(p.tags||[]).map(t=>'<span style="background:#000;color:#faba16;padding:3px 10px;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">#'+t+'</span>').join('')+'</div>'+
+        '</div>';
+    }
+    function formatPost(p){
+      var out=p.title+'\n'+p.subtitle+'\n\n'+p.intro+'\n\n';
+      (p.sections||[]).forEach(s=>{out+=s.heading+'\n\n'+s.body+'\n\n';});
+      out+=p.cta;
+      return out;
+    }
+    function copyBlog(){
+      if(!lastPost){return;}
+      navigator.clipboard.writeText(lastPost).then(()=>alert('Post copied to clipboard!'));
+    }
+  </script>
+
   <!-- BLOG GRID -->
   <section style="background:var(--yellow);border-bottom:var(--b);padding:96px 0;">
     <div class="section-head-center">
