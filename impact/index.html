@@ -3,519 +3,325 @@
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Our Impact — Daffodils Africa</title>
-  <meta name="description" content="Daffodils Africa impact portfolio — Digital Literacy, Women Empowerment, Education Support, real stories and measurable outcomes across Africa."/>
+  <meta name="description" content="Daffodils Africa impact — real projects, real communities, 10 case studies across Lagos, Taraba and Jos."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/css/main.css"/>
   <style>
-    /* CASE STUDY ALTERNATING */
-    .cs { display:grid; grid-template-columns:1fr 1fr; gap:0; border:var(--b); box-shadow:var(--sh-xl); margin-bottom:24px; }
-    .cs__img { border-right:var(--b); overflow:hidden; }
-    .cs__img img { width:100%; height:100%; object-fit:cover; display:block; }
-    .cs__content { padding:52px 44px; background:var(--white); display:flex; flex-direction:column; justify-content:center; }
-    .cs:nth-child(even) { direction:rtl; }
-    .cs:nth-child(even) > * { direction:ltr; }
-    .cs:nth-child(even) .cs__img { border-right:none; border-left:var(--b); }
-    .cs:nth-child(even) .cs__content { background:var(--yellow); }
-    .cs__label { font-weight:700; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; opacity:0.5; margin-bottom:12px; }
-    .cs__title { font-weight:900; font-size:1.6rem; text-transform:uppercase; letter-spacing:-0.01em; line-height:1.15; margin-bottom:14px; }
-    .cs__text  { font-size:0.95rem; font-weight:500; line-height:1.8; margin-bottom:20px; opacity:0.85; }
-    .cs__stats { display:flex; gap:16px; margin-bottom:24px; }
-    .cs__stat  { text-align:center; background:var(--black); color:var(--white); padding:14px 18px; flex:1; }
-    .cs__stat-num   { font-weight:900; font-size:1.5rem; color:var(--yellow); display:block; line-height:1; }
-    .cs__stat-label { font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.5); margin-top:4px; }
-
-    /* CS CAROUSEL */
-    .cs-car { position:relative; width:100%; height:100%; display:flex; overflow:hidden; background:#000; }
-    .cs-car__track { display:flex; width:100%; height:100%; transition:transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
-    .cs-car__slide { width:100%; height:100%; flex-shrink:0; }
-    .cs-car__slide img { width:100%; height:100%; object-fit:cover; display:block; }
-    .cs-car__nav { position:absolute; bottom:16px; right:16px; display:flex; gap:8px; pointer-events:none; }
-    .cs-car__btn { pointer-events:auto; width:44px; height:44px; background:var(--black); color:var(--yellow); border:3px solid var(--black); display:flex; align-items:center; justify-content:center; cursor:pointer; font-weight:900; font-size:1.2rem; transition:transform 0.1s, background 0.15s, color 0.15s; }
-    .cs-car__btn:hover { background:var(--yellow); color:var(--black); border-color:var(--black); }
-    .cs-car__btn:active { transform:translate(2px,2px); }
-
-    /* IMPACT SCROLL */
-    .scroll-card { background:var(--black); border:var(--b); box-shadow:var(--sh-xl); padding:52px; }
-    .scroll-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:var(--b); margin:32px 0; }
-    .scroll-stat { padding:28px 20px; border-right:var(--b); text-align:center; }
-    .scroll-stat:last-child { border-right:none; }
-    .scroll-stat__num   { font-weight:900; font-size:2.5rem; color:var(--yellow); display:block; line-height:1; }
-    .scroll-stat__label { font-weight:700; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.45); margin-top:8px; }
-    .states-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; }
-    .state-pill { background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.15); padding:16px 20px; }
-    .state-pill__name  { font-weight:900; font-size:1rem; text-transform:uppercase; color:var(--yellow); }
-    .state-pill__text  { font-size:0.82rem; font-weight:500; color:rgba(255,255,255,0.5); margin-top:6px; line-height:1.5; }
-
-    /* BENEFICIARY STORIES */
-    .bene-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-    .bene-card { background:var(--white); border:var(--b); box-shadow:var(--sh-md); overflow:hidden; display:flex; flex-direction:column; transition:transform 0.15s,box-shadow 0.15s; }
-    .bene-card:hover { transform:translateY(-4px); box-shadow:var(--sh-lg); }
-    .bene-card__img { width:100%; height:200px; object-fit:cover; display:block; }
-    .bene-card__body { padding:24px; flex:1; }
-    .bene-card__tag  { font-weight:700; font-size:0.65rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--green); margin-bottom:8px; }
-    .bene-card__name { font-weight:900; font-size:1rem; text-transform:uppercase; margin-bottom:10px; }
-    .bene-card__text { font-size:0.875rem; font-weight:500; line-height:1.7; opacity:0.8; }
-
-    /* TESTIMONIALS */
-    .testimonials-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
-    .testimonial-card { background:var(--white); border:var(--b); box-shadow:var(--sh-md); padding:36px 32px; }
-    .testimonial-mark { font-weight:900; font-size:3rem; color:var(--yellow); line-height:0.8; display:block; margin-bottom:12px; }
-    .testimonial-text { font-weight:700; font-size:1rem; line-height:1.6; margin-bottom:20px; }
-    .testimonial-attr { font-weight:700; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(0,0,0,0.4); border-top:2px solid rgba(0,0,0,0.1); padding-top:14px; }
-
-    @media(max-width:1024px){
-      .cs{grid-template-columns:1fr;} .cs:nth-child(even){direction:ltr;}
-      .cs__img{border-right:none;border-bottom:var(--b);height:280px;}
-      .cs:nth-child(even) .cs__img{border-left:none;border-bottom:var(--b);}
-      .bene-grid{grid-template-columns:1fr 1fr;}
-      .states-grid{grid-template-columns:1fr 1fr;}
-    }
+    .scroll-stats{display:grid;grid-template-columns:repeat(3,1fr);border:var(--b);margin:24px 0;}
+    .sc-stat{padding:22px 16px;border-right:var(--b);text-align:center;}
+    .sc-stat:last-child{border-right:none;}
+    .sc-stat__n{font-weight:900;font-size:2.5rem;color:var(--yellow);display:block;line-height:1;}
+    .sc-stat__l{font-weight:700;font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:5px;}
+    .states-g{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px;}
+    .sp{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.15);padding:14px;}
+    .sp h4{font-weight:900;font-size:.9rem;text-transform:uppercase;color:var(--yellow);}
+    .sp p{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:5px;line-height:1.5;}
     @media(max-width:768px){
-      .testimonials-grid{grid-template-columns:1fr;}
-      .bene-grid{grid-template-columns:1fr;}
       .scroll-stats{grid-template-columns:1fr;}
-      .scroll-stat{border-right:none;border-bottom:var(--b);}
-      .scroll-stat:last-child{border-bottom:none;}
+      .sc-stat{border-right:none;border-bottom:var(--b);}
+      .sc-stat:last-child{border-bottom:none;}
+      .states-g{grid-template-columns:1fr;}
+      .reviews-grid{grid-template-columns:1fr !important;}
     }
   </style>
 </head>
 <body>
-<div class="announce" aria-hidden="true"><div class="announce__track">
-  <span class="announce__item">Our Impact</span><span class="announce__item">Real Stories</span><span class="announce__item">52+ Lives Transformed</span><span class="announce__item">3 States Reached</span>
-  <span class="announce__item">Our Impact</span><span class="announce__item">Real Stories</span><span class="announce__item">52+ Lives Transformed</span><span class="announce__item">3 States Reached</span>
-</div></div>
+<div class="announce" aria-hidden="true"><div class="announce__track"><span class="announce__item">Our Impact</span><span class="announce__item">Real Projects · Real Lives</span><span class="announce__item">10 Case Studies</span><span class="announce__item">Lagos · Taraba · Jos</span><span class="announce__item">Our Impact</span><span class="announce__item">Real Projects · Real Lives</span><span class="announce__item">10 Case Studies</span><span class="announce__item">Lagos · Taraba · Jos</span></div></div>
 
-<header><nav class="nav" aria-label="Main navigation"><div class="nav__inner">
+<header><nav class="nav"><div class="nav__inner">
   <a href="/" class="nav__logo-box"><img src="/assets/images/logo.png" alt="Daffodils Africa" class="nav__logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/><span class="nav__logo-text" style="display:none">Daffodils<small>Africa</small></span></a>
-  <ul class="nav__links">
-    <li><a href="/about">About Us</a></li>
-    <li><a href="/programs">What We Do</a></li>
-    <li><a href="/academy">Academy</a></li>
-    <li class="nav__has-drop">
-      <a href="/impact" class="active">Impact</a>
-      <ul class="nav__drop">
-        <li><a href="/gallery">Gallery</a></li>
-      </ul>
-    </li>
-    <li><a href="/partnerships">Partner</a></li>
-    <li><a href="/blog">Blog</a></li>
-    <li><a href="/contact">Contact</a></li>
-  </ul>
-  <div class="nav__actions">
-    <a href="/contact#volunteer" class="btn btn--outline">Get Involved</a>
-    <a href="/contact" class="btn btn--green">Start a Project</a>
-  </div>
+  <ul class="nav__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/academy">Academy</a></li><li class="nav__has-drop"><a href="/impact"  class="active">Impact</a><ul class="nav__drop"><li><a href="/gallery">Gallery</a></li></ul></li><li><a href="/partnerships">Partner</a></li><li><a href="/blog">Blog</a></li><li><a href="/contact">Contact</a></li></ul>
+  <div class="nav__actions"><a href="/contact#volunteer" class="btn btn--outline">Get Involved</a><a href="/contact" class="btn btn--green">Start a Project</a></div>
   <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
 </div>
-<div id="mobile-nav" class="nav__mobile">
-  <a href="/about">About Us</a>
-  <a href="/programs">What We Do</a>
-  <a href="/academy">Academy</a>
-  <a href="/impact">Impact</a>
-  <a href="/gallery">Gallery</a>
-  <a href="/partnerships">Partner</a>
-  <a href="/blog">Blog</a>
-  <a href="/contact">Contact</a>
-  <div class="nav__mobile-btns">
-    <a href="/contact" class="btn btn--green btn--full">Start a Project</a>
-    <a href="/contact#volunteer" class="btn btn--outline btn--full">Get Involved</a>
-  </div>
-</div>
+<div id="mobile-nav" class="nav__mobile"><a href="/about">About Us</a><a href="/programs">What We Do</a><a href="/academy">Academy</a><a href="/impact">Impact</a><a href="/gallery">Gallery</a><a href="/partnerships">Partner</a><a href="/blog">Blog</a><a href="/contact">Contact</a><div class="nav__mobile-btns"><a href="/contact" class="btn btn--green btn--full">Start a Project</a><a href="/contact#volunteer" class="btn btn--outline btn--full">Get Involved</a></div></div>
 </nav></header>
 
 <main>
-
-  <!-- HERO -->
   <section style="background:var(--black);border-bottom:var(--b);padding:80px 0;position:relative;overflow:hidden;">
-    <div style="position:absolute;inset:0;background-image:url('/assets/images/impact-cs1.jpg');background-size:cover;background-position:center;opacity:0.14;"></div>
-    <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1.5px,transparent 1.5px);background-size:22px 22px;"></div>
+    <div class="hero-img-overlay" style="background-image:url('/assets/images/projects/digital-literacy/img-04.jpg');"></div>
+    <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1.5px,transparent 1.5px);background-size:22px 22px;"></div>
     <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
-      <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;"><a href="/" style="color:var(--yellow);">Home</a> → Our Impact</p>
-      <h1 style="font-weight:900;font-size:clamp(3rem,6vw,5.5rem);line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase;color:var(--white);margin-bottom:20px;">Real Numbers.<br><span style="color:var(--yellow);">Real Change.</span><br>Real Africa.</h1>
-      <p style="font-size:1.1rem;font-weight:500;color:rgba(255,255,255,0.65);max-width:580px;line-height:1.7;">Every project we run has a story, a number, and a life changed. Here's our impact — transparent, measurable, and growing.</p>
+      <p style="font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px;"><a href="/" style="color:var(--yellow);">Home</a> → Our Impact</p>
+      <h1 style="font-weight:900;font-size:clamp(3rem,6vw,5.5rem);line-height:.95;letter-spacing:-.03em;text-transform:uppercase;color:var(--white);margin-bottom:20px;">Real Numbers.<br><span style="color:var(--yellow);">Real Change.</span><br>Real Africa.</h1>
+      <p style="font-size:1.1rem;font-weight:500;color:rgba(255,255,255,.65);max-width:560px;line-height:1.7;">10 projects. 3 states. Hundreds of lives changed. Every photo, every story documented and shared transparently.</p>
+      <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;">
+        <a href="#case-studies" class="btn btn--yellow">See All Projects →</a>
+        <a href="/gallery" class="btn btn--outline-dark">View Gallery</a>
+      </div>
     </div>
   </section>
 
-  <!-- STATS -->
   <div class="stats"><div class="stats__grid">
     <div class="stats__cell"><span class="stats__num">3,000+</span><span class="stats__label">Lives Reached</span></div>
-    <div class="stats__cell"><span class="stats__num">12+</span><span class="stats__label">Programs Executed</span></div>
-    <div class="stats__cell"><span class="stats__num">10+</span><span class="stats__label">Partnerships</span></div>
-    <div class="stats__cell"><span class="stats__num">5+</span><span class="stats__label">Sectors Impacted</span></div>
+    <div class="stats__cell"><span class="stats__num">10</span><span class="stats__label">Projects Documented</span></div>
+    <div class="stats__cell"><span class="stats__num">3</span><span class="stats__label">States</span></div>
+    <div class="stats__cell"><span class="stats__num">134+</span><span class="stats__label">Project Photos</span></div>
   </div></div>
 
-  <!-- IMPACT SCROLL '24 -->
-  <section style="background:var(--bg);border-bottom:var(--b);padding:96px 0;">
-    <div class="section-head-center">
-      <div class="chip chip--yellow">★ Annual Impact Report</div>
-      <h2 class="section-h2">Impact Scroll '24</h2>
-      <p class="section-sub section-sub--center">A summary of Daffodils Africa's measurable outcomes across our social impact programs in 2024.</p>
-    </div>
+  <section style="background:var(--bg);border-bottom:var(--b);padding:72px 0;">
+    <div class="section-head-center"><div class="chip chip--yellow">★ 2024 Report</div><h2 class="section-h2">Impact Scroll '24</h2></div>
     <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
-      <div class="scroll-card">
-        <div class="chip chip--yellow">★ 2024 Breakdown</div>
-        <h3 style="font-weight:900;font-size:1.5rem;text-transform:uppercase;color:var(--white);margin-bottom:8px;">What We Achieved in 2024</h3>
-        <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);font-weight:500;line-height:1.7;">Across three states and multiple sectors, Daffodils Africa delivered education, business empowerment, and community development projects that transformed real lives.</p>
+      <div style="background:var(--black);border:var(--b);box-shadow:var(--sh-xl);padding:48px;">
+        <div class="chip chip--yellow">★ Breakdown</div>
+        <h3 style="font-weight:900;font-size:1.3rem;text-transform:uppercase;color:var(--white);margin-bottom:8px;">What We Achieved in 2024</h3>
+        <p style="font-size:.9rem;color:rgba(255,255,255,.55);font-weight:500;line-height:1.7;">Across three states and multiple sectors, Daffodils Africa delivered education, empowerment, healthcare and food support to real communities.</p>
         <div class="scroll-stats">
-          <div class="scroll-stat"><span class="scroll-stat__num">52</span><span class="scroll-stat__label">Lives Transformed</span></div>
-          <div class="scroll-stat"><span class="scroll-stat__num">3</span><span class="scroll-stat__label">States Reached</span></div>
-          <div class="scroll-stat"><span class="scroll-stat__num">100%</span><span class="scroll-stat__label">Community-Funded</span></div>
+          <div class="sc-stat"><span class="sc-stat__n">52</span><span class="sc-stat__l">Lives Transformed</span></div>
+          <div class="sc-stat"><span class="sc-stat__n">3</span><span class="sc-stat__l">States Reached</span></div>
+          <div class="sc-stat"><span class="sc-stat__n">100%</span><span class="sc-stat__l">Community Funded</span></div>
         </div>
-        <div class="states-grid">
-          <div class="state-pill">
-            <p class="state-pill__name">Lagos</p>
-            <p class="state-pill__text">Women empowerment &amp; business support for widows and small-scale entrepreneurs in low-income communities.</p>
-          </div>
-          <div class="state-pill">
-            <p class="state-pill__name">Taraba</p>
-            <p class="state-pill__text">Educational support for orphans — school supplies, shoes, books, and academic resources delivered.</p>
-          </div>
-          <div class="state-pill">
-            <p class="state-pill__name">Jos</p>
-            <p class="state-pill__text">Digital literacy training and community development programs for youth in underserved communities.</p>
-          </div>
+        <div class="states-g">
+          <div class="sp"><h4>Lagos</h4><p>Women empowerment, business support, food for elderly, eyecare, and IWD Ajo contribution project.</p></div>
+          <div class="sp"><h4>Taraba</h4><p>Educational support for orphans — school supplies, shoes, books and academic resources delivered directly.</p></div>
+          <div class="sp"><h4>Jos</h4><p>Digital literacy STEAM Club in partnership with Trust The Process Initiative and maternity support.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="ticker" aria-hidden="true"><div class="ticker__track">
-    <span class="ticker__item">Success Stories</span><span class="ticker__item">Real Impact</span><span class="ticker__item">52 Lives</span><span class="ticker__item">3 States</span><span class="ticker__item">Community First</span>
-    <span class="ticker__item">Success Stories</span><span class="ticker__item">Real Impact</span><span class="ticker__item">52 Lives</span><span class="ticker__item">3 States</span><span class="ticker__item">Community First</span>
-  </div></div>
+  <div class="ticker" aria-hidden="true"><div class="ticker__track"><span class="ticker__item">10 Projects</span><span class="ticker__item">134 Photos</span><span class="ticker__item">Real Impact</span><span class="ticker__item">Lagos</span><span class="ticker__item">Taraba</span><span class="ticker__item">Jos</span><span class="ticker__item">10 Projects</span><span class="ticker__item">134 Photos</span><span class="ticker__item">Real Impact</span></div></div>
 
-  <!-- CASE STUDIES -->
-  <section style="background:var(--bg);border-bottom:var(--b);padding:96px 0;">
-    <div class="section-head-center">
-      <div class="chip chip--black">★ Success Stories</div>
-      <h2 class="section-h2">Stories of Change</h2>
-      <p class="section-sub section-sub--center">Projects we've delivered — real outcomes, real communities, real people.</p>
-    </div>
+  <section style="background:var(--bg);border-bottom:var(--b);padding:64px 0 0;">
+    <div class="section-head-center"><div class="chip chip--black">★ Case Studies</div><h2 class="section-h2">All 10 Projects</h2><p class="section-sub section-sub--center">Every project documented — swipe through photos, read the story.</p></div>
+  </section>
+
+  <section id="case-studies" style="background:var(--bg);border-bottom:var(--b);padding:24px 0 72px;">
     <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
+      <script>
+function css(id,d){if(window._cc&&window._cc[id])window._cc[id](d);}
+function csg(id,n){if(window._cg&&window._cg[id])window._cg[id](n);}
+</script>
+<style>
+.csd{width:7px;height:7px;background:rgba(255,255,255,.3);display:inline-block;cursor:pointer;transition:background .2s,transform .2s;}
+.csda{background:#faba16;transform:scale(1.4);}
+.cs-card{transition:box-shadow .2s;}
+@media(max-width:1024px){.cs-card{grid-template-columns:1fr !important;direction:ltr !important;} .cs-card>div:first-child{border-right:none !important;border-bottom:var(--b);height:280px;} .cs-card>div:first-child img{height:280px !important;}}
+</style>
+<div style="border:var(--b);box-shadow:var(--sh-xl);margin-bottom:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;" class="cs-card">
+  <div style="position:relative;overflow:hidden;border-right:var(--b);">
+    <div id="t-digital-literacy" style="display:flex;transition:transform .4s ease;"><img src="/assets/images/projects/digital-literacy/img-01.jpg" alt="Digital Literacy Training for Kids — photo 1" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-02.jpg" alt="Digital Literacy Training for Kids — photo 2" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-03.jpg" alt="Digital Literacy Training for Kids — photo 3" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-04.jpg" alt="Digital Literacy Training for Kids — photo 4" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-05.jpg" alt="Digital Literacy Training for Kids — photo 5" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-06.jpg" alt="Digital Literacy Training for Kids — photo 6" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-07.jpg" alt="Digital Literacy Training for Kids — photo 7" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-08.jpg" alt="Digital Literacy Training for Kids — photo 8" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-09.jpg" alt="Digital Literacy Training for Kids — photo 9" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-10.jpg" alt="Digital Literacy Training for Kids — photo 10" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-11.jpg" alt="Digital Literacy Training for Kids — photo 11" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-12.jpg" alt="Digital Literacy Training for Kids — photo 12" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-13.jpg" alt="Digital Literacy Training for Kids — photo 13" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-14.jpg" alt="Digital Literacy Training for Kids — photo 14" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-15.jpg" alt="Digital Literacy Training for Kids — photo 15" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-16.jpg" alt="Digital Literacy Training for Kids — photo 16" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-17.jpg" alt="Digital Literacy Training for Kids — photo 17" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-18.jpg" alt="Digital Literacy Training for Kids — photo 18" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-19.jpg" alt="Digital Literacy Training for Kids — photo 19" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-20.jpg" alt="Digital Literacy Training for Kids — photo 20" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-21.jpg" alt="Digital Literacy Training for Kids — photo 21" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-22.jpg" alt="Digital Literacy Training for Kids — photo 22" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-23.jpg" alt="Digital Literacy Training for Kids — photo 23" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-24.jpg" alt="Digital Literacy Training for Kids — photo 24" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-25.jpg" alt="Digital Literacy Training for Kids — photo 25" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-26.jpg" alt="Digital Literacy Training for Kids — photo 26" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-27.jpg" alt="Digital Literacy Training for Kids — photo 27" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-28.jpg" alt="Digital Literacy Training for Kids — photo 28" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-29.jpg" alt="Digital Literacy Training for Kids — photo 29" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-30.jpg" alt="Digital Literacy Training for Kids — photo 30" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-31.jpg" alt="Digital Literacy Training for Kids — photo 31" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-32.jpg" alt="Digital Literacy Training for Kids — photo 32" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-33.jpg" alt="Digital Literacy Training for Kids — photo 33" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-34.jpg" alt="Digital Literacy Training for Kids — photo 34" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-35.jpg" alt="Digital Literacy Training for Kids — photo 35" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-36.jpg" alt="Digital Literacy Training for Kids — photo 36" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-37.jpg" alt="Digital Literacy Training for Kids — photo 37" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-38.jpg" alt="Digital Literacy Training for Kids — photo 38" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-39.jpg" alt="Digital Literacy Training for Kids — photo 39" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-40.jpg" alt="Digital Literacy Training for Kids — photo 40" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-41.jpg" alt="Digital Literacy Training for Kids — photo 41" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-42.jpg" alt="Digital Literacy Training for Kids — photo 42" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-43.jpg" alt="Digital Literacy Training for Kids — photo 43" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-44.jpg" alt="Digital Literacy Training for Kids — photo 44" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-45.jpg" alt="Digital Literacy Training for Kids — photo 45" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/digital-literacy/img-46.jpg" alt="Digital Literacy Training for Kids — photo 46" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/></div>
+    <button onclick="css('digital-literacy',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">←</button>
+    <button onclick="css('digital-literacy',1)"  style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">→</button>
+    <div id="f-digital-literacy" style="position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.75);color:#faba16;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.7rem;padding:4px 10px;letter-spacing:.1em;">1/46</div>
+    <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;"><span class="csd csda" onclick="csg('digital-literacy',0)"></span><span class="csd" onclick="csg('digital-literacy',1)"></span><span class="csd" onclick="csg('digital-literacy',2)"></span><span class="csd" onclick="csg('digital-literacy',3)"></span><span class="csd" onclick="csg('digital-literacy',4)"></span><span class="csd" onclick="csg('digital-literacy',5)"></span><span class="csd" onclick="csg('digital-literacy',6)"></span><span class="csd" onclick="csg('digital-literacy',7)"></span><span class="csd" onclick="csg('digital-literacy',8)"></span><span class="csd" onclick="csg('digital-literacy',9)"></span><span class="csd" onclick="csg('digital-literacy',10)"></span><span class="csd" onclick="csg('digital-literacy',11)"></span><span class="csd" onclick="csg('digital-literacy',12)"></span><span class="csd" onclick="csg('digital-literacy',13)"></span><span class="csd" onclick="csg('digital-literacy',14)"></span><span class="csd" onclick="csg('digital-literacy',15)"></span><span class="csd" onclick="csg('digital-literacy',16)"></span><span class="csd" onclick="csg('digital-literacy',17)"></span><span class="csd" onclick="csg('digital-literacy',18)"></span><span class="csd" onclick="csg('digital-literacy',19)"></span><span class="csd" onclick="csg('digital-literacy',20)"></span><span class="csd" onclick="csg('digital-literacy',21)"></span><span class="csd" onclick="csg('digital-literacy',22)"></span><span class="csd" onclick="csg('digital-literacy',23)"></span><span class="csd" onclick="csg('digital-literacy',24)"></span><span class="csd" onclick="csg('digital-literacy',25)"></span><span class="csd" onclick="csg('digital-literacy',26)"></span><span class="csd" onclick="csg('digital-literacy',27)"></span><span class="csd" onclick="csg('digital-literacy',28)"></span><span class="csd" onclick="csg('digital-literacy',29)"></span><span class="csd" onclick="csg('digital-literacy',30)"></span><span class="csd" onclick="csg('digital-literacy',31)"></span><span class="csd" onclick="csg('digital-literacy',32)"></span><span class="csd" onclick="csg('digital-literacy',33)"></span><span class="csd" onclick="csg('digital-literacy',34)"></span><span class="csd" onclick="csg('digital-literacy',35)"></span><span class="csd" onclick="csg('digital-literacy',36)"></span><span class="csd" onclick="csg('digital-literacy',37)"></span><span class="csd" onclick="csg('digital-literacy',38)"></span><span class="csd" onclick="csg('digital-literacy',39)"></span><span class="csd" onclick="csg('digital-literacy',40)"></span><span class="csd" onclick="csg('digital-literacy',41)"></span><span class="csd" onclick="csg('digital-literacy',42)"></span><span class="csd" onclick="csg('digital-literacy',43)"></span><span class="csd" onclick="csg('digital-literacy',44)"></span><span class="csd" onclick="csg('digital-literacy',45)"></span></div>
+  </div>
+  <div style="padding:40px;background:var(--white);display:flex;flex-direction:column;justify-content:center;">
+    <p style="font-weight:700;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,0,0,.4);margin-bottom:10px;">STEAM Club · Lagos & Jos · July 2025</p>
+    <h2 style="font-weight:900;font-size:clamp(1.3rem,2vw,1.75rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px;">Digital Literacy Training for Kids</h2>
+    <p style="font-size:.88rem;font-weight:500;line-height:1.8;opacity:.85;margin-bottom:16px;">Daffodils Africa partnered with Trust The Process Initiative and Abayomi Tunde Sowemimo to deliver a STEAM Club for primary school pupils. Children were introduced to Scratch programming — every child built and showcased a live animation by end of the day.</p>
+    <div style="display:flex;gap:10px;margin-bottom:18px;"><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">20+</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Kids Reached</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">2</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Partner Orgs</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">2025</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Year</span></div></div>
+    <a href="/contact" class="btn btn--green" style="align-self:flex-start;">Start a Similar Project →</a>
+  </div>
+</div>
+<script>(function(){var cur=0,tot=46,t=document.getElementById('t-digital-literacy'),f=document.getElementById('f-digital-literacy');function r(){t.style.transform='translateX(-'+(cur*100)+'%)';f.textContent=(cur+1)+'/46';document.querySelectorAll('#t-digital-literacy').forEach&&null;var dots=document.querySelectorAll('[data-c="digital-literacy"] .csd');if(dots.length)dots.forEach(function(d,i){d.classList.toggle('csda',i===cur);});}window._cc=window._cc||{};window._cc['digital-literacy']=function(d){cur=Math.max(0,Math.min(tot-1,cur+d));r();};window._cg=window._cg||{};window._cg['digital-literacy']=function(n){cur=n;r();};var tx=0;t.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});t.addEventListener('touchend',function(e){var d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40){cur=Math.max(0,Math.min(tot-1,cur+(d>0?1:-1)));r();}},{passive:true});r();})();</script>
 
-      <!-- CS 1: Digital Literacy -->
-      <div class="cs">
-        <div class="cs__img">
-          <div class="cs-car" data-cs-car>
-            <div class="cs-car__track">
-              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-1.jpg" alt="Class image 1"/></div>
-              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-2.jpg" alt="Class image 2"/></div>
-              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-3.jpg" alt="Class image 3"/></div>
-              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-4.jpg" alt="Class image 4"/></div>
-              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-5.jpg" alt="Class image 5"/></div>
-              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-6.jpg" alt="Class image 6"/></div>
-              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-7.jpg" alt="Class image 7"/></div>
-              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-8.jpg" alt="Class image 8"/></div>
-            </div>
-            <div class="cs-car__nav">
-              <button class="cs-car__btn cs-car-prev" aria-label="Previous">←</button>
-              <button class="cs-car__btn cs-car-next" aria-label="Next">→</button>
-            </div>
-          </div>
-        </div>
-        <div class="cs__content">
-          <p class="cs__label">Community Program · Lagos &amp; Plateau State</p>
-          <h2 class="cs__title">Digital Literacy Training for Kids</h2>
-          <p class="cs__text">Aiding at a unique startup programme, Imperative Associates, as a group-funded project, Digital Literacy Training for Kids in Agege — a low-income community in Lagos State. Functioning as the "Project in Focus", Daffodils Africa planned and successfully implemented the project in partnership with Imperative Governing and the community of impact-driven friends.</p>
-          <div class="cs__stats">
-            <div class="cs__stat"><span class="cs__stat-num">2</span><span class="cs__stat-label">States</span></div>
-            <div class="cs__stat"><span class="cs__stat-num">Kids</span><span class="cs__stat-label">Beneficiaries</span></div>
-            <div class="cs__stat"><span class="cs__stat-num">2024</span><span class="cs__stat-label">Year</span></div>
-          </div>
-          <a href="/contact" class="btn btn--green">Start a Similar Project →</a>
-        </div>
-      </div>
 
-      <!-- CS 2: Education & Business Empowerment -->
-      <div class="cs">
-        <div class="cs__img">
-          <div class="cs-car" data-cs-car>
-            <div class="cs-car__track">
-              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164101.jpg" alt="Business Support 1"/></div>
-              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164106.jpg" alt="Business Support 2"/></div>
-              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164133.jpg" alt="Business Support 3"/></div>
-              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164136.jpg" alt="Business Support 4"/></div>
-              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164153.jpg" alt="Business Support 5"/></div>
-              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164156.jpg" alt="Business Support 6"/></div>
-              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164209.jpg" alt="Business Support 7"/></div>
-              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164211.jpg" alt="Business Support 8"/></div>
-            </div>
-            <div class="cs-car__nav">
-              <button class="cs-car__btn cs-car-prev" aria-label="Previous">←</button>
-              <button class="cs-car__btn cs-car-next" aria-label="Next">→</button>
-            </div>
-          </div>
-        </div>
-        <div class="cs__content">
-          <p class="cs__label">Quarterly Social Impact Project · Lagos &amp; Taraba · June 2024</p>
-          <h2 class="cs__title">Education Support &amp; Business Empowerment Project</h2>
-          <p class="cs__text">A kind, progressive individual engaged Daffodils Africa to implement a quarterly social impact project for her — solo funded. As a result, in June 2024, we were able to provide educational support for orphans in Taraba State and business support for a widow in Lagos State. Real impact. Real lives changed.</p>
-          <div class="cs__stats">
-            <div class="cs__stat"><span class="cs__stat-num">2</span><span class="cs__stat-label">States</span></div>
-            <div class="cs__stat"><span class="cs__stat-num">Solo</span><span class="cs__stat-label">Funded</span></div>
-            <div class="cs__stat"><span class="cs__stat-num">Jun '24</span><span class="cs__stat-label">Delivered</span></div>
-          </div>
-          <a href="/contact" class="btn btn--black">Sponsor a Project →</a>
-        </div>
-      </div>
+<div style="border:var(--b);box-shadow:var(--sh-xl);margin-bottom:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;direction:rtl;" class="cs-card">
+  <div style="position:relative;overflow:hidden;border-right:var(--b);">
+    <div id="t-edu-taraba" style="display:flex;transition:transform .4s ease;"><img src="/assets/images/projects/edu-taraba/img-01.jpg" alt="Education Support — Taraba State — photo 1" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-taraba/img-02.jpg" alt="Education Support — Taraba State — photo 2" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-taraba/img-03.jpg" alt="Education Support — Taraba State — photo 3" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-taraba/img-04.jpg" alt="Education Support — Taraba State — photo 4" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-taraba/img-05.jpg" alt="Education Support — Taraba State — photo 5" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-taraba/img-06.jpg" alt="Education Support — Taraba State — photo 6" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-taraba/img-07.jpg" alt="Education Support — Taraba State — photo 7" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-taraba/img-08.jpg" alt="Education Support — Taraba State — photo 8" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-taraba/img-09.jpg" alt="Education Support — Taraba State — photo 9" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-taraba/img-10.jpg" alt="Education Support — Taraba State — photo 10" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-taraba/img-11.jpg" alt="Education Support — Taraba State — photo 11" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/></div>
+    <button onclick="css('edu-taraba',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">←</button>
+    <button onclick="css('edu-taraba',1)"  style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">→</button>
+    <div id="f-edu-taraba" style="position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.75);color:#faba16;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.7rem;padding:4px 10px;letter-spacing:.1em;">1/11</div>
+    <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;"><span class="csd csda" onclick="csg('edu-taraba',0)"></span><span class="csd" onclick="csg('edu-taraba',1)"></span><span class="csd" onclick="csg('edu-taraba',2)"></span><span class="csd" onclick="csg('edu-taraba',3)"></span><span class="csd" onclick="csg('edu-taraba',4)"></span><span class="csd" onclick="csg('edu-taraba',5)"></span><span class="csd" onclick="csg('edu-taraba',6)"></span><span class="csd" onclick="csg('edu-taraba',7)"></span><span class="csd" onclick="csg('edu-taraba',8)"></span><span class="csd" onclick="csg('edu-taraba',9)"></span><span class="csd" onclick="csg('edu-taraba',10)"></span></div>
+  </div>
+  <div style="padding:40px;background:var(--yellow);display:flex;flex-direction:column;justify-content:center;direction:ltr;">
+    <p style="font-weight:700;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,0,0,.4);margin-bottom:10px;">Education Empowerment · Taraba · June 2024</p>
+    <h2 style="font-weight:900;font-size:clamp(1.3rem,2vw,1.75rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px;">Education Support — Taraba State</h2>
+    <p style="font-size:.88rem;font-weight:500;line-height:1.8;opacity:.85;margin-bottom:16px;">Solo-funded quarterly project delivering educational support to orphans in Taraba State. School supplies, shoes, books and essentials were handed directly to children — connecting one donor's generosity to real children's futures.</p>
+    <div style="display:flex;gap:10px;margin-bottom:18px;"><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">10+</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Orphans Supported</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">50+</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Items Delivered</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">Jun 2024</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Delivered</span></div></div>
+    <a href="/contact" class="btn btn--green" style="align-self:flex-start;">Start a Similar Project →</a>
+  </div>
+</div>
+<script>(function(){var cur=0,tot=11,t=document.getElementById('t-edu-taraba'),f=document.getElementById('f-edu-taraba');function r(){t.style.transform='translateX(-'+(cur*100)+'%)';f.textContent=(cur+1)+'/11';document.querySelectorAll('#t-edu-taraba').forEach&&null;var dots=document.querySelectorAll('[data-c="edu-taraba"] .csd');if(dots.length)dots.forEach(function(d,i){d.classList.toggle('csda',i===cur);});}window._cc=window._cc||{};window._cc['edu-taraba']=function(d){cur=Math.max(0,Math.min(tot-1,cur+d));r();};window._cg=window._cg||{};window._cg['edu-taraba']=function(n){cur=n;r();};var tx=0;t.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});t.addEventListener('touchend',function(e){var d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40){cur=Math.max(0,Math.min(tot-1,cur+(d>0?1:-1)));r();}},{passive:true});r();})();</script>
 
-      <!-- CS 3: IWD Women Empowerment -->
-      <div class="cs">
-        <div class="cs__img">
-          <img src="/assets/images/impact-iwd.jpg" alt="IWD 2024 Women Empowerment" onerror="this.outerHTML='<div class=\'img-ph\' style=\'height:420px;\'>IWD Project Photo</div>'"/>
-        </div>
-        <div class="cs__content">
-          <p class="cs__label">International Women's Day · Lagos, Nigeria · March 2024</p>
-          <h2 class="cs__title">IWD'24: Business Empowerment for Women</h2>
-          <p class="cs__text">To celebrate International Women's Day 2024, Daffodils Africa successfully organised a social impact Ajo/Contribution to support two women-owned small-scale businesses in a low-income community in Lagos, Nigeria. The project was funded by contributions from different people committed to the goal. We helped two women striving to cater for their children through their businesses.</p>
-          <div class="cs__stats">
-            <div class="cs__stat"><span class="cs__stat-num">2</span><span class="cs__stat-label">Businesses Empowered</span></div>
-            <div class="cs__stat"><span class="cs__stat-num">10+</span><span class="cs__stat-label">Families Impacted</span></div>
-            <div class="cs__stat"><span class="cs__stat-num">Mar '24</span><span class="cs__stat-label">Delivered</span></div>
-          </div>
-          <a href="/contact" class="btn btn--green">Partner on a Similar Project →</a>
-        </div>
-      </div>
+
+<div style="border:var(--b);box-shadow:var(--sh-xl);margin-bottom:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;" class="cs-card">
+  <div style="position:relative;overflow:hidden;border-right:var(--b);">
+    <div id="t-edu-lagos" style="display:flex;transition:transform .4s ease;"><img src="/assets/images/projects/edu-lagos/img-01.jpg" alt="Education Support — Lagos (December) — photo 1" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-lagos/img-02.jpg" alt="Education Support — Lagos (December) — photo 2" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-lagos/img-03.jpg" alt="Education Support — Lagos (December) — photo 3" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-lagos/img-04.jpg" alt="Education Support — Lagos (December) — photo 4" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-lagos/img-05.jpg" alt="Education Support — Lagos (December) — photo 5" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-lagos/img-06.jpg" alt="Education Support — Lagos (December) — photo 6" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-lagos/img-07.jpg" alt="Education Support — Lagos (December) — photo 7" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-lagos/img-08.jpg" alt="Education Support — Lagos (December) — photo 8" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/edu-lagos/img-09.jpg" alt="Education Support — Lagos (December) — photo 9" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/></div>
+    <button onclick="css('edu-lagos',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">←</button>
+    <button onclick="css('edu-lagos',1)"  style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">→</button>
+    <div id="f-edu-lagos" style="position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.75);color:#faba16;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.7rem;padding:4px 10px;letter-spacing:.1em;">1/9</div>
+    <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;"><span class="csd csda" onclick="csg('edu-lagos',0)"></span><span class="csd" onclick="csg('edu-lagos',1)"></span><span class="csd" onclick="csg('edu-lagos',2)"></span><span class="csd" onclick="csg('edu-lagos',3)"></span><span class="csd" onclick="csg('edu-lagos',4)"></span><span class="csd" onclick="csg('edu-lagos',5)"></span><span class="csd" onclick="csg('edu-lagos',6)"></span><span class="csd" onclick="csg('edu-lagos',7)"></span><span class="csd" onclick="csg('edu-lagos',8)"></span></div>
+  </div>
+  <div style="padding:40px;background:var(--white);display:flex;flex-direction:column;justify-content:center;">
+    <p style="font-weight:700;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,0,0,.4);margin-bottom:10px;">Education & Business · Lagos · December 2025</p>
+    <h2 style="font-weight:900;font-size:clamp(1.3rem,2vw,1.75rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px;">Education Support — Lagos (December)</h2>
+    <p style="font-size:.88rem;font-weight:500;line-height:1.8;opacity:.85;margin-bottom:16px;">Education and business empowerment support for families in underserved Lagos communities. Educational resources and livelihood support provided, making a tangible difference for children and parents in low-income households.</p>
+    <div style="display:flex;gap:10px;margin-bottom:18px;"><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">5+</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Families Reached</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">30+</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Items Delivered</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">Dec 2025</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Delivered</span></div></div>
+    <a href="/contact" class="btn btn--green" style="align-self:flex-start;">Start a Similar Project →</a>
+  </div>
+</div>
+<script>(function(){var cur=0,tot=9,t=document.getElementById('t-edu-lagos'),f=document.getElementById('f-edu-lagos');function r(){t.style.transform='translateX(-'+(cur*100)+'%)';f.textContent=(cur+1)+'/9';document.querySelectorAll('#t-edu-lagos').forEach&&null;var dots=document.querySelectorAll('[data-c="edu-lagos"] .csd');if(dots.length)dots.forEach(function(d,i){d.classList.toggle('csda',i===cur);});}window._cc=window._cc||{};window._cc['edu-lagos']=function(d){cur=Math.max(0,Math.min(tot-1,cur+d));r();};window._cg=window._cg||{};window._cg['edu-lagos']=function(n){cur=n;r();};var tx=0;t.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});t.addEventListener('touchend',function(e){var d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40){cur=Math.max(0,Math.min(tot-1,cur+(d>0?1:-1)));r();}},{passive:true});r();})();</script>
+
+
+<div style="border:var(--b);box-shadow:var(--sh-xl);margin-bottom:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;direction:rtl;" class="cs-card">
+  <div style="position:relative;overflow:hidden;border-right:var(--b);">
+    <div id="t-iwd" style="display:flex;transition:transform .4s ease;"><img src="/assets/images/projects/iwd/img-01.jpg" alt="IWD'24: Business Empowerment for Women — photo 1" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/iwd/img-02.jpg" alt="IWD'24: Business Empowerment for Women — photo 2" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/iwd/img-03.jpg" alt="IWD'24: Business Empowerment for Women — photo 3" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/iwd/img-04.jpg" alt="IWD'24: Business Empowerment for Women — photo 4" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/iwd/img-05.jpg" alt="IWD'24: Business Empowerment for Women — photo 5" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/iwd/img-06.jpg" alt="IWD'24: Business Empowerment for Women — photo 6" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/></div>
+    <button onclick="css('iwd',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">←</button>
+    <button onclick="css('iwd',1)"  style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">→</button>
+    <div id="f-iwd" style="position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.75);color:#faba16;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.7rem;padding:4px 10px;letter-spacing:.1em;">1/6</div>
+    <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;"><span class="csd csda" onclick="csg('iwd',0)"></span><span class="csd" onclick="csg('iwd',1)"></span><span class="csd" onclick="csg('iwd',2)"></span><span class="csd" onclick="csg('iwd',3)"></span><span class="csd" onclick="csg('iwd',4)"></span><span class="csd" onclick="csg('iwd',5)"></span></div>
+  </div>
+  <div style="padding:40px;background:var(--yellow);display:flex;flex-direction:column;justify-content:center;direction:ltr;">
+    <p style="font-weight:700;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,0,0,.4);margin-bottom:10px;">International Women's Day · Lagos · March 2024</p>
+    <h2 style="font-weight:900;font-size:clamp(1.3rem,2vw,1.75rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px;">IWD'24: Business Empowerment for Women</h2>
+    <p style="font-size:.88rem;font-weight:500;line-height:1.8;opacity:.85;margin-bottom:16px;">To celebrate IWD 2024, Daffodils Africa organised a Social Impact Ajo/Contribution to support two women-owned small businesses in a low-income Lagos community, funded by contributors committed to female economic empowerment.</p>
+    <div style="display:flex;gap:10px;margin-bottom:18px;"><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">2</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Businesses</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">10+</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Families Impacted</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">Mar 2024</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Delivered</span></div></div>
+    <a href="/contact" class="btn btn--green" style="align-self:flex-start;">Start a Similar Project →</a>
+  </div>
+</div>
+<script>(function(){var cur=0,tot=6,t=document.getElementById('t-iwd'),f=document.getElementById('f-iwd');function r(){t.style.transform='translateX(-'+(cur*100)+'%)';f.textContent=(cur+1)+'/6';document.querySelectorAll('#t-iwd').forEach&&null;var dots=document.querySelectorAll('[data-c="iwd"] .csd');if(dots.length)dots.forEach(function(d,i){d.classList.toggle('csda',i===cur);});}window._cc=window._cc||{};window._cc['iwd']=function(d){cur=Math.max(0,Math.min(tot-1,cur+d));r();};window._cg=window._cg||{};window._cg['iwd']=function(n){cur=n;r();};var tx=0;t.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});t.addEventListener('touchend',function(e){var d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40){cur=Math.max(0,Math.min(tot-1,cur+(d>0?1:-1)));r();}},{passive:true});r();})();</script>
+
+
+<div style="border:var(--b);box-shadow:var(--sh-xl);margin-bottom:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;" class="cs-card">
+  <div style="position:relative;overflow:hidden;border-right:var(--b);">
+    <div id="t-aged-food" style="display:flex;transition:transform .4s ease;"><img src="/assets/images/projects/aged-food/img-01.jpg" alt="Aged Food Support — December — photo 1" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/aged-food/img-02.jpg" alt="Aged Food Support — December — photo 2" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/aged-food/img-03.jpg" alt="Aged Food Support — December — photo 3" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/aged-food/img-04.jpg" alt="Aged Food Support — December — photo 4" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/aged-food/img-05.jpg" alt="Aged Food Support — December — photo 5" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/aged-food/img-06.jpg" alt="Aged Food Support — December — photo 6" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/aged-food/img-07.jpg" alt="Aged Food Support — December — photo 7" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/aged-food/img-08.jpg" alt="Aged Food Support — December — photo 8" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/aged-food/img-09.jpg" alt="Aged Food Support — December — photo 9" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/aged-food/img-10.jpg" alt="Aged Food Support — December — photo 10" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/></div>
+    <button onclick="css('aged-food',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">←</button>
+    <button onclick="css('aged-food',1)"  style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">→</button>
+    <div id="f-aged-food" style="position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.75);color:#faba16;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.7rem;padding:4px 10px;letter-spacing:.1em;">1/10</div>
+    <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;"><span class="csd csda" onclick="csg('aged-food',0)"></span><span class="csd" onclick="csg('aged-food',1)"></span><span class="csd" onclick="csg('aged-food',2)"></span><span class="csd" onclick="csg('aged-food',3)"></span><span class="csd" onclick="csg('aged-food',4)"></span><span class="csd" onclick="csg('aged-food',5)"></span><span class="csd" onclick="csg('aged-food',6)"></span><span class="csd" onclick="csg('aged-food',7)"></span><span class="csd" onclick="csg('aged-food',8)"></span><span class="csd" onclick="csg('aged-food',9)"></span></div>
+  </div>
+  <div style="padding:40px;background:var(--white);display:flex;flex-direction:column;justify-content:center;">
+    <p style="font-weight:700;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,0,0,.4);margin-bottom:10px;">Community Care · Lagos · December 2025</p>
+    <h2 style="font-weight:900;font-size:clamp(1.3rem,2vw,1.75rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px;">Aged Food Support — December</h2>
+    <p style="font-size:.88rem;font-weight:500;line-height:1.8;opacity:.85;margin-bottom:16px;">Food and essentials delivered to elderly members of low-income Lagos communities during the festive season. Ensuring senior citizens with limited means received nutritious meals and essential care when they needed it most.</p>
+    <div style="display:flex;gap:10px;margin-bottom:18px;"><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">15+</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Elderly Reached</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">Lagos</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Location</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">Dec 2025</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Delivered</span></div></div>
+    <a href="/contact" class="btn btn--green" style="align-self:flex-start;">Start a Similar Project →</a>
+  </div>
+</div>
+<script>(function(){var cur=0,tot=10,t=document.getElementById('t-aged-food'),f=document.getElementById('f-aged-food');function r(){t.style.transform='translateX(-'+(cur*100)+'%)';f.textContent=(cur+1)+'/10';document.querySelectorAll('#t-aged-food').forEach&&null;var dots=document.querySelectorAll('[data-c="aged-food"] .csd');if(dots.length)dots.forEach(function(d,i){d.classList.toggle('csda',i===cur);});}window._cc=window._cc||{};window._cc['aged-food']=function(d){cur=Math.max(0,Math.min(tot-1,cur+d));r();};window._cg=window._cg||{};window._cg['aged-food']=function(n){cur=n;r();};var tx=0;t.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});t.addEventListener('touchend',function(e){var d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40){cur=Math.max(0,Math.min(tot-1,cur+(d>0?1:-1)));r();}},{passive:true});r();})();</script>
+
+
+<div style="border:var(--b);box-shadow:var(--sh-xl);margin-bottom:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;direction:rtl;" class="cs-card">
+  <div style="position:relative;overflow:hidden;border-right:var(--b);">
+    <div id="t-glow" style="display:flex;transition:transform .4s ease;"><img src="/assets/images/projects/glow/img-01.jpg" alt="DaffodilsXGLOW Foundation Project — photo 1" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/glow/img-02.jpg" alt="DaffodilsXGLOW Foundation Project — photo 2" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/glow/img-03.jpg" alt="DaffodilsXGLOW Foundation Project — photo 3" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/glow/img-04.jpg" alt="DaffodilsXGLOW Foundation Project — photo 4" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/glow/img-05.jpg" alt="DaffodilsXGLOW Foundation Project — photo 5" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/glow/img-06.jpg" alt="DaffodilsXGLOW Foundation Project — photo 6" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/glow/img-07.jpg" alt="DaffodilsXGLOW Foundation Project — photo 7" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/glow/img-08.jpg" alt="DaffodilsXGLOW Foundation Project — photo 8" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/glow/img-09.jpg" alt="DaffodilsXGLOW Foundation Project — photo 9" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/glow/img-10.jpg" alt="DaffodilsXGLOW Foundation Project — photo 10" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/glow/img-11.jpg" alt="DaffodilsXGLOW Foundation Project — photo 11" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/glow/img-12.jpg" alt="DaffodilsXGLOW Foundation Project — photo 12" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/glow/img-13.jpg" alt="DaffodilsXGLOW Foundation Project — photo 13" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/></div>
+    <button onclick="css('glow',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">←</button>
+    <button onclick="css('glow',1)"  style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">→</button>
+    <div id="f-glow" style="position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.75);color:#faba16;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.7rem;padding:4px 10px;letter-spacing:.1em;">1/13</div>
+    <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;"><span class="csd csda" onclick="csg('glow',0)"></span><span class="csd" onclick="csg('glow',1)"></span><span class="csd" onclick="csg('glow',2)"></span><span class="csd" onclick="csg('glow',3)"></span><span class="csd" onclick="csg('glow',4)"></span><span class="csd" onclick="csg('glow',5)"></span><span class="csd" onclick="csg('glow',6)"></span><span class="csd" onclick="csg('glow',7)"></span><span class="csd" onclick="csg('glow',8)"></span><span class="csd" onclick="csg('glow',9)"></span><span class="csd" onclick="csg('glow',10)"></span><span class="csd" onclick="csg('glow',11)"></span><span class="csd" onclick="csg('glow',12)"></span></div>
+  </div>
+  <div style="padding:40px;background:var(--yellow);display:flex;flex-direction:column;justify-content:center;direction:ltr;">
+    <p style="font-weight:700;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,0,0,.4);margin-bottom:10px;">Partnership Project · Lagos · 2024</p>
+    <h2 style="font-weight:900;font-size:clamp(1.3rem,2vw,1.75rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px;">DaffodilsXGLOW Foundation Project</h2>
+    <p style="font-size:.88rem;font-weight:500;line-height:1.8;opacity:.85;margin-bottom:16px;">A collaborative project between Daffodils Africa and the GLOW Foundation — combining forces to deliver meaningful community impact. Together we reached more lives and created more change than either organisation could alone.</p>
+    <div style="display:flex;gap:10px;margin-bottom:18px;"><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">2 Orgs</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Partners</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">Lagos</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Community</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">2024</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Year</span></div></div>
+    <a href="/contact" class="btn btn--green" style="align-self:flex-start;">Start a Similar Project →</a>
+  </div>
+</div>
+<script>(function(){var cur=0,tot=13,t=document.getElementById('t-glow'),f=document.getElementById('f-glow');function r(){t.style.transform='translateX(-'+(cur*100)+'%)';f.textContent=(cur+1)+'/13';document.querySelectorAll('#t-glow').forEach&&null;var dots=document.querySelectorAll('[data-c="glow"] .csd');if(dots.length)dots.forEach(function(d,i){d.classList.toggle('csda',i===cur);});}window._cc=window._cc||{};window._cc['glow']=function(d){cur=Math.max(0,Math.min(tot-1,cur+d));r();};window._cg=window._cg||{};window._cg['glow']=function(n){cur=n;r();};var tx=0;t.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});t.addEventListener('touchend',function(e){var d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40){cur=Math.max(0,Math.min(tot-1,cur+(d>0?1:-1)));r();}},{passive:true});r();})();</script>
+
+
+<div style="border:var(--b);box-shadow:var(--sh-xl);margin-bottom:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;" class="cs-card">
+  <div style="position:relative;overflow:hidden;border-right:var(--b);">
+    <div id="t-jos-maternity" style="display:flex;transition:transform .4s ease;"><img src="/assets/images/projects/jos-maternity/img-01.jpg" alt="JOS Maternity Support Project — photo 1" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/jos-maternity/img-02.jpg" alt="JOS Maternity Support Project — photo 2" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/jos-maternity/img-03.jpg" alt="JOS Maternity Support Project — photo 3" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/jos-maternity/img-04.jpg" alt="JOS Maternity Support Project — photo 4" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/></div>
+    <button onclick="css('jos-maternity',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">←</button>
+    <button onclick="css('jos-maternity',1)"  style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">→</button>
+    <div id="f-jos-maternity" style="position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.75);color:#faba16;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.7rem;padding:4px 10px;letter-spacing:.1em;">1/4</div>
+    <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;"><span class="csd csda" onclick="csg('jos-maternity',0)"></span><span class="csd" onclick="csg('jos-maternity',1)"></span><span class="csd" onclick="csg('jos-maternity',2)"></span><span class="csd" onclick="csg('jos-maternity',3)"></span></div>
+  </div>
+  <div style="padding:40px;background:var(--white);display:flex;flex-direction:column;justify-content:center;">
+    <p style="font-weight:700;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,0,0,.4);margin-bottom:10px;">Healthcare Support · Jos · December 2024</p>
+    <h2 style="font-weight:900;font-size:clamp(1.3rem,2vw,1.75rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px;">JOS Maternity Support Project</h2>
+    <p style="font-size:.88rem;font-weight:500;line-height:1.8;opacity:.85;margin-bottom:16px;">Maternity support delivered to women in Jos, ensuring access to essential maternal care resources for mothers in underserved communities. Supporting healthy pregnancies and safe deliveries for families without adequate healthcare access.</p>
+    <div style="display:flex;gap:10px;margin-bottom:18px;"><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">4+</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Mothers Supported</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">Jos</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Location</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">Dec 2024</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Delivered</span></div></div>
+    <a href="/contact" class="btn btn--green" style="align-self:flex-start;">Start a Similar Project →</a>
+  </div>
+</div>
+<script>(function(){var cur=0,tot=4,t=document.getElementById('t-jos-maternity'),f=document.getElementById('f-jos-maternity');function r(){t.style.transform='translateX(-'+(cur*100)+'%)';f.textContent=(cur+1)+'/4';document.querySelectorAll('#t-jos-maternity').forEach&&null;var dots=document.querySelectorAll('[data-c="jos-maternity"] .csd');if(dots.length)dots.forEach(function(d,i){d.classList.toggle('csda',i===cur);});}window._cc=window._cc||{};window._cc['jos-maternity']=function(d){cur=Math.max(0,Math.min(tot-1,cur+d));r();};window._cg=window._cg||{};window._cg['jos-maternity']=function(n){cur=n;r();};var tx=0;t.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});t.addEventListener('touchend',function(e){var d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40){cur=Math.max(0,Math.min(tot-1,cur+(d>0?1:-1)));r();}},{passive:true});r();})();</script>
+
+
+<div style="border:var(--b);box-shadow:var(--sh-xl);margin-bottom:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;direction:rtl;" class="cs-card">
+  <div style="position:relative;overflow:hidden;border-right:var(--b);">
+    <div id="t-biz-aged" style="display:flex;transition:transform .4s ease;"><img src="/assets/images/projects/biz-aged/img-01.jpg" alt="Lagos Business Support for the Aged — photo 1" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/biz-aged/img-02.jpg" alt="Lagos Business Support for the Aged — photo 2" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/biz-aged/img-03.jpg" alt="Lagos Business Support for the Aged — photo 3" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/></div>
+    <button onclick="css('biz-aged',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">←</button>
+    <button onclick="css('biz-aged',1)"  style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">→</button>
+    <div id="f-biz-aged" style="position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.75);color:#faba16;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.7rem;padding:4px 10px;letter-spacing:.1em;">1/3</div>
+    <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;"><span class="csd csda" onclick="csg('biz-aged',0)"></span><span class="csd" onclick="csg('biz-aged',1)"></span><span class="csd" onclick="csg('biz-aged',2)"></span></div>
+  </div>
+  <div style="padding:40px;background:var(--yellow);display:flex;flex-direction:column;justify-content:center;direction:ltr;">
+    <p style="font-weight:700;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,0,0,.4);margin-bottom:10px;">Economic Empowerment · Lagos · 2024</p>
+    <h2 style="font-weight:900;font-size:clamp(1.3rem,2vw,1.75rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px;">Lagos Business Support for the Aged</h2>
+    <p style="font-size:.88rem;font-weight:500;line-height:1.8;opacity:.85;margin-bottom:16px;">Micro-business support for elderly entrepreneurs in Lagos, helping senior citizens maintain their livelihoods and economic dignity. Small business grants and practical support enabled these community elders to continue providing for their families.</p>
+    <div style="display:flex;gap:10px;margin-bottom:18px;"><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">3+</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Elders Supported</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">Lagos</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Location</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">2024</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Year</span></div></div>
+    <a href="/contact" class="btn btn--green" style="align-self:flex-start;">Start a Similar Project →</a>
+  </div>
+</div>
+<script>(function(){var cur=0,tot=3,t=document.getElementById('t-biz-aged'),f=document.getElementById('f-biz-aged');function r(){t.style.transform='translateX(-'+(cur*100)+'%)';f.textContent=(cur+1)+'/3';document.querySelectorAll('#t-biz-aged').forEach&&null;var dots=document.querySelectorAll('[data-c="biz-aged"] .csd');if(dots.length)dots.forEach(function(d,i){d.classList.toggle('csda',i===cur);});}window._cc=window._cc||{};window._cc['biz-aged']=function(d){cur=Math.max(0,Math.min(tot-1,cur+d));r();};window._cg=window._cg||{};window._cg['biz-aged']=function(n){cur=n;r();};var tx=0;t.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});t.addEventListener('touchend',function(e){var d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40){cur=Math.max(0,Math.min(tot-1,cur+(d>0?1:-1)));r();}},{passive:true});r();})();</script>
+
+
+<div style="border:var(--b);box-shadow:var(--sh-xl);margin-bottom:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;" class="cs-card">
+  <div style="position:relative;overflow:hidden;border-right:var(--b);">
+    <div id="t-biz-support" style="display:flex;transition:transform .4s ease;"><img src="/assets/images/projects/biz-support/img-01.jpg" alt="Business Support Program — 2024 — photo 1" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/biz-support/img-02.jpg" alt="Business Support Program — 2024 — photo 2" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/biz-support/img-03.jpg" alt="Business Support Program — 2024 — photo 3" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/biz-support/img-04.jpg" alt="Business Support Program — 2024 — photo 4" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/biz-support/img-05.jpg" alt="Business Support Program — 2024 — photo 5" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/biz-support/img-06.jpg" alt="Business Support Program — 2024 — photo 6" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/biz-support/img-07.jpg" alt="Business Support Program — 2024 — photo 7" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/biz-support/img-08.jpg" alt="Business Support Program — 2024 — photo 8" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/biz-support/img-09.jpg" alt="Business Support Program — 2024 — photo 9" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/biz-support/img-10.jpg" alt="Business Support Program — 2024 — photo 10" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/biz-support/img-11.jpg" alt="Business Support Program — 2024 — photo 11" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/biz-support/img-12.jpg" alt="Business Support Program — 2024 — photo 12" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/></div>
+    <button onclick="css('biz-support',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">←</button>
+    <button onclick="css('biz-support',1)"  style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">→</button>
+    <div id="f-biz-support" style="position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.75);color:#faba16;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.7rem;padding:4px 10px;letter-spacing:.1em;">1/12</div>
+    <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;"><span class="csd csda" onclick="csg('biz-support',0)"></span><span class="csd" onclick="csg('biz-support',1)"></span><span class="csd" onclick="csg('biz-support',2)"></span><span class="csd" onclick="csg('biz-support',3)"></span><span class="csd" onclick="csg('biz-support',4)"></span><span class="csd" onclick="csg('biz-support',5)"></span><span class="csd" onclick="csg('biz-support',6)"></span><span class="csd" onclick="csg('biz-support',7)"></span><span class="csd" onclick="csg('biz-support',8)"></span><span class="csd" onclick="csg('biz-support',9)"></span><span class="csd" onclick="csg('biz-support',10)"></span><span class="csd" onclick="csg('biz-support',11)"></span></div>
+  </div>
+  <div style="padding:40px;background:var(--white);display:flex;flex-direction:column;justify-content:center;">
+    <p style="font-weight:700;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,0,0,.4);margin-bottom:10px;">Economic Empowerment · Lagos · July 2024</p>
+    <h2 style="font-weight:900;font-size:clamp(1.3rem,2vw,1.75rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px;">Business Support Program — 2024</h2>
+    <p style="font-size:.88rem;font-weight:500;line-height:1.8;opacity:.85;margin-bottom:16px;">A series of business support activities for micro-enterprise owners in Lagos communities. Practical support, resources and empowerment to help small business owners grow their livelihoods and create sustainable income streams.</p>
+    <div style="display:flex;gap:10px;margin-bottom:18px;"><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">10+</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Businesses</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">Lagos</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Location</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">Jul 2024</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Delivered</span></div></div>
+    <a href="/contact" class="btn btn--green" style="align-self:flex-start;">Start a Similar Project →</a>
+  </div>
+</div>
+<script>(function(){var cur=0,tot=12,t=document.getElementById('t-biz-support'),f=document.getElementById('f-biz-support');function r(){t.style.transform='translateX(-'+(cur*100)+'%)';f.textContent=(cur+1)+'/12';document.querySelectorAll('#t-biz-support').forEach&&null;var dots=document.querySelectorAll('[data-c="biz-support"] .csd');if(dots.length)dots.forEach(function(d,i){d.classList.toggle('csda',i===cur);});}window._cc=window._cc||{};window._cc['biz-support']=function(d){cur=Math.max(0,Math.min(tot-1,cur+d));r();};window._cg=window._cg||{};window._cg['biz-support']=function(n){cur=n;r();};var tx=0;t.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});t.addEventListener('touchend',function(e){var d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40){cur=Math.max(0,Math.min(tot-1,cur+(d>0?1:-1)));r();}},{passive:true});r();})();</script>
+
+
+<div style="border:var(--b);box-shadow:var(--sh-xl);margin-bottom:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;direction:rtl;" class="cs-card">
+  <div style="position:relative;overflow:hidden;border-right:var(--b);">
+    <div id="t-vision-eyecare" style="display:flex;transition:transform .4s ease;"><img src="/assets/images/projects/vision-eyecare/img-01.jpg" alt="Vision Project — Eyecare Lagos — photo 1" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-02.jpg" alt="Vision Project — Eyecare Lagos — photo 2" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-03.jpg" alt="Vision Project — Eyecare Lagos — photo 3" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-04.jpg" alt="Vision Project — Eyecare Lagos — photo 4" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-05.jpg" alt="Vision Project — Eyecare Lagos — photo 5" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-06.jpg" alt="Vision Project — Eyecare Lagos — photo 6" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-07.jpg" alt="Vision Project — Eyecare Lagos — photo 7" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-08.jpg" alt="Vision Project — Eyecare Lagos — photo 8" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-09.jpg" alt="Vision Project — Eyecare Lagos — photo 9" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-10.jpg" alt="Vision Project — Eyecare Lagos — photo 10" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-11.jpg" alt="Vision Project — Eyecare Lagos — photo 11" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-12.jpg" alt="Vision Project — Eyecare Lagos — photo 12" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-13.jpg" alt="Vision Project — Eyecare Lagos — photo 13" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-14.jpg" alt="Vision Project — Eyecare Lagos — photo 14" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-15.jpg" alt="Vision Project — Eyecare Lagos — photo 15" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-16.jpg" alt="Vision Project — Eyecare Lagos — photo 16" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-17.jpg" alt="Vision Project — Eyecare Lagos — photo 17" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-18.jpg" alt="Vision Project — Eyecare Lagos — photo 18" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-19.jpg" alt="Vision Project — Eyecare Lagos — photo 19" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/><img src="/assets/images/projects/vision-eyecare/img-20.jpg" alt="Vision Project — Eyecare Lagos — photo 20" loading="lazy" style="flex:0 0 100%;width:100%;height:440px;object-fit:cover;display:block;"/></div>
+    <button onclick="css('vision-eyecare',-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">←</button>
+    <button onclick="css('vision-eyecare',1)"  style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:#faba16;border:3px solid #000;font-size:1rem;font-weight:900;cursor:pointer;z-index:3;">→</button>
+    <div id="f-vision-eyecare" style="position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.75);color:#faba16;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.7rem;padding:4px 10px;letter-spacing:.1em;">1/20</div>
+    <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;"><span class="csd csda" onclick="csg('vision-eyecare',0)"></span><span class="csd" onclick="csg('vision-eyecare',1)"></span><span class="csd" onclick="csg('vision-eyecare',2)"></span><span class="csd" onclick="csg('vision-eyecare',3)"></span><span class="csd" onclick="csg('vision-eyecare',4)"></span><span class="csd" onclick="csg('vision-eyecare',5)"></span><span class="csd" onclick="csg('vision-eyecare',6)"></span><span class="csd" onclick="csg('vision-eyecare',7)"></span><span class="csd" onclick="csg('vision-eyecare',8)"></span><span class="csd" onclick="csg('vision-eyecare',9)"></span><span class="csd" onclick="csg('vision-eyecare',10)"></span><span class="csd" onclick="csg('vision-eyecare',11)"></span><span class="csd" onclick="csg('vision-eyecare',12)"></span><span class="csd" onclick="csg('vision-eyecare',13)"></span><span class="csd" onclick="csg('vision-eyecare',14)"></span><span class="csd" onclick="csg('vision-eyecare',15)"></span><span class="csd" onclick="csg('vision-eyecare',16)"></span><span class="csd" onclick="csg('vision-eyecare',17)"></span><span class="csd" onclick="csg('vision-eyecare',18)"></span><span class="csd" onclick="csg('vision-eyecare',19)"></span></div>
+  </div>
+  <div style="padding:40px;background:var(--yellow);display:flex;flex-direction:column;justify-content:center;direction:ltr;">
+    <p style="font-weight:700;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(0,0,0,.4);margin-bottom:10px;">Healthcare Access · Lagos · 2026</p>
+    <h2 style="font-weight:900;font-size:clamp(1.3rem,2vw,1.75rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1.15;margin-bottom:12px;">Vision Project — Eyecare Lagos</h2>
+    <p style="font-size:.88rem;font-weight:500;line-height:1.8;opacity:.85;margin-bottom:16px;">The Vision Project brought eyecare services directly to underserved communities in Lagos — providing eye tests, prescriptions and glasses to community members who would otherwise go without proper vision care. Seeing clearly changes everything.</p>
+    <div style="display:flex;gap:10px;margin-bottom:18px;"><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">20+</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">People Served</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">Lagos</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Location</span></div><div style="text-align:center;background:#000;color:#fff;padding:12px 14px;flex:1;"><span style="font-weight:900;font-size:1.25rem;color:#faba16;display:block;line-height:1;">2026</span><span style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-top:3px;display:block;">Year</span></div></div>
+    <a href="/contact" class="btn btn--green" style="align-self:flex-start;">Start a Similar Project →</a>
+  </div>
+</div>
+<script>(function(){var cur=0,tot=20,t=document.getElementById('t-vision-eyecare'),f=document.getElementById('f-vision-eyecare');function r(){t.style.transform='translateX(-'+(cur*100)+'%)';f.textContent=(cur+1)+'/20';document.querySelectorAll('#t-vision-eyecare').forEach&&null;var dots=document.querySelectorAll('[data-c="vision-eyecare"] .csd');if(dots.length)dots.forEach(function(d,i){d.classList.toggle('csda',i===cur);});}window._cc=window._cc||{};window._cc['vision-eyecare']=function(d){cur=Math.max(0,Math.min(tot-1,cur+d));r();};window._cg=window._cg||{};window._cg['vision-eyecare']=function(n){cur=n;r();};var tx=0;t.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});t.addEventListener('touchend',function(e){var d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40){cur=Math.max(0,Math.min(tot-1,cur+(d>0?1:-1)));r();}},{passive:true});r();})();</script>
 
     </div>
   </section>
 
-  <!-- EMPOWERING DREAMS + OUR IMPACT IN ACTION -->
-  <section style="background:var(--black);border-bottom:var(--b);padding:96px 0;" class="pat-halftone-light">
-    <div class="section-head-center" style="position:relative;z-index:1;">
-      <div class="chip chip--yellow">★ Our Impact in Action</div>
-      <h2 class="section-h2" style="color:var(--white);">Empowering Dreams</h2>
-      <p class="section-sub section-sub--center" style="color:rgba(255,255,255,0.6);">At Daffodils Africa, through collaborative efforts and unwavering commitment, we achieve remarkable outcomes, transformations, and uplifting achievements in low-income African communities.</p>
-    </div>
-    <div data-carousel class="mob-car-wrap" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
-      <div class="bene-grid mob-car-track">
-      <!-- Beneficiary One -->
-      <div class="bene-card mob-car-slide">
-        <img src="/assets/images/impact-cs2.jpg" alt="Beneficiary One" class="bene-card__img" onerror="this.outerHTML='<div class=\'img-ph bene-card__img\' style=\'height:200px;\'>Beneficiary Photo</div>'"/>
-        <div class="bene-card__body">
-          <p class="bene-card__tag">Beneficiary Story · Lagos</p>
-          <h3 class="bene-card__name">Mrs Ade — Business Owner</h3>
-          <p class="bene-card__text">Mrs Ade, a widow struggling to raise her children in difficult circumstances, received business empowerment support from Daffodils Africa. Thanks to the business support funds, she established her livelihood and gained the capacity to better provide for her children. Her contributions to her community continue to make a real difference.</p>
-        </div>
-      </div>
-      <!-- Beneficiary Two -->
-      <div class="bene-card mob-car-slide">
-        <img src="/assets/images/hero-community.jpg" alt="Beneficiary Two" class="bene-card__img" onerror="this.outerHTML='<div class=\'img-ph bene-card__img\' style=\'height:200px;\'>Beneficiary Photo</div>'"/>
-        <div class="bene-card__body">
-          <p class="bene-card__tag">Beneficiary Story · Lagos</p>
-          <h3 class="bene-card__name">Mrs Ogunsesin — Small Business Owner</h3>
-          <p class="bene-card__text">Mrs Ogunsesin, a widow struggling to raise her children through a small business, received empowerment support through Daffodils Africa's IWD initiative. The support established her livelihood, empowering her to better care for her children's needs. Her story of resilience inspires communities around her.</p>
-        </div>
-      </div>
-      <!-- Beneficiary Three -->
-      <div class="bene-card mob-car-slide">
-        <img src="/assets/images/gallery-3.jpg" alt="Ezekiel and Samuel" class="bene-card__img" onerror="this.outerHTML='<div class=\'img-ph bene-card__img\' style=\'height:200px;\'>Beneficiary Photo</div>'"/>
-        <div class="bene-card__body">
-          <p class="bene-card__tag">Beneficiary Story · Children</p>
-          <h3 class="bene-card__name">Ezekiel and Samuel</h3>
-          <p class="bene-card__text">Mrs Ogunsesin's children, Ezekiel and Samuel — they were in Primary 6. Whilst Samuel dreams of becoming a footballer when he grows up, Ezekiel wants to be intelligent and well-behaved. Daffodils Africa looks forward to giving them the tools to help them dream bigger and grow taller. Impact starts here.</p>
-        </div>
-      </div>
-    </div>
-      <div class="mob-car-nav">
-        <button class="mob-car-btn mob-car-prev" aria-label="Previous">←</button>
-        <span class="mob-car-frac">1 / 3</span>
-        <button class="mob-car-btn mob-car-next" aria-label="Next">→</button>
-      </div>
+  <section style="background:var(--yellow);border-bottom:var(--b);padding:72px 0;">
+    <div class="section-head-center"><div class="chip chip--black">★ Reviews</div><h2 class="section-h2">Client Reviews</h2></div>
+    <div class="reviews-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
+      <div style="background:var(--white);border:var(--b);box-shadow:var(--sh-md);padding:32px;"><span style="font-weight:900;font-size:2.5rem;color:var(--black);line-height:.8;display:block;margin-bottom:10px;">"</span><p style="font-weight:700;font-size:.95rem;line-height:1.6;margin-bottom:18px;">Daffodils Africa exceeded our expectations in guiding us to create lasting impact. Their expertise made societal transformation seamless and genuinely stress-free.</p><p style="font-weight:700;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.4);border-top:2px solid rgba(0,0,0,.1);padding-top:12px;">— Client, Lagos Nigeria</p></div>
+      <div style="background:var(--black);border:var(--b);box-shadow:var(--sh-md);padding:32px;"><span style="font-weight:900;font-size:2.5rem;color:var(--yellow);line-height:.8;display:block;margin-bottom:10px;">"</span><p style="font-weight:700;font-size:.95rem;line-height:1.6;margin-bottom:18px;color:var(--white);">Working with Daffodils Africa was the best decision for our CSR initiative. They handled everything and delivered transparent reports we could actually use.</p><p style="font-weight:700;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);border-top:2px solid rgba(255,255,255,.12);padding-top:12px;">— Corporate Partner</p></div>
+      <div style="background:var(--white);border:var(--b);box-shadow:var(--sh-md);padding:32px;"><span style="font-weight:900;font-size:2.5rem;color:var(--black);line-height:.8;display:block;margin-bottom:10px;">"</span><p style="font-weight:700;font-size:.95rem;line-height:1.6;margin-bottom:18px;">I had no idea how to turn my desire to give back into something real. Daffodils Africa made it easy and meaningful — I could see exactly who my donation helped.</p><p style="font-weight:700;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.4);border-top:2px solid rgba(0,0,0,.1);padding-top:12px;">— Individual Donor</p></div>
+      <div style="background:var(--white);border:var(--b);box-shadow:var(--sh-md);padding:32px;"><span style="font-weight:900;font-size:2.5rem;color:var(--black);line-height:.8;display:block;margin-bottom:10px;">"</span><p style="font-weight:700;font-size:.95rem;line-height:1.6;margin-bottom:18px;">Our nonprofit partnership with Daffodils Africa revolutionised our approach to helping the less privileged. Seamless process, impactful results, zero stress.</p><p style="font-weight:700;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.4);border-top:2px solid rgba(0,0,0,.1);padding-top:12px;">— Partner Organisation</p></div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section style="background:var(--yellow);border-bottom:var(--b);padding:96px 0;">
-    <div class="section-head-center">
-      <div class="chip chip--black">★ What They Say</div>
-      <h2 class="section-h2">Client Reviews</h2>
-    </div>
-    <div class="testimonials-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
-      <div class="testimonial-card">
-        <span class="testimonial-mark" aria-hidden="true">"</span>
-        <p class="testimonial-text">Daffodils Africa exceeded our expectations in guiding us to create a lasting impact. Their expertise made societal transformation seamless. Crafting legacies with them is genuinely stress-free and rewarding.</p>
-        <p class="testimonial-attr">— Satisfied Client, Lagos Nigeria</p>
-      </div>
-      <div class="testimonial-card">
-        <span class="testimonial-mark" aria-hidden="true">"</span>
-        <p class="testimonial-text">Daffodils Africa, our nonprofit partner, has revolutionised our approach to helping the less privileged. Their expert guidance ensures a seamless process, making our philanthropic journey both impactful and stress-free.</p>
-        <p class="testimonial-attr">— Partner Organisation</p>
-      </div>
-      <div class="testimonial-card">
-        <span class="testimonial-mark" aria-hidden="true">"</span>
-        <p class="testimonial-text">Working with Daffodils Africa was the best decision for our CSR initiative. They handled everything — from planning to execution — and delivered transparent reports we could actually use.</p>
-        <p class="testimonial-attr">— Corporate Partner</p>
-      </div>
-      <div class="testimonial-card">
-        <span class="testimonial-mark" aria-hidden="true">"</span>
-        <p class="testimonial-text">I had no idea how to turn my desire to give back into something real. Daffodils Africa made it easy, meaningful, and I could see exactly who my donation helped.</p>
-        <p class="testimonial-attr">— Individual Donor</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- VIDEO PLACEHOLDER -->
-  <section style="background:var(--bg);border-bottom:var(--b);padding:96px 0;">
-    <div class="section-head-center">
-      <div class="chip chip--yellow">★ Video</div>
-      <h2 class="section-h2">Impact in Action</h2>
-    </div>
-    <div data-carousel style="max-width:900px;margin-inline:auto;padding-inline:var(--pad);" class="mob-car-wrap">
-      <div class="mob-car-track" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-        <div class="mob-car-slide" style="background:var(--black);border:var(--b);box-shadow:var(--sh-xl);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative;overflow:hidden;">
-          <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.04) 1.5px,transparent 1.5px);background-size:22px 22px;"></div>
-          <div style="width:64px;height:64px;background:var(--yellow);border:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;position:relative;">▶</div>
-          <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-align:center;position:relative;">IWD 2024 — Women Empowerment</p>
-        </div>
-        <div class="mob-car-slide" style="background:var(--black);border:var(--b);box-shadow:var(--sh-xl);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative;overflow:hidden;">
-          <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.04) 1.5px,transparent 1.5px);background-size:22px 22px;"></div>
-          <div style="width:64px;height:64px;background:var(--yellow);border:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;position:relative;">▶</div>
-          <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-align:center;position:relative;">Education &amp; Business Empowerment</p>
-        </div>
-      </div>
-      <div class="mob-car-nav">
-        <button class="mob-car-btn mob-car-prev" aria-label="Previous">←</button>
-        <span class="mob-car-frac mob-car-frac--light">1 / 2</span>
-        <button class="mob-car-btn mob-car-next" aria-label="Next">→</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section style="background:var(--black);padding:96px 0;text-align:center;" class="pat-halftone-light">
-    <div style="max-width:680px;margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
-      <div class="chip chip--yellow">★ Add Your Story</div>
-      <h2 style="font-weight:900;font-size:clamp(2.2rem,4vw,3.5rem);color:var(--white);text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:20px;">Your Project Could<br>Be the Next Story.</h2>
-      <p style="font-size:1.05rem;color:rgba(255,255,255,0.6);margin-bottom:40px;line-height:1.7;">Start a project with us and we'll document your impact — photos, data, and stories — for the world to see.</p>
+  <section style="background:var(--black);padding:80px 0;text-align:center;" class="pat-halftone-light">
+    <div style="max-width:640px;margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
+      <div class="chip chip--yellow">★ Your Project</div>
+      <h2 style="font-weight:900;font-size:clamp(2rem,4vw,3rem);color:var(--white);text-transform:uppercase;letter-spacing:-.02em;margin-bottom:16px;">Your Project<br>Could Be Here</h2>
+      <p style="font-size:1rem;color:rgba(255,255,255,.6);margin-bottom:32px;line-height:1.7;">Start a project with us — every project gets documented with photos, data, and impact reports shared with the world.</p>
       <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
         <a href="/contact" class="btn btn--yellow btn--lg">Start a Project</a>
         <a href="/gallery" class="btn btn--outline-dark btn--lg">View Gallery</a>
       </div>
     </div>
   </section>
-
 </main>
-
-<footer class="footer">
-  <div class="footer__inner">
-    <div class="footer__grid">
-      <div>
-        <div class="footer__logo-box">
-          <img src="/assets/images/logo.png" alt="Daffodils Africa" style="height:44px;width:auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
-          <span class="footer__logo-text" style="display:none">Daffodils Africa</span>
-        </div>
-        <p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa. Impact is not accidental — it is built.</p>
-        <div class="footer__socials" style="margin-top:20px;">
-          <a href="https://www.instagram.com/daffodils_africa/?hl=en" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">ig</a>
-          <a href="https://www.facebook.com/daffodilsafrica1/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">fb</a>
-          <a href="https://www.linkedin.com/company/daffodils-africa" target="_blank" rel="noopener" class="footer__social-link" aria-label="LinkedIn">in</a>
-        </div>
-      </div>
-      <div>
-        <p class="footer__col-head">Navigate</p>
-        <ul class="footer__links">
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/programs">What We Do</a></li>
-          <li><a href="/impact">Our Impact</a></li>
-          <li><a href="/gallery">Gallery</a></li>
-          <li><a href="/academy">Academy</a></li>
-          <li><a href="/partnerships">Partnerships</a></li>
-          <li><a href="/blog">Blog</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer__col-head">Get Involved</p>
-        <ul class="footer__links">
-          <li><a href="/contact">Donate</a></li>
-          <li><a href="/contact#volunteer">Volunteer</a></li>
-          <li><a href="/contact">Sponsor a Project</a></li>
-          <li><a href="/contact">Start a Project</a></li>
-          <li><a href="/contact">Monthly Giving</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer__col-head">Contact</p>
-        <ul class="footer__links">
-          <li><a href="tel:+2348167873722">+234 816 787 3722</a></li>
-          <li><a href="mailto:daffodilsafrica@gmail.com">daffodilsafrica@gmail.com</a></li>
-          <li><a href="/contact">Contact Us</a></li>
-          <li style="color:rgba(255,255,255,0.5);font-size:0.875rem;font-weight:500;padding-left:6px;">Lagos, Nigeria</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p>
-      <p class="footer__motto">Impact is not accidental. It is built.</p>
-    </div>
+<footer class="footer"><div class="footer__inner">
+  <div class="footer__grid">
+    <div><div class="footer__logo-box"><img src="/assets/images/logo.png" alt="" style="height:44px;width:auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/><span class="footer__logo-text" style="display:none">Daffodils Africa</span></div><p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa. Impact is not accidental — it is built.</p><div class="footer__socials" style="margin-top:20px;"><a href="https://www.instagram.com/daffodils_africa/?hl=en" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">ig</a><a href="https://www.facebook.com/daffodilsafrica1/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">fb</a><a href="https://www.linkedin.com/company/daffodils-africa" target="_blank" rel="noopener" class="footer__social-link" aria-label="LinkedIn">in</a></div></div>
+    <div><p class="footer__col-head">Navigate</p><ul class="footer__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/impact">Our Impact</a></li><li><a href="/gallery">Gallery</a></li><li><a href="/academy">Academy</a></li><li><a href="/partnerships">Partnerships</a></li><li><a href="/blog">Blog</a></li></ul></div>
+    <div><p class="footer__col-head">Get Involved</p><ul class="footer__links"><li><a href="/contact">Donate</a></li><li><a href="/contact#volunteer">Volunteer</a></li><li><a href="/contact">Sponsor a Project</a></li><li><a href="/contact">Start a Project</a></li><li><a href="/contact">Monthly Giving</a></li></ul></div>
+    <div><p class="footer__col-head">Legal &amp; Contact</p><ul class="footer__links"><li><a href="tel:+2348167873722">+234 816 787 3722</a></li><li><a href="mailto:daffodilsafrica@gmail.com">daffodilsafrica@gmail.com</a></li><li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li style="color:rgba(255,255,255,.5);font-size:.875rem;font-weight:500;padding-left:6px;">Lagos, Nigeria</li></ul></div>
   </div>
-</footer>
-<script>const b=document.getElementById("burger"),n=document.getElementById("mobile-nav");b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});document.addEventListener("click",e=>{if(!b.contains(e.target)&&!n.contains(e.target)){n.classList.remove("open");b.setAttribute("aria-expanded","false");}});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b.setAttribute("aria-expanded","false");}));</script>
-
-<script>
-// MOBILE CAROUSEL INIT — runs after DOM ready
-function initCarousels() {
-  if (window.innerWidth > 768) return; // Desktop: no carousel
-  document.querySelectorAll('[data-carousel]').forEach(wrap => {
-    const track   = wrap.querySelector('.mob-car-track');
-    const slides  = Array.from(track.querySelectorAll('.mob-car-slide'));
-    const btnPrev = wrap.querySelector('.mob-car-prev');
-    const btnNext = wrap.querySelector('.mob-car-next');
-    const frac    = wrap.querySelector('.mob-car-frac');
-    if (!track || slides.length < 2) return;
-    let cur = 0;
-    function render() {
-      const w = slides[0].offsetWidth;
-      track.style.transform = `translateX(-${cur * w}px)`;
-      track.style.transition = 'transform 0.35s ease';
-      if (frac) frac.textContent = (cur + 1) + ' / ' + slides.length;
-      if (btnPrev) btnPrev.disabled = cur === 0;
-      if (btnNext) btnNext.disabled = cur === slides.length - 1;
-    }
-    if (btnPrev) btnPrev.addEventListener('click', () => { if (cur > 0) { cur--; render(); }});
-    if (btnNext) btnNext.addEventListener('click', () => { if (cur < slides.length-1) { cur++; render(); }});
-    // Touch/swipe support
-    let startX = 0;
-    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
-    track.addEventListener('touchend', e => {
-      const diff = startX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) {
-        if (diff > 0 && cur < slides.length-1) cur++;
-        else if (diff < 0 && cur > 0) cur--;
-        render();
-      }
-    }, {passive:true});
-    render();
-  });
-}
-document.addEventListener('DOMContentLoaded', initCarousels);
-window.addEventListener('resize', () => {
-  document.querySelectorAll('[data-carousel] .mob-car-track').forEach(t => { t.style.transform=''; });
-  initCarousels();
-});
-
-// DESKTOP & MOBILE CASE STUDY CAROUSELS
-function initCsCarousels() {
-  document.querySelectorAll('[data-cs-car]').forEach(wrap => {
-    const track = wrap.querySelector('.cs-car__track');
-    const slides = Array.from(track.querySelectorAll('.cs-car__slide'));
-    const btnPrev = wrap.querySelector('.cs-car-prev');
-    const btnNext = wrap.querySelector('.cs-car-next');
-    if (!track || slides.length < 2) {
-      if(btnPrev) btnPrev.style.display='none';
-      if(btnNext) btnNext.style.display='none';
-      return;
-    }
-    let cur = 0;
-    function render() {
-      track.style.transform = `translateX(-${cur * 100}%)`;
-    }
-    if (btnPrev) btnPrev.addEventListener('click', () => { cur = cur > 0 ? cur - 1 : slides.length - 1; render(); });
-    if (btnNext) btnNext.addEventListener('click', () => { cur = cur < slides.length - 1 ? cur + 1 : 0; render(); });
-  });
-}
-document.addEventListener('DOMContentLoaded', initCsCarousels);
-</script>
+  <div class="footer__bottom"><p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p><p class="footer__motto">Impact is not accidental. It is built.</p></div>
+</div></footer>
 <script src="/assets/js/daffy.js" defer></script>
+<script>const b=document.getElementById("burger"),n=document.getElementById("mobile-nav");b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});document.addEventListener("click",e=>{if(!b.contains(e.target)&&!n.contains(e.target)){n.classList.remove("open");b.setAttribute("aria-expanded","false");}});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b.setAttribute("aria-expanded","false");}));</script>
 </body></html>

@@ -1,325 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Gallery — Daffodils Africa</title>
-  <meta name="description" content="Daffodils Africa gallery — photos and videos from our projects, events, and community programs across Africa."/>
+  <meta name="description" content="Daffodils Africa gallery — 134+ photos across 10 impact projects in Lagos, Taraba and Jos."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet"/>
   <link rel="stylesheet" href="/assets/css/main.css"/>
   <style>
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border: var(--b);
-      box-shadow: var(--sh-xl);
-    }
-    .gallery-item {
-      border-right: var(--b);
-      border-bottom: var(--b);
-      overflow: hidden;
-      aspect-ratio: 4/3;
-      position: relative;
-      cursor: pointer;
-    }
-    .gallery-item:nth-child(4n) { border-right: none; }
-    .gallery-item:nth-last-child(-n+4) { border-bottom: none; }
-    .gallery-item img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.3s ease;
-      display: block;
-    }
-    .gallery-item:hover img { transform: scale(1.05); }
-    .gallery-item__overlay {
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,0);
-      transition: background 0.2s;
-      display: flex; align-items: flex-end; padding: 16px;
-    }
-    .gallery-item:hover .gallery-item__overlay { background: rgba(0,0,0,0.35); }
-    .gallery-item__label {
-      font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
-      color: var(--white); opacity: 0;
-      transition: opacity 0.2s; background: var(--black); padding: 4px 10px;
-    }
-    .gallery-item:hover .gallery-item__label { opacity: 1; }
-
-    /* FEATURED large item */
-    .gallery-item--featured {
-      grid-column: span 2;
-      grid-row: span 2;
-      border-right: var(--b);
-      border-bottom: var(--b);
-    }
-
-    /* VIDEO SECTION */
-    .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .video-slot {
-      background: var(--black); border: var(--b); box-shadow: var(--sh-md);
-      aspect-ratio: 16/9; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 12px;
-      transition: box-shadow 0.15s, transform 0.15s;
-    }
-    .video-slot:hover { transform: translateY(-4px); box-shadow: var(--sh-lg); }
-    .video-slot__play {
-      width: 64px; height: 64px;
-      background: var(--yellow); border: var(--b);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-    }
-    .video-slot__label {
-      font-weight: 700; font-size: 0.72rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: rgba(255,255,255,0.5); text-align: center;
-    }
-    @media(max-width:1024px){ .gallery-grid{grid-template-columns:repeat(3,1fr);} .gallery-item:nth-child(4n){border-right:var(--b);} .gallery-item:nth-child(3n){border-right:none;} .gallery-item--featured{grid-column:span 1;grid-row:span 1;} .video-grid{grid-template-columns:1fr 1fr;} }
-    @media(max-width:768px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} .gallery-item:nth-child(3n){border-right:var(--b);} .gallery-item:nth-child(2n){border-right:none;} .video-grid{grid-template-columns:1fr;} }
+    .gg{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:52px;}
+    .gi{position:relative;aspect-ratio:1;overflow:hidden;cursor:pointer;background:#111;}
+    .gi img{width:100%;height:100%;object-fit:cover;transition:transform .4s;display:block;}
+    .gi:hover img{transform:scale(1.07);}
+    .go{position:absolute;inset:0;background:rgba(250,186,22,0);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:#fff;opacity:0;transition:all .2s;}
+    .gi:hover .go{background:rgba(250,186,22,.25);opacity:1;}
+    .gp{margin-bottom:56px;}
+    .gp-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;padding-bottom:12px;border-bottom:4px solid var(--yellow);}
+    .gp-head h2{font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:.04em;}
+    .gp-head span{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(0,0,0,.4);}
+    .fb-wrap{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
+    .fb{padding:9px 16px;border:3px solid #000;background:transparent;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;cursor:pointer;transition:all .1s;}
+    .fb:hover,.fb.active{background:#000;color:#faba16;}
+    #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:14px;}
+    #lb.open{display:flex;}
+    #lb img{max-width:90vw;max-height:84vh;object-fit:contain;border:4px solid #000;box-shadow:0 0 0 4px #faba16;}
+    #lb-cap{color:rgba(255,255,255,.45);font-family:'Space Grotesk',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;}
+    #lb-x{position:absolute;top:18px;right:20px;background:#faba16;border:3px solid #000;width:46px;height:46px;font-size:1.1rem;font-weight:900;cursor:pointer;font-family:'Space Grotesk',sans-serif;}
+    @media(max-width:1024px){.gg{grid-template-columns:repeat(3,1fr);}}
+    @media(max-width:768px){.gg{grid-template-columns:repeat(2,1fr);gap:3px;}}
   </style>
 </head>
 <body>
-<div class="announce" aria-hidden="true"><div class="announce__track"><span class="announce__item">Gallery</span><span class="announce__item">Project Photos</span><span class="announce__item">Events</span><span class="announce__item">Community Programs</span><span class="announce__item">Gallery</span><span class="announce__item">Project Photos</span><span class="announce__item">Events</span><span class="announce__item">Community Programs</span></div></div>
-
-<header><nav class="nav" aria-label="Main navigation"><div class="nav__inner">
+<div class="announce" aria-hidden="true"><div class="announce__track"><span class="announce__item">Gallery</span><span class="announce__item">134+ Project Photos</span><span class="announce__item">10 Projects Documented</span><span class="announce__item">Gallery</span><span class="announce__item">134+ Project Photos</span><span class="announce__item">10 Projects Documented</span></div></div>
+<header><nav class="nav"><div class="nav__inner">
   <a href="/" class="nav__logo-box"><img src="/assets/images/logo.png" alt="Daffodils Africa" class="nav__logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/><span class="nav__logo-text" style="display:none">Daffodils<small>Africa</small></span></a>
-  <ul class="nav__links">
-    <li><a href="/about">About Us</a></li>
-    <li><a href="/programs">What We Do</a></li>
-    <li><a href="/academy">Academy</a></li>
-    <li class="nav__has-drop">
-      <a href="/impact">Impact</a>
-      <ul class="nav__drop">
-        <li><a href="/gallery" class="active">Gallery</a></li>
-      </ul>
-    </li>
-    <li><a href="/partnerships">Partner</a></li>
-    <li><a href="/blog">Blog</a></li>
-    <li><a href="/contact">Contact</a></li>
-  </ul>
-  <div class="nav__actions">
-    <a href="/contact#volunteer" class="btn btn--outline">Get Involved</a>
-    <a href="/contact" class="btn btn--green">Start a Project</a>
-  </div>
+  <ul class="nav__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/academy">Academy</a></li><li class="nav__has-drop"><a href="/impact">Impact</a><ul class="nav__drop"><li><a href="/gallery" class="active">Gallery</a></li></ul></li><li><a href="/partnerships">Partner</a></li><li><a href="/blog">Blog</a></li><li><a href="/contact">Contact</a></li></ul>
+  <div class="nav__actions"><a href="/contact#volunteer" class="btn btn--outline">Get Involved</a><a href="/contact" class="btn btn--green">Start a Project</a></div>
   <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
 </div>
-<div id="mobile-nav" class="nav__mobile">
-  <a href="/about">About Us</a>
-  <a href="/programs">What We Do</a>
-  <a href="/academy">Academy</a>
-  <a href="/impact">Impact</a>
-  <a href="/gallery">Gallery</a>
-  <a href="/partnerships">Partner</a>
-  <a href="/blog">Blog</a>
-  <a href="/contact">Contact</a>
-  <div class="nav__mobile-btns">
-    <a href="/contact" class="btn btn--green btn--full">Start a Project</a>
-    <a href="/contact#volunteer" class="btn btn--outline btn--full">Get Involved</a>
-  </div>
-</div>
+<div id="mobile-nav" class="nav__mobile"><a href="/about">About Us</a><a href="/programs">What We Do</a><a href="/academy">Academy</a><a href="/impact">Impact</a><a href="/gallery">Gallery</a><a href="/partnerships">Partner</a><a href="/blog">Blog</a><a href="/contact">Contact</a><div class="nav__mobile-btns"><a href="/contact" class="btn btn--green btn--full">Start a Project</a><a href="/contact#volunteer" class="btn btn--outline btn--full">Get Involved</a></div></div>
 </nav></header>
 
 <main>
-  <section class="page-hero" style="position:relative;">
-    <div class="hero-img-overlay" style="background-image:url('/assets/images/gallery-1.jpg');"></div>
-    <div class="page-hero__inner">
-      <p class="page-hero__breadcrumb"><a href="/">Home</a> → Gallery</p>
-      <h1 class="page-hero__h1">Impact In<br><span>Pictures</span></h1>
-      <p class="page-hero__sub">A visual record of our work — community programs, events, campaigns, and the people behind every project.</p>
+  <section style="background:var(--black);border-bottom:var(--b);padding:72px 0;position:relative;overflow:hidden;">
+    <div class="hero-img-overlay" style="background-image:url('/assets/images/projects/iwd/img-02.jpg');"></div>
+    <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1.5px,transparent 1.5px);background-size:22px 22px;"></div>
+    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
+      <p style="font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px;"><a href="/" style="color:var(--yellow);">Home</a> → Gallery</p>
+      <h1 style="font-weight:900;font-size:clamp(3rem,6vw,5.5rem);line-height:.95;letter-spacing:-.03em;text-transform:uppercase;color:var(--white);margin-bottom:20px;">Our<br><span style="color:var(--yellow);">Impact</span><br>in Photos</h1>
+      <p style="font-size:1.1rem;font-weight:500;color:rgba(255,255,255,.65);max-width:500px;line-height:1.7;">134+ photos. 10 projects. Every moment of impact documented and shared with full transparency.</p>
     </div>
   </section>
 
-  <!-- PHOTO GALLERY -->
-  <section style="background:var(--bg);border-bottom:var(--b);padding:80px 0;">
-    <div class="section-head-center">
-      <div class="chip chip--yellow">★ Photo Gallery</div>
-      <h2 class="section-h2">Our Work In Photos</h2>
-      <p class="section-sub section-sub--center">Moments from our projects, events, and community programs across Africa.</p>
-    </div>
-    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
-      <!-- REPLACE: gallery-1.jpg through gallery-12.jpg — your event/project photos -->
-      <!-- Recommended size: 400×300px for each. Files go in assets/images/ -->
-      <div class="gallery-grid">
-        <div class="gallery-item gallery-item--featured">
-          <img src="/assets/images/gallery-1.jpg" alt="Daffodils Africa project" onerror="this.style.display='none'; this.parentNode.querySelector('.gallery-item__overlay').style.display='none'; this.parentNode.style.background='#f0ede6'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-1.jpg<br>800×600px<br>Featured Photo</div>';"/>
-          <div class="gallery-item__overlay"><span class="gallery-item__label">Community Impact</span></div>
-        </div>
-        <div class="gallery-item">
-          <img src="/assets/images/gallery-2.jpg" alt="Daffodils Africa event" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-2.jpg<br>400×300px</div>';"/>
-          <div class="gallery-item__overlay"><span class="gallery-item__label">Program Event</span></div>
-        </div>
-        <div class="gallery-item">
-          <img src="/assets/images/gallery-3.jpg" alt="Daffodils Africa community" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-3.jpg<br>400×300px</div>';"/>
-          <div class="gallery-item__overlay"><span class="gallery-item__label">Community</span></div>
-        </div>
-        <div class="gallery-item">
-          <img src="/assets/images/gallery-4.jpg" alt="Daffodils Africa outreach" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-4.jpg<br>400×300px</div>';"/>
-          <div class="gallery-item__overlay"><span class="gallery-item__label">Outreach</span></div>
-        </div>
-        <div class="gallery-item">
-          <img src="/assets/images/gallery-5.jpg" alt="Daffodils Africa project" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-5.jpg<br>400×300px</div>';"/>
-          <div class="gallery-item__overlay"><span class="gallery-item__label">Project</span></div>
-        </div>
-        <div class="gallery-item">
-          <img src="/assets/images/gallery-6.jpg" alt="Daffodils Africa volunteers" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-6.jpg<br>400×300px</div>';"/>
-          <div class="gallery-item__overlay"><span class="gallery-item__label">Volunteers</span></div>
-        </div>
-        <div class="gallery-item">
-          <img src="/assets/images/gallery-7.jpg" alt="Daffodils Africa impact" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-7.jpg<br>400×300px</div>';"/>
-          <div class="gallery-item__overlay"><span class="gallery-item__label">Impact</span></div>
-        </div>
-        <div class="gallery-item">
-          <img src="/assets/images/gallery-8.jpg" alt="Daffodils Africa team" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-8.jpg<br>400×300px</div>';"/>
-          <div class="gallery-item__overlay"><span class="gallery-item__label">Team</span></div>
-        </div>
-        <div class="gallery-item">
-          <img src="/assets/images/gallery-9.jpg" alt="Daffodils Africa program" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-9.jpg<br>400×300px</div>';"/>
-          <div class="gallery-item__overlay"><span class="gallery-item__label">Program</span></div>
-        </div>
-        <div class="gallery-item">
-          <img src="/assets/images/gallery-10.jpg" alt="Daffodils Africa beneficiaries" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-10.jpg<br>400×300px</div>';"/>
-          <div class="gallery-item__overlay"><span class="gallery-item__label">Beneficiaries</span></div>
-        </div>
-        <div class="gallery-item">
-          <img src="/assets/images/gallery-11.jpg" alt="Daffodils Africa campaign" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-11.jpg<br>400×300px</div>';"/>
-          <div class="gallery-item__overlay"><span class="gallery-item__label">Campaign</span></div>
-        </div>
-        <div class="gallery-item">
-          <img src="/assets/images/gallery-12.jpg" alt="Daffodils Africa community event" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'img-ph\' style=\'height:100%;font-size:0.62rem;\'>📷 gallery-12.jpg<br>400×300px</div>';"/>
-          <div class="gallery-item__overlay"><span class="gallery-item__label">Community Event</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="ticker" aria-hidden="true"><div class="ticker__track">
-    <span class="ticker__item">Photos</span><span class="ticker__item">Events</span><span class="ticker__item">Projects</span><span class="ticker__item">Community</span><span class="ticker__item">Impact</span><span class="ticker__item">Africa</span>
-    <span class="ticker__item">Photos</span><span class="ticker__item">Events</span><span class="ticker__item">Projects</span><span class="ticker__item">Community</span><span class="ticker__item">Impact</span><span class="ticker__item">Africa</span>
+  <div class="stats"><div class="stats__grid">
+    <div class="stats__cell"><span class="stats__num">134+</span><span class="stats__label">Project Photos</span></div>
+    <div class="stats__cell"><span class="stats__num">10</span><span class="stats__label">Projects</span></div>
+    <div class="stats__cell"><span class="stats__num">3</span><span class="stats__label">States</span></div>
+    <div class="stats__cell"><span class="stats__num">3,000+</span><span class="stats__label">Lives Reached</span></div>
   </div></div>
 
-  <!-- VIDEO SECTION -->
-  <section style="background:var(--black);border-bottom:var(--b);padding:96px 0;" class="pat-halftone-light">
-    <div class="section-head-center" style="position:relative;z-index:1;">
-      <div class="chip chip--yellow">★ Videos</div>
-      <h2 class="section-h2" style="color:var(--white);">See Our Work<br>In Action</h2>
-      <p class="section-sub section-sub--center" style="color:rgba(255,255,255,0.6);">Watch stories from our projects, community events, and impact campaigns.</p>
-    </div>
-    <div class="video-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
-      <!-- Replace src="" with actual YouTube embed URLs when available -->
-      <div class="video-slot">
-        <div class="video-slot__play" aria-hidden="true">▶</div>
-        <p class="video-slot__label">IWD 2024<br>Women Empowerment</p>
-      </div>
-      <div class="video-slot">
-        <div class="video-slot__play" aria-hidden="true">▶</div>
-        <p class="video-slot__label">Community<br>Development Program</p>
-      </div>
-      <div class="video-slot">
-        <div class="video-slot__play" aria-hidden="true">▶</div>
-        <p class="video-slot__label">Impact Campaign<br>Highlights</p>
+  <section style="background:var(--bg);border-bottom:var(--b);padding:64px 0 80px;">
+    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
+      <div class="fb-wrap"><button class="fb active" onclick="fg('all',this)">All Projects</button><button class="fb" onclick="fg('gp-digital-literacy',this)">Digital Literacy for Kids</button><button class="fb" onclick="fg('gp-edu-taraba',this)">Education Support — Taraba</button><button class="fb" onclick="fg('gp-edu-lagos',this)">Education Support — Lagos</button><button class="fb" onclick="fg('gp-iwd',this)">IWD'24 Women Empowerment</button><button class="fb" onclick="fg('gp-aged-food',this)">Aged Food Support</button><button class="fb" onclick="fg('gp-glow',this)">DaffodilsXGLOW Foundation</button><button class="fb" onclick="fg('gp-jos-maternity',this)">JOS Maternity Support</button><button class="fb" onclick="fg('gp-biz-aged',this)">Business Support — Elderly</button><button class="fb" onclick="fg('gp-biz-support',this)">Business Support Program</button><button class="fb" onclick="fg('gp-vision-eyecare',this)">Vision Project — Eyecare</button><button class="fb" onclick="fg('gp-community',this)">Community</button></div>
+      <div class="gp" id="gp-digital-literacy">
+  <div class="gp-head">
+    <h2>Digital Literacy for Kids</h2><span>2025 · Lagos & Jos · 46 photos</span>
+  </div>
+  <div class="gg"><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-01.jpg','Digital Literacy for Kids 1/46')"><img src="/assets/images/projects/digital-literacy/img-01.jpg" alt="Digital Literacy for Kids 1" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-02.jpg','Digital Literacy for Kids 2/46')"><img src="/assets/images/projects/digital-literacy/img-02.jpg" alt="Digital Literacy for Kids 2" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-03.jpg','Digital Literacy for Kids 3/46')"><img src="/assets/images/projects/digital-literacy/img-03.jpg" alt="Digital Literacy for Kids 3" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-04.jpg','Digital Literacy for Kids 4/46')"><img src="/assets/images/projects/digital-literacy/img-04.jpg" alt="Digital Literacy for Kids 4" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-05.jpg','Digital Literacy for Kids 5/46')"><img src="/assets/images/projects/digital-literacy/img-05.jpg" alt="Digital Literacy for Kids 5" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-06.jpg','Digital Literacy for Kids 6/46')"><img src="/assets/images/projects/digital-literacy/img-06.jpg" alt="Digital Literacy for Kids 6" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-07.jpg','Digital Literacy for Kids 7/46')"><img src="/assets/images/projects/digital-literacy/img-07.jpg" alt="Digital Literacy for Kids 7" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-08.jpg','Digital Literacy for Kids 8/46')"><img src="/assets/images/projects/digital-literacy/img-08.jpg" alt="Digital Literacy for Kids 8" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-09.jpg','Digital Literacy for Kids 9/46')"><img src="/assets/images/projects/digital-literacy/img-09.jpg" alt="Digital Literacy for Kids 9" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-10.jpg','Digital Literacy for Kids 10/46')"><img src="/assets/images/projects/digital-literacy/img-10.jpg" alt="Digital Literacy for Kids 10" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-11.jpg','Digital Literacy for Kids 11/46')"><img src="/assets/images/projects/digital-literacy/img-11.jpg" alt="Digital Literacy for Kids 11" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-12.jpg','Digital Literacy for Kids 12/46')"><img src="/assets/images/projects/digital-literacy/img-12.jpg" alt="Digital Literacy for Kids 12" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-13.jpg','Digital Literacy for Kids 13/46')"><img src="/assets/images/projects/digital-literacy/img-13.jpg" alt="Digital Literacy for Kids 13" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-14.jpg','Digital Literacy for Kids 14/46')"><img src="/assets/images/projects/digital-literacy/img-14.jpg" alt="Digital Literacy for Kids 14" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-15.jpg','Digital Literacy for Kids 15/46')"><img src="/assets/images/projects/digital-literacy/img-15.jpg" alt="Digital Literacy for Kids 15" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-16.jpg','Digital Literacy for Kids 16/46')"><img src="/assets/images/projects/digital-literacy/img-16.jpg" alt="Digital Literacy for Kids 16" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-17.jpg','Digital Literacy for Kids 17/46')"><img src="/assets/images/projects/digital-literacy/img-17.jpg" alt="Digital Literacy for Kids 17" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-18.jpg','Digital Literacy for Kids 18/46')"><img src="/assets/images/projects/digital-literacy/img-18.jpg" alt="Digital Literacy for Kids 18" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-19.jpg','Digital Literacy for Kids 19/46')"><img src="/assets/images/projects/digital-literacy/img-19.jpg" alt="Digital Literacy for Kids 19" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-20.jpg','Digital Literacy for Kids 20/46')"><img src="/assets/images/projects/digital-literacy/img-20.jpg" alt="Digital Literacy for Kids 20" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-21.jpg','Digital Literacy for Kids 21/46')"><img src="/assets/images/projects/digital-literacy/img-21.jpg" alt="Digital Literacy for Kids 21" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-22.jpg','Digital Literacy for Kids 22/46')"><img src="/assets/images/projects/digital-literacy/img-22.jpg" alt="Digital Literacy for Kids 22" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-23.jpg','Digital Literacy for Kids 23/46')"><img src="/assets/images/projects/digital-literacy/img-23.jpg" alt="Digital Literacy for Kids 23" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-24.jpg','Digital Literacy for Kids 24/46')"><img src="/assets/images/projects/digital-literacy/img-24.jpg" alt="Digital Literacy for Kids 24" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-25.jpg','Digital Literacy for Kids 25/46')"><img src="/assets/images/projects/digital-literacy/img-25.jpg" alt="Digital Literacy for Kids 25" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-26.jpg','Digital Literacy for Kids 26/46')"><img src="/assets/images/projects/digital-literacy/img-26.jpg" alt="Digital Literacy for Kids 26" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-27.jpg','Digital Literacy for Kids 27/46')"><img src="/assets/images/projects/digital-literacy/img-27.jpg" alt="Digital Literacy for Kids 27" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-28.jpg','Digital Literacy for Kids 28/46')"><img src="/assets/images/projects/digital-literacy/img-28.jpg" alt="Digital Literacy for Kids 28" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-29.jpg','Digital Literacy for Kids 29/46')"><img src="/assets/images/projects/digital-literacy/img-29.jpg" alt="Digital Literacy for Kids 29" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-30.jpg','Digital Literacy for Kids 30/46')"><img src="/assets/images/projects/digital-literacy/img-30.jpg" alt="Digital Literacy for Kids 30" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-31.jpg','Digital Literacy for Kids 31/46')"><img src="/assets/images/projects/digital-literacy/img-31.jpg" alt="Digital Literacy for Kids 31" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-32.jpg','Digital Literacy for Kids 32/46')"><img src="/assets/images/projects/digital-literacy/img-32.jpg" alt="Digital Literacy for Kids 32" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-33.jpg','Digital Literacy for Kids 33/46')"><img src="/assets/images/projects/digital-literacy/img-33.jpg" alt="Digital Literacy for Kids 33" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-34.jpg','Digital Literacy for Kids 34/46')"><img src="/assets/images/projects/digital-literacy/img-34.jpg" alt="Digital Literacy for Kids 34" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-35.jpg','Digital Literacy for Kids 35/46')"><img src="/assets/images/projects/digital-literacy/img-35.jpg" alt="Digital Literacy for Kids 35" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-36.jpg','Digital Literacy for Kids 36/46')"><img src="/assets/images/projects/digital-literacy/img-36.jpg" alt="Digital Literacy for Kids 36" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-37.jpg','Digital Literacy for Kids 37/46')"><img src="/assets/images/projects/digital-literacy/img-37.jpg" alt="Digital Literacy for Kids 37" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-38.jpg','Digital Literacy for Kids 38/46')"><img src="/assets/images/projects/digital-literacy/img-38.jpg" alt="Digital Literacy for Kids 38" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-39.jpg','Digital Literacy for Kids 39/46')"><img src="/assets/images/projects/digital-literacy/img-39.jpg" alt="Digital Literacy for Kids 39" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-40.jpg','Digital Literacy for Kids 40/46')"><img src="/assets/images/projects/digital-literacy/img-40.jpg" alt="Digital Literacy for Kids 40" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-41.jpg','Digital Literacy for Kids 41/46')"><img src="/assets/images/projects/digital-literacy/img-41.jpg" alt="Digital Literacy for Kids 41" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-42.jpg','Digital Literacy for Kids 42/46')"><img src="/assets/images/projects/digital-literacy/img-42.jpg" alt="Digital Literacy for Kids 42" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-43.jpg','Digital Literacy for Kids 43/46')"><img src="/assets/images/projects/digital-literacy/img-43.jpg" alt="Digital Literacy for Kids 43" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-44.jpg','Digital Literacy for Kids 44/46')"><img src="/assets/images/projects/digital-literacy/img-44.jpg" alt="Digital Literacy for Kids 44" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-45.jpg','Digital Literacy for Kids 45/46')"><img src="/assets/images/projects/digital-literacy/img-45.jpg" alt="Digital Literacy for Kids 45" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/digital-literacy/img-46.jpg','Digital Literacy for Kids 46/46')"><img src="/assets/images/projects/digital-literacy/img-46.jpg" alt="Digital Literacy for Kids 46" loading="lazy"/><div class="go">View ↗</div></div></div>
+</div><div class="gp" id="gp-edu-taraba">
+  <div class="gp-head">
+    <h2>Education Support — Taraba</h2><span>2024 · Taraba · 11 photos</span>
+  </div>
+  <div class="gg"><div class="gi" onclick="lb('/assets/images/projects/edu-taraba/img-01.jpg','Education Support — Taraba 1/11')"><img src="/assets/images/projects/edu-taraba/img-01.jpg" alt="Education Support — Taraba 1" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-taraba/img-02.jpg','Education Support — Taraba 2/11')"><img src="/assets/images/projects/edu-taraba/img-02.jpg" alt="Education Support — Taraba 2" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-taraba/img-03.jpg','Education Support — Taraba 3/11')"><img src="/assets/images/projects/edu-taraba/img-03.jpg" alt="Education Support — Taraba 3" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-taraba/img-04.jpg','Education Support — Taraba 4/11')"><img src="/assets/images/projects/edu-taraba/img-04.jpg" alt="Education Support — Taraba 4" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-taraba/img-05.jpg','Education Support — Taraba 5/11')"><img src="/assets/images/projects/edu-taraba/img-05.jpg" alt="Education Support — Taraba 5" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-taraba/img-06.jpg','Education Support — Taraba 6/11')"><img src="/assets/images/projects/edu-taraba/img-06.jpg" alt="Education Support — Taraba 6" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-taraba/img-07.jpg','Education Support — Taraba 7/11')"><img src="/assets/images/projects/edu-taraba/img-07.jpg" alt="Education Support — Taraba 7" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-taraba/img-08.jpg','Education Support — Taraba 8/11')"><img src="/assets/images/projects/edu-taraba/img-08.jpg" alt="Education Support — Taraba 8" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-taraba/img-09.jpg','Education Support — Taraba 9/11')"><img src="/assets/images/projects/edu-taraba/img-09.jpg" alt="Education Support — Taraba 9" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-taraba/img-10.jpg','Education Support — Taraba 10/11')"><img src="/assets/images/projects/edu-taraba/img-10.jpg" alt="Education Support — Taraba 10" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-taraba/img-11.jpg','Education Support — Taraba 11/11')"><img src="/assets/images/projects/edu-taraba/img-11.jpg" alt="Education Support — Taraba 11" loading="lazy"/><div class="go">View ↗</div></div></div>
+</div><div class="gp" id="gp-edu-lagos">
+  <div class="gp-head">
+    <h2>Education Support — Lagos</h2><span>2025 · Lagos · 9 photos</span>
+  </div>
+  <div class="gg"><div class="gi" onclick="lb('/assets/images/projects/edu-lagos/img-01.jpg','Education Support — Lagos 1/9')"><img src="/assets/images/projects/edu-lagos/img-01.jpg" alt="Education Support — Lagos 1" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-lagos/img-02.jpg','Education Support — Lagos 2/9')"><img src="/assets/images/projects/edu-lagos/img-02.jpg" alt="Education Support — Lagos 2" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-lagos/img-03.jpg','Education Support — Lagos 3/9')"><img src="/assets/images/projects/edu-lagos/img-03.jpg" alt="Education Support — Lagos 3" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-lagos/img-04.jpg','Education Support — Lagos 4/9')"><img src="/assets/images/projects/edu-lagos/img-04.jpg" alt="Education Support — Lagos 4" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-lagos/img-05.jpg','Education Support — Lagos 5/9')"><img src="/assets/images/projects/edu-lagos/img-05.jpg" alt="Education Support — Lagos 5" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-lagos/img-06.jpg','Education Support — Lagos 6/9')"><img src="/assets/images/projects/edu-lagos/img-06.jpg" alt="Education Support — Lagos 6" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-lagos/img-07.jpg','Education Support — Lagos 7/9')"><img src="/assets/images/projects/edu-lagos/img-07.jpg" alt="Education Support — Lagos 7" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-lagos/img-08.jpg','Education Support — Lagos 8/9')"><img src="/assets/images/projects/edu-lagos/img-08.jpg" alt="Education Support — Lagos 8" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/edu-lagos/img-09.jpg','Education Support — Lagos 9/9')"><img src="/assets/images/projects/edu-lagos/img-09.jpg" alt="Education Support — Lagos 9" loading="lazy"/><div class="go">View ↗</div></div></div>
+</div><div class="gp" id="gp-iwd">
+  <div class="gp-head">
+    <h2>IWD'24 Women Empowerment</h2><span>2024 · Lagos · 6 photos</span>
+  </div>
+  <div class="gg"><div class="gi" onclick="lb('/assets/images/projects/iwd/img-01.jpg','IWD'24 Women Empowerment 1/6')"><img src="/assets/images/projects/iwd/img-01.jpg" alt="IWD'24 Women Empowerment 1" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/iwd/img-02.jpg','IWD'24 Women Empowerment 2/6')"><img src="/assets/images/projects/iwd/img-02.jpg" alt="IWD'24 Women Empowerment 2" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/iwd/img-03.jpg','IWD'24 Women Empowerment 3/6')"><img src="/assets/images/projects/iwd/img-03.jpg" alt="IWD'24 Women Empowerment 3" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/iwd/img-04.jpg','IWD'24 Women Empowerment 4/6')"><img src="/assets/images/projects/iwd/img-04.jpg" alt="IWD'24 Women Empowerment 4" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/iwd/img-05.jpg','IWD'24 Women Empowerment 5/6')"><img src="/assets/images/projects/iwd/img-05.jpg" alt="IWD'24 Women Empowerment 5" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/iwd/img-06.jpg','IWD'24 Women Empowerment 6/6')"><img src="/assets/images/projects/iwd/img-06.jpg" alt="IWD'24 Women Empowerment 6" loading="lazy"/><div class="go">View ↗</div></div></div>
+</div><div class="gp" id="gp-aged-food">
+  <div class="gp-head">
+    <h2>Aged Food Support</h2><span>2025 · Lagos · 10 photos</span>
+  </div>
+  <div class="gg"><div class="gi" onclick="lb('/assets/images/projects/aged-food/img-01.jpg','Aged Food Support 1/10')"><img src="/assets/images/projects/aged-food/img-01.jpg" alt="Aged Food Support 1" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/aged-food/img-02.jpg','Aged Food Support 2/10')"><img src="/assets/images/projects/aged-food/img-02.jpg" alt="Aged Food Support 2" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/aged-food/img-03.jpg','Aged Food Support 3/10')"><img src="/assets/images/projects/aged-food/img-03.jpg" alt="Aged Food Support 3" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/aged-food/img-04.jpg','Aged Food Support 4/10')"><img src="/assets/images/projects/aged-food/img-04.jpg" alt="Aged Food Support 4" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/aged-food/img-05.jpg','Aged Food Support 5/10')"><img src="/assets/images/projects/aged-food/img-05.jpg" alt="Aged Food Support 5" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/aged-food/img-06.jpg','Aged Food Support 6/10')"><img src="/assets/images/projects/aged-food/img-06.jpg" alt="Aged Food Support 6" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/aged-food/img-07.jpg','Aged Food Support 7/10')"><img src="/assets/images/projects/aged-food/img-07.jpg" alt="Aged Food Support 7" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/aged-food/img-08.jpg','Aged Food Support 8/10')"><img src="/assets/images/projects/aged-food/img-08.jpg" alt="Aged Food Support 8" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/aged-food/img-09.jpg','Aged Food Support 9/10')"><img src="/assets/images/projects/aged-food/img-09.jpg" alt="Aged Food Support 9" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/aged-food/img-10.jpg','Aged Food Support 10/10')"><img src="/assets/images/projects/aged-food/img-10.jpg" alt="Aged Food Support 10" loading="lazy"/><div class="go">View ↗</div></div></div>
+</div><div class="gp" id="gp-glow">
+  <div class="gp-head">
+    <h2>DaffodilsXGLOW Foundation</h2><span>2024 · Lagos · 13 photos</span>
+  </div>
+  <div class="gg"><div class="gi" onclick="lb('/assets/images/projects/glow/img-01.jpg','DaffodilsXGLOW Foundation 1/13')"><img src="/assets/images/projects/glow/img-01.jpg" alt="DaffodilsXGLOW Foundation 1" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/glow/img-02.jpg','DaffodilsXGLOW Foundation 2/13')"><img src="/assets/images/projects/glow/img-02.jpg" alt="DaffodilsXGLOW Foundation 2" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/glow/img-03.jpg','DaffodilsXGLOW Foundation 3/13')"><img src="/assets/images/projects/glow/img-03.jpg" alt="DaffodilsXGLOW Foundation 3" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/glow/img-04.jpg','DaffodilsXGLOW Foundation 4/13')"><img src="/assets/images/projects/glow/img-04.jpg" alt="DaffodilsXGLOW Foundation 4" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/glow/img-05.jpg','DaffodilsXGLOW Foundation 5/13')"><img src="/assets/images/projects/glow/img-05.jpg" alt="DaffodilsXGLOW Foundation 5" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/glow/img-06.jpg','DaffodilsXGLOW Foundation 6/13')"><img src="/assets/images/projects/glow/img-06.jpg" alt="DaffodilsXGLOW Foundation 6" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/glow/img-07.jpg','DaffodilsXGLOW Foundation 7/13')"><img src="/assets/images/projects/glow/img-07.jpg" alt="DaffodilsXGLOW Foundation 7" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/glow/img-08.jpg','DaffodilsXGLOW Foundation 8/13')"><img src="/assets/images/projects/glow/img-08.jpg" alt="DaffodilsXGLOW Foundation 8" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/glow/img-09.jpg','DaffodilsXGLOW Foundation 9/13')"><img src="/assets/images/projects/glow/img-09.jpg" alt="DaffodilsXGLOW Foundation 9" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/glow/img-10.jpg','DaffodilsXGLOW Foundation 10/13')"><img src="/assets/images/projects/glow/img-10.jpg" alt="DaffodilsXGLOW Foundation 10" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/glow/img-11.jpg','DaffodilsXGLOW Foundation 11/13')"><img src="/assets/images/projects/glow/img-11.jpg" alt="DaffodilsXGLOW Foundation 11" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/glow/img-12.jpg','DaffodilsXGLOW Foundation 12/13')"><img src="/assets/images/projects/glow/img-12.jpg" alt="DaffodilsXGLOW Foundation 12" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/glow/img-13.jpg','DaffodilsXGLOW Foundation 13/13')"><img src="/assets/images/projects/glow/img-13.jpg" alt="DaffodilsXGLOW Foundation 13" loading="lazy"/><div class="go">View ↗</div></div></div>
+</div><div class="gp" id="gp-jos-maternity">
+  <div class="gp-head">
+    <h2>JOS Maternity Support</h2><span>2024 · Jos · 4 photos</span>
+  </div>
+  <div class="gg"><div class="gi" onclick="lb('/assets/images/projects/jos-maternity/img-01.jpg','JOS Maternity Support 1/4')"><img src="/assets/images/projects/jos-maternity/img-01.jpg" alt="JOS Maternity Support 1" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/jos-maternity/img-02.jpg','JOS Maternity Support 2/4')"><img src="/assets/images/projects/jos-maternity/img-02.jpg" alt="JOS Maternity Support 2" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/jos-maternity/img-03.jpg','JOS Maternity Support 3/4')"><img src="/assets/images/projects/jos-maternity/img-03.jpg" alt="JOS Maternity Support 3" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/jos-maternity/img-04.jpg','JOS Maternity Support 4/4')"><img src="/assets/images/projects/jos-maternity/img-04.jpg" alt="JOS Maternity Support 4" loading="lazy"/><div class="go">View ↗</div></div></div>
+</div><div class="gp" id="gp-biz-aged">
+  <div class="gp-head">
+    <h2>Business Support — Elderly</h2><span>2024 · Lagos · 3 photos</span>
+  </div>
+  <div class="gg"><div class="gi" onclick="lb('/assets/images/projects/biz-aged/img-01.jpg','Business Support — Elderly 1/3')"><img src="/assets/images/projects/biz-aged/img-01.jpg" alt="Business Support — Elderly 1" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/biz-aged/img-02.jpg','Business Support — Elderly 2/3')"><img src="/assets/images/projects/biz-aged/img-02.jpg" alt="Business Support — Elderly 2" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/biz-aged/img-03.jpg','Business Support — Elderly 3/3')"><img src="/assets/images/projects/biz-aged/img-03.jpg" alt="Business Support — Elderly 3" loading="lazy"/><div class="go">View ↗</div></div></div>
+</div><div class="gp" id="gp-biz-support">
+  <div class="gp-head">
+    <h2>Business Support Program</h2><span>2024 · Lagos · 12 photos</span>
+  </div>
+  <div class="gg"><div class="gi" onclick="lb('/assets/images/projects/biz-support/img-01.jpg','Business Support Program 1/12')"><img src="/assets/images/projects/biz-support/img-01.jpg" alt="Business Support Program 1" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/biz-support/img-02.jpg','Business Support Program 2/12')"><img src="/assets/images/projects/biz-support/img-02.jpg" alt="Business Support Program 2" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/biz-support/img-03.jpg','Business Support Program 3/12')"><img src="/assets/images/projects/biz-support/img-03.jpg" alt="Business Support Program 3" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/biz-support/img-04.jpg','Business Support Program 4/12')"><img src="/assets/images/projects/biz-support/img-04.jpg" alt="Business Support Program 4" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/biz-support/img-05.jpg','Business Support Program 5/12')"><img src="/assets/images/projects/biz-support/img-05.jpg" alt="Business Support Program 5" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/biz-support/img-06.jpg','Business Support Program 6/12')"><img src="/assets/images/projects/biz-support/img-06.jpg" alt="Business Support Program 6" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/biz-support/img-07.jpg','Business Support Program 7/12')"><img src="/assets/images/projects/biz-support/img-07.jpg" alt="Business Support Program 7" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/biz-support/img-08.jpg','Business Support Program 8/12')"><img src="/assets/images/projects/biz-support/img-08.jpg" alt="Business Support Program 8" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/biz-support/img-09.jpg','Business Support Program 9/12')"><img src="/assets/images/projects/biz-support/img-09.jpg" alt="Business Support Program 9" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/biz-support/img-10.jpg','Business Support Program 10/12')"><img src="/assets/images/projects/biz-support/img-10.jpg" alt="Business Support Program 10" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/biz-support/img-11.jpg','Business Support Program 11/12')"><img src="/assets/images/projects/biz-support/img-11.jpg" alt="Business Support Program 11" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/biz-support/img-12.jpg','Business Support Program 12/12')"><img src="/assets/images/projects/biz-support/img-12.jpg" alt="Business Support Program 12" loading="lazy"/><div class="go">View ↗</div></div></div>
+</div><div class="gp" id="gp-vision-eyecare">
+  <div class="gp-head">
+    <h2>Vision Project — Eyecare</h2><span>2026 · Lagos · 20 photos</span>
+  </div>
+  <div class="gg"><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-01.jpg','Vision Project — Eyecare 1/20')"><img src="/assets/images/projects/vision-eyecare/img-01.jpg" alt="Vision Project — Eyecare 1" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-02.jpg','Vision Project — Eyecare 2/20')"><img src="/assets/images/projects/vision-eyecare/img-02.jpg" alt="Vision Project — Eyecare 2" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-03.jpg','Vision Project — Eyecare 3/20')"><img src="/assets/images/projects/vision-eyecare/img-03.jpg" alt="Vision Project — Eyecare 3" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-04.jpg','Vision Project — Eyecare 4/20')"><img src="/assets/images/projects/vision-eyecare/img-04.jpg" alt="Vision Project — Eyecare 4" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-05.jpg','Vision Project — Eyecare 5/20')"><img src="/assets/images/projects/vision-eyecare/img-05.jpg" alt="Vision Project — Eyecare 5" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-06.jpg','Vision Project — Eyecare 6/20')"><img src="/assets/images/projects/vision-eyecare/img-06.jpg" alt="Vision Project — Eyecare 6" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-07.jpg','Vision Project — Eyecare 7/20')"><img src="/assets/images/projects/vision-eyecare/img-07.jpg" alt="Vision Project — Eyecare 7" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-08.jpg','Vision Project — Eyecare 8/20')"><img src="/assets/images/projects/vision-eyecare/img-08.jpg" alt="Vision Project — Eyecare 8" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-09.jpg','Vision Project — Eyecare 9/20')"><img src="/assets/images/projects/vision-eyecare/img-09.jpg" alt="Vision Project — Eyecare 9" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-10.jpg','Vision Project — Eyecare 10/20')"><img src="/assets/images/projects/vision-eyecare/img-10.jpg" alt="Vision Project — Eyecare 10" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-11.jpg','Vision Project — Eyecare 11/20')"><img src="/assets/images/projects/vision-eyecare/img-11.jpg" alt="Vision Project — Eyecare 11" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-12.jpg','Vision Project — Eyecare 12/20')"><img src="/assets/images/projects/vision-eyecare/img-12.jpg" alt="Vision Project — Eyecare 12" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-13.jpg','Vision Project — Eyecare 13/20')"><img src="/assets/images/projects/vision-eyecare/img-13.jpg" alt="Vision Project — Eyecare 13" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-14.jpg','Vision Project — Eyecare 14/20')"><img src="/assets/images/projects/vision-eyecare/img-14.jpg" alt="Vision Project — Eyecare 14" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-15.jpg','Vision Project — Eyecare 15/20')"><img src="/assets/images/projects/vision-eyecare/img-15.jpg" alt="Vision Project — Eyecare 15" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-16.jpg','Vision Project — Eyecare 16/20')"><img src="/assets/images/projects/vision-eyecare/img-16.jpg" alt="Vision Project — Eyecare 16" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-17.jpg','Vision Project — Eyecare 17/20')"><img src="/assets/images/projects/vision-eyecare/img-17.jpg" alt="Vision Project — Eyecare 17" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-18.jpg','Vision Project — Eyecare 18/20')"><img src="/assets/images/projects/vision-eyecare/img-18.jpg" alt="Vision Project — Eyecare 18" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-19.jpg','Vision Project — Eyecare 19/20')"><img src="/assets/images/projects/vision-eyecare/img-19.jpg" alt="Vision Project — Eyecare 19" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/projects/vision-eyecare/img-20.jpg','Vision Project — Eyecare 20/20')"><img src="/assets/images/projects/vision-eyecare/img-20.jpg" alt="Vision Project — Eyecare 20" loading="lazy"/><div class="go">View ↗</div></div></div>
+</div>
+      <div class="gp" id="gp-community">
+        <div class="gp-head"><h2>Community Moments</h2><span>Mixed Projects · 8 photos</span></div>
+        <div class="gg"><div class="gi" onclick="lb('/assets/images/gallery-1.jpg','Community 1/8')"><img src="/assets/images/gallery-1.jpg" alt="Community project 1" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/gallery-2.jpg','Community 2/8')"><img src="/assets/images/gallery-2.jpg" alt="Community project 2" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/gallery-3.jpg','Community 3/8')"><img src="/assets/images/gallery-3.jpg" alt="Community project 3" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/gallery-4.jpg','Community 4/8')"><img src="/assets/images/gallery-4.jpg" alt="Community project 4" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/gallery-5.jpg','Community 5/8')"><img src="/assets/images/gallery-5.jpg" alt="Community project 5" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/gallery-6.jpg','Community 6/8')"><img src="/assets/images/gallery-6.jpg" alt="Community project 6" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/gallery-7.jpg','Community 7/8')"><img src="/assets/images/gallery-7.jpg" alt="Community project 7" loading="lazy"/><div class="go">View ↗</div></div><div class="gi" onclick="lb('/assets/images/gallery-8.jpg','Community 8/8')"><img src="/assets/images/gallery-8.jpg" alt="Community project 8" loading="lazy"/><div class="go">View ↗</div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section style="background:var(--yellow);padding:96px 0;text-align:center;">
-    <div style="max-width:680px;margin-inline:auto;padding-inline:var(--pad);">
-      <div class="chip chip--black">★ Be Part of the Story</div>
-      <h2 style="font-weight:900;font-size:clamp(2.2rem,4vw,3.5rem);text-transform:uppercase;letter-spacing:-0.02em;margin-bottom:20px;">Your Project Belongs<br>In This Gallery.</h2>
-      <p style="font-size:1.05rem;font-weight:500;margin-bottom:40px;line-height:1.7;">Start a project with us and we'll document your impact — photos, data, and stories — for the world to see.</p>
-      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-        <a href="/contact" class="btn btn--black btn--lg">Start a Project</a>
-        <a href="/impact" class="btn btn--outline btn--lg">See Our Impact</a>
-      </div>
+  <section style="background:var(--black);padding:64px 0;text-align:center;" class="pat-halftone-light">
+    <div style="max-width:560px;margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
+      <div class="chip chip--yellow">★ Your Story</div>
+      <h2 style="font-weight:900;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--white);text-transform:uppercase;letter-spacing:-.02em;margin-bottom:14px;">Your Project<br>Could Be Here</h2>
+      <a href="/contact" class="btn btn--yellow btn--lg" style="margin-top:8px;">Start a Project →</a>
     </div>
   </section>
 </main>
 
-<footer class="footer">
-  <div class="footer__inner">
-    <div class="footer__grid">
-      <div>
-        <div class="footer__logo-box">
-          <img src="/assets/images/logo.png" alt="Daffodils Africa" style="height:44px;width:auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
-          <span class="footer__logo-text" style="display:none">Daffodils Africa</span>
-        </div>
-        <p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa. Impact is not accidental — it is built.</p>
-        <div class="footer__socials" style="margin-top:20px;">
-          <a href="https://www.instagram.com/daffodils_africa/?hl=en" target="_blank" rel="noopener" class="footer__social-link" aria-label="Instagram">ig</a>
-          <a href="https://www.facebook.com/daffodilsafrica1/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">fb</a>
-          <a href="https://www.linkedin.com/company/daffodils-africa" target="_blank" rel="noopener" class="footer__social-link" aria-label="LinkedIn">in</a>
-        </div>
-      </div>
-      <div>
-        <p class="footer__col-head">Navigate</p>
-        <ul class="footer__links">
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/programs">What We Do</a></li>
-          <li><a href="/impact">Our Impact</a></li>
-          <li><a href="/gallery">Gallery</a></li>
-          <li><a href="/academy">Academy</a></li>
-          <li><a href="/partnerships">Partnerships</a></li>
-          <li><a href="/blog">Blog</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer__col-head">Get Involved</p>
-        <ul class="footer__links">
-          <li><a href="/contact">Donate</a></li>
-          <li><a href="/contact#volunteer">Volunteer</a></li>
-          <li><a href="/contact">Sponsor a Project</a></li>
-          <li><a href="/contact">Start a Project</a></li>
-          <li><a href="/contact">Monthly Giving</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer__col-head">Contact</p>
-        <ul class="footer__links">
-          <li><a href="tel:+2348167873722">+234 816 787 3722</a></li>
-          <li><a href="mailto:daffodilsafrica@gmail.com">daffodilsafrica@gmail.com</a></li>
-          <li><a href="/contact">Contact Us</a></li>
-          <li style="color:rgba(255,255,255,0.5);font-size:0.875rem;font-weight:500;padding-left:6px;">Lagos, Nigeria</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p>
-      <p class="footer__motto">Impact is not accidental. It is built.</p>
-    </div>
-  </div>
-</footer>
-<script>const b=document.getElementById("burger"),n=document.getElementById("mobile-nav");b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});document.addEventListener("click",e=>{if(!b.contains(e.target)&&!n.contains(e.target)){n.classList.remove("open");b.setAttribute("aria-expanded","false");}});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b.setAttribute("aria-expanded","false");}));</script>
+<div id="lb" onclick="if(event.target===this)clb()">
+  <button id="lb-x" onclick="clb()">✕</button>
+  <img id="lb-img" src="" alt=""/>
+  <p id="lb-cap"></p>
+</div>
 
-<script>
-function initCarousels() {
-  if (window.innerWidth > 768) return;
-  document.querySelectorAll('[data-carousel]').forEach(wrap => {
-    const track   = wrap.querySelector('.mob-car-track');
-    const slides  = Array.from(track ? track.querySelectorAll('.mob-car-slide') : []);
-    const btnPrev = wrap.querySelector('.mob-car-prev');
-    const btnNext = wrap.querySelector('.mob-car-next');
-    const frac    = wrap.querySelector('.mob-car-frac');
-    if (!track || slides.length < 2) return;
-    let cur = 0;
-    function render() {
-      const w = slides[0].offsetWidth;
-      track.style.transform = 'translateX(-' + (cur * w) + 'px)';
-      track.style.transition = 'transform 0.35s ease';
-      if (frac) frac.textContent = (cur + 1) + ' / ' + slides.length;
-      if (btnPrev) btnPrev.disabled = cur === 0;
-      if (btnNext) btnNext.disabled = cur === slides.length - 1;
-    }
-    if (btnPrev) btnPrev.addEventListener('click', () => { if (cur > 0) { cur--; render(); }});
-    if (btnNext) btnNext.addEventListener('click', () => { if (cur < slides.length-1) { cur++; render(); }});
-    let startX = 0;
-    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
-    track.addEventListener('touchend', e => {
-      const diff = startX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) { if (diff > 0 && cur < slides.length-1) cur++; else if (diff < 0 && cur > 0) cur--; render(); }
-    }, {passive:true});
-    render();
-  });
-}
-document.addEventListener('DOMContentLoaded', initCarousels);
-window.addEventListener('resize', () => { document.querySelectorAll('[data-carousel] .mob-car-track').forEach(t => { t.style.transform=''; }); initCarousels(); });
-</script>
+<footer class="footer"><div class="footer__inner">
+  <div class="footer__grid">
+    <div><div class="footer__logo-box"><img src="/assets/images/logo.png" alt="" style="height:44px;width:auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/><span class="footer__logo-text" style="display:none">Daffodils Africa</span></div><p class="footer__about">A social enterprise implementing high-impact projects that transform communities across Africa. Impact is not accidental — it is built.</p><div class="footer__socials" style="margin-top:20px;"><a href="https://www.instagram.com/daffodils_africa/?hl=en" target="_blank" rel="noopener" class="footer__social-link">ig</a><a href="https://www.facebook.com/daffodilsafrica1/" target="_blank" rel="noopener" class="footer__social-link">fb</a><a href="https://www.linkedin.com/company/daffodils-africa" target="_blank" rel="noopener" class="footer__social-link">in</a></div></div>
+    <div><p class="footer__col-head">Navigate</p><ul class="footer__links"><li><a href="/about">About Us</a></li><li><a href="/programs">What We Do</a></li><li><a href="/impact">Our Impact</a></li><li><a href="/gallery">Gallery</a></li><li><a href="/academy">Academy</a></li><li><a href="/partnerships">Partnerships</a></li><li><a href="/blog">Blog</a></li></ul></div>
+    <div><p class="footer__col-head">Get Involved</p><ul class="footer__links"><li><a href="/contact">Donate</a></li><li><a href="/contact#volunteer">Volunteer</a></li><li><a href="/contact">Sponsor a Project</a></li><li><a href="/contact">Start a Project</a></li><li><a href="/contact">Monthly Giving</a></li></ul></div>
+    <div><p class="footer__col-head">Legal &amp; Contact</p><ul class="footer__links"><li><a href="tel:+2348167873722">+234 816 787 3722</a></li><li><a href="mailto:daffodilsafrica@gmail.com">daffodilsafrica@gmail.com</a></li><li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li style="color:rgba(255,255,255,.5);font-size:.875rem;font-weight:500;padding-left:6px;">Lagos, Nigeria</li></ul></div>
+  </div>
+  <div class="footer__bottom"><p class="footer__copy">© 2026 Daffodils Africa. All rights reserved.</p><p class="footer__motto">Impact is not accidental. It is built.</p></div>
+</div></footer>
+
 <script src="/assets/js/daffy.js" defer></script>
+<script>
+const b=document.getElementById("burger"),n=document.getElementById("mobile-nav");
+b.addEventListener("click",()=>{const o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);});
+document.addEventListener("click",e=>{if(!b.contains(e.target)&&!n.contains(e.target)){n.classList.remove("open");b.setAttribute("aria-expanded","false");}});
+n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{n.classList.remove("open");b.setAttribute("aria-expanded","false");}));
+function fg(id,btn){document.querySelectorAll('.gp').forEach(el=>{el.style.display=(id==='all'||el.id===id)?'block':'none';});document.querySelectorAll('.fb').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+function lb(src,cap){document.getElementById('lb-img').src=src;document.getElementById('lb-cap').textContent=cap;document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden';}
+function clb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')clb();});
+</script>
 </body></html>
