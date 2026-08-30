@@ -30,11 +30,7 @@ module.exports = async function handler(req, res) {
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: SYSTEM }] },
           contents: contents,
-          generationConfig: {
-            maxOutputTokens: 300,
-            temperature: 0.7,
-            thinkingConfig: { thinkingBudget: 0 }
-          }
+          generationConfig: { maxOutputTokens: 300, temperature: 0.7 }
         })
       }
     );
