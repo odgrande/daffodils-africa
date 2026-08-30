@@ -1,6 +1,3 @@
-// Daffodils Africa — Daffy Chat API
-// Uses built-in https module (works on ALL Node.js versions)
-
 const https = require('https');
 
 function groqRequest(apiKey, messages) {
@@ -11,7 +8,6 @@ function groqRequest(apiKey, messages) {
       max_tokens: 250,
       temperature: 0.65,
     });
-
     const options = {
       hostname: 'api.groq.com',
       path: '/openai/v1/chat/completions',
@@ -22,19 +18,14 @@ function groqRequest(apiKey, messages) {
         'Content-Length': Buffer.byteLength(body),
       },
     };
-
-    const req = https.request(options, (res) => {
+    const req = https.request(options, (r) => {
       let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => {
-        try {
-          resolve({ status: res.statusCode, body: JSON.parse(data) });
-        } catch(e) {
-          reject(new Error('JSON parse error: ' + data));
-        }
+      r.on('data', c => data += c);
+      r.on('end', () => {
+        try { resolve({ status: r.statusCode, body: JSON.parse(data) }); }
+        catch(e) { reject(new Error('Parse error: ' + data.slice(0,100))); }
       });
     });
-
     req.on('error', reject);
     req.write(body);
     req.end();
@@ -49,35 +40,31 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const apiKey = process.env.GROQ_API_KEY;
+
+  // DEBUG: show key status (first 8 chars only for security)
   if (!apiKey) {
-    console.error('GROQ_API_KEY not set');
     return res.status(200).json({
-      reply: "Hi! I'm Daffy 💛 Please email daffodilsafrica@gmail.com or call +234 816 787 3722 — the team responds quickly!"
+      reply: "⚠️ DEBUG: No API key found in environment. Go to Vercel → Settings → Environment Variables → check GROQ_API_KEY is set AND redeploy."
     });
   }
 
   let body = {};
-  try {
-    body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
-  } catch(e) {}
-
+  try { body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {}); } catch(e){}
   const { message, history = [] } = body;
   if (!message) return res.status(400).json({ error: 'Message required' });
 
   const SYSTEM = `You are Daffy, the friendly assistant for Daffodils Africa — a Nigerian social enterprise implementing social impact projects across Africa.
 
-STRICT RULE: ONLY answer questions about Daffodils Africa. If asked about anything else, say: "I can only help with Daffodils Africa questions! Email daffodilsafrica@gmail.com or call +234 816 787 3722 for anything else 💛"
+STRICT RULE: ONLY answer questions about Daffodils Africa. For anything unrelated say: "I can only help with Daffodils Africa questions! Email daffodilsafrica@gmail.com or call +234 816 787 3722 💛"
 
 ABOUT DAFFODILS AFRICA:
 - Social enterprise: high-impact projects for individuals, organisations and government
-- Services: Project Design, Community Development, Impact Campaigns, Monitoring & Evaluation  
+- Services: Project Design, Community Development, Impact Campaigns, Monitoring & Evaluation
 - Special: CSR Made Easy, Celebrate with Impact, Tourist with a Difference
-- Academy: Launching Q4 2026 — social impact, CSR, M&E, fundraising, community dev, youth leadership
-- Impact: 3,000+ lives, 10 projects, Lagos, Taraba and Jos
-- Projects: Digital Literacy STEAM Club, IWD Women Empowerment, Education Support, Food Support for Elderly, JOS Maternity, Business Support, Vision Eyecare, DaffodilsXGLOW
+- Academy: Launching Q4 2026 — 6 courses on social impact topics
+- Impact: 3,000+ lives, 10 projects across Lagos, Taraba and Jos
 - Contact: +234 816 787 3722 | daffodilsafrica@gmail.com | Lagos Nigeria
-- Social: @daffodils_africa on all platforms
-- Founder: Ifeoluwa Oyebisi
+- Founder: Ifeoluwa Oyebisi | Social: @daffodils_africa
 
 Keep replies warm, under 120 words. Always end with a clear action step.`;
 
@@ -91,21 +78,22 @@ Keep replies warm, under 120 words. Always end with a clear action step.`;
     const result = await groqRequest(apiKey, messages);
 
     if (result.status !== 200) {
-      console.error('Groq API error:', result.status, JSON.stringify(result.body));
+      // DEBUG: show actual Groq error so we can diagnose
+      const errMsg = result.body?.error?.message || JSON.stringify(result.body).slice(0, 150);
+      console.error('Groq error:', result.status, errMsg);
       return res.status(200).json({
-        reply: "I'm having a quick moment — please email daffodilsafrica@gmail.com or call +234 816 787 3722! 💛"
+        reply: `⚠️ DEBUG (${result.status}): ${errMsg} | Key starts: ${apiKey.slice(0,8)}...`
       });
     }
 
     const reply = result.body?.choices?.[0]?.message?.content?.trim();
-    if (!reply) throw new Error('Empty reply from Groq');
-
+    if (!reply) throw new Error('Empty reply');
     res.status(200).json({ reply });
 
   } catch (err) {
     console.error('Chat error:', err.message);
     res.status(200).json({
-      reply: "I'm having a quick moment — please email daffodilsafrica@gmail.com or call +234 816 787 3722! 💛"
+      reply: `⚠️ DEBUG ERROR: ${err.message.slice(0,150)} | Key starts: ${apiKey ? apiKey.slice(0,8) : 'NONE'}...`
     });
   }
 };
