@@ -47,10 +47,6 @@ function initChatbot(){
     msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;
   }
 
-  // Groq key — already public via config.js in the repo
-  var GROQ_KEY='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';
-  var GROQ_SYSTEM='You are Daffy, the friendly assistant for Daffodils Africa — a Nigerian social enterprise implementing high-impact social projects across Africa. ONLY answer questions about Daffodils Africa. For anything unrelated say: "I can only help with Daffodils Africa questions! Email daffodilsafrica@gmail.com 💛". Keep replies under 120 words. Always end with an action step. Key info: Contact +234 816 787 3722 | daffodilsafrica@gmail.com | Lagos | Founder: Ifeoluwa Oyebisi | Services: Project Design, CSR, Community Dev, M&E | Academy launching Q4 2026 | 3000+ lives reached.';
-
   function send(){
     var text=inp.value.trim();
     if(!text)return;
@@ -60,19 +56,15 @@ function initChatbot(){
     history.push({role:'user',content:text});
     var typing=addMsg('typing','Daffy is thinking…');
 
-    fetch('https://api.groq.com/openai/v1/chat/completions',{
+    fetch('/api/chat',{
       method:'POST',
-      headers:{'Content-Type':'application/json','Authorization':'Bearer '+GROQ_KEY},
-      body:JSON.stringify({
-        model:'llama-3.1-8b-instant',
-        messages:[{role:'system',content:GROQ_SYSTEM}].concat(prevHist).concat([{role:'user',content:text}]),
-        max_tokens:200,temperature:0.7
-      })
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({message:text,history:prevHist})
     })
     .then(function(r){return r.json();})
     .then(function(d){
       typing.remove();
-      var reply=(d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content.trim())||'Please email daffodilsafrica@gmail.com or call +234 816 787 3722 💛';
+      var reply=d.reply||'Please email daffodilsafrica@gmail.com or call +234 816 787 3722 💛';
       addMsg('bot',reply);
       history.push({role:'assistant',content:reply});
     })
