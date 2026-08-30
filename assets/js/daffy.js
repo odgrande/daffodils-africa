@@ -47,27 +47,47 @@ function initChatbot(){
     msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;
   }
 
+  var SYSTEM_PROMPT='You are Daffy, the friendly assistant for Daffodils Africa — a Nigerian social enterprise implementing high-impact social projects across Africa. ONLY answer questions about Daffodils Africa. For anything unrelated say: "I can only help with Daffodils Africa questions! Email daffodilsafrica@gmail.com 💛". Keep replies under 120 words. Always end with an action step. Key info: Contact +234 816 787 3722 | daffodilsafrica@gmail.com | Lagos | Founder: Ifeoluwa Oyebisi | Services: Project Design, CSR, Community Dev, M&E | Academy launching Q4 2026 | 3000+ lives reached.';
+
   function send(){
     var text=inp.value.trim();
     if(!text)return;
     inp.value='';inp.style.height='auto';
     addMsg('user',text);
+    var prevHistory=history.slice(-6);
     history.push({role:'user',content:text});
     var typing=addMsg('typing','Daffy is thinking…');
 
-    fetch('/api/chat',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({message:text,history:history.slice(-6)})
-    })
-    .then(function(r){return r.json();})
-    .then(function(data){
+    var key=window.DAFFY_KEY;
+    var req;
+    if(key){
+      // Call Groq directly from the browser using the site key
+      req=fetch('https://api.groq.com/openai/v1/chat/completions',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
+        body:JSON.stringify({
+          model:'llama-3.1-8b-instant',
+          messages:[{role:'system',content:SYSTEM_PROMPT}].concat(prevHistory).concat([{role:'user',content:text}]),
+          max_tokens:200,temperature:0.7
+        })
+      }).then(function(r){return r.json();}).then(function(d){
+        return {reply:(d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content.trim())||null};
+      });
+    } else {
+      // Fallback: serverless function (needs GROQ_API_KEY env var set in Vercel)
+      req=fetch('/api/chat',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({message:text,history:prevHistory})
+      }).then(function(r){return r.json();});
+    }
+
+    req.then(function(data){
       typing.remove();
       var reply=data.reply||'Please email daffodilsafrica@gmail.com or call +234 816 787 3722 💛';
       addMsg('bot',reply);
       history.push({role:'assistant',content:reply});
-    })
-    .catch(function(){
+    }).catch(function(){
       typing.remove();
       addMsg('bot','Please email daffodilsafrica@gmail.com or call +234 816 787 3722 💛');
     });

@@ -98,6 +98,9 @@
 .car-dot{width:7px;height:7px;background:rgba(255,255,255,.3);display:inline-block;cursor:pointer;transition:background .2s,transform .2s;}
 .car-dot-a{background:#faba16;transform:scale(1.4);}
 .cs-card{transition:box-shadow .2s;}
+/* Fix: force LTR on tracks so translateX always works correctly,
+   even on alternating cards that have direction:rtl on the parent */
+.car-track{direction:ltr;}
 @media(max-width:1024px){
   .cs-card{grid-template-columns:1fr !important;direction:ltr !important;}
   .cs-card>div:first-child{border-right:none !important;border-bottom:var(--b);}
@@ -117,11 +120,25 @@ function daCarSlide(el, delta) {
   if (cur >= tot) cur = tot - 1;
   daCarGo(wrap, cur);
 }
+// Force-load images around a given index so lazy images reveal when navigated to
+function daCarLoadAround(imgs, idx) {
+  var lo = Math.max(0, idx - 1);
+  var hi = Math.min(imgs.length - 1, idx + 2);
+  for (var i = lo; i <= hi; i++) {
+    if (imgs[i].loading === 'lazy') imgs[i].loading = 'eager';
+    // Also handle data-src pattern in case it was set
+    if (imgs[i].dataset && imgs[i].dataset.src && !imgs[i].src) {
+      imgs[i].src = imgs[i].dataset.src;
+    }
+  }
+}
 function daCarGo(wrap, idx) {
   var track = wrap.querySelector('.car-track');
-  var tot   = track.querySelectorAll('.car-img').length;
+  var imgs  = track.querySelectorAll('img.car-img');
+  var tot   = imgs.length;
   wrap.setAttribute('data-cur', idx);
   track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+  daCarLoadAround(imgs, idx);
   var frac = wrap.querySelector('.car-frac');
   if (frac) frac.textContent = (idx + 1) + '/' + tot;
   wrap.querySelectorAll('.car-dot').forEach(function(d, i) {
@@ -135,6 +152,10 @@ function daCarDot(el, idx) {
 }
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('[data-car]').forEach(function(wrap) {
+    // Pre-load first 2 images of every carousel immediately on page load
+    var imgs = wrap.querySelectorAll('img.car-img');
+    daCarLoadAround(imgs, 0);
+
     var sx = 0;
     wrap.addEventListener('touchstart', function(e){sx=e.touches[0].clientX;},{passive:true});
     wrap.addEventListener('touchend', function(e){
