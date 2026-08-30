@@ -21,7 +21,7 @@ module.exports = async function handler(req, res) {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'llama-3.1-8b-instant',
+        model: 'llama3-8b-8192',
         messages: [{ role: 'system', content: SYSTEM }, ...hist.slice(-6), { role: 'user', content: msg }],
         max_tokens: 200,
         temperature: 0.7
@@ -30,14 +30,13 @@ module.exports = async function handler(req, res) {
 
     const d = await r.json();
     if (!r.ok) {
-      const errMsg = (d.error && d.error.message) ? d.error.message : JSON.stringify(d);
-      console.error('Groq API error', r.status, errMsg);
-      return res.json({ reply: 'ERROR ' + r.status + ': ' + errMsg });
+      console.error('Groq API error', r.status, JSON.stringify(d));
+      return res.json({ reply: "Please email daffodilsafrica@gmail.com or call +234 816 787 3722 💛" });
     }
     res.json({ reply: d.choices[0].message.content.trim() });
 
   } catch(e) {
     console.error('Chat handler exception', e.message);
-    res.json({ reply: 'EXCEPTION: ' + e.message });
+    res.json({ reply: "Please email daffodilsafrica@gmail.com or call +234 816 787 3722 💛" });
   }
 };
