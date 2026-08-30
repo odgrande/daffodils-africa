@@ -25,6 +25,16 @@
     .cs__stat-num   { font-weight:900; font-size:1.5rem; color:var(--yellow); display:block; line-height:1; }
     .cs__stat-label { font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.5); margin-top:4px; }
 
+    /* CS CAROUSEL */
+    .cs-car { position:relative; width:100%; height:100%; display:flex; overflow:hidden; background:#000; }
+    .cs-car__track { display:flex; width:100%; height:100%; transition:transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+    .cs-car__slide { width:100%; height:100%; flex-shrink:0; }
+    .cs-car__slide img { width:100%; height:100%; object-fit:cover; display:block; }
+    .cs-car__nav { position:absolute; bottom:16px; right:16px; display:flex; gap:8px; pointer-events:none; }
+    .cs-car__btn { pointer-events:auto; width:44px; height:44px; background:var(--black); color:var(--yellow); border:3px solid var(--black); display:flex; align-items:center; justify-content:center; cursor:pointer; font-weight:900; font-size:1.2rem; transition:transform 0.1s, background 0.15s, color 0.15s; }
+    .cs-car__btn:hover { background:var(--yellow); color:var(--black); border-color:var(--black); }
+    .cs-car__btn:active { transform:translate(2px,2px); }
+
     /* IMPACT SCROLL */
     .scroll-card { background:var(--black); border:var(--b); box-shadow:var(--sh-xl); padding:52px; }
     .scroll-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:var(--b); margin:32px 0; }
@@ -187,7 +197,22 @@
       <!-- CS 1: Digital Literacy -->
       <div class="cs">
         <div class="cs__img">
-          <img src="/assets/images/gallery-8.jpg" alt="Digital Literacy Training for Kids" onerror="this.outerHTML='<div class=\'img-ph\' style=\'height:420px;\'>Digital Literacy Photo</div>'"/>
+          <div class="cs-car" data-cs-car>
+            <div class="cs-car__track">
+              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-1.jpg" alt="Class image 1"/></div>
+              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-2.jpg" alt="Class image 2"/></div>
+              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-3.jpg" alt="Class image 3"/></div>
+              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-4.jpg" alt="Class image 4"/></div>
+              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-5.jpg" alt="Class image 5"/></div>
+              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-6.jpg" alt="Class image 6"/></div>
+              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-7.jpg" alt="Class image 7"/></div>
+              <div class="cs-car__slide"><img src="/assets/images/digital-literacy-8.jpg" alt="Class image 8"/></div>
+            </div>
+            <div class="cs-car__nav">
+              <button class="cs-car__btn cs-car-prev" aria-label="Previous">←</button>
+              <button class="cs-car__btn cs-car-next" aria-label="Next">→</button>
+            </div>
+          </div>
         </div>
         <div class="cs__content">
           <p class="cs__label">Community Program · Lagos &amp; Plateau State</p>
@@ -205,7 +230,22 @@
       <!-- CS 2: Education & Business Empowerment -->
       <div class="cs">
         <div class="cs__img">
-          <img src="/assets/images/impact-cs3.jpg" alt="Education and Business Empowerment" onerror="this.outerHTML='<div class=\'img-ph\' style=\'height:420px;\'>Education Project Photo</div>'"/>
+          <div class="cs-car" data-cs-car>
+            <div class="cs-car__track">
+              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164101.jpg" alt="Business Support 1"/></div>
+              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164106.jpg" alt="Business Support 2"/></div>
+              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164133.jpg" alt="Business Support 3"/></div>
+              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164136.jpg" alt="Business Support 4"/></div>
+              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164153.jpg" alt="Business Support 5"/></div>
+              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164156.jpg" alt="Business Support 6"/></div>
+              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164209.jpg" alt="Business Support 7"/></div>
+              <div class="cs-car__slide"><img src="/assets/images/Projects/2024/Business Support pictures/20240705_164211.jpg" alt="Business Support 8"/></div>
+            </div>
+            <div class="cs-car__nav">
+              <button class="cs-car__btn cs-car-prev" aria-label="Previous">←</button>
+              <button class="cs-car__btn cs-car-next" aria-label="Next">→</button>
+            </div>
+          </div>
         </div>
         <div class="cs__content">
           <p class="cs__label">Quarterly Social Impact Project · Lagos &amp; Taraba · June 2024</p>
@@ -454,6 +494,28 @@ window.addEventListener('resize', () => {
   document.querySelectorAll('[data-carousel] .mob-car-track').forEach(t => { t.style.transform=''; });
   initCarousels();
 });
+
+// DESKTOP & MOBILE CASE STUDY CAROUSELS
+function initCsCarousels() {
+  document.querySelectorAll('[data-cs-car]').forEach(wrap => {
+    const track = wrap.querySelector('.cs-car__track');
+    const slides = Array.from(track.querySelectorAll('.cs-car__slide'));
+    const btnPrev = wrap.querySelector('.cs-car-prev');
+    const btnNext = wrap.querySelector('.cs-car-next');
+    if (!track || slides.length < 2) {
+      if(btnPrev) btnPrev.style.display='none';
+      if(btnNext) btnNext.style.display='none';
+      return;
+    }
+    let cur = 0;
+    function render() {
+      track.style.transform = `translateX(-${cur * 100}%)`;
+    }
+    if (btnPrev) btnPrev.addEventListener('click', () => { cur = cur > 0 ? cur - 1 : slides.length - 1; render(); });
+    if (btnNext) btnNext.addEventListener('click', () => { cur = cur < slides.length - 1 ? cur + 1 : 0; render(); });
+  });
+}
+document.addEventListener('DOMContentLoaded', initCsCarousels);
 </script>
 <script src="/assets/js/daffy.js" defer></script>
 </body></html>
