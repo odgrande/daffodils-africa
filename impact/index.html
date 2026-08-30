@@ -109,6 +109,20 @@
 </style>
 
 <script>
+// Blank placeholder — avoids broken-image icon for unloaded slides
+var DA_BLANK='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+
+// Load real src for images around idx (data-src swap pattern — reliable across all browsers)
+function daCarLoadAround(imgs, idx) {
+  var lo = Math.max(0, idx - 1);
+  var hi = Math.min(imgs.length - 1, idx + 2);
+  for (var i = lo; i <= hi; i++) {
+    if (imgs[i].dataset.src) {
+      imgs[i].src = imgs[i].dataset.src;
+      delete imgs[i].dataset.src;
+    }
+  }
+}
 function daCarSlide(el, delta) {
   var wrap = el.closest ? el.closest('[data-car]') : el.parentElement;
   while(wrap && !wrap.hasAttribute('data-car')) wrap = wrap.parentElement;
@@ -119,18 +133,6 @@ function daCarSlide(el, delta) {
   if (cur < 0) cur = 0;
   if (cur >= tot) cur = tot - 1;
   daCarGo(wrap, cur);
-}
-// Force-load images around a given index so lazy images reveal when navigated to
-function daCarLoadAround(imgs, idx) {
-  var lo = Math.max(0, idx - 1);
-  var hi = Math.min(imgs.length - 1, idx + 2);
-  for (var i = lo; i <= hi; i++) {
-    if (imgs[i].loading === 'lazy') imgs[i].loading = 'eager';
-    // Also handle data-src pattern in case it was set
-    if (imgs[i].dataset && imgs[i].dataset.src && !imgs[i].src) {
-      imgs[i].src = imgs[i].dataset.src;
-    }
-  }
 }
 function daCarGo(wrap, idx) {
   var track = wrap.querySelector('.car-track');
@@ -152,10 +154,15 @@ function daCarDot(el, idx) {
 }
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('[data-car]').forEach(function(wrap) {
-    // Pre-load first 2 images of every carousel immediately on page load
     var imgs = wrap.querySelectorAll('img.car-img');
-    daCarLoadAround(imgs, 0);
-
+    // Move all images except the first 2 to data-src so they only load when navigated to
+    imgs.forEach(function(img, i) {
+      if (i >= 2) {
+        img.dataset.src = img.getAttribute('src');
+        img.src = DA_BLANK;
+      }
+    });
+    // Touch swipe support
     var sx = 0;
     wrap.addEventListener('touchstart', function(e){sx=e.touches[0].clientX;},{passive:true});
     wrap.addEventListener('touchend', function(e){
