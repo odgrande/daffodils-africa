@@ -21,7 +21,7 @@ module.exports = async function handler(req, res) {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${key}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'gemini-2.0-flash',
+        model: 'gemini-3.6-flash',
         messages: [{ role: 'system', content: SYSTEM }, ...hist.slice(-6), { role: 'user', content: msg }],
         max_tokens: 200,
         temperature: 0.7
