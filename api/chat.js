@@ -23,14 +23,18 @@ module.exports = async function handler(req, res) {
 
   try {
     const r = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=' + key,
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=' + key,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: SYSTEM }] },
           contents: contents,
-          generationConfig: { maxOutputTokens: 300, temperature: 0.7 }
+          generationConfig: {
+            maxOutputTokens: 300,
+            temperature: 0.7,
+            thinkingConfig: { thinkingBudget: 0 }
+          }
         })
       }
     );
@@ -40,9 +44,10 @@ module.exports = async function handler(req, res) {
       console.error('Gemini API error', r.status, JSON.stringify(d));
       return res.json({ reply: "Please email daffodilsafrica@gmail.com or call +234 816 787 3722 💛" });
     }
-    const reply = d.candidates && d.candidates[0] && d.candidates[0].content &&
-                  d.candidates[0].content.parts && d.candidates[0].content.parts[0] &&
-                  d.candidates[0].content.parts[0].text;
+    // Filter out thought parts, keep only the final answer text
+    const parts = d.candidates && d.candidates[0] && d.candidates[0].content && d.candidates[0].content.parts;
+    const replyPart = parts && parts.find(function(p) { return !p.thought && p.text; });
+    const reply = replyPart ? replyPart.text : (parts && parts[0] && parts[0].text);
     res.json({ reply: reply ? reply.trim() : "Please email daffodilsafrica@gmail.com or call +234 816 787 3722 💛" });
 
   } catch(e) {
