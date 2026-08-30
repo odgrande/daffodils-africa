@@ -29,10 +29,15 @@ module.exports = async function handler(req, res) {
     });
 
     const d = await r.json();
-    if (!r.ok) return res.json({ reply: "Please email daffodilsafrica@gmail.com or call +234 816 787 3722 💛" });
+    if (!r.ok) {
+      const errMsg = (d.error && d.error.message) ? d.error.message : JSON.stringify(d);
+      console.error('Groq API error', r.status, errMsg);
+      return res.json({ reply: 'ERROR ' + r.status + ': ' + errMsg });
+    }
     res.json({ reply: d.choices[0].message.content.trim() });
 
   } catch(e) {
-    res.json({ reply: "Please email daffodilsafrica@gmail.com or call +234 816 787 3722 💛" });
+    console.error('Chat handler exception', e.message);
+    res.json({ reply: 'EXCEPTION: ' + e.message });
   }
 };
