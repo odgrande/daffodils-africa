@@ -6,10 +6,11 @@
   <meta name="description" content="Daffodils Africa blog — insights, thought leadership, stories, and news on social impact, community development, and change-making across Africa."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet"/>
+  <link rel="icon" href="/assets/images/logo-icon.png" type="image/png"/>
   <link rel="stylesheet" href="/assets/css/main.css"/>
   <style>
     .blog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-    .blog-card { background:var(--white); border:var(--b); box-shadow:var(--sh-md); overflow:hidden; display:flex; flex-direction:column; transition:transform 0.15s,box-shadow 0.15s; }
+    .blog-card { background:var(--white); border:var(--b); box-shadow:var(--sh-md); overflow:hidden; display:flex; flex-direction:column; transition:transform 0.15s,box-shadow 0.15s; cursor:pointer; }
     .blog-card:hover { transform:translateY(-4px); box-shadow:var(--sh-lg); }
     .blog-card__img { width:100%; }
     .blog-card__body { padding:24px; flex:1; display:flex; flex-direction:column; }
@@ -93,122 +94,19 @@
   <section style="background:var(--bg);border-bottom:var(--b);padding:80px 0;">
     <div class="wrap">
       <div class="chip chip--yellow">★ Featured</div>
-      <div class="blog-card blog-card--featured">
-        <img src="/assets/images/blog-featured.jpg" alt="Featured blog post" class="blog-card__img"
-             onerror="this.outerHTML='<div class=\'img-ph blog-card__img\' style=\'min-height:320px;\'>Featured Blog Image<br><small>blog-featured.jpg · 600×400px</small></div>'"/>
+      <div class="blog-card blog-card--featured" onclick="openBlogModal('post-featured')" style="cursor:pointer;">
+        <img src="/assets/images/impact-iwd.jpg" alt="IWD 2024 Women Empowerment" class="blog-card__img"/>
         <div class="blog-card__body">
           <span class="blog-card__cat">Impact Stories</span>
           <h2 class="blog-card__title">How We Empowered Women-Owned Businesses on International Women's Day 2024</h2>
           <p class="blog-card__excerpt">To celebrate International Women's Day 2024, Daffodils Africa launched a Social Impact Ajo/Contribution in Lagos — directly empowering two women-owned businesses in a low-income community. Here's the story of what we did, why we did it, and what changed.</p>
           <p class="blog-card__meta">March 2024 · 5 min read</p>
-          <a href="#" class="blog-card__link">Read Full Story →</a>
+          <span class="blog-card__link">Read Full Story →</span>
         </div>
       </div>
     </div>
   </section>
 
-
-  <!-- AI BLOG GENERATOR -->
-  <section style="background:var(--black);border-bottom:var(--b);padding:72px 0;" class="pat-halftone-light">
-    <div style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
-        <div>
-          <div class="chip chip--yellow">★ Powered by Groq</div>
-          <h2 style="font-weight:900;font-size:clamp(1.8rem,3vw,2.6rem);text-transform:uppercase;color:var(--white);letter-spacing:-0.02em;line-height:1.1;margin-bottom:14px;">Generate a Blog<br>Post with Daffy</h2>
-          <p style="font-size:0.95rem;color:rgba(255,255,255,0.55);font-weight:500;line-height:1.7;">Enter any social impact topic and get a full blog post draft — instantly. Tailored to Daffodils Africa's voice and African context.</p>
-          <div style="margin-top:28px;display:flex;flex-direction:column;gap:12px;">
-            <div>
-              <label style="display:block;font-weight:700;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;">Blog Topic *</label>
-              <input id="blog-topic" type="text" placeholder="e.g. How CSR can transform communities in Lagos" style="width:100%;padding:16px 18px;background:rgba(255,255,255,0.07);border:3px solid rgba(255,255,255,0.2);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.95rem;outline:none;" oninput="this.style.borderColor='#faba16'"/>
-            </div>
-            <div>
-              <label style="display:block;font-weight:700;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;">Post Type</label>
-              <div style="display:flex;gap:8px;flex-wrap:wrap;" id="blog-type-opts">
-                <button class="blog-type-btn selected" data-val="article" onclick="setBlogType(this)">Article</button>
-                <button class="blog-type-btn" data-val="opinion" onclick="setBlogType(this)">Opinion</button>
-                <button class="blog-type-btn" data-val="case study" onclick="setBlogType(this)">Case Study</button>
-                <button class="blog-type-btn" data-val="how-to guide" onclick="setBlogType(this)">How-To Guide</button>
-              </div>
-            </div>
-            <button id="blog-gen-btn" onclick="generateBlog()" style="margin-top:8px;padding:0 28px;height:56px;background:var(--yellow);color:#000;border:4px solid #000;box-shadow:6px 6px 0 0 #faba16;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;display:flex;align-items:center;gap:10px;transition:transform .1s,box-shadow .1s;" onmouseover="this.style.transform='translate(-2px,-2px)';this.style.boxShadow='8px 8px 0 0 #faba16'" onmouseout="this.style.transform='';this.style.boxShadow='6px 6px 0 0 #faba16'">
-              <span id="blog-gen-txt">✦ Generate Post</span>
-            </button>
-          </div>
-        </div>
-        <!-- OUTPUT PANEL -->
-        <div id="blog-output" style="display:none;">
-          <div id="blog-result" style="background:#fff;border:4px solid #000;box-shadow:8px 8px 0 0 #000;"></div>
-          <button onclick="copyBlog()" style="margin-top:12px;width:100%;padding:14px;background:transparent;border:3px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.7);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;" onmouseover="this.style.borderColor='#faba16';this.style.color='#faba16'" onmouseout="this.style.borderColor='rgba(255,255,255,0.3)';this.style.color='rgba(255,255,255,0.7)'">📋 Copy Full Post</button>
-        </div>
-        <div id="blog-placeholder" style="background:rgba(255,255,255,0.04);border:3px dashed rgba(255,255,255,0.12);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:360px;text-align:center;padding:40px;">
-          <div style="font-size:2.5rem;margin-bottom:16px;">✦</div>
-          <p style="font-weight:700;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.2);">Your generated post<br>will appear here</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <style>
-    .blog-type-btn{padding:10px 16px;background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.55);font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;transition:all .1s;}
-    .blog-type-btn:hover,.blog-type-btn.selected{background:#faba16;border-color:#faba16;color:#000;}
-    @media(max-width:768px){
-      div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}
-    }
-  </style>
-  <script>
-    var blogType='article';
-    function setBlogType(btn){
-      document.querySelectorAll('.blog-type-btn').forEach(b=>b.classList.remove('selected'));
-      btn.classList.add('selected');
-      blogType=btn.dataset.val;
-    }
-    var lastPost='';
-    async function generateBlog(){
-      var topic=document.getElementById('blog-topic').value.trim();
-      if(!topic){document.getElementById('blog-topic').focus();document.getElementById('blog-topic').style.borderColor='red';return;}
-      var btn=document.getElementById('blog-gen-btn');
-      var txt=document.getElementById('blog-gen-txt');
-      btn.disabled=true; txt.textContent='Generating…';
-      document.getElementById('blog-placeholder').style.display='none';
-      document.getElementById('blog-output').style.display='none';
-      try{
-        var r=await fetch('/api/blog',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({topic:topic,type:blogType})});
-        var data=await r.json();
-        if(data.error){throw new Error(data.error);}
-        var p=data.post;
-        lastPost=formatPost(p);
-        document.getElementById('blog-result').innerHTML=renderPost(p);
-        document.getElementById('blog-output').style.display='block';
-      }catch(e){
-        alert('Generation failed: '+(e.message||'Please try again.'));
-        document.getElementById('blog-placeholder').style.display='flex';
-      }
-      btn.disabled=false; txt.textContent='✦ Generate Post';
-    }
-    function renderPost(p){
-      var sections=(p.sections||[]).map(s=>'<h3 style="font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:0.04em;margin:20px 0 8px;border-left:4px solid #faba16;padding-left:12px;">'+s.heading+'</h3><p style="font-size:0.875rem;font-weight:500;line-height:1.75;color:rgba(0,0,0,0.8);">'+s.body+'</p>').join('');
-      return '<div style="padding:28px;">'+
-        '<div style="background:#faba16;display:inline-block;padding:4px 10px;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:14px;">'+(p.category||'Blog')+'</div>'+
-        '<h2 style="font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:-0.01em;line-height:1.2;margin-bottom:6px;">'+(p.title||'')+'</h2>'+
-        '<p style="font-size:0.8rem;font-weight:600;color:rgba(0,0,0,0.45);margin-bottom:16px;">'+(p.subtitle||'')+' · '+(p.readTime||'')+'</p>'+
-        '<hr style="border:none;border-top:2px solid #eee;margin-bottom:16px;"/>'+
-        '<p style="font-size:0.875rem;font-weight:500;line-height:1.75;color:rgba(0,0,0,0.8);margin-bottom:12px;">'+(p.intro||'')+'</p>'+
-        sections+
-        '<div style="background:#f7f5ee;border-left:4px solid #7fb432;padding:14px 16px;margin-top:16px;font-size:0.875rem;font-weight:500;line-height:1.7;">'+(p.cta||'')+'</div>'+
-        '<div style="margin-top:14px;display:flex;gap:6px;flex-wrap:wrap;">'+(p.tags||[]).map(t=>'<span style="background:#000;color:#faba16;padding:3px 10px;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">#'+t+'</span>').join('')+'</div>'+
-        '</div>';
-    }
-    function formatPost(p){
-      var out=p.title+'\n'+p.subtitle+'\n\n'+p.intro+'\n\n';
-      (p.sections||[]).forEach(s=>{out+=s.heading+'\n\n'+s.body+'\n\n';});
-      out+=p.cta;
-      return out;
-    }
-    function copyBlog(){
-      if(!lastPost){return;}
-      navigator.clipboard.writeText(lastPost).then(()=>alert('Post copied to clipboard!'));
-    }
-  </script>
 
   <!-- BLOG GRID -->
   <section style="background:var(--yellow);border-bottom:var(--b);padding:96px 0;">
@@ -217,71 +115,64 @@
       <h2 class="section-h2">From the Blog</h2>
     </div>
     <div class="blog-grid" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);">
-      <!-- REPLACE: blog-1.jpg through blog-6.jpg — your blog post cover images -->
-      <div class="blog-card">
-        <img src="/assets/images/blog-1.jpg" alt="Blog post" class="blog-card__img"
-             onerror="this.outerHTML='<div class=\'img-ph blog-card__img\' style=\'height:200px;\'>Blog Cover 1<br><small>blog-1.jpg · 400×200px</small></div>'"/>
+      <div class="blog-card" onclick="openBlogModal('post-1')">
+        <img src="/assets/images/gallery-1.jpg" alt="Community programs Lagos" class="blog-card__img" style="height:200px;object-fit:cover;width:100%;"/>
         <div class="blog-card__body">
           <span class="blog-card__cat">Community Development</span>
           <h3 class="blog-card__title">5 Things We Learned Running Community Programs in Lagos</h3>
           <p class="blog-card__excerpt">Behind every impactful project are lessons — hard-won, often unexpected. Here's what we learned on the ground.</p>
           <p class="blog-card__meta">2024 · 4 min read</p>
-          <a href="#" class="blog-card__link">Read More →</a>
+          <span class="blog-card__link">Read More →</span>
         </div>
       </div>
-      <div class="blog-card">
-        <img src="/assets/images/blog-2.jpg" alt="Blog post" class="blog-card__img"
-             onerror="this.outerHTML='<div class=\'img-ph blog-card__img\' style=\'height:200px;\'>Blog Cover 2<br><small>blog-2.jpg · 400×200px</small></div>'"/>
+      <div class="blog-card" onclick="openBlogModal('post-2')">
+        <img src="/assets/images/special-csr.jpg" alt="Corporate CSR" class="blog-card__img" style="height:200px;object-fit:cover;width:100%;"/>
         <div class="blog-card__body">
           <span class="blog-card__cat">CSR</span>
           <h3 class="blog-card__title">Why Most Corporate CSR Fails — And How to Do It Right</h3>
           <p class="blog-card__excerpt">The gap between good intentions and real impact is where most CSR initiatives fall apart. Here's how to bridge it.</p>
           <p class="blog-card__meta">2024 · 6 min read</p>
-          <a href="#" class="blog-card__link">Read More →</a>
+          <span class="blog-card__link">Read More →</span>
         </div>
       </div>
-      <div class="blog-card">
-        <img src="/assets/images/blog-3.jpg" alt="Blog post" class="blog-card__img"
-             onerror="this.outerHTML='<div class=\'img-ph blog-card__img\' style=\'height:200px;\'>Blog Cover 3<br><small>blog-3.jpg · 400×200px</small></div>'"/>
+      <div class="blog-card" onclick="openBlogModal('post-3')">
+        <img src="/assets/images/digital-literacy-1.jpg" alt="Impact measurement" class="blog-card__img" style="height:200px;object-fit:cover;width:100%;"/>
         <div class="blog-card__body">
           <span class="blog-card__cat">Impact Measurement</span>
           <h3 class="blog-card__title">How to Measure Social Impact Without a PhD</h3>
           <p class="blog-card__excerpt">You don't need complex tools to measure impact — you need the right questions. A practical guide for project leads and donors.</p>
           <p class="blog-card__meta">2024 · 5 min read</p>
-          <a href="#" class="blog-card__link">Read More →</a>
+          <span class="blog-card__link">Read More →</span>
         </div>
       </div>
-      <div class="blog-card">
-        <img src="/assets/images/blog-4.jpg" alt="Blog post" class="blog-card__img"
-             onerror="this.outerHTML='<div class=\'img-ph blog-card__img\' style=\'height:200px;\'>Blog Cover 4<br><small>blog-4.jpg · 400×200px</small></div>'"/>
+      <div class="blog-card" onclick="openBlogModal('post-4')">
+        <img src="/assets/images/gallery-3.jpg" alt="Strategic partnerships" class="blog-card__img" style="height:200px;object-fit:cover;width:100%;"/>
         <div class="blog-card__body">
           <span class="blog-card__cat">Partnerships</span>
           <h3 class="blog-card__title">The Power of Strategic Partnerships in Social Impact Work</h3>
           <p class="blog-card__excerpt">No organisation changes communities alone. Here's why strategic partnerships are at the heart of everything we do.</p>
           <p class="blog-card__meta">2024 · 4 min read</p>
-          <a href="#" class="blog-card__link">Read More →</a>
+          <span class="blog-card__link">Read More →</span>
         </div>
       </div>
-      <div class="blog-card">
-        <img src="/assets/images/blog-5.jpg" alt="Blog post" class="blog-card__img"
-             onerror="this.outerHTML='<div class=\'img-ph blog-card__img\' style=\'height:200px;\'>Blog Cover 5<br><small>blog-5.jpg · 400×200px</small></div>'"/>
+      <div class="blog-card" onclick="openBlogModal('post-5')">
+        <img src="/assets/images/gallery-5.jpg" alt="Women empowerment" class="blog-card__img" style="height:200px;object-fit:cover;width:100%;"/>
         <div class="blog-card__body">
           <span class="blog-card__cat">Women Empowerment</span>
           <h3 class="blog-card__title">Building Economic Independence for Women in Low-Income Communities</h3>
           <p class="blog-card__excerpt">Financial empowerment isn't just about money — it's about dignity, choice, and the ability to build something lasting.</p>
           <p class="blog-card__meta">2024 · 6 min read</p>
-          <a href="#" class="blog-card__link">Read More →</a>
+          <span class="blog-card__link">Read More →</span>
         </div>
       </div>
-      <div class="blog-card">
-        <img src="/assets/images/blog-6.jpg" alt="Blog post" class="blog-card__img"
-             onerror="this.outerHTML='<div class=\'img-ph blog-card__img\' style=\'height:200px;\'>Blog Cover 6<br><small>blog-6.jpg · 400×200px</small></div>'"/>
+      <div class="blog-card" onclick="openBlogModal('post-6')">
+        <img src="/assets/images/digital-literacy-3.jpg" alt="African youth" class="blog-card__img" style="height:200px;object-fit:cover;width:100%;"/>
         <div class="blog-card__body">
           <span class="blog-card__cat">Youth</span>
           <h3 class="blog-card__title">Why Investing in African Youth is Investing in the Future of the Continent</h3>
           <p class="blog-card__excerpt">Africa's greatest resource isn't its land or oil — it's its young people. Here's what real investment in youth looks like.</p>
           <p class="blog-card__meta">2024 · 5 min read</p>
-          <a href="#" class="blog-card__link">Read More →</a>
+          <span class="blog-card__link">Read More →</span>
         </div>
       </div>
     </div>
@@ -402,6 +293,147 @@ function initCarousels() {
 }
 document.addEventListener('DOMContentLoaded', initCarousels);
 window.addEventListener('resize', () => { document.querySelectorAll('[data-carousel] .mob-car-track').forEach(t => { t.style.transform=''; }); initCarousels(); });
+</script>
+<!-- BLOG MODAL -->
+<div id="da-blog-modal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.88);align-items:flex-start;justify-content:center;overflow-y:auto;padding:40px 16px;" onclick="if(event.target===this)closeBlogModal()">
+  <div style="position:relative;width:min(760px,100%);background:#fff;border:4px solid #000;box-shadow:12px 12px 0 0 #faba16;margin:auto;">
+    <div id="da-blog-content" style="padding:36px 40px 40px;"></div>
+    <button onclick="closeBlogModal()" style="position:absolute;top:-16px;right:-16px;width:40px;height:40px;background:#faba16;border:3px solid #000;font-size:1.1rem;font-weight:900;cursor:pointer;line-height:1;font-family:'Space Grotesk',sans-serif;">✕</button>
+  </div>
+</div>
+
+<!-- BLOG POST DATA -->
+<div style="display:none;">
+<article id="post-featured">
+  <span class="bc">Impact Stories</span>
+  <h2>How We Empowered Women-Owned Businesses on International Women's Day 2024</h2>
+  <p class="bm">March 2024 · 5 min read</p>
+  <p>International Women's Day 2024 wasn't just a date on our calendar — it was a call to action. At Daffodils Africa, we believe celebrations mean little without tangible change. So instead of just marking the day, we launched our Social Impact Ajo/Contribution initiative in Lagos, channelling direct, practical support to women-owned businesses in low-income communities.</p>
+  <h3>What Is Social Impact Ajo?</h3>
+  <p>Ajo is a traditional West African savings collective — people pool small amounts regularly and take turns receiving the full pot. We adapted this model for social impact: members of our network collectively contributed funds specifically directed at supporting women entrepreneurs who lacked access to formal credit or business grants.</p>
+  <h3>Who Did We Reach?</h3>
+  <p>Two women-owned micro-businesses in a low-income community in Lagos were selected through a simple nomination and vetting process. Both women were running viable businesses — one a food vendor, one a seamstress — but lacked working capital to grow. The contributions went directly to them, no strings attached beyond a brief business conversation with our team.</p>
+  <h3>What Changed?</h3>
+  <p>One recipient used the funds to stock up on ingredients ahead of a festive period, tripling her usual output. The other invested in materials and a second-hand sewing machine, allowing her to take on larger orders. The impact was immediate and measurable — not in abstract statistics, but in real lives improved before the month was out.</p>
+  <h3>Why This Model Works</h3>
+  <p>Traditional grants are competitive, slow, and often gatekept. Our Ajo model is fast, community-driven, and dignifying. The recipients aren't charity cases — they are entrepreneurs who needed a bridge, and we provided it. We plan to expand this model to more communities in 2025.</p>
+  <p style="background:#f7f5ee;border-left:4px solid #7fb432;padding:14px 16px;margin-top:20px;">Want to support initiatives like this? <a href="/contact" style="color:#7fb432;font-weight:700;">Get in touch with us</a> or <a href="/partnerships" style="color:#7fb432;font-weight:700;">explore partnership opportunities</a>.</p>
+</article>
+<article id="post-1">
+  <span class="bc">Community Development</span>
+  <h2>5 Things We Learned Running Community Programs in Lagos</h2>
+  <p class="bm">2024 · 4 min read</p>
+  <p>Running community programs in Lagos is one of the most rewarding — and humbling — experiences you can have in social impact work. The city is vast, diverse, and full of surprises. Here are five lessons we carry with us from every project we run.</p>
+  <h3>1. Communities Know Best</h3>
+  <p>We entered our first community programs with plans drawn up in an office. We quickly learned that the people we serve know their own challenges better than any consultant ever could. The most impactful shift we made was listening first, designing second. Co-creation isn't a buzzword — it's the only approach that actually works.</p>
+  <h3>2. Trust Takes Time</h3>
+  <p>Community members have often been promised things that never materialised. Building trust means showing up consistently, keeping small promises, and never overstating what you can deliver. We've learned to under-promise and over-deliver — every time.</p>
+  <h3>3. Logistics Are Half the Battle</h3>
+  <p>Getting supplies, volunteers, and beneficiaries to the same place at the same time in Lagos is an art form. Traffic, weather, last-minute dropouts — we've experienced it all. Detailed logistics planning and always having a Plan B is now non-negotiable for our team.</p>
+  <h3>4. Sustainability Must Be Built In from Day One</h3>
+  <p>The hardest question in community development is: what happens when we leave? We now design every program with an exit strategy from the start — training local leaders, establishing peer networks, and connecting communities with ongoing resources so the impact outlasts our involvement.</p>
+  <h3>5. Celebrate Small Wins</h3>
+  <p>Change is slow. If you only measure success by large outcomes, you'll burn out fast. We've learned to celebrate every milestone: the woman who attended her first skills training, the student who passed an exam, the family whose income improved by 20%. These aren't small wins — they are the work.</p>
+  <p style="background:#f7f5ee;border-left:4px solid #7fb432;padding:14px 16px;margin-top:20px;">Want to partner with us on community programs? <a href="/programs" style="color:#7fb432;font-weight:700;">See what we do</a> or <a href="/contact" style="color:#7fb432;font-weight:700;">reach out directly</a>.</p>
+</article>
+<article id="post-2">
+  <span class="bc">CSR</span>
+  <h2>Why Most Corporate CSR Fails — And How to Do It Right</h2>
+  <p class="bm">2024 · 6 min read</p>
+  <p>Corporate Social Responsibility is one of the most misunderstood concepts in the business world. Companies spend billions globally on CSR initiatives — yet most of these programs fail to create lasting change. Here's why, and what the alternative looks like.</p>
+  <h3>The Problem: CSR as PR</h3>
+  <p>Most corporate CSR is designed to look good, not to do good. A one-day tree-planting exercise. A branded food drive before Christmas. These initiatives check the CSR box without addressing root causes, building community capacity, or creating systems that last beyond the photo opportunity.</p>
+  <h3>The Problem: No Expertise, No Partnership</h3>
+  <p>Companies have deep expertise in their industry — not in social impact. Yet most design and run their own CSR programs without partnering with experienced social enterprises or NGOs. The result is well-intentioned but poorly designed interventions that waste resources and, at worst, do harm.</p>
+  <h3>What Effective CSR Looks Like</h3>
+  <p>Effective CSR is strategic, multi-year, and community-centred. It aligns with the company's core business activities — a tech company investing in digital literacy, a food manufacturer addressing food insecurity. It measures outcomes, not just outputs. And it partners with trusted local organisations who already understand the communities being served.</p>
+  <h3>How Daffodils Africa Can Help</h3>
+  <p>We work with corporates and businesses to design CSR programs that actually move the needle. From needs assessment and program design to implementation, monitoring, and impact reporting — we handle the full cycle so your team can focus on what you do best while we do what we do best.</p>
+  <p style="background:#f7f5ee;border-left:4px solid #7fb432;padding:14px 16px;margin-top:20px;">Ready to make your CSR count? <a href="/partnerships" style="color:#7fb432;font-weight:700;">Explore partnerships</a> or <a href="/contact" style="color:#7fb432;font-weight:700;">book a consultation</a>.</p>
+</article>
+<article id="post-3">
+  <span class="bc">Impact Measurement</span>
+  <h2>How to Measure Social Impact Without a PhD</h2>
+  <p class="bm">2024 · 5 min read</p>
+  <p>Impact measurement has a reputation for being complicated, expensive, and reserved for large organisations with dedicated M&E teams. But measuring what your work actually achieves doesn't have to be that hard. Here's a practical guide for anyone running social programs.</p>
+  <h3>Start with the Right Questions</h3>
+  <p>Before choosing any tool or method, ask: what change are we trying to create? Who is supposed to benefit? How would we know if things are better? These questions sound simple, but answering them honestly is the foundation of all good impact measurement. Most programs fail at measurement because they skip this step.</p>
+  <h3>Outputs vs Outcomes vs Impact</h3>
+  <p>Outputs are what you do (trained 200 women). Outcomes are what changes as a result (80% of them reported increased income 6 months later). Impact is the long-term difference (reduced poverty in the community). Many organisations only measure outputs — which is a start, but not the full story. Aim for at least outcomes.</p>
+  <h3>Simple Tools That Actually Work</h3>
+  <p>Pre/post surveys, beneficiary interviews, community scorecards, and simple tracking spreadsheets can take you a long way. You don't need expensive software to measure meaningful change. What you need is consistency — collect data at the same points, ask the same questions, and compare honestly.</p>
+  <h3>Be Honest About What You Don't Know</h3>
+  <p>Good M&E includes acknowledging gaps. You may not be able to track every beneficiary. Attributing all change to your program is usually inaccurate — other factors are always at play. Honest, qualified reporting builds more credibility than inflated statistics.</p>
+  <p style="background:#f7f5ee;border-left:4px solid #7fb432;padding:14px 16px;margin-top:20px;">Need M&E support for your project? <a href="/programs" style="color:#7fb432;font-weight:700;">See our M&E services</a> or <a href="/contact" style="color:#7fb432;font-weight:700;">talk to our team</a>.</p>
+</article>
+<article id="post-4">
+  <span class="bc">Partnerships</span>
+  <h2>The Power of Strategic Partnerships in Social Impact Work</h2>
+  <p class="bm">2024 · 4 min read</p>
+  <p>No organisation changes communities alone. The most transformative social impact work we've seen — and done — has always been the result of intentional, well-structured partnerships. Here's what we've learned about building them right.</p>
+  <h3>Why Partnerships Matter More Than Ever</h3>
+  <p>The challenges facing African communities — poverty, inequality, poor health outcomes, limited education access — are too complex for any single organisation to solve. Effective change requires complementary strengths: local knowledge, funding, technical expertise, community trust, and policy influence. No one organisation has all of these. Partnerships bridge the gaps.</p>
+  <h3>What Makes a Partnership Strategic?</h3>
+  <p>Strategic partnerships are built on shared goals, not just shared logos. Both parties contribute meaningfully. Roles and responsibilities are clear from the start. There is a defined scope and timeline. And there are mechanisms to review, adapt, and hold each other accountable. Anything less is a collaboration in name only.</p>
+  <h3>Our Approach to Partnerships</h3>
+  <p>At Daffodils Africa, we are selective about who we partner with — not because we're exclusive, but because we've learned that partnerships only work when values align. We look for partners who are serious about impact, transparent about their goals, and committed to doing the work, not just being associated with it.</p>
+  <h3>The Result</h3>
+  <p>Our best programs have come from partnerships — with corporates, foundations, community leaders, and government institutions. When we get it right, the effect multiplies: more reach, deeper trust, longer-lasting outcomes.</p>
+  <p style="background:#f7f5ee;border-left:4px solid #7fb432;padding:14px 16px;margin-top:20px;">Ready to build something meaningful together? <a href="/partnerships" style="color:#7fb432;font-weight:700;">Explore how we partner</a>.</p>
+</article>
+<article id="post-5">
+  <span class="bc">Women Empowerment</span>
+  <h2>Building Economic Independence for Women in Low-Income Communities</h2>
+  <p class="bm">2024 · 6 min read</p>
+  <p>Financial empowerment isn't just about money — it's about dignity, choice, and the ability to build something lasting. At Daffodils Africa, women's economic independence is at the heart of much of what we do. Here's why it matters and how we approach it.</p>
+  <h3>The Reality We're Working Against</h3>
+  <p>In many low-income Nigerian communities, women carry the heaviest burdens: running households, raising children, often working informal jobs — all while facing barriers to formal employment, credit, and education. The structural disadvantages are real and reinforcing. Changing them requires more than motivation — it requires practical, targeted support.</p>
+  <h3>What Economic Empowerment Actually Means</h3>
+  <p>True economic empowerment isn't just handing someone money. It means building skills so women can generate sustainable income. It means creating access to markets, networks, and opportunities that were previously closed. It means addressing the practical barriers — childcare, transport, time — that prevent women from fully participating in economic life.</p>
+  <h3>Our IWD Ajo Initiative</h3>
+  <p>Our Social Impact Ajo model is one expression of this work. By pooling community contributions and directing them to women entrepreneurs, we create a dignified pathway to capital that doesn't require formal credit history or collateral. The results have been immediate and deeply human.</p>
+  <h3>Skills Training and Business Support</h3>
+  <p>Beyond direct funding, we facilitate skills training programs, business development workshops, and peer networks that help women build sustainable livelihoods. The goal is always self-sufficiency — not dependency on Daffodils Africa, but on skills and systems that outlast our involvement.</p>
+  <p style="background:#f7f5ee;border-left:4px solid #7fb432;padding:14px 16px;margin-top:20px;">Support our women's empowerment programs. <a href="/contact" style="color:#7fb432;font-weight:700;">Get involved</a> or <a href="/impact" style="color:#7fb432;font-weight:700;">see our impact</a>.</p>
+</article>
+<article id="post-6">
+  <span class="bc">Youth</span>
+  <h2>Why Investing in African Youth is Investing in the Future of the Continent</h2>
+  <p class="bm">2024 · 5 min read</p>
+  <p>Africa's greatest resource isn't its land or oil — it's its young people. Over 60% of the continent's population is under 25. How Africa invests in — or fails to invest in — this generation will define the next 50 years. Here's what real investment in youth looks like.</p>
+  <h3>The Scale of the Opportunity</h3>
+  <p>Africa's youth population is the largest and fastest-growing in the world. By 2050, one in four people on Earth will be African. This demographic reality is often called a "youth bulge" — a potential crisis. We prefer to call it what it is: an extraordinary opportunity, if we act now.</p>
+  <h3>The Gaps Are Real</h3>
+  <p>Too many young Africans lack access to quality education, skills training, and meaningful employment. Youth unemployment rates across sub-Saharan Africa remain stubbornly high. Without deliberate investment — in education, mentorship, entrepreneurship, and opportunity — this generation risks being left behind by a global economy that moves faster every year.</p>
+  <h3>What Meaningful Investment Looks Like</h3>
+  <p>It isn't a one-day motivational talk. Real investment in youth means sustained digital skills training, access to internships and mentorship, entrepreneurship support that includes practical business development — not just inspiration. It means creating pathways to employment and self-employment that are realistic and accessible.</p>
+  <h3>Our Digital Literacy Program</h3>
+  <p>Through our digital literacy initiative, we have trained hundreds of young people across Lagos and Abuja in practical digital skills — equipping them to compete in an increasingly technology-driven economy. The results? Participants who secure employment, launch online businesses, and go on to teach others. That is the multiplier effect we're building towards.</p>
+  <p style="background:#f7f5ee;border-left:4px solid #7fb432;padding:14px 16px;margin-top:20px;">Partner with us to invest in African youth. <a href="/programs" style="color:#7fb432;font-weight:700;">See our programs</a> or <a href="/contact" style="color:#7fb432;font-weight:700;">start a conversation</a>.</p>
+</article>
+</div>
+
+<style>
+#da-blog-content h2{font-weight:900;font-size:1.5rem;text-transform:uppercase;letter-spacing:-0.02em;line-height:1.2;margin:16px 0 8px;}
+#da-blog-content h3{font-weight:900;font-size:0.95rem;text-transform:uppercase;letter-spacing:0.04em;margin:22px 0 8px;border-left:4px solid #faba16;padding-left:12px;}
+#da-blog-content p{font-size:0.9rem;font-weight:500;line-height:1.8;color:rgba(0,0,0,0.8);margin-bottom:12px;}
+#da-blog-content .bc{display:inline-block;background:#faba16;padding:3px 10px;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:12px;}
+#da-blog-content .bm{font-size:0.75rem;font-weight:600;color:rgba(0,0,0,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid #eee;}
+</style>
+<script>
+function openBlogModal(id){
+  var art=document.getElementById(id);
+  if(!art)return;
+  var m=document.getElementById('da-blog-modal');
+  document.getElementById('da-blog-content').innerHTML=art.innerHTML;
+  m.style.display='flex';
+  m.scrollTop=0;
+}
+function closeBlogModal(){
+  document.getElementById('da-blog-modal').style.display='none';
+  document.getElementById('da-blog-content').innerHTML='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBlogModal();});
 </script>
 <script src="/assets/js/config.js"></script>
 <script src="/assets/js/daffy.js?v=3" defer></script>

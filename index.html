@@ -7,6 +7,7 @@
   <meta name="description" content="Daffodils Africa is a social enterprise implementing high-impact social projects across Africa."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet"/>
+  <link rel="icon" href="/assets/images/logo-icon.png" type="image/png"/>
   <link rel="stylesheet" href="/assets/css/main.css"/>
   <style>
     /* ── HOMEPAGE-ONLY STYLES ── */
@@ -852,11 +853,13 @@
     </div>
     <div data-carousel class="mob-car-wrap" style="max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);position:relative;z-index:1;">
       <div class="mob-car-track" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
-      <div class="mob-car-slide" style="background:#000;border:3px solid rgba(255,255,255,0.15);aspect-ratio:16/9;overflow:hidden;position:relative;transition:border-color 0.15s;" onmouseover="this.style.borderColor='var(--yellow)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'">
-        <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" src="https://drive.google.com/file/d/1YLmUSQjokdLRHBbuetVMu706uHIj06tx/preview" title="IWD 2024 Women Empowerment" allow="autoplay" allowfullscreen></iframe>
+      <div class="mob-car-slide" style="background:rgba(255,255,255,0.05);border:3px solid rgba(255,255,255,0.15);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:border-color 0.15s;cursor:pointer;" onmouseover="this.style.borderColor='var(--yellow)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'" onclick="openVidModal('https://drive.google.com/file/d/1YLmUSQjokdLRHBbuetVMu706uHIj06tx/preview')">
+        <div style="width:64px;height:64px;background:var(--yellow);border:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;">▶</div>
+        <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-align:center;">IWD 2024<br>Women Empowerment</p>
       </div>
-      <div class="mob-car-slide" style="background:#000;border:3px solid rgba(255,255,255,0.15);aspect-ratio:16/9;overflow:hidden;position:relative;transition:border-color 0.15s;" onmouseover="this.style.borderColor='var(--yellow)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'">
-        <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" src="https://drive.google.com/file/d/1vsr5i-x9iVXYIYf_0JIToMdYaBESxqR4/preview" title="Community Development Project" allow="autoplay" allowfullscreen></iframe>
+      <div class="mob-car-slide" style="background:rgba(255,255,255,0.05);border:3px solid rgba(255,255,255,0.15);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:border-color 0.15s;cursor:pointer;" onmouseover="this.style.borderColor='var(--yellow)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'" onclick="openVidModal('https://drive.google.com/file/d/1vsr5i-x9iVXYIYf_0JIToMdYaBESxqR4/preview')">
+        <div style="width:64px;height:64px;background:var(--yellow);border:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;">▶</div>
+        <p style="font-weight:700;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-align:center;">Community<br>Development Project</p>
       </div>
       <div class="mob-car-slide" style="background:rgba(255,255,255,0.05);border:3px solid rgba(255,255,255,0.15);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:border-color 0.15s;" onmouseover="this.style.borderColor='var(--yellow)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)'">
         <div style="width:64px;height:64px;background:var(--yellow);border:var(--b);display:flex;align-items:center;justify-content:center;font-size:1.4rem;">▶</div>
@@ -1025,6 +1028,18 @@ window.addEventListener('resize', () => {
   document.querySelectorAll('[data-carousel] .mob-car-track').forEach(t => { t.style.transform=''; });
   initCarousels();
 });
+</script>
+<!-- VIDEO MODAL -->
+<div id="da-vid-modal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;" onclick="if(event.target===this)closeVidModal()">
+  <div style="position:relative;width:min(880px,94vw);aspect-ratio:16/9;border:4px solid #000;box-shadow:12px 12px 0 0 var(--yellow,#faba16);">
+    <iframe id="da-vid-frame" style="width:100%;height:100%;border:none;" src="" allowfullscreen allow="autoplay"></iframe>
+    <button onclick="closeVidModal()" style="position:absolute;top:-18px;right:-18px;width:40px;height:40px;background:#faba16;border:3px solid #000;font-size:1.1rem;font-weight:900;cursor:pointer;line-height:1;font-family:'Space Grotesk',sans-serif;">✕</button>
+  </div>
+</div>
+<script>
+function openVidModal(src){var m=document.getElementById('da-vid-modal');document.getElementById('da-vid-frame').src=src;m.style.display='flex';}
+function closeVidModal(){var m=document.getElementById('da-vid-modal');document.getElementById('da-vid-frame').src='';m.style.display='none';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeVidModal();});
 </script>
 <script src="/assets/js/config.js"></script>
 <script src="/assets/js/daffy.js?v=3" defer></script>
