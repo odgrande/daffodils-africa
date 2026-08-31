@@ -6,6 +6,7 @@
   <meta name="description" content="Contact Daffodils Africa — send an enquiry, volunteer, donate, or start a project. We're ready to work with you."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet"/>
+  <link rel="icon" href="/assets/images/logo-icon.png" type="image/png"/>
   <link rel="stylesheet" href="/assets/css/main.css"/>
   <style>
     .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; border:var(--b); box-shadow:var(--sh-xl); }
@@ -131,9 +132,11 @@
         </div>
         <div class="contact-form-col">
           <h3>Send Us a Message</h3>
-          <!-- IMPORTANT: Replace YOUR_FORMSPREE_ID with your actual Formspree form ID -->
-          <!-- Get one free at formspree.io — click "New Form", copy the ID from the endpoint URL -->
-          <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+          <form action="https://formsubmit.co/daffodilsafrica@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Contact Message — Daffodils Africa"/>
+            <input type="hidden" name="form_source" value="Contact Page — Send a Message"/>
+            <input type="hidden" name="_captcha" value="false"/>
+            <input type="hidden" name="_template" value="table"/>
             <div class="form-group">
               <label class="form-label" for="name">Full Name *</label>
               <input type="text" id="name" name="name" class="form-input" placeholder="Your full name" required/>
@@ -162,7 +165,6 @@
               <label class="form-label" for="message">Your Message *</label>
               <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your idea, project, or question..." required></textarea>
             </div>
-            <input type="hidden" name="_subject" value="New Enquiry — Daffodils Africa Website"/>
             <button type="submit" class="btn btn--green btn--full btn--lg">Send Message →</button>
           </form>
         </div>
@@ -199,7 +201,9 @@
     <div style="max-width:680px;margin-inline:auto;padding-inline:var(--pad);" id="volunteer-form">
       <div style="background:var(--white);border:var(--b);box-shadow:var(--sh-xl);padding:44px;">
         <h3 style="font-weight:900;font-size:1.2rem;text-transform:uppercase;margin-bottom:24px;">Volunteer Application</h3>
-        <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+        <form action="https://formsubmit.co/daffodilsafrica@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Volunteer Application — Daffodils Africa"/>
+          <input type="hidden" name="form_source" value="Contact Page — Volunteer Application"/>
           <div class="form-group"><label class="form-label" for="v-name">Full Name *</label><input type="text" id="v-name" name="name" class="form-input" placeholder="Your full name" required/></div>
           <div class="form-group"><label class="form-label" for="v-email">Email *</label><input type="email" id="v-email" name="email" class="form-input" placeholder="your@email.com" required/></div>
           <div class="form-group"><label class="form-label" for="v-role">Volunteer Role</label>
@@ -210,7 +214,6 @@
             </select>
           </div>
           <div class="form-group"><label class="form-label" for="v-skills">Skills &amp; Experience</label><textarea id="v-skills" name="skills" class="form-textarea" placeholder="Tell us about your skills, background, and why you want to volunteer..."></textarea></div>
-          <input type="hidden" name="_subject" value="Volunteer Application — Daffodils Africa"/>
           <button type="submit" class="btn btn--green btn--full">Submit Volunteer Application →</button>
         </form>
       </div>
@@ -227,7 +230,9 @@
           <p>We're always looking for passionate, skilled individuals who want to build a career in social impact. Send us your details and we'll keep you in mind for future openings.</p>
         </div>
         <div>
-          <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+          <form action="https://formsubmit.co/daffodilsafrica@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Team Enquiry — Daffodils Africa"/>
+            <input type="hidden" name="form_source" value="Contact Page — Team Enquiry"/>
             <div class="form-group"><label class="form-label" style="color:rgba(255,255,255,0.5);" for="t-name">Full Name *</label><input type="text" id="t-name" name="name" class="form-input" placeholder="Your full name" required/></div>
             <div class="form-group"><label class="form-label" style="color:rgba(255,255,255,0.5);" for="t-email">Email *</label><input type="email" id="t-email" name="email" class="form-input" placeholder="your@email.com" required/></div>
             <div class="form-group"><label class="form-label" style="color:rgba(255,255,255,0.5);" for="t-role">Area of Interest</label>
@@ -238,7 +243,6 @@
               </select>
             </div>
             <div class="form-group"><label class="form-label" style="color:rgba(255,255,255,0.5);" for="t-msg">Why Daffodils Africa?</label><textarea id="t-msg" name="message" class="form-textarea" placeholder="Tell us why you want to join and what you bring..."></textarea></div>
-            <input type="hidden" name="_subject" value="Team Enquiry — Daffodils Africa"/>
             <button type="submit" class="btn btn--yellow btn--full">Send Team Enquiry →</button>
           </form>
         </div>

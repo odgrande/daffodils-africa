@@ -6,6 +6,7 @@
   <meta name="description" content="Daffodils Africa Academy — Register your interest for courses that equip you to create real social impact."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=block" rel="stylesheet"/>
+  <link rel="icon" href="/assets/images/logo-icon.png" type="image/png"/>
   <link rel="stylesheet" href="/assets/css/main.css"/>
   <style>
     /* ACADEMY BANNER */
@@ -269,7 +270,11 @@
         <a href="/academy" class="btn btn--yellow" style="margin-top:36px;">Back to Academy →</a>
       </div>
 
-      <form id="reg-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" novalidate style="position:relative;z-index:1;">
+      <form id="reg-form" action="https://formsubmit.co/ajax/daffodilsafrica@gmail.com" method="POST" novalidate style="position:relative;z-index:1;">
+        <input type="hidden" name="_subject" value="Academy Registration — Daffodils Africa"/>
+        <input type="hidden" name="form_source" value="Academy Page — Course Registration"/>
+        <input type="hidden" name="_captcha" value="false"/>
+        <input type="hidden" name="_template" value="table"/>
 
         <!-- STEP 1: Personal Info -->
         <div class="reg-step active" id="s1">
@@ -450,7 +455,6 @@
             </label>
             <p class="error-msg" id="err-agree">Please accept to continue.</p>
           </div>
-          <input type="hidden" name="_subject" value="Academy Registration — Daffodils Africa"/>
         </div>
 
         <!-- STEP 7: Review -->
@@ -672,7 +676,8 @@ document.getElementById('reg-form').addEventListener('submit', async function(e)
   btn.textContent='Submitting...'; btn.disabled=true;
   try{
     const data=new FormData(this);
-    const resp=await fetch(this.action,{method:'POST',body:data,headers:{Accept:'application/json'}});
+    const jsonData=Object.fromEntries(data.entries());
+    const resp=await fetch(this.action,{method:'POST',body:JSON.stringify(jsonData),headers:{'Content-Type':'application/json','Accept':'application/json'}});
     if(resp.ok){
       document.getElementById('reg-form').style.display='none';
       document.getElementById('reg-nav').style.display='none';
