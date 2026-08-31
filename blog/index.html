@@ -301,7 +301,7 @@ window.addEventListener('resize', () => { document.querySelectorAll('[data-carou
 <div id="da-blog-modal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.88);align-items:flex-start;justify-content:center;overflow-y:auto;padding:40px 16px;" onclick="if(event.target===this)closeBlogModal()">
   <div style="position:relative;width:min(760px,100%);background:#fff;border:4px solid #000;box-shadow:12px 12px 0 0 #faba16;margin:auto;">
     <div id="da-blog-content" style="padding:36px 40px 40px;"></div>
-    <button onclick="closeBlogModal()" style="position:absolute;top:-16px;right:-16px;width:40px;height:40px;background:#faba16;border:3px solid #000;font-size:1.1rem;font-weight:900;cursor:pointer;line-height:1;font-family:'Space Grotesk',sans-serif;">✕</button>
+    <button onclick="closeBlogModal()" style="position:absolute;top:-16px;right:-16px;width:40px;height:40px;background:#faba16;border:3px solid #000;cursor:pointer;display:flex;align-items:center;justify-content:center;" aria-label="Close"><img src="/assets/images/icons/close.png" width="18" height="18" alt="Close"/></button>
   </div>
 </div>
 

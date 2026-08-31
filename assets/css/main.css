@@ -296,10 +296,8 @@ button { font-family: var(--font); cursor: pointer; }
 }
 .nav__burger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
   cursor: pointer;
-  background: var(--white);
+  background: var(--white) url('/assets/images/icons/menu.png') center/28px 28px no-repeat;
   border: var(--b);
   box-shadow: var(--sh-sm);
   width: 48px;
@@ -309,7 +307,7 @@ button { font-family: var(--font); cursor: pointer; }
   transition: box-shadow 0.1s;
 }
 .nav__burger:hover { box-shadow: var(--sh-md); }
-.nav__burger span { width: 20px; height: 2px; background: var(--black); display: block; }
+.nav__burger span { display: none; }
 .nav__mobile {
   display: none;
   flex-direction: column;

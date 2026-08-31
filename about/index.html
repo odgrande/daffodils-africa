@@ -276,7 +276,7 @@
     </div>
     <div style="max-width:800px;margin-inline:auto;padding-inline:var(--pad);">
       <div style="aspect-ratio:16/9;background:var(--black);border:4px solid var(--black);box-shadow:8px 8px 0 0 var(--black);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;cursor:pointer;transition:box-shadow 0.15s;" onmouseover="this.style.boxShadow='12px 12px 0 0 var(--yellow)'" onmouseout="this.style.boxShadow='8px 8px 0 0 var(--black)'" onclick="openVidModal('https://www.youtube.com/embed/prO7Ki7rOIY')">
-        <div style="width:80px;height:80px;background:var(--yellow);border:3px solid #000;display:flex;align-items:center;justify-content:center;font-size:1.8rem;box-shadow:4px 4px 0 0 rgba(255,255,255,0.2);">▶</div>
+        <div style="width:80px;height:80px;background:var(--yellow);border:3px solid #000;display:flex;align-items:center;justify-content:center;box-shadow:4px 4px 0 0 rgba(255,255,255,0.2);"><img src="/assets/images/icons/play.png" width="36" height="36" alt="Play" style="display:block;"/></div>
         <p style="font-weight:700;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-align:center;">Watch Our Journey<br><span style="color:var(--yellow);font-size:0.72rem;">Daffodils Africa — Our Story &amp; Mission</span></p>
       </div>
     </div>
@@ -408,7 +408,7 @@ window.addEventListener('resize', () => { document.querySelectorAll('[data-carou
 <div id="da-vid-modal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;" onclick="if(event.target===this)closeVidModal()">
   <div style="position:relative;width:min(880px,94vw);aspect-ratio:16/9;border:4px solid #000;box-shadow:12px 12px 0 0 #faba16;">
     <iframe id="da-vid-frame" style="width:100%;height:100%;border:none;" src="" allowfullscreen allow="autoplay"></iframe>
-    <button onclick="closeVidModal()" style="position:absolute;top:-18px;right:-18px;width:40px;height:40px;background:#faba16;border:3px solid #000;font-size:1.1rem;font-weight:900;cursor:pointer;line-height:1;font-family:'Space Grotesk',sans-serif;">✕</button>
+    <button onclick="closeVidModal()" style="position:absolute;top:-18px;right:-18px;width:40px;height:40px;background:#faba16;border:3px solid #000;cursor:pointer;display:flex;align-items:center;justify-content:center;" aria-label="Close"><img src="/assets/images/icons/close.png" width="18" height="18" alt="Close"/></button>
   </div>
 </div>
 <script>
