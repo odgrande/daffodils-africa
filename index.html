@@ -463,6 +463,44 @@
       .how-step:last-child { border-bottom: none; }
       .easy__grid  { grid-template-columns: 1fr; }
     }
+    /* ── ANNIVERSARY ANIMATIONS ── */
+    @keyframes anni-float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-18px) rotate(1.5deg)}}
+    @keyframes anni-pulse-chip{0%,100%{box-shadow:0 0 0 0 rgba(0,0,0,.5)}60%{box-shadow:0 0 0 10px rgba(0,0,0,0)}}
+    @keyframes anni-shimmer{0%{background-position:-300% center}100%{background-position:300% center}}
+    @keyframes anni-pop{0%{transform:scale(.8);opacity:0}70%{transform:scale(1.06)}100%{transform:scale(1);opacity:1}}
+    @keyframes confetti-fall{0%{opacity:1;transform:translateY(-30px) rotate(0deg) scale(1)}100%{opacity:0;transform:translateY(110vh) rotate(800deg) scale(.4)}}
+    @keyframes confetti-sway{0%,100%{margin-left:0}25%{margin-left:40px}75%{margin-left:-30px}}
+    .anni-num{
+      font-family:'Space Grotesk',sans-serif;font-weight:900;
+      font-size:clamp(9rem,22vw,18rem);line-height:.82;letter-spacing:-.05em;color:#000;
+      animation:anni-float 3.2s ease-in-out infinite;display:block;
+    }
+    .anni-tag{
+      display:inline-block;background:#000;color:#faba16;
+      font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.72rem;
+      text-transform:uppercase;letter-spacing:.16em;padding:8px 20px;margin-bottom:24px;
+      animation:anni-pulse-chip 2s ease-out infinite;
+    }
+    .anni-heading{
+      font-family:'Space Grotesk',sans-serif;font-weight:900;
+      font-size:clamp(2.2rem,5.5vw,4.5rem);line-height:.95;letter-spacing:-.02em;
+      background:linear-gradient(90deg,#000 0%,#000 35%,#7fb432 50%,#000 65%,#000 100%);
+      background-size:250% auto;
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      animation:anni-shimmer 3.5s linear infinite;margin-bottom:24px;
+    }
+    .anni-stat{
+      display:inline-flex;flex-direction:column;align-items:center;
+      background:#000;color:#faba16;padding:16px 28px;border:3px solid #000;
+      font-family:'Space Grotesk',sans-serif;
+    }
+    .anni-stat strong{font-size:1.6rem;font-weight:900;line-height:1;}
+    .anni-stat span{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;opacity:.75;}
+    .anni-stats-row{display:flex;gap:0;justify-content:center;flex-wrap:wrap;margin-bottom:32px;border:3px solid #000;box-shadow:6px 6px 0 #000;width:fit-content;margin-inline:auto;}
+    .anni-stats-row .anni-stat{border:none;border-right:3px solid rgba(250,186,22,.3);}
+    .anni-stats-row .anni-stat:last-child{border-right:none;}
+    .anni-confetti-wrap{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+    .c{position:absolute;top:-30px;width:10px;height:10px;border-radius:2px;animation:confetti-fall linear infinite,confetti-sway ease-in-out infinite;}
   </style>
 </head>
 <body>
@@ -470,18 +508,18 @@
 <!-- ANNOUNCEMENT BAR -->
 <div class="announce" aria-hidden="true">
   <div class="announce__track">
-    <span class="announce__item">New Programs Launching Q4 2026</span>
-    <span class="announce__item">Social Impact Delivery</span>
-    <span class="announce__item">CSR Made Easy</span>
-    <span class="announce__item">Community-First Projects</span>
+    <span class="announce__item">★ Happy 3rd Anniversary · Daffodils Africa</span>
+    <span class="announce__item">3 Years of Community Impact</span>
     <span class="announce__item">3,000+ Lives Reached</span>
-    <span class="announce__item">★ Celebrating 3 Years of Impact</span>
-    <span class="announce__item">New Programs Launching Q4 2026</span>
-    <span class="announce__item">Social Impact Delivery</span>
-    <span class="announce__item">CSR Made Easy</span>
-    <span class="announce__item">Community-First Projects</span>
+    <span class="announce__item">Est. 2023 · Growing Africa Together</span>
+    <span class="announce__item">Thank You for Your Support</span>
+    <span class="announce__item">12+ Programs · 10+ Partners · 5+ Sectors</span>
+    <span class="announce__item">★ Happy 3rd Anniversary · Daffodils Africa</span>
+    <span class="announce__item">3 Years of Community Impact</span>
     <span class="announce__item">3,000+ Lives Reached</span>
-    <span class="announce__item">★ Celebrating 3 Years of Impact</span>
+    <span class="announce__item">Est. 2023 · Growing Africa Together</span>
+    <span class="announce__item">Thank You for Your Support</span>
+    <span class="announce__item">12+ Programs · 10+ Partners · 5+ Sectors</span>
   </div>
 </div>
 
@@ -577,30 +615,54 @@
   </div>
 
   <!-- 3 YEARS ANNIVERSARY BANNER -->
-  <div style="background:#faba16;border-top:var(--b);border-bottom:var(--b);padding:64px var(--pad);text-align:center;position:relative;overflow:hidden;">
-    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent,transparent 24px,rgba(0,0,0,.04) 24px,rgba(0,0,0,.04) 25px);pointer-events:none;" aria-hidden="true"></div>
+  <div style="background:#faba16;border-top:var(--b);border-bottom:var(--b);padding:72px var(--pad) 80px;text-align:center;position:relative;overflow:hidden;" id="anni">
+    <!-- Confetti container — filled by JS below -->
+    <div class="anni-confetti-wrap" id="anni-confetti" aria-hidden="true"></div>
+    <!-- Diagonal grid overlay -->
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent,transparent 28px,rgba(0,0,0,.035) 28px,rgba(0,0,0,.035) 29px);pointer-events:none;" aria-hidden="true"></div>
     <div style="position:relative;z-index:1;max-width:var(--max);margin-inline:auto;">
-      <div style="display:inline-block;background:#000;color:#faba16;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:0.72rem;text-transform:uppercase;letter-spacing:.14em;padding:7px 18px;margin-bottom:20px;">★ Est. 2023 · Milestone</div>
-      <div style="font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:clamp(3.6rem,9vw,7.5rem);line-height:.88;letter-spacing:-.03em;color:#000;margin-bottom:20px;">3 YEARS<br>OF IMPACT</div>
-      <p style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;color:#000;opacity:.7;letter-spacing:.06em;text-transform:uppercase;margin-bottom:32px;">3,000+ Lives Reached &nbsp;·&nbsp; 12+ Programs Executed &nbsp;·&nbsp; Across Africa</p>
-      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-        <a href="/about" style="display:inline-block;background:#000;color:#faba16;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;padding:14px 32px;border:3px solid #000;box-shadow:6px 6px 0 rgba(0,0,0,.25);text-decoration:none;transition:box-shadow .1s;" onmouseover="this.style.boxShadow='2px 2px 0 rgba(0,0,0,.25)'" onmouseout="this.style.boxShadow='6px 6px 0 rgba(0,0,0,.25)'">Our Story →</a>
-        <a href="/contact" style="display:inline-block;background:transparent;color:#000;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;padding:14px 32px;border:3px solid #000;box-shadow:6px 6px 0 rgba(0,0,0,.25);text-decoration:none;transition:box-shadow .1s;" onmouseover="this.style.boxShadow='2px 2px 0 rgba(0,0,0,.25)'" onmouseout="this.style.boxShadow='6px 6px 0 rgba(0,0,0,.25)'">Join the Journey →</a>
+      <div class="anni-tag">★ Happy 3rd Anniversary · Est. 2023</div>
+      <span class="anni-num">3</span>
+      <div class="anni-heading">YEARS OF IMPACT</div>
+      <div class="anni-stats-row">
+        <div class="anni-stat"><strong>3,000+</strong><span>Lives Reached</span></div>
+        <div class="anni-stat"><strong>12+</strong><span>Programs Run</span></div>
+        <div class="anni-stat"><strong>10+</strong><span>Partnerships</span></div>
+        <div class="anni-stat"><strong>5+</strong><span>Sectors</span></div>
+      </div>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="/about" style="display:inline-block;background:#000;color:#faba16;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;padding:15px 36px;border:3px solid #000;box-shadow:6px 6px 0 rgba(0,0,0,.3);text-decoration:none;transition:box-shadow .1s,transform .1s;" onmouseover="this.style.cssText+=';box-shadow:2px 2px 0 rgba(0,0,0,.3);transform:translate(4px,4px)'" onmouseout="this.style.cssText+=';box-shadow:6px 6px 0 rgba(0,0,0,.3);transform:translate(0,0)'">Our Story →</a>
+        <a href="/contact" style="display:inline-block;background:transparent;color:#000;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;padding:15px 36px;border:3px solid #000;box-shadow:6px 6px 0 rgba(0,0,0,.3);text-decoration:none;transition:box-shadow .1s,transform .1s;" onmouseover="this.style.cssText+=';box-shadow:2px 2px 0 rgba(0,0,0,.3);transform:translate(4px,4px)'" onmouseout="this.style.cssText+=';box-shadow:6px 6px 0 rgba(0,0,0,.3);transform:translate(0,0)'">Join the Journey →</a>
       </div>
     </div>
   </div>
+  <script>
+  (function(){
+    var wrap=document.getElementById('anni-confetti');
+    var cols=['#000','#7fb432','#fff','#e74c3c','#9b59b6','#000','#faba16'];
+    var n=38;
+    for(var i=0;i<n;i++){
+      var d=document.createElement('div');
+      d.className='c';
+      var size=(Math.random()*8+5)+'px';
+      d.style.cssText=[
+        'left:'+(Math.random()*100)+'%',
+        'width:'+size,'height:'+size,
+        'background:'+cols[Math.floor(Math.random()*cols.length)],
+        'border-radius:'+(Math.random()>.5?'50%':'2px'),
+        'animation-duration:'+(Math.random()*4+4)+'s,'+(Math.random()*2+2)+'s',
+        'animation-delay:'-'+(Math.random()*6)+'s,'+(Math.random()*2)+'s'
+      ].join(';');
+      wrap.appendChild(d);
+    }
+  })();
+  </script>
 
   <!-- TICKER -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker__track">
-      <span class="ticker__item">Social Impact</span><span class="ticker__item">Community Development</span>
-      <span class="ticker__item">Project Execution</span><span class="ticker__item">CSR Solutions</span>
-      <span class="ticker__item">Monitoring &amp; Evaluation</span><span class="ticker__item">Empowerment</span>
-      <span class="ticker__item">Sustainable Change</span><span class="ticker__item">★ 3 Years of Impact</span><span class="ticker__item">Africa-First</span>
-      <span class="ticker__item">Social Impact</span><span class="ticker__item">Community Development</span>
-      <span class="ticker__item">Project Execution</span><span class="ticker__item">CSR Solutions</span>
-      <span class="ticker__item">Monitoring &amp; Evaluation</span><span class="ticker__item">Empowerment</span>
-      <span class="ticker__item">Sustainable Change</span><span class="ticker__item">★ 3 Years of Impact</span><span class="ticker__item">Africa-First</span>
+      <span class="ticker__item">★ 3 YEARS OF IMPACT</span><span class="ticker__item">CELEBRATING</span><span class="ticker__item">DAFFODILS AFRICA</span><span class="ticker__item">EST. 2023</span><span class="ticker__item">THANK YOU</span><span class="ticker__item">3,000+ LIVES</span><span class="ticker__item">COMMUNITY FIRST</span><span class="ticker__item">GROWING AFRICA</span>
+      <span class="ticker__item">★ 3 YEARS OF IMPACT</span><span class="ticker__item">CELEBRATING</span><span class="ticker__item">DAFFODILS AFRICA</span><span class="ticker__item">EST. 2023</span><span class="ticker__item">THANK YOU</span><span class="ticker__item">3,000+ LIVES</span><span class="ticker__item">COMMUNITY FIRST</span><span class="ticker__item">GROWING AFRICA</span>
     </div>
   </div>
 
