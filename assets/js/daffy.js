@@ -131,7 +131,129 @@ function initChatbot(){
   loadChat();
 }
 
+// ── SCROLL TO TOP ─────────────────────────────────────────
+function initScrollToTop(){
+  if(document.getElementById('da-stt')) return;
+  var btn=document.createElement('button');
+  btn.id='da-stt';
+  btn.setAttribute('aria-label','Scroll to top');
+  btn.innerHTML='<img src="/assets/images/icons/arrow-up.png" width="22" height="22" alt="Up" style="display:block;"/>';
+  var s=document.createElement('style');
+  s.textContent='#da-stt{position:fixed;bottom:28px;left:24px;width:50px;height:50px;background:#faba16;border:3px solid #000;box-shadow:4px 4px 0 #000;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:8999;opacity:0;transform:translateY(16px);transition:opacity .25s,transform .25s;pointer-events:none;}@media(max-width:480px){#da-stt{bottom:16px;left:16px;}}';
+  document.head.appendChild(s);
+  document.body.appendChild(btn);
+  function tick(){
+    var show=window.scrollY>400;
+    btn.style.opacity=show?'1':'0';
+    btn.style.transform=show?'translateY(0)':'translateY(16px)';
+    btn.style.pointerEvents=show?'auto':'none';
+  }
+  window.addEventListener('scroll',tick,{passive:true});
+  btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+}
+
+// ── EXIT-INTENT NEWSLETTER ─────────────────────────────────
+function initExitNewsletter(){
+  if(document.getElementById('da-exit-modal')) return;
+  if(sessionStorage.getItem('da_exit')) return;
+
+  var modal=document.createElement('div');
+  modal.id='da-exit-modal';
+  modal.setAttribute('role','dialog');
+  modal.setAttribute('aria-modal','true');
+  modal.setAttribute('aria-label','Newsletter');
+  modal.innerHTML=
+    '<div id="da-exit-box">'+
+      '<button id="da-exit-close" aria-label="Close"><img src="/assets/images/icons/close.png" width="16" height="16" alt="Close" style="filter:invert(1);display:block;"/></button>'+
+      '<div id="da-exit-tag">★ Wait — Before You Go</div>'+
+      '<h2 id="da-exit-h">Don\'t Miss Our Impact Stories</h2>'+
+      '<p id="da-exit-p">Monthly updates on our projects, the communities we serve, and how you can be part of the change.</p>'+
+      '<form id="da-exit-form">'+
+        '<input type="email" id="da-exit-email" placeholder="Your email address" required autocomplete="email"/>'+
+        '<button type="submit" id="da-exit-sub">Keep Me Updated →</button>'+
+      '</form>'+
+      '<div id="da-exit-success" style="display:none;">'+
+        '<div style="font-size:2.2rem;margin-bottom:10px;">🎉</div>'+
+        '<div id="da-exit-stitle">You\'re in! Thank You.</div>'+
+        '<p id="da-exit-smsg">We\'ll be in touch with real impact stories soon.</p>'+
+      '</div>'+
+      '<p id="da-exit-fine">No spam. Unsubscribe anytime.</p>'+
+    '</div>';
+
+  var s=document.createElement('style');
+  s.textContent=
+    '#da-exit-modal{display:none;position:fixed;inset:0;z-index:10002;background:rgba(0,0,0,.78);align-items:center;justify-content:center;padding:16px;}'+
+    '#da-exit-box{background:#faba16;border:4px solid #000;box-shadow:12px 12px 0 #000;max-width:460px;width:100%;padding:44px 36px 32px;position:relative;font-family:"Space Grotesk",sans-serif;}'+
+    '#da-exit-close{position:absolute;top:14px;right:14px;width:38px;height:38px;background:#000;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;}'+
+    '#da-exit-tag{display:inline-block;background:#000;color:#faba16;font-weight:900;font-size:.65rem;text-transform:uppercase;letter-spacing:.14em;padding:6px 14px;margin-bottom:16px;}'+
+    '#da-exit-h{font-family:"Space Grotesk",sans-serif;font-weight:900;font-size:clamp(1.5rem,6vw,2rem);line-height:1.05;margin:0 0 10px;color:#000;}'+
+    '#da-exit-p{font-family:"Space Grotesk",sans-serif;font-size:.88rem;line-height:1.55;margin:0 0 24px;color:#000;}'+
+    '#da-exit-email{display:block;width:100%;padding:13px 16px;border:3px solid #000;font-family:"Space Grotesk",sans-serif;font-size:.9rem;font-weight:600;background:#fff;box-sizing:border-box;margin-bottom:10px;outline:none;}'+
+    '#da-exit-sub{display:block;width:100%;padding:14px;background:#000;color:#faba16;border:3px solid #000;font-family:"Space Grotesk",sans-serif;font-weight:900;font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;}'+
+    '#da-exit-success{text-align:center;padding:20px 0 8px;}'+
+    '#da-exit-stitle{font-family:"Space Grotesk",sans-serif;font-weight:900;font-size:1.1rem;color:#000;}'+
+    '#da-exit-smsg{font-family:"Space Grotesk",sans-serif;font-size:.85rem;margin-top:8px;color:#000;}'+
+    '#da-exit-fine{font-family:"Space Grotesk",sans-serif;font-size:.68rem;margin-top:14px;opacity:.5;text-align:center;color:#000;}';
+  document.head.appendChild(s);
+  document.body.appendChild(modal);
+
+  function closeModal(){ modal.style.display='none'; }
+  document.getElementById('da-exit-close').onclick=closeModal;
+  modal.onclick=function(e){ if(e.target===modal) closeModal(); };
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeModal(); });
+
+  var fired=false;
+  function show(){
+    if(fired) return; fired=true;
+    sessionStorage.setItem('da_exit','1');
+    modal.style.display='flex';
+  }
+  document.addEventListener('mouseleave',function(e){ if(e.clientY<5) show(); });
+  var t0=Date.now(),py=0,pt=0;
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY,now=Date.now();
+    if(now-t0<4000||!pt){py=y;pt=now;return;}
+    if(y<py&&py>300&&(py-y)/(now-pt)>1.8) show();
+    py=y; pt=now;
+  },{passive:true});
+
+  var STORE_NL='da_nl_emails';
+  document.getElementById('da-exit-form').onsubmit=function(e){
+    e.preventDefault();
+    var email=(document.getElementById('da-exit-email').value||'').trim().toLowerCase();
+    if(!email) return;
+    // Check if already registered
+    var known=[];
+    try{ known=JSON.parse(localStorage.getItem(STORE_NL)||'[]'); }catch(x){}
+    var form=document.getElementById('da-exit-form');
+    var succ=document.getElementById('da-exit-success');
+    if(known.indexOf(email)!==-1){
+      // Already registered
+      form.style.display='none';
+      succ.style.display='block';
+      document.getElementById('da-exit-stitle').textContent='Already registered!';
+      document.getElementById('da-exit-smsg').textContent='You\'ll always receive our stories as they drop — look out for our next update in your inbox!';
+      setTimeout(closeModal,4000);
+      return;
+    }
+    // New subscriber — send to FormSubmit
+    fetch('https://formsubmit.co/ajax/daffodilsafrica@gmail.com',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({email:email,_subject:'New Newsletter Subscriber',_template:'basic'})
+    }).catch(function(){});
+    // Store email locally
+    known.push(email);
+    try{ localStorage.setItem(STORE_NL,JSON.stringify(known)); }catch(x){}
+    form.style.display='none';
+    succ.style.display='block';
+    document.getElementById('da-exit-stitle').textContent='You\'re in! Thank You.';
+    document.getElementById('da-exit-smsg').textContent='We\'ll be in touch with real impact stories soon.';
+    setTimeout(closeModal,3500);
+  };
+}
+
 if(document.readyState==='loading'){
-  document.addEventListener('DOMContentLoaded',function(){initCookieBanner();initChatbot();});
-}else{initCookieBanner();initChatbot();}
+  document.addEventListener('DOMContentLoaded',function(){initCookieBanner();initChatbot();initScrollToTop();initExitNewsletter();});
+}else{initCookieBanner();initChatbot();initScrollToTop();initExitNewsletter();}
 })();
