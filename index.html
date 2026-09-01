@@ -1155,6 +1155,12 @@ function openVidModal(src){
     inner.style.width=w+'px'; inner.style.height=h+'px';
   } else {
     vid.style.display='none'; vid.src='';
+    /* On mobile Google Drive iframes are unreliable — open natively in new tab */
+    if(window.innerWidth<=768){
+      document.getElementById('da-vid-modal').style.display='none';
+      window.open(src.replace('/preview',''), '_blank', 'noopener noreferrer');
+      return;
+    }
     iframe.src=src; iframe.style.display='block';
     /* Landscape 16:9 — fit width first, then cap by height */
     var w=Math.min(880,avW);
@@ -1173,5 +1179,79 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeVidModa
 </script>
 <script src="/assets/js/config.js"></script>
 <script src="/assets/js/daffy.js?v=3" defer></script>
+
+<!-- SCROLL TO TOP -->
+<button id="stt-btn" aria-label="Scroll to top" style="position:fixed;bottom:28px;right:24px;width:50px;height:50px;background:#faba16;border:3px solid #000;box-shadow:4px 4px 0 #000;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:8999;opacity:0;transform:translateY(16px);transition:opacity 0.25s,transform 0.25s;pointer-events:none;">
+  <img src="/assets/images/icons/arrow-up.png" width="22" height="22" alt="Up" style="display:block;"/>
+</button>
+
+<!-- EXIT INTENT NEWSLETTER (once per session) -->
+<div id="exit-modal" role="dialog" aria-modal="true" aria-label="Newsletter" style="display:none;position:fixed;inset:0;z-index:10002;background:rgba(0,0,0,0.78);align-items:center;justify-content:center;padding:16px;">
+  <div style="background:#faba16;border:4px solid #000;box-shadow:12px 12px 0 #000;max-width:460px;width:100%;padding:44px 36px 32px;position:relative;font-family:'Space Grotesk',sans-serif;">
+    <button id="exit-close" aria-label="Close" style="position:absolute;top:14px;right:14px;width:38px;height:38px;background:#000;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+      <img src="/assets/images/icons/close.png" width="16" height="16" alt="Close" style="filter:invert(1);display:block;"/>
+    </button>
+    <div style="display:inline-block;background:#000;color:#faba16;font-weight:900;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.14em;padding:6px 14px;margin-bottom:16px;">★ Wait — Before You Go</div>
+    <h2 style="font-weight:900;font-size:clamp(1.5rem,6vw,2rem);line-height:1.05;margin-bottom:10px;color:#000;">Don't Miss Our Impact Stories</h2>
+    <p style="font-size:0.88rem;line-height:1.55;margin-bottom:24px;color:#000;">Monthly updates on our projects, the communities we serve, and how you can be part of the change.</p>
+    <form id="exit-form">
+      <input type="email" id="exit-email" placeholder="Your email address" required autocomplete="email"
+        style="display:block;width:100%;padding:13px 16px;border:3px solid #000;font-family:'Space Grotesk',sans-serif;font-size:0.9rem;font-weight:600;background:#fff;box-sizing:border-box;margin-bottom:10px;outline:none;">
+      <button type="submit" style="display:block;width:100%;padding:14px;background:#000;color:#faba16;border:3px solid #000;font-family:'Space Grotesk',sans-serif;font-weight:900;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;">Keep Me Updated →</button>
+    </form>
+    <div id="exit-success" style="display:none;text-align:center;padding:20px 0 8px;">
+      <div style="font-size:2.2rem;margin-bottom:10px;">🎉</div>
+      <div style="font-weight:900;font-size:1.1rem;color:#000;">You're in! Thank You.</div>
+      <p style="font-size:0.85rem;margin-top:8px;color:#000;">We'll be in touch with real impact stories soon.</p>
+    </div>
+    <p style="font-size:0.68rem;margin-top:14px;opacity:0.5;text-align:center;color:#000;">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<script>
+/* ── SCROLL TO TOP ── */
+(function(){
+  var btn=document.getElementById('stt-btn');
+  function tick(){
+    var show=window.scrollY>400;
+    btn.style.opacity=show?'1':'0';
+    btn.style.transform=show?'translateY(0)':'translateY(16px)';
+    btn.style.pointerEvents=show?'auto':'none';
+  }
+  window.addEventListener('scroll',tick,{passive:true});
+  btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+
+/* ── EXIT INTENT — once per session ── */
+(function(){
+  if(sessionStorage.getItem('da_exit')) return;
+  var fired=false;
+  function show(){
+    if(fired) return; fired=true;
+    sessionStorage.setItem('da_exit','1');
+    document.getElementById('exit-modal').style.display='flex';
+  }
+  /* Desktop: mouse leaves toward browser chrome */
+  document.addEventListener('mouseleave',function(e){ if(e.clientY<5) show(); });
+  /* Mobile: fast upward scroll after 4s on page & past fold */
+  var t0=Date.now(),py=0,pt=0;
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY,now=Date.now();
+    if(now-t0<4000||!pt){py=y;pt=now;return;}
+    if(y<py&&py>300&&(py-y)/(now-pt)>1.8) show();
+    py=y; pt=now;
+  },{passive:true});
+})();
+document.getElementById('exit-close').onclick=function(){document.getElementById('exit-modal').style.display='none';};
+document.getElementById('exit-modal').onclick=function(e){if(e.target===this)this.style.display='none';};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('exit-modal').style.display='none';});
+/* ↓ Wire up your email service here (Mailchimp / Brevo / Formspree action URL) */
+document.getElementById('exit-form').onsubmit=function(e){
+  e.preventDefault();
+  this.style.display='none';
+  document.getElementById('exit-success').style.display='block';
+  setTimeout(function(){document.getElementById('exit-modal').style.display='none';},3000);
+};
+</script>
 </body>
 </html>
