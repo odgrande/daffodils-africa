@@ -682,13 +682,16 @@ img  { max-width: 100%; height: auto; }
 ============================================= */
 .mob-car-wrap { position: relative; }
 
-/* On mobile the track becomes a horizontal scroll container */
+/* On mobile the track slides via JS translateX; wrap clips it */
 @media (max-width: 768px) {
+  .mob-car-wrap {
+    overflow: hidden;
+  }
   .mob-car-track {
     display: flex !important;
-    overflow: hidden;
     gap: 0 !important;
     grid-template-columns: unset !important;
+    will-change: transform;
   }
   .mob-car-slide {
     flex: 0 0 100%;

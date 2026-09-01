@@ -1072,26 +1072,44 @@
 <script>
 // MOBILE CAROUSEL INIT — runs after DOM ready
 function initCarousels() {
-  if (window.innerWidth > 768) return; // Desktop: no carousel
   document.querySelectorAll('[data-carousel]').forEach(wrap => {
     const track   = wrap.querySelector('.mob-car-track');
     const slides  = Array.from(track.querySelectorAll('.mob-car-slide'));
     const btnPrev = wrap.querySelector('.mob-car-prev');
     const btnNext = wrap.querySelector('.mob-car-next');
     const frac    = wrap.querySelector('.mob-car-frac');
+    const nav     = wrap.querySelector('.mob-car-nav');
     if (!track || slides.length < 2) return;
+
+    if (window.innerWidth > 768) {
+      // Desktop: CSS takes over; just clear any JS-applied transform
+      track.style.transform = '';
+      track.style.transition = '';
+      return;
+    }
+
+    // Mobile: CSS handles flex/overflow; clear any inline overrides
+    track.style.display = '';
+    track.style.gridTemplateColumns = '';
+    track.style.gap = '';
+    slides.forEach(s => { s.style.flex = ''; s.style.width = ''; });
+    if (nav) nav.style.display = 'flex';
+
+    // Avoid re-binding events on resize
+    if (wrap._carouselInit) { wrap._carouselRender(); return; }
+    wrap._carouselInit = true;
     let cur = 0;
     function render() {
-      const w = slides[0].offsetWidth;
+      const w = wrap.offsetWidth;
       track.style.transform = `translateX(-${cur * w}px)`;
       track.style.transition = 'transform 0.35s ease';
       if (frac) frac.textContent = (cur + 1) + ' / ' + slides.length;
       if (btnPrev) btnPrev.disabled = cur === 0;
       if (btnNext) btnNext.disabled = cur === slides.length - 1;
     }
+    wrap._carouselRender = render;
     if (btnPrev) btnPrev.addEventListener('click', () => { if (cur > 0) { cur--; render(); }});
     if (btnNext) btnNext.addEventListener('click', () => { if (cur < slides.length-1) { cur++; render(); }});
-    // Touch/swipe support
     let startX = 0;
     track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
     track.addEventListener('touchend', e => {
@@ -1106,17 +1124,14 @@ function initCarousels() {
   });
 }
 document.addEventListener('DOMContentLoaded', initCarousels);
-window.addEventListener('resize', () => {
-  document.querySelectorAll('[data-carousel] .mob-car-track').forEach(t => { t.style.transform=''; });
-  initCarousels();
-});
+window.addEventListener('resize', initCarousels);
 </script>
 <!-- VIDEO MODAL -->
-<div id="da-vid-modal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;" onclick="if(event.target===this)closeVidModal()">
-  <div id="da-vid-inner" style="position:relative;width:min(880px,94vw);aspect-ratio:16/9;border:4px solid #000;box-shadow:12px 12px 0 0 var(--yellow,#faba16);">
-    <iframe id="da-vid-frame" style="width:100%;height:100%;border:none;" src="" allowfullscreen allow="autoplay"></iframe>
-    <video id="da-vid-local" style="display:none;width:100%;height:100%;object-fit:contain;background:#000;" controls playsinline></video>
-    <button onclick="closeVidModal()" style="position:absolute;top:-18px;right:-18px;width:40px;height:40px;background:#faba16;border:3px solid #000;cursor:pointer;display:flex;align-items:center;justify-content:center;" aria-label="Close"><img src="/assets/images/icons/close.png" width="18" height="18" alt="Close"/></button>
+<div id="da-vid-modal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;padding:40px 16px;" onclick="if(event.target===this)closeVidModal()">
+  <div id="da-vid-inner" style="position:relative;border:4px solid #000;box-shadow:10px 10px 0 0 var(--yellow,#faba16);">
+    <iframe id="da-vid-frame" style="display:block;width:100%;height:100%;border:none;" src="" allowfullscreen allow="autoplay"></iframe>
+    <video id="da-vid-local" style="display:none;max-width:100%;max-height:100%;object-fit:contain;background:#000;" controls playsinline></video>
+    <button onclick="closeVidModal()" style="position:absolute;top:10px;right:10px;width:40px;height:40px;background:#faba16;border:3px solid #000;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;" aria-label="Close"><img src="/assets/images/icons/close.png" width="18" height="18" alt="Close"/></button>
   </div>
 </div>
 <script>
@@ -1128,11 +1143,19 @@ function openVidModal(src){
   if(/\.(mp4|webm|ogg)(\?|$)/i.test(src)){
     iframe.style.display='none'; iframe.src='';
     vid.src=src; vid.style.display='block';
-    inner.style.aspectRatio='9/16'; inner.style.width='min(400px,92vw)';
+    /* Portrait video: fit within available screen space */
+    var maxH=Math.round(window.innerHeight*0.82);
+    var maxW=Math.min(Math.round(maxH*9/16),Math.round(window.innerWidth*0.92));
+    inner.style.width=maxW+'px';
+    inner.style.height=Math.round(maxW*16/9)+'px';
+    vid.style.width='100%'; vid.style.height='100%';
   } else {
     vid.style.display='none'; vid.src='';
     iframe.src=src; iframe.style.display='block';
-    inner.style.aspectRatio='16/9'; inner.style.width='min(880px,94vw)';
+    /* Landscape embed */
+    var w=Math.min(880,Math.round(window.innerWidth*0.94));
+    inner.style.width=w+'px';
+    inner.style.height=Math.round(w*9/16)+'px';
   }
   m.style.display='flex';
 }
