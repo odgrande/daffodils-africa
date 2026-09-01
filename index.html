@@ -1155,12 +1155,6 @@ function openVidModal(src){
     inner.style.width=w+'px'; inner.style.height=h+'px';
   } else {
     vid.style.display='none'; vid.src='';
-    /* On mobile Google Drive iframes are unreliable — open natively in new tab */
-    if(window.innerWidth<=768){
-      document.getElementById('da-vid-modal').style.display='none';
-      window.open(src.replace('/preview',''), '_blank', 'noopener noreferrer');
-      return;
-    }
     iframe.src=src; iframe.style.display='block';
     /* Landscape 16:9 — fit width first, then cap by height */
     var w=Math.min(880,avW);
@@ -1181,7 +1175,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeVidModa
 <script src="/assets/js/daffy.js?v=3" defer></script>
 
 <!-- SCROLL TO TOP -->
-<button id="stt-btn" aria-label="Scroll to top" style="position:fixed;bottom:28px;right:24px;width:50px;height:50px;background:#faba16;border:3px solid #000;box-shadow:4px 4px 0 #000;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:8999;opacity:0;transform:translateY(16px);transition:opacity 0.25s,transform 0.25s;pointer-events:none;">
+<button id="stt-btn" aria-label="Scroll to top" style="position:fixed;bottom:28px;left:24px;width:50px;height:50px;background:#faba16;border:3px solid #000;box-shadow:4px 4px 0 #000;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:8999;opacity:0;transform:translateY(16px);transition:opacity 0.25s,transform 0.25s;pointer-events:none;">
   <img src="/assets/images/icons/arrow-up.png" width="22" height="22" alt="Up" style="display:block;"/>
 </button>
 
