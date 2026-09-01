@@ -598,11 +598,6 @@ function updateUI(){
   btnNext.style.display = current===TOTAL?'none':'inline-flex';
   btnSubmit.style.display = current===TOTAL?'inline-flex':'none';
   if(current===TOTAL) buildReview();
-  // Only scroll if the form top has drifted out of the visible area
-  var formRect=document.getElementById('register').getBoundingClientRect();
-  if(formRect.top<-10||formRect.top>window.innerHeight*0.25){
-    window.scrollTo({top:document.getElementById('register').offsetTop-80,behavior:'instant'});
-  }
 }
 
 function validate(){
