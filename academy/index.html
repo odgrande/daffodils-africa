@@ -79,10 +79,12 @@
     /* Hours choice */
     .reg-hours{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
     .reg-hour-opt{
-      border:var(--b);padding:20px 12px;text-align:center;
-      background:rgba(255,255,255,0.07);cursor:pointer;transition:all 0.1s;
+      border:3px solid rgba(255,255,255,0.25);padding:20px 12px;text-align:center;
+      background:rgba(255,255,255,0.07);cursor:pointer;transition:all 0.15s;
+      color:var(--white);
     }
-    .reg-hour-opt:hover,.reg-hour-opt.selected{background:var(--yellow);border-color:var(--yellow);color:var(--black);}
+    .reg-hour-opt:hover{border-color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.13);}
+    .reg-hour-opt.selected{background:var(--yellow);border-color:var(--yellow);color:var(--black);}
     .reg-hour-opt strong{display:block;font-weight:900;font-size:1.2rem;margin-bottom:4px;}
     .reg-hour-opt span{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;opacity:0.7;}
 
