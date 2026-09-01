@@ -118,7 +118,7 @@
 
     /* Success state */
     .reg-success{display:none;text-align:center;padding:60px 20px;}
-    .reg-success__icon{font-size:4rem;margin-bottom:24px;display:block;}
+    .reg-success__icon{width:72px;height:72px;margin:0 auto 24px;display:block;filter:invert(72%) sepia(60%) saturate(500%) hue-rotate(5deg) brightness(1.05);}
     .reg-success__h{font-weight:900;font-size:2rem;text-transform:uppercase;color:var(--yellow);margin-bottom:16px;}
     .reg-success__p{font-size:1rem;color:rgba(255,255,255,0.65);font-weight:500;line-height:1.7;}
     .error-msg{color:var(--red);font-size:0.78rem;font-weight:700;margin-top:6px;display:none;}
@@ -264,7 +264,7 @@
 
       <!-- FORM -->
       <div id="reg-success" class="reg-success">
-        <span class="reg-success__icon">🎉</span>
+        <img class="reg-success__icon" src="/assets/images/icons/check.png" alt=""/>
         <h3 class="reg-success__h">You're Registered!</h3>
         <p class="reg-success__p">Thank you for registering your interest in the Daffodils Africa Academy.<br>We'll be in touch within 48 hours with your enrollment details and next steps.<br><br>Get ready to <strong style="color:var(--yellow);">Learn. Lead. Impact.</strong></p>
         <a href="/academy" class="btn btn--yellow" style="margin-top:36px;">Back to Academy →</a>
@@ -278,17 +278,17 @@
 
         <!-- STEP 1: Personal Info -->
         <div class="reg-step active" id="s1">
-          <h3 class="reg-step__q">Let's start with you 👋</h3>
+          <h3 class="reg-step__q">Let's start with you <img src="/assets/images/icons/impact.png" width="28" height="28" style="filter:invert(1);vertical-align:middle;margin-left:4px;" alt=""/></h3>
           <p class="reg-step__hint">Tell us your name so we know who we're welcoming to the Academy.</p>
           <div class="reg-2col">
             <div class="reg-field">
               <label class="reg-label" for="f-first">First Name *</label>
-              <input class="reg-input" type="text" id="f-first" name="first_name" placeholder="e.g. Ifeoluwa" autocomplete="given-name"/>
+              <input class="reg-input" type="text" id="f-first" name="first_name" placeholder="Your first name" autocomplete="given-name"/>
               <p class="error-msg" id="err-first">Please enter your first name.</p>
             </div>
             <div class="reg-field">
               <label class="reg-label" for="f-last">Last Name *</label>
-              <input class="reg-input" type="text" id="f-last" name="last_name" placeholder="e.g. Oyebisi" autocomplete="family-name"/>
+              <input class="reg-input" type="text" id="f-last" name="last_name" placeholder="Your last name" autocomplete="family-name"/>
               <p class="error-msg" id="err-last">Please enter your last name.</p>
             </div>
           </div>
@@ -306,7 +306,7 @@
 
         <!-- STEP 2: Location -->
         <div class="reg-step" id="s2">
-          <h3 class="reg-step__q">Where are you joining us from? 🌍</h3>
+          <h3 class="reg-step__q">Where are you joining us from? <img src="/assets/images/icons/campaign.png" width="28" height="28" style="filter:invert(1);vertical-align:middle;margin-left:4px;" alt=""/></h3>
           <p class="reg-step__hint">Help us understand your community so we can tailor the experience to you.</p>
           <div class="reg-2col">
             <div class="reg-field">
@@ -378,7 +378,7 @@
 
         <!-- STEP 4: Course Choice -->
         <div class="reg-step" id="s4">
-          <h3 class="reg-step__q">Which course calls to you? 📚</h3>
+          <h3 class="reg-step__q">Which course calls to you? <img src="/assets/images/icons/bookmark.png" width="28" height="28" style="filter:invert(1);vertical-align:middle;margin-left:4px;" alt=""/></h3>
           <p class="reg-step__hint">You can always enroll in more than one — but let's start with your top pick.</p>
           <div class="reg-field">
             <label class="reg-label" for="f-course">Course of Interest *</label>
@@ -402,7 +402,7 @@
 
         <!-- STEP 5: Goals -->
         <div class="reg-step" id="s5">
-          <h3 class="reg-step__q">What's driving you? 🎯</h3>
+          <h3 class="reg-step__q">What's driving you? <img src="/assets/images/icons/growth.png" width="28" height="28" style="filter:invert(1);vertical-align:middle;margin-left:4px;" alt=""/></h3>
           <p class="reg-step__hint">Understanding your goals helps us make the experience as valuable as possible for you.</p>
           <div class="reg-field">
             <label class="reg-label" for="f-motivation">Why do you want to join the Daffodils Africa Academy? *</label>
@@ -417,7 +417,7 @@
 
         <!-- STEP 6: Commitment -->
         <div class="reg-step" id="s6">
-          <h3 class="reg-step__q">Last few things ✅</h3>
+          <h3 class="reg-step__q">Last few things <img src="/assets/images/icons/check.png" width="28" height="28" style="filter:invert(1);vertical-align:middle;margin-left:4px;" alt=""/></h3>
           <p class="reg-step__hint">Help us understand your availability so we can set you up for success.</p>
           <div class="reg-field">
             <label class="reg-label">How many hours per week can you commit to learning? *</label>
@@ -459,7 +459,7 @@
 
         <!-- STEP 7: Review -->
         <div class="reg-step" id="s7">
-          <h3 class="reg-step__q">Review your details 👀</h3>
+          <h3 class="reg-step__q">Review your details <img src="/assets/images/icons/info.png" width="28" height="28" style="filter:invert(1);vertical-align:middle;margin-left:4px;" alt=""/></h3>
           <p class="reg-step__hint">Everything look good? Hit submit and we'll be in touch within 48 hours.</p>
           <div class="reg-review" id="review-panel">
             <!-- Filled by JS -->
